@@ -9,6 +9,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="ATLAS">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
 <meta name="description" content="A single-file school organizer: notebooks, calendar, assignments, flashcards and focus tracking.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -336,6 +338,14 @@ hr.rule{border:none;border-top:1px solid var(--rule);margin:16px 0}
 .zen{position:fixed;inset:0;background:var(--bg);z-index:150;display:grid;place-items:center;text-align:center}
 .zen .big{font-family:var(--mono);font-size:clamp(64px,17vw,150px);font-weight:600;letter-spacing:-.04em;line-height:1}
 .ring{transform:rotate(-90deg)}
+.zen-dial{position:relative;width:min(78vw,300px);aspect-ratio:1;display:grid;place-items:center;margin:0 auto}
+.zen-dial .ring{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.zen-dial .big{font-size:clamp(52px,13vw,88px)!important}
+.zen-presets{display:flex;gap:6px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+.tutor-log{max-height:52vh;min-height:160px;overflow:auto;display:flex;flex-direction:column;gap:8px;padding:2px}
+.tmsg{padding:9px 12px;border-radius:14px;max-width:86%;font-size:14px;line-height:1.55;white-space:normal}
+.tmsg.me{align-self:flex-end;background:var(--ultra);color:#fff;border-bottom-right-radius:4px}
+.tmsg.ai{align-self:flex-start;background:var(--panel3);color:var(--ink);border-bottom-left-radius:4px}
 .ring circle{fill:none;stroke-width:7;stroke-linecap:round}
 
 /* ---------- grades ---------- */
@@ -770,6 +780,169 @@ details.adv .advb{padding-top:10px}
 }
 @media (max-width:380px){#quickAdd .lbl{display:none}}
 @media (min-width:901px){#menuBtn{display:none}}
+/* ---------- accounts: sign-in screen forms ---------- */
+.gate-in{position:relative}
+.gclose{position:absolute;top:-6px;right:0;width:36px;height:36px;border-radius:50%;color:var(--ink3);font-size:16px}
+.gclose:hover{background:var(--panel3);color:var(--ink)}
+.gate-ways{display:flex;flex-direction:column;align-items:stretch;gap:12px;max-width:400px}
+.gsi{min-height:50px;display:flex;align-items:center}
+.gsi .gbtn{width:100%;justify-content:center}
+.gsi.live{min-height:44px}
+.ebtn{display:flex;align-items:center;justify-content:center;gap:12px;height:50px;border-radius:25px;background:var(--panel);border:1px solid var(--rule2);color:var(--ink);font-weight:600;font-size:15.5px;box-shadow:var(--shadow);transition:background .12s,border-color .12s}
+.ebtn:hover{border-color:var(--ultra);background:var(--ultraSoft)}
+.ebtn svg{width:20px;height:20px;stroke-width:1.9}
+.gback{display:inline-flex;align-items:center;gap:4px;color:var(--ink3);font-weight:600;font-size:13.5px;margin:0 0 18px;padding:4px 8px 4px 0}
+.gback:hover{color:var(--ink)}
+.gh{font-family:var(--display);font-size:clamp(28px,3.4vw,38px);letter-spacing:-.04em;line-height:1.05;margin:0 0 10px}
+.gate-lead.sm{font-size:15px;margin-bottom:22px}
+.gwho{font-size:14px;color:var(--ink2);margin:-2px 0 18px;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}
+.gwho b{color:var(--ink);font-weight:600;word-break:break-all}
+.gform{display:flex;flex-direction:column;gap:2px;max-width:400px}
+.gform .f{margin-bottom:12px}
+.gform .f > span:first-child{display:block;font-size:12.5px;font-weight:600;color:var(--ink2);margin-bottom:5px}
+.gform .f > span i{font-style:normal;font-weight:400;color:var(--ink3)}
+.gform input[type=email],.gform input[type=text],.gform input[type=password]{width:100%;height:46px;font-size:16px;padding:0 14px}
+.gacts{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.btn.big{height:46px;font-size:15px;justify-content:center;width:100%}
+.gsmall{font-size:13.5px;color:var(--ink3);margin:22px 0 0;max-width:400px}
+.vh{position:absolute!important;width:1px!important;height:1px!important;opacity:0;pointer-events:none;overflow:hidden}
+.pw{position:relative;display:block}
+.pw input{padding-right:48px!important}
+.pweye{position:absolute;right:4px;top:50%;transform:translateY(-50%);width:40px;height:38px;border-radius:9px;color:var(--ink3);display:grid;place-items:center}
+.pweye:hover{color:var(--ink);background:var(--panel3)}
+.pweye svg{width:19px;height:19px;stroke-width:1.8}
+.pweye[aria-pressed="true"]{color:var(--ultra)}
+.pwmeter{display:flex;align-items:center;gap:10px;margin:-4px 0 8px;font-size:12px;color:var(--ink3);font-weight:600;min-height:16px}
+.pwmeter i{flex:1;height:6px;border-radius:3px;background:var(--panel3);overflow:hidden;display:block}
+.pwmeter b{display:block;height:100%;width:0;border-radius:3px;background:var(--crimson);transition:width .2s,background .2s}
+.pwmeter[data-s="2"] b{background:var(--marigold)}
+.pwmeter[data-s="3"] b,.pwmeter[data-s="4"] b{background:var(--moss)}
+.pwrules{list-style:none;margin:0 0 6px;padding:0;display:grid;gap:4px;font-size:12.5px;color:var(--ink3)}
+.pwrules li{display:flex;gap:7px;align-items:flex-start;line-height:1.35}
+.pwrules li::before{content:'';flex:none;width:14px;height:14px;margin-top:1px;border-radius:50%;border:1.6px solid var(--rule2)}
+.pwrules li.ok{color:var(--ink2)}
+.pwrules li.ok::before{border-color:var(--moss);background:var(--moss) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/10px no-repeat}
+.pwsug{display:inline-flex;align-items:center;gap:6px;margin:4px 0 14px;font-size:13px;align-self:flex-start}
+.pwsug svg{width:15px;height:15px}
+.pwmatch{font-size:12.5px;min-height:18px;margin:-6px 0 10px;font-weight:600}
+.pwmatch.ok{color:var(--moss)}.pwmatch.bad{color:var(--crimson)}
+.gate-note-slot:empty{display:none}
+.gate-note-slot{margin:16px 0 0;padding:12px 14px;border-radius:var(--r2);background:var(--marigoldSoft);font-size:13px;line-height:1.5;max-width:400px}
+.gate-note-slot .linkbtn{font-size:13px}
+.gwork{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--ink2);margin:8px 0}
+.spin{width:20px;height:20px;border-radius:50%;border:2.5px solid var(--rule2);border-top-color:var(--ultra);animation:spin .8s linear infinite;flex:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.gdone{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:var(--mossSoft);color:var(--moss);margin:0 0 18px}
+.gdone svg{width:28px;height:28px;stroke-width:2.4}
+
+/* ---------- accounts: the You sheet ---------- */
+.acc-rows{display:flex;flex-direction:column;border:1px solid var(--rule);border-radius:var(--r2);overflow:hidden;margin:0 0 16px}
+.acc-row{display:flex;align-items:center;gap:12px;padding:11px 14px;text-align:left;width:100%;background:var(--panel)}
+.acc-row + .acc-row{border-top:1px solid var(--rule)}
+button.acc-row:hover{background:var(--panel2)}
+.acc-row .ai{width:32px;height:32px;border-radius:9px;background:var(--panel3);display:grid;place-items:center;color:var(--ink2);flex:none}
+.acc-row .ai svg{width:17px;height:17px;stroke-width:1.9}
+.acc-row b{display:block;font-size:14px}
+.acc-row span.t{display:block;font-size:12.5px;color:var(--ink3)}
+.acc-row .go{margin-left:auto;color:var(--ink3);font-size:18px}
+.acc-row.dg b{color:var(--crimson)}
+.acc-row.dg .ai{background:var(--crimsonSoft);color:var(--crimson)}
+.vnote{display:flex;gap:10px;align-items:flex-start;padding:11px 13px;border-radius:var(--r2);background:var(--marigoldSoft);font-size:13px;margin:0 0 14px;line-height:1.45}
+.vnote .linkbtn{font-size:13px}
+
+/* ---------- device lock ---------- */
+#lockscr{position:fixed;inset:0;z-index:250;background-color:var(--bg);background-image:var(--tex,none);display:grid;place-items:center;padding:24px;color:var(--ink);animation:fade .18s both}
+.lock-in{width:100%;max-width:360px;text-align:center;display:flex;flex-direction:column;align-items:center}
+.lock-in .gate-mark{margin-bottom:26px}
+.lock-in h2{font-family:var(--display);font-size:28px;letter-spacing:-.035em;margin:0 0 4px}
+.lock-who{color:var(--ink3);font-size:13.5px;margin:0 0 26px;word-break:break-all}
+.lock-msg{min-height:20px;font-size:13.5px;color:var(--crimson);font-weight:600;margin:14px 0 6px}
+.lock-in .linkbtn{font-size:13px;margin-top:14px}
+.lock-pk{display:flex;flex-direction:column;align-items:center;gap:14px}
+.lock-pk .pkico{width:74px;height:74px;border-radius:22px;background:var(--ultraSoft);color:var(--ultra);display:grid;place-items:center}
+.lock-pk .pkico svg{width:38px;height:38px;stroke-width:1.6}
+.pat{touch-action:none;user-select:none;-webkit-user-select:none;width:min(78vw,270px);aspect-ratio:1;position:relative;border-radius:22px;outline-offset:6px}
+.pat svg{width:100%;height:100%;display:block}
+.pat .dot{fill:var(--rule2);transition:fill .12s,r .12s}
+.pat .dot.on{fill:var(--ultra)}
+.pat .ring{fill:none;stroke:var(--ultra);stroke-width:2;opacity:0;transition:opacity .12s}
+.pat .ring.on{opacity:.35}
+.pat polyline{fill:none;stroke:var(--ultra);stroke-width:6;stroke-linecap:round;stroke-linejoin:round;opacity:.7}
+.pat.bad .dot.on{fill:var(--crimson)}
+.pat.bad polyline{stroke:var(--crimson)}
+.pat-hint{font-size:12.5px;color:var(--ink3);margin:10px 0 0}
+.lockopt{display:flex;gap:12px;align-items:flex-start;padding:13px 14px;border:1.5px solid var(--rule);border-radius:var(--r2);margin-bottom:9px;cursor:pointer;width:100%;text-align:left;background:var(--panel)}
+.lockopt:hover{border-color:var(--rule2)}
+.lockopt.on{border-color:var(--ultra);background:var(--ultraSoft)}
+.lockopt .ai{width:34px;height:34px;border-radius:10px;background:var(--panel3);display:grid;place-items:center;color:var(--ink2);flex:none}
+.lockopt.on .ai{background:var(--ultra);color:#fff}
+.lockopt .ai svg{width:18px;height:18px;stroke-width:1.9}
+.lockopt b{display:block;font-size:14px}
+.lockopt span.t{display:block;font-size:12.5px;color:var(--ink3);margin-top:1px}
+.lockopt[disabled]{opacity:.5;cursor:not-allowed}
+
+/* ---------- reminders ---------- */
+.nrow{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--rule);flex-wrap:wrap}
+.nrow:last-child{border-bottom:none}
+.nrow label.check{flex:1;min-width:200px;margin:0}
+.nrow input[type=time]{width:auto}
+.nstate{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:var(--r2);background:var(--panel2);border:1px solid var(--rule);margin-bottom:14px}
+.nstate b{display:block;font-size:14px}
+.nstate span.t{display:block;font-size:12.5px;color:var(--ink3)}
+.nstate .sdot{flex:none}
+.nstate.on .sdot{background:var(--moss);animation:none}
+.nstate.off .sdot{background:var(--rule2);animation:none}
+
+/* ---------- tutor ---------- */
+.tutor{display:grid;grid-template-columns:230px minmax(0,1fr);gap:16px;height:calc(100dvh - 150px);min-height:420px}
+.tlist{display:flex;flex-direction:column;gap:4px;overflow-y:auto;padding-right:4px;min-height:0}
+.tlist > .btn{margin-bottom:8px;justify-content:center}
+.titem{display:block;text-align:left;width:100%;padding:9px 11px;border-radius:var(--r2);color:var(--ink2)}
+.titem:hover{background:var(--panel3)}
+.titem.on{background:var(--ultraSoft);color:var(--ultra)}
+.titem b{display:block;font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.titem span{display:block;font-size:11.5px;color:var(--ink3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tmain{display:flex;flex-direction:column;min-height:0;background:var(--panel);border:1px solid var(--rule);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+.thead{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--rule);flex-wrap:wrap}
+.thead select{width:auto;max-width:220px;height:34px;font-size:13px}
+.thead .ttl{font-weight:700;font-size:14.5px;flex:1;min-width:120px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tlog{flex:1;overflow-y:auto;padding:18px 16px;display:flex;flex-direction:column;gap:12px;min-height:0}
+.tlog .tmsg{max-width:min(86%,640px);font-size:14.5px}
+.tlog .tmsg.ai{background:var(--panel2);border:1px solid var(--rule)}
+.tlog .tmsg.ai p{margin:0 0 8px}.tlog .tmsg.ai p:last-child{margin:0}
+.tlog .tmsg.ai ul,.tlog .tmsg.ai ol{margin:4px 0 8px;padding-left:20px}
+.tlog .tmsg.ai h4{margin:6px 0 4px;font-size:14px}
+.tlog .tmsg.wait{color:var(--ink3);display:flex;gap:8px;align-items:center}
+.tstart{margin:auto;text-align:center;max-width:460px;padding:10px}
+.tstart h3{font-size:20px;margin:0 0 6px}
+.tstart p{color:var(--ink2);font-size:14px;margin:0 0 16px}
+.tsugs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.tsug{padding:8px 13px;border-radius:18px;border:1px solid var(--rule2);font-size:13px;color:var(--ink2);background:var(--panel)}
+.tsug:hover{border-color:var(--ultra);color:var(--ultra)}
+.tcomp{display:flex;gap:8px;align-items:flex-end;padding:10px 12px;border-top:1px solid var(--rule);background:var(--panel)}
+.tcomp textarea{flex:1;resize:none;min-height:44px;max-height:180px;font-size:15px;line-height:1.45;padding:10px 12px}
+.tcomp .btn{height:44px}
+.tfoot{font-size:11.5px;color:var(--ink3);padding:0 14px 9px;background:var(--panel)}
+.tchats{display:none}
+@media (max-width: 860px){
+  .tutor{grid-template-columns:1fr;height:calc(100dvh - 210px)}
+  .tlist{display:none}
+  .tchats{display:inline-flex}
+}
+
+/* ---------- deck: tell the AI what to change ---------- */
+.adjust{display:flex;gap:8px;align-items:center;margin:0 0 12px;padding:10px 12px;border:1px dashed var(--rule2);border-radius:var(--r2);background:var(--panel2)}
+.adjust svg{width:17px;height:17px;color:var(--ultra);flex:none}
+.adjust input{flex:1;border:none;background:transparent;height:34px;font-size:14px;padding:0 4px;box-shadow:none}
+.adjust input:focus{outline:none}
+.adjust:focus-within{border-style:solid;border-color:var(--ultra)}
+.adjlist{display:flex;flex-direction:column;gap:6px;max-height:44vh;overflow:auto;margin-top:10px}
+.adjlist .item{padding:8px 10px;border:1px solid var(--rule);border-radius:var(--r3)}
+.adjtag{font-family:var(--mono);font-size:10.5px;padding:1px 6px;border-radius:10px;margin-right:6px;vertical-align:1px}
+.adjtag.new{background:var(--mossSoft);color:var(--moss)}
+.adjtag.chg{background:var(--marigoldSoft);color:var(--marigold)}
+.adjtag.del{background:var(--crimsonSoft);color:var(--crimson)}
+.toast .tact{margin-left:12px;font-weight:700;text-decoration:underline;color:inherit}
 </style>
 </head>
 <body>
@@ -839,6 +1012,8 @@ details.adv .advb{padding-top:10px}
                      it turns the AI study tools on for everyone, no key
    · recaptchaKey    App Check's reCAPTCHA Enterprise site key, which stops
                      other sites and bots from using this copy's free AI
+   · vapidKey        Firebase → Project settings → Cloud Messaging → Web Push
+                     certificates. Lets reminders arrive when ATLAS is closed.
    ---------------------------------------------------------------------- */
 const ATLAS_CONFIG = {
   googleClientId: '1076045342061-ilr81mrj0gubi5ihr9mlqoeubcfctv63.apps.googleusercontent.com',
@@ -850,7 +1025,8 @@ const ATLAS_CONFIG = {
     messagingSenderId: '1076045342061',
     appId: '1:1076045342061:web:bd6a284b08195b9395a664'
   },
-  recaptchaKey: '6LfUSvUtAAAAAC74NNaoTXzs1bYBy3wEmUNoKfNK'
+  recaptchaKey: '6LfUSvUtAAAAAC74NNaoTXzs1bYBy3wEmUNoKfNK',
+  vapidKey: 'BMxpKYkw0m4fgjPT0PCC4WhOf2syFrh3n9I-uv0r-aFyLTrraZoKHAQfg3SbSqZpcM7P6LzHZ4bl_UdFNSO9X9A'
 };
 
 /* ---------- 1. utils ---------- */
@@ -1250,16 +1426,17 @@ function since(ts) {
 }
 /* What the little line under your name says once everything is written. */
 function savedText() {
-  if (gConfigured() && gKnown() && (!Sync.index || !Sync.index.gProfile || gLinked())) {
-    if (gSignedIn()) return G.err ? 'Sync needs attention' : G.lastSync ? 'Synced' + since(G.lastSync) : 'Syncing…';
-    return 'Saved · tap to sync';
+  if (typeof acctKnown === 'function' && acctKnown() && cLinked()) {
+    if (!ACC.user) return ACC.booted ? 'Saved · signed out' : 'Saved';
+    if (ACC.err) return ACC.offline ? 'Saved · offline' : 'Sync needs attention';
+    return ACC.lastSync ? 'Synced' + since(ACC.lastSync) : 'Syncing…';
   }
   return 'Saved' + sinceSaved();
 }
 function setStatus(s, extra) {
   Sync.status = s;
   const text = extra || (s === 'saved' ? savedText() : statusWords(s));
-  const paused = s === 'saved' && !extra && gConfigured() && gKnown() && !gSignedIn();
+  const paused = s === 'saved' && !extra && typeof acctKnown === 'function' && acctKnown() && cLinked() && (!ACC.user || !!ACC.err);
   const el = $('#saveState');
   if (el) { el.textContent = text; el.className = 'syncstate ' + s + (paused ? ' paused' : ''); }
   const a = $('#acctSync'); if (a) { a.textContent = text; a.className = 'syncstate ' + s; }
@@ -1347,7 +1524,8 @@ async function flush() {
     }
     snapshotSave().catch(() => { });
     if (mergedIn && !isTyping() && !$('.modal')) render();
-    gQueuePush();
+    cQueuePush();
+    if (ACC.user && noteWanted()) noteQueue();
     if (Sync.rev % 6 === 0) sset(dbKey(Sync.profile.id) + '.bak', payload).catch(() => { });
   } catch (e) {
     Sync.fails++;
@@ -1447,7 +1625,7 @@ async function openAccount() {
   const p = Sync.index.profiles.find(x => x.id === Sync.index.active) || Sync.index.profiles[0];
   await useProfile(p);
 }
-async function switchProfile(id) {
+async function switchProfile(id, quiet) {
   await flush();
   const p = Sync.index.profiles.find(x => x.id === id);
   if (!p) return;
@@ -1455,7 +1633,7 @@ async function switchProfile(id) {
   applyTheme(); installManifest();
   if (!T.running) { T.left = S.settings.pomodoro.focus * 60; paintTimer(); }
   restoreSession();
-  toast('Switched to ' + p.name);
+  if (!quiet) toast('Switched to ' + p.name);
 }
 async function addProfile(name) {
   await flush();
@@ -1515,6 +1693,12 @@ function schedule(card, q) {
   c.due = addDays(today(), Math.max(c.interval, 0));
   c.seen = today();
   return c;
+}
+function nextDueLabel(deck) {
+  const next = deck.cards.map(c => c.due).filter(x => x && x > today()).sort()[0];
+  if (!next) return 'all caught up';
+  const n = daysBetween(today(), next);
+  return 'next due ' + (n === 1 ? 'tomorrow' : 'in ' + n + ' days');
 }
 function dueCards(deck, day) {
   const d = day || today();
@@ -1893,7 +2077,16 @@ const ICONS = {
   dots: '<circle cx="5.5" cy="12" r="1.7" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.7" fill="currentColor" stroke="none"/><circle cx="18.5" cy="12" r="1.7" fill="currentColor" stroke="none"/>',
   google: '<path d="M21.6 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/>',
   spark: '<path d="M12 3l1.9 4.6L18.5 9l-4.6 1.9L12 15.5l-1.9-4.6L5.5 9l4.6-1.4z"/><path d="M18.5 15.5l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/>',
-  pause: '<rect x="6.5" y="5.5" width="3.5" height="13" rx="1" fill="currentColor"/><rect x="14" y="5.5" width="3.5" height="13" rx="1" fill="currentColor"/>'
+  pause: '<rect x="6.5" y="5.5" width="3.5" height="13" rx="1" fill="currentColor"/><rect x="14" y="5.5" width="3.5" height="13" rx="1" fill="currentColor"/>',
+  mail: '<rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/>',
+  eye: '<path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/>',
+  key: '<circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 7l3 3M14 9l2 2"/>',
+  lock: '<rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 018 0v3"/>',
+  bell: '<path d="M6 16.5V11a6 6 0 0112 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 004 0"/>',
+  chat: '<path d="M4.5 5.5h15a1.5 1.5 0 011.5 1.5v9a1.5 1.5 0 01-1.5 1.5H10l-4.5 3.5V17.5h-1A1.5 1.5 0 013 16V7a1.5 1.5 0 011.5-1.5z"/><path d="M8 10h8M8 13.5h5"/>',
+  send: '<path d="M4 12l16-7.5L13.5 20l-2.5-6.5z"/><path d="M11 13.5l9-9"/>',
+  finger: '<path d="M8.5 20c1-2.5 1.5-5 1.5-8a2 2 0 014 0c0 3.5-.5 6.5-2 9"/><path d="M5.5 17.5c.7-1.8 1-3.6 1-5.5a5.5 5.5 0 0111 0c0 1.2 0 2.4-.2 3.5"/><path d="M4 9.5a8.5 8.5 0 0116 0M16 20c.5-1.2.9-2.5 1.1-3.8"/>',
+  grid: '<circle cx="6" cy="6" r="1.6" fill="currentColor"/><circle cx="12" cy="6" r="1.6" fill="currentColor"/><circle cx="18" cy="6" r="1.6" fill="currentColor"/><circle cx="6" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="18" cy="12" r="1.6" fill="currentColor"/><circle cx="6" cy="18" r="1.6" fill="currentColor"/><circle cx="12" cy="18" r="1.6" fill="currentColor"/><circle cx="18" cy="18" r="1.6" fill="currentColor"/><path d="M6 6l6 6 6-6M12 12v6"/>'
 };
 function ic(n, s) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"' + (s ? ' style="' + s + '"' : '') + '>' + (ICONS[n] || '') + '</svg>'; }
 
@@ -2007,6 +2200,7 @@ const VIEWS = {
   tasks: { title: 'Assignments', icon: 'tasks' },
   notes: { title: 'Notebooks', icon: 'book' },
   cards: { title: 'Flashcards', icon: 'cards' },
+  tutor: { title: 'Tutor', icon: 'chat' },
   grades: { title: 'Grades', icon: 'chart' },
   break: { title: 'Break', icon: 'play' },
   settings: { title: 'Settings', icon: 'gear' },
@@ -2043,6 +2237,7 @@ function render() {
       case 'tasks': return viewTasks();
       case 'notes': return viewNotes();
       case 'cards': return viewDecks();
+      case 'tutor': return viewTutor();
       case 'review': return viewReview();
       case 'break': return viewBreak();
       case 'grades': return viewGrades();
@@ -2061,6 +2256,8 @@ function render() {
   if (V.name === 'calendar') mountCalendar();
   if (V.name === 'break') mountBreak();
   if (V.name === 'settings') mountSettings();
+  if (V.name === 'tutor') mountTutor();
+  if (V.name === 'cards' && V.param) mountDeck();
   paintAdd();
 }
 /* The + button does the obvious thing for the page you are on; the arrow beside
@@ -2130,7 +2327,7 @@ function togglePop(anchor, items) { if (POP.anchor === anchor) return closePop()
 function renderNav() {
   const w = W();
   const main = ['today'].concat(['calendar', 'tasks', 'notes'].filter(viewOn));
-  const tools = ['cards', 'grades', 'break'].filter(viewOn).concat(['settings']);
+  const tools = ['cards', 'tutor', 'grades', 'break'].filter(viewOn).concat(['settings']);
   const counts = { tasks: openTasks().filter(t => t.due && t.due <= addDays(today(), 2)).length, cards: S.decks.reduce((a, d) => a + dueCards(d).length, 0) };
   const btn = n => '<button class="nav' + (V.name === n ? ' on' : '') + '" data-go="' + n + '">' + ic(VIEWS[n].icon) + '<span>' + esc(viewTitle(n)) + '</span>' +
     (counts[n] ? '<span class="cnt">' + counts[n] + '</span>' : '') + '</button>';
@@ -2142,9 +2339,9 @@ function renderNav() {
   const lbl = $('#navClsLabel'); if (lbl) lbl.textContent = w.clsP;
   const acb = $('#addClassBtn'); if (acb) acb.title = 'Add a ' + w.cls.toLowerCase();
   /* the phone bar holds six tabs plus Settings; the rest stay one tap away in the menu */
-  const SHORT = { today: 'Today', calendar: 'Cal', tasks: w.short, notes: 'Notes', cards: 'Cards', grades: 'Grades', break: 'Break', settings: 'Setup' };
-  const mob = ['today'].concat(['calendar', 'tasks', 'notes', 'cards', 'grades', 'break'].filter(viewOn));
-  ['grades', 'cards', 'break', 'notes'].forEach(n => { if (mob.length > 6 && mob.indexOf(n) >= 0) mob.splice(mob.indexOf(n), 1); });
+  const SHORT = { today: 'Today', calendar: 'Cal', tasks: w.short, notes: 'Notes', cards: 'Cards', tutor: 'Tutor', grades: 'Grades', break: 'Break', settings: 'Setup' };
+  const mob = ['today'].concat(['calendar', 'tasks', 'notes', 'cards', 'tutor', 'grades', 'break'].filter(viewOn));
+  ['break', 'grades', 'cards', 'tutor', 'notes'].forEach(n => { if (mob.length > 6 && mob.indexOf(n) >= 0) mob.splice(mob.indexOf(n), 1); });
   mob.push('settings');
   const mn = $('#mobnav');
   mn.style.gridTemplateColumns = 'repeat(' + mob.length + ',1fr)';
@@ -2152,12 +2349,12 @@ function renderNav() {
   const fb = $('#focusBar'); if (fb) fb.classList.toggle('hidden', !on('focus'));
   $('#termLabel').textContent = S.profile.term || 'your school desk';
   const an = $('#acctName'), av = $('#acctAva');
-  if (an && Sync.profile) an.textContent = (gKnown() && gLinked() && Local.gUser.name) || S.profile.name || Sync.profile.name;
+  if (an && Sync.profile) an.textContent = acctName() || Sync.profile.name;
   if (av) av.innerHTML = avatarHTML();
 }
 function avatarHTML() {
-  const letter = esc(((S.profile.name || (Local.gUser && Local.gUser.name) || (Sync.profile && Sync.profile.name) || 'A').trim()[0] || 'A').toUpperCase());
-  const pic = gKnown() && Local.gUser.picture ? '<img src="' + esc(Local.gUser.picture) + '" alt="" referrerpolicy="no-referrer" onerror="this.remove()">' : '';
+  const letter = esc(((S.profile.name || acctName() || (Sync.profile && Sync.profile.name) || 'A').trim()[0] || 'A').toUpperCase());
+  const pic = cLinked() && Local.acct.picture ? '<img src="' + esc(Local.acct.picture) + '" alt="" referrerpolicy="no-referrer" onerror="this.remove()">' : '';
   return letter + pic;
 }
 
@@ -2521,7 +2718,7 @@ function viewDecks() {
       '<div class="eyebrow">' + esc(c ? c.name : 'General') + '</div><h3>' + esc(d.name) + '</h3>' +
       '<div class="muted" style="font-size:12.5px;margin-bottom:10px">' + d.cards.length + ' cards · ' + learned + ' learned</div>' +
       '<div class="bar"><i style="width:' + pct + '%;background:' + (c ? c.color : 'var(--ultra)') + '"></i></div>' +
-      '<div class="row" style="margin-top:11px"><span class="chip ' + (due ? 'w' : 'g') + '">' + (due ? due + ' due' : 'all caught up') + '</span>' +
+      '<div class="row" style="margin-top:11px"><span class="chip ' + (due ? 'w' : 'g') + '">' + (due ? due + ' due now' : nextDueLabel(d)) + '</span>' +
       '<span class="spacer"></span><span class="dim mono" style="font-size:11px">' + pct + '%</span></div></div>';
   }).join('');
   return '<div class="wrap">' + head + '<div class="deckgrid">' + grid + '</div></div>';
@@ -2623,6 +2820,11 @@ function viewSettings() {
     row('Break length', '', '<input type="number" id="setShort" value="' + s.pomodoro.short + '" min="1" max="30" aria-label="Break minutes"><span class="dim">min</span>') +
     row('Background sound', 'Made in the browser, so it works offline.', '<select id="setAmb">' + Object.keys(AMBIENCE).map(k => '<option value="' + k + '"' + ((s.ambience || 'off') === k ? ' selected' : '') + '>' + AMBIENCE[k] + '</option>').join('') + '</select>' +
       '<button class="btn sm" data-act="tryAmb">Play</button><button class="btn sm" data-act="stopAmb">Stop</button>'));
+  add('account', 'Account and devices',
+    row('Account', acctKnown() ? 'Signed in as ' + esc(Local.acct.email) + '. Your desk syncs to every device you sign in on.' : 'Not signed in. Your work is saved in this browser only.',
+      acctKnown() ? '<button class="btn" data-act="acctMenu">Open</button>' : '<button class="btn p" data-act="acctOpen">Sign in</button>') +
+    row('Reminders', esc(noteLabel()) + '. What\'s due, tests coming up, cards to review and the end of a focus session.', '<button class="btn" data-act="noteSheet">' + (noteHere() ? 'Change' : 'Set up') + '</button>') +
+    (acctKnown() ? row('Device lock', esc(lockLabel()) + '. A passkey or a pattern keeps ATLAS closed on this device until you unlock it.', '<button class="btn" data-act="lockSheet">' + (lockSet() ? 'Change' : 'Set up') + '</button>') : ''));
   add('ai', 'AI study tools', row(aiReady() ? 'On: ' + esc(aiLabel()) : 'Off',
     'Flashcards and quizzes from your notes, plain-language explanations, and big assignments broken into steps. Free, through Google.' + (aiMode() === 'cloud' || aiMode() === 'chrome' ? ' Nothing to set up.' : ''),
     '<button class="btn" data-act="aiSetup">' + (aiReady() ? 'Change' : 'Turn on') + '</button>'));
@@ -2641,7 +2843,8 @@ function dataSettings(row) {
   const snaps = (Sync.snaps || []).slice().reverse();
   const profs = (Sync.index && Sync.index.profiles) || [];
   const devs = S._devices || {}, ids = Object.keys(devs).sort((a, b) => (devs[b].at || 0) - (devs[a].at || 0));
-  const gp = Sync.index && Sync.index.gProfile;
+  const links = (Sync.index && Sync.index.links) || {};
+  const acctOf = id => { const u = Object.keys(links).find(k => links[k] === id); const p = profs.find(x => x.id === id); return u ? (p && p.email) || 'an account' : ''; };
   return row('Saved', esc(Drv.label) + (Sync.persisted ? ', protected from browser cleanup' : '') + '. ' +
       S.classes.length + ' ' + W().clsP.toLowerCase() + ', ' + S.tasks.length + ' ' + W().taskP.toLowerCase() + ', ' + S.notes.length + ' pages, ' + S.decks.reduce((a, d) => a + d.cards.length, 0) + ' cards.', '') +
     (Drv.name === 'memory' ? '<p style="color:var(--crimson);font-size:13px;margin:0 0 10px">This browser is blocking storage, so nothing survives a reload. Download a backup before you close the tab.</p>' : '') +
@@ -2652,7 +2855,7 @@ function dataSettings(row) {
     (snaps.length ? snaps.map(x => '<div class="arow"><div style="flex:1"><b>' + ago(x.at) + '</b><span>' + esc(x.counts || '') + '</span></div><button class="btn sm" data-act="rollback" data-at="' + x.at + '">Roll back</button></div>').join('')
       : '<p class="dim" style="font-size:13px;margin:0 0 12px">ATLAS keeps one automatically every few hours. None yet.</p>') +
     '<div class="eyebrow" style="margin:14px 0 6px">Profiles</div>' +
-    profs.map(p => '<div class="arow"><div style="flex:1"><b>' + esc(p.name) + '</b><span>' + (Sync.profile && p.id === Sync.profile.id ? 'Open now' : 'Started ' + new Date(p.created).toLocaleDateString()) + (gp === p.id ? ', synced with Google' : '') + '</span></div>' +
+    profs.map(p => '<div class="arow"><div style="flex:1"><b>' + esc(p.name) + '</b><span>' + (Sync.profile && p.id === Sync.profile.id ? 'Open now' : 'Started ' + new Date(p.created).toLocaleDateString()) + (acctOf(p.id) ? ', synced with ' + esc(acctOf(p.id)) : '') + '</span></div>' +
       (Sync.profile && p.id === Sync.profile.id ? '' : '<button class="btn sm" data-act="switchProf" data-id="' + p.id + '">Open</button><button class="btn g sm dg" data-act="delProf" data-id="' + p.id + '" aria-label="Delete ' + esc(p.name) + '">' + ic('trash') + '</button>') + '</div>').join('') +
     '<button class="btn sm" data-act="addProf" style="margin-top:4px">New profile</button>' +
     '<div class="eyebrow" style="margin:14px 0 6px">Devices</div>' +
@@ -2979,6 +3182,9 @@ function installManifest() {
        away and the app could not be installed. Spell them out in full. */
     const page = location.href.split('#')[0].split('?')[0];
     const scope = page.slice(0, page.lastIndexOf('/') + 1);
+    /* iPhone and iPad only treat ATLAS as an app (and only then allow notifications)
+       with the manifest and icon files next to it, so those stay as they are there. */
+    if (typeof isIOS === 'function' && isIOS()) return;
     const icons = [192, 512].map(n => ({ src: appIcon(n, color), sizes: n + 'x' + n, type: 'image/png', purpose: 'any' })).filter(i => i.src);
     const man = {
       name: 'ATLAS — school desk', short_name: 'ATLAS', start_url: page, scope: scope, display: 'standalone',
@@ -3359,7 +3565,7 @@ function doTiles(dir) {
    ride along in a synced payload or a backup file.
    ============================================================ */
 const GEMINI_MODELS = ['gemini-3.8-flash', 'gemini-flash-latest', 'gemini-3.5-flash-lite'];
-let Local = { aiKey: '', aiProvider: 'auto', model: GEMINI_MODELS[0], gClientId: '', gUser: null, gWas: false };
+let Local = { aiKey: '', aiProvider: 'auto', model: GEMINI_MODELS[0], gClientId: '', gUser: null, gWas: false, acct: null, push: null, lock: null };
 const LOCALKEY = NS + '.local';
 async function loadLocal() {
   try { const v = await Drv.get(LOCALKEY); if (v) Local = Object.assign(Local, v); } catch (e) { }
@@ -3431,10 +3637,8 @@ async function askAI(messages, system, maxTokens, json) {
 function fbLoad() {
   if (AI.fb) return Promise.resolve(AI.fb);
   if (AI.fbLoading) return AI.fbLoading;
-  AI.fbLoading = Promise.all([import(FB_SDK + 'firebase-app.js'), import(FB_SDK + 'firebase-app-check.js'), import(FB_SDK + 'firebase-ai.js')])
-    .then(([appMod, checkMod, aiMod]) => {
-      const app = appMod.initializeApp(ATLAS_CONFIG.firebase, 'atlas');
-      if (ATLAS_CONFIG.recaptchaKey) checkMod.initializeAppCheck(app, { provider: new checkMod.ReCaptchaEnterpriseProvider(ATLAS_CONFIG.recaptchaKey), isTokenAutoRefreshEnabled: true });
+  AI.fbLoading = Promise.all([fbApp(), import(FB_SDK + 'firebase-ai.js')])
+    .then(([app, aiMod]) => {
       AI.fb = { ai: aiMod.getAI(app, { backend: new aiMod.GoogleAIBackend() }), mod: aiMod };
       return AI.fb;
     })
@@ -3534,6 +3738,148 @@ function schoolContext(classId) {
   }
   return bits.join('\n');
 }
+/* ============================================================
+   Tutor. A study partner that walks you to the answer one step at
+   a time instead of handing it over. Every chat is saved with your
+   desk, so it follows you to your other devices. Point it at a
+   class or one of your notebook pages and it works from those.
+   ============================================================ */
+const TUT = { busy: {}, open: false };
+const TUT_SUGS = ['Explain this like I\'m seeing it for the first time', 'Quiz me before my test', 'Help me get started on my essay', 'Check my answer and tell me where I went wrong'];
+function tutorChat(id) { return S.chats.find(c => c.id === id) || null; }
+function tutorNew(classId, noteId) {
+  const c = { id: uid(), title: '', classId: classId || null, noteId: noteId || null, messages: [], created: Date.now(), updated: Date.now(), draft: '' };
+  S.chats.push(c);
+  save();
+  return c;
+}
+function tutorNotesFor(classId) { return S.notes.filter(n => !classId || n.classId === classId).slice().sort((a, b) => (b.updated || 0) - (a.updated || 0)).slice(0, 60); }
+function viewTutor() {
+  if (!aiReady()) return '<div class="wrap"><div class="card"><div class="empty"><h3>Your AI tutor</h3>' +
+    '<p>Ask about homework, get a concept explained another way, or have it quiz you before a test. It walks you to the answer instead of just giving it.</p>' +
+    '<button class="btn p" data-act="aiSetup">Turn on AI study tools</button></div></div></div>';
+  const chats = S.chats.slice().sort((a, b) => (b.updated || 0) - (a.updated || 0));
+  const c = tutorChat(V.param);
+  const list = '<aside class="tlist" aria-label="Your chats"><button class="btn p sm" data-act="tutorNew">' + ic('plus') + 'New chat</button>' +
+    (chats.length ? chats.map(x => '<button class="titem' + (c && x.id === c.id ? ' on' : '') + '" data-act="tutorOpen" data-id="' + x.id + '"><b>' + esc(x.title || 'New chat') + '</b><span>' +
+      esc(ago(x.updated || x.created)) + (x.classId ? ' · ' + esc(clsName(x.classId)) : '') + '</span></button>').join('')
+      : '<p class="dim" style="font-size:12.5px;margin:10px 4px;line-height:1.5">Your chats are saved here and follow you to your other devices.</p>') + '</aside>';
+  const classSel = '<select id="tutClass" aria-label="Which class"><option value="">Any subject</option>' + S.classes.map(k => '<option value="' + k.id + '"' + (c && c.classId === k.id ? ' selected' : '') + '>' + esc(k.name) + '</option>').join('') + '</select>';
+  const notes = tutorNotesFor(c ? c.classId : null);
+  const noteSel = on('notes') && S.notes.length ? '<select id="tutNote" aria-label="Use one of your pages"><option value="">No page</option>' +
+    notes.map(n => '<option value="' + n.id + '"' + (c && c.noteId === n.id ? ' selected' : '') + '>' + esc(n.title || 'Untitled page') + '</option>').join('') + '</select>' : '';
+  const busy = c && TUT.busy[c.id];
+  const msgs = c && c.messages.length
+    ? c.messages.map(m => '<div class="tmsg ' + (m.role === 'user' ? 'me' : 'ai') + '">' + (m.role === 'user' ? esc(m.content).replace(/\n/g, '<br>') : md(m.content)) + '</div>').join('') +
+      (busy ? '<div class="tmsg ai wait"><span class="spin" style="width:15px;height:15px;border-width:2px"></span>Thinking…</div>' : '')
+    : '<div class="tstart"><h3>What are you working on?</h3><p>Ask a question, paste a problem you\'re stuck on, or pick a page above so the tutor works from your own notes.</p>' +
+      '<div class="tsugs">' + TUT_SUGS.map(s => '<button class="tsug" data-act="tutorSug" data-t="' + esc(s) + '">' + esc(s) + '</button>').join('') + '</div></div>';
+  return '<div class="wrap" style="padding-bottom:0"><div class="tutor">' + list +
+    '<section class="tmain"><div class="thead"><button class="btn sm tchats" data-act="tutorList" aria-haspopup="menu">' + ic('chat') + 'Chats</button>' +
+    '<span class="ttl">' + esc((c && c.title) || 'New chat') + '</span>' + classSel + noteSel +
+    (c ? '<button class="btn g sm" data-act="tutorMenu" data-id="' + c.id + '" aria-label="Chat options" aria-haspopup="menu">' + ic('dots') + '</button>' : '') + '</div>' +
+    '<div class="tlog" id="tutLog" aria-live="polite">' + msgs + '</div>' +
+    '<div class="tcomp"><textarea id="chatIn" rows="1" placeholder="Ask your tutor…" aria-label="Message">' + esc((c && c.draft) || '') + '</textarea>' +
+    '<button class="btn p" data-act="tutorSend"' + (busy ? ' disabled' : '') + '>' + ic('send') + 'Send</button></div>' +
+    '<div class="tfoot">Uses ATLAS\'s free AI. Leave out anything private. The tutor can make mistakes, so check what matters.</div></section></div></div>';
+}
+function mountTutor() {
+  const log = $('#tutLog'); if (log) log.scrollTop = log.scrollHeight;
+  const ta = $('#chatIn'); if (!ta) return;
+  const fit = () => { ta.style.height = 'auto'; ta.style.height = Math.min(ta.scrollHeight, 180) + 'px'; };
+  fit();
+  ta.addEventListener('input', () => { fit(); const c = tutorChat(V.param); if (c) c.draft = ta.value; });
+  ta.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); tutorSend(); } });
+  const cs = $('#tutClass'), ns = $('#tutNote');
+  if (cs) cs.addEventListener('change', () => { const c = tutorChat(V.param) || tutorNew(); c.classId = cs.value || null; if (c.noteId && !S.notes.some(n => n.id === c.noteId && (!c.classId || n.classId === c.classId))) c.noteId = null; c.updated = Date.now(); save(); V.param = c.id; render(); });
+  if (ns) ns.addEventListener('change', () => { const c = tutorChat(V.param) || tutorNew(); c.noteId = ns.value || null; const n = S.notes.find(x => x.id === c.noteId); if (n && !c.classId) c.classId = n.classId || null; c.updated = Date.now(); save(); V.param = c.id; render(); });
+  if (window.innerWidth > 860 && !isTyping()) ta.focus();
+}
+async function tutorSend() {
+  const ta = $('#chatIn'); if (!ta) return;
+  const q = ta.value.trim(); if (!q) return;
+  let c = tutorChat(V.param);
+  if (!c) { c = tutorNew(); V.param = c.id; }
+  if (TUT.busy[c.id]) return;
+  c.messages.push({ role: 'user', content: q, at: Date.now() });
+  if (!c.title) c.title = q.replace(/\s+/g, ' ').slice(0, 48) + (q.length > 48 ? '…' : '');
+  c.draft = ''; c.updated = Date.now();
+  TUT.busy[c.id] = true;
+  save(); render();
+  const page = c.noteId && S.notes.find(n => n.id === c.noteId);
+  const convo = c.messages.slice(-14).map(m => (m.role === 'user' ? 'Student: ' : 'Tutor: ') + m.content).join('\n\n');
+  const sys = assistSystem(c.classId) + '\n\nYou are a patient one-on-one tutor. Teach; do not just hand over answers. Work out what the student already knows, ' +
+    'give one step or one hint at a time, and end with a short question so they do the thinking. If they are checking a finished answer, say whether it is right and exactly why. ' +
+    'If they ask to be quizzed, ask one question at a time and wait for their answer. Keep replies under 150 words unless they ask for more. Use short paragraphs or a short list.';
+  try {
+    const out = await askAI([{ role: 'user', content: (page ? 'The student\'s notebook page "' + (page.title || 'Untitled') + '":\n' + String(page.body || '').slice(0, 7000) + '\n\n' : '') + convo + '\n\nTutor:' }], sys, 1200);
+    c.messages.push({ role: 'assistant', content: String(out || '').trim() || 'I didn\'t catch that. Try asking another way.', at: Date.now() });
+  } catch (e) {
+    c.messages.push({ role: 'assistant', content: 'I couldn\'t answer just now. ' + ((e && e.message) || ''), at: Date.now() });
+  }
+  delete TUT.busy[c.id];
+  c.updated = Date.now();
+  save();
+  if (V.name === 'tutor' && V.param === c.id && !($('.modal'))) {
+    const keep = $('#chatIn') ? $('#chatIn').value : '';
+    render();
+    const t2 = $('#chatIn'); if (t2 && keep) t2.value = keep;
+  }
+}
+
+/* --- decks: tell the AI what to change -------------------------------------
+   "Make the answers shorter", "add five cards on the Krebs cycle", "put it in
+   Spanish". You see what would change before anything does, and can undo it. */
+async function deckAdjust(deckId, instruction, btn) {
+  const d = S.decks.find(x => x.id === deckId); if (!d) return;
+  const ask = String(instruction || '').trim(); if (!ask) return toast('Say what to change, like "make the answers shorter".', true);
+  await aiRun(btn, 'Working…', async () => {
+    const cards = d.cards.slice(0, 200).map((c, i) => ({ n: i + 1, front: c.front, back: c.back }));
+    const arr = await askJSON('Flashcard deck "' + d.name + '" for the class "' + clsName(d.classId) + '", as JSON:\n' + JSON.stringify(cards) +
+      '\n\nThe student asks: "' + ask + '"\n\nReturn the whole deck after making exactly that change, as a JSON array of {"n": the original card number, or 0 for a new card, "front": "...", "back": "..."}. ' +
+      'Keep every card the request doesn\'t touch exactly as it is, in the same order. Leave out cards the request removes.',
+      'You edit flashcard decks for a student. Follow the request precisely and change nothing else.', 4000);
+    const used = {};
+    const next = arr.filter(x => x && String(x.front || '').trim() && String(x.back || '').trim()).map(x => {
+      const old = x.n > 0 && !used[x.n] ? d.cards[x.n - 1] : null;
+      if (old) used[x.n] = 1;
+      const front = String(x.front).trim(), back = String(x.back).trim();
+      if (!old) return newCard(front, back);
+      if (old.front === front && old.back === back) return old;
+      /* a new question starts its schedule over; a reworded answer keeps it */
+      return old.front === front ? Object.assign({}, old, { back }) : Object.assign({}, newCard(front, back), { id: old.id });
+    });
+    if (!next.length) throw new Error('The AI sent back an empty deck, so nothing changed.');
+    const keep = new Set(next.map(c => c.id));
+    const added = next.filter(c => !d.cards.some(o => o.id === c.id));
+    const edited = next.filter(c => { const o = d.cards.find(x => x.id === c.id); return o && (o.front !== c.front || o.back !== c.back); });
+    const removed = d.cards.filter(o => !keep.has(o.id));
+    if (!added.length && !edited.length && !removed.length) { toast('Nothing needed to change.'); return; }
+    const row = (tag, cls2, c) => '<div class="item"><div style="flex:1;min-width:0"><div class="ttl"><span class="adjtag ' + cls2 + '">' + tag + '</span>' + esc(c.front) + '</div><div class="meta">' + esc(c.back) + '</div></div></div>';
+    modal({
+      title: 'Change this deck?', wide: true,
+      body: '<p class="muted" style="margin:0 0 4px;font-size:13.5px">"' + esc(ask) + '"</p><p style="margin:0;font-size:14px"><b>' +
+        [added.length && added.length + ' new', edited.length && edited.length + ' changed', removed.length && removed.length + ' removed'].filter(Boolean).join(', ') + '</b></p>' +
+        '<div class="adjlist">' + added.map(c => row('new', 'new', c)).join('') + edited.map(c => row('changed', 'chg', c)).join('') + removed.map(c => row('removed', 'del', c)).join('') + '</div>',
+      foot: '<button class="btn" data-close>Cancel</button><button class="btn p" data-ok>Apply</button>',
+      onOk: () => {
+        const before = d.cards;
+        d.cards = next; save(true); render();
+        toastAct('Deck updated', 'Undo', () => { d.cards = before; save(true); render(); toast('Put back the way it was'); });
+      }
+    });
+  });
+}
+function toastAct(msg, label, fn) {
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.innerHTML = esc(msg) + '<button class="tact" type="button">' + esc(label) + '</button>';
+  $('#toasts').appendChild(t);
+  let gone = false;
+  const bye = () => { if (gone) return; gone = true; t.style.opacity = '0'; t.style.transition = 'all .2s'; setTimeout(() => t.remove(), 220); };
+  $('.tact', t).addEventListener('click', () => { bye(); fn(); });
+  setTimeout(bye, 7000);
+}
 function assistSystem(classId) {
   const ctx = schoolContext(classId);
   return 'You are the study assistant inside ATLAS, a student\'s school organizer. Be concrete and brief. ' +
@@ -3614,22 +3960,18 @@ function aiSetupSheet() {
 }
 
 /* ============================================================
-   Google account. Sign in once and your desk follows you to every
-   device: it is mirrored to a private ATLAS folder in your own
-   Google Drive that only ATLAS can see. Free, no server, no secret.
-   ATLAS asks only for permissions Google rates non-sensitive, so no
-   one ever sees an "unverified app" warning. The token lives in
-   memory for an hour and is renewed on your next tap.
+   Google. Google's own "Continue with Google" button signs you in to
+   your ATLAS account (see Accounts below). The token client further
+   down is only for bringing in a desk that an older ATLAS kept in a
+   hidden folder in your Google Drive.
    ============================================================ */
 const GSCOPE_BASE = 'openid email profile https://www.googleapis.com/auth/drive.appdata';
 const GFILE = 'atlas-desk.json';
-const G = { loaded: false, loading: null, client: null, token: null, exp: 0, scopes: '', fileId: null, lastSync: 0, busy: false, pushTimer: null, err: '', renewing: false, lastTry: 0 };
+const G = { loaded: false, loading: null, client: null, token: null, exp: 0, scopes: '', fileId: null, err: '' };
 
 function gClientId() { return String(Local.gClientId || ATLAS_CONFIG.googleClientId || '').trim(); }
 function gConfigured() { return !!gClientId(); }
 function gSignedIn() { return !!G.token && Date.now() < G.exp; }
-function gKnown() { return !!(Local.gWas && Local.gUser && Local.gUser.email); }
-function gLinked() { return !!(Sync.index && Sync.profile && Sync.index.gProfile === Sync.profile.id); }
 function gLoadScript() {
   if (G.loaded) return Promise.resolve();
   if (G.loading) return G.loading;
@@ -3691,13 +4033,6 @@ async function gFetch(url, opts, retried) {
   }
   return res;
 }
-async function gWhoAmI() {
-  const r = await gFetch('https://www.googleapis.com/oauth2/v3/userinfo');
-  const j = await r.json();
-  Local.gUser = { email: j.email || '', name: j.given_name || j.name || String(j.email || '').split('@')[0], full: j.name || '', picture: j.picture || '' };
-  saveLocal();
-  return Local.gUser;
-}
 async function gFindByName(name) {
   const q = encodeURIComponent("name='" + name + "' and trashed=false");
   const r = await gFetch('https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=files(id,name,modifiedTime)&q=' + q);
@@ -3716,89 +4051,1359 @@ async function gRead() {
   if (!txt.trim()) return null;
   try { return JSON.parse(txt); } catch (e) { return null; }
 }
-async function gWrite(payload) {
-  if (!G.fileId) {
-    const f = await gFindByName(GFILE);
-    if (f) G.fileId = f.id;
-    else {
-      const r = await gFetch('https://www.googleapis.com/drive/v3/files', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: GFILE, parents: ['appDataFolder'] }) });
-      G.fileId = (await r.json()).id;
-    }
+
+/* ============================================================
+   ATLAS accounts. Sign in with Google, or with an email and a
+   password. Either way it is the same kind of account, kept by
+   Firebase Authentication on Google's servers, and your desk is
+   stored under it in Cloud Firestore, where the security rules
+   let only that account read or write it. You stay signed in on
+   each device until you sign out: no hourly token to renew.
+   Free tier, no server of our own.
+   ============================================================ */
+const FB = { app: null, appP: null, A: null, auth: null, authP: null, F: null, db: null, dbP: null };
+function fbApp() {
+  if (FB.app) return Promise.resolve(FB.app);
+  if (!FB.appP) {
+    FB.appP = Promise.all([import(FB_SDK + 'firebase-app.js'), import(FB_SDK + 'firebase-app-check.js')]).then(([appMod, checkMod]) => {
+      const app = appMod.initializeApp(ATLAS_CONFIG.firebase, 'atlas');
+      if (ATLAS_CONFIG.recaptchaKey) {
+        try { checkMod.initializeAppCheck(app, { provider: new checkMod.ReCaptchaEnterpriseProvider(ATLAS_CONFIG.recaptchaKey), isTokenAutoRefreshEnabled: true }); } catch (e) { }
+      }
+      FB.app = app;
+      return app;
+    }).catch(() => { FB.appP = null; throw new Error('Could not reach Google. Check your connection or an ad blocker, then try again.'); });
   }
-  await gFetch('https://www.googleapis.com/upload/drive/v3/files/' + G.fileId + '?uploadType=media', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-  G.lastSync = Date.now();
+  return FB.appP;
 }
-/* Pull Drive, merge, push the union back. Safe to call any number of times, and it
-   never opens a Google pop-up on its own — only when you pressed something. */
-async function gSync(opts) {
+function fbAuth() {
+  if (FB.auth) return Promise.resolve(FB);
+  if (!FB.authP) {
+    FB.authP = Promise.all([fbApp(), import(FB_SDK + 'firebase-auth.js')]).then(([app, A]) => {
+      FB.A = A; FB.auth = A.getAuth(app);
+      return FB;
+    }).catch(() => { FB.authP = null; throw new Error('Could not reach Google sign-in. Check your connection or an ad blocker, then try again.'); });
+  }
+  return FB.authP;
+}
+function fbStore() {
+  if (FB.db) return Promise.resolve(FB);
+  if (!FB.dbP) {
+    FB.dbP = Promise.all([fbApp(), import(FB_SDK + 'firebase-firestore.js')]).then(([app, F]) => {
+      FB.F = F; FB.db = F.getFirestore(app);
+      return FB;
+    }).catch(() => { FB.dbP = null; throw new Error('Could not reach your account\'s storage. Your work is safe on this device and syncs when it can.'); });
+  }
+  return FB.dbP;
+}
+
+const ACC = { user: null, booted: false, loading: null, onlineFor: null, onlineP: null, busy: false, again: false, rev: 0, hash: '', lastSync: 0, lastPush: 0, err: '', offline: false, unsub: null, timer: null, askMerge: false };
+function acctConfigured() { return cloudAI(); }
+function acctKnown() { return !!(Local.acct && Local.acct.uid); }
+function acctPassword() { return !!(Local.acct && Local.acct.provider === 'password'); }
+function cLinked() { return !!(acctKnown() && Sync.index && Sync.index.links && Sync.profile && Sync.index.links[Local.acct.uid] === Sync.profile.id); }
+function acctName() { return S.profile.name || (cLinked() && Local.acct.name) || (Sync.profile && Sync.profile.name) || ''; }
+function appUrl() { return location.origin + location.pathname; }
+/* Emailed links open ATLAS itself (its own "choose a new password" and
+   "email confirmed" screens). If Google won't do that for some reason, the
+   link opens Google's standard page instead, which works just as well. */
+async function sendLink(kind, send) {
+  const tries = [{ url: appUrl(), handleCodeInApp: true }, { url: appUrl() }, null];
+  let last;
+  for (const t of tries) {
+    try { return await send(t); }
+    catch (e) { last = e; if (!/continue|unauthorized|invalid-continue|argument|dynamic-link|invalid-hosting-link|missing-ios|missing-android/i.test(String(e && e.code))) throw e; }
+  }
+  throw last;
+}
+
+/* Firebase's error codes, in words a student can act on. */
+function authErr(e) {
+  const c = String((e && e.code) || '');
+  const wrong = 'That email and password don\'t match. Check for typos, or reset your password.';
+  const map = {
+    'auth/invalid-credential': wrong, 'auth/wrong-password': wrong, 'auth/user-not-found': wrong, 'auth/invalid-login-credentials': wrong,
+    'auth/invalid-email': 'That doesn\'t look like an email address.',
+    'auth/missing-email': 'Enter your email address.',
+    'auth/email-already-in-use': 'There is already an ATLAS account with this email.',
+    'auth/weak-password': 'Pick a stronger password.',
+    'auth/password-does-not-meet-requirements': 'Pick a stronger password: at least 10 characters.',
+    'auth/missing-password': 'Enter your password.',
+    'auth/too-many-requests': 'Too many tries for now. Wait a few minutes, or reset your password.',
+    'auth/network-request-failed': 'Could not reach Google. Check your connection and try again.',
+    'auth/popup-blocked': 'Your browser blocked the Google window. Allow pop-ups for this site, or use your email instead.',
+    'auth/popup-closed-by-user': 'The Google window was closed before sign-in finished.',
+    'auth/cancelled-popup-request': 'The Google window was closed before sign-in finished.',
+    'auth/user-disabled': 'This account has been switched off.',
+    'auth/expired-action-code': 'That link has expired. Ask for a new one.',
+    'auth/invalid-action-code': 'That link has already been used, or it isn\'t complete. Ask for a new one.',
+    'auth/requires-recent-login': 'For your safety, confirm it\'s you first.',
+    'auth/operation-not-allowed': 'This way of signing in isn\'t switched on yet.',
+    'auth/admin-restricted-operation': 'This way of signing in isn\'t switched on yet.',
+    'auth/unauthorized-domain': 'Sign-in isn\'t allowed from this web address yet.',
+    'auth/account-exists-with-different-credential': 'This email already has an ATLAS account. Sign in with your email and password.',
+    'auth/user-mismatch': 'That is a different account from the one signed in here.',
+    'auth/internal-error': 'Google had a problem. Try again in a moment.',
+    'auth/quota-exceeded': 'ATLAS has sent too many emails today. Try again tomorrow.'
+  };
+  if (map[c]) return map[c];
+  const m = String((e && e.message) || '');
+  return m && !/^Firebase/.test(m) ? m : 'Something went wrong. Try again.';
+}
+function cloudErr(e) {
+  const c = String((e && (e.code || e.message)) || '');
+  if (/unavailable|offline|network|Failed to get document because the client is offline/i.test(c)) return 'Offline. Your work is saved here and syncs when you\'re back online.';
+  if (/permission/i.test(c)) return 'Your account could not open its desk. Sign out and in again.';
+  if (/resource-exhausted|quota/i.test(c)) return 'ATLAS\'s free cloud is busy right now. Your work is saved here and syncs later.';
+  return (e && e.message) || 'Sync could not finish.';
+}
+
+/* Started at boot on a device that has been signed in before, and on demand
+   from the sign-in screen. Resolves once Firebase knows who is signed in. */
+function acctStart() {
+  if (!acctConfigured()) return Promise.resolve(null);
+  if (ACC.loading) return ACC.loading;
+  ACC.loading = fbAuth().then(fb => new Promise(res => {
+    let first = true;
+    fb.A.onAuthStateChanged(fb.auth, user => {
+      const was = ACC.user;
+      ACC.user = user || null;
+      if (first) { first = false; ACC.booted = true; res(ACC.user); }
+      if (user && (!was || was.uid !== user.uid)) acctOnline(user);
+      else if (!user && was) acctOffline();
+      else if (!user && !was && acctKnown() && !GATE.open) {
+        /* this device thought it was signed in, but the session is gone */
+        Local.acct = null; saveLocal();
+        renderNav(); setStatus(Sync.status);
+        toast('You\'ve been signed out. Sign in again to keep your devices in sync.', true);
+      }
+    });
+  })).catch(e => { ACC.loading = null; ACC.err = e.message; throw e; });
+  return ACC.loading;
+}
+function acctOffline() {
+  cStopListen();
+  ACC.onlineFor = null; ACC.onlineP = null; ACC.rev = 0; ACC.hash = '';
+  setStatus(Sync.status); renderNav();
+}
+/* Signed in: remember who, open this account's desk on this device, then sync. */
+function acctOnline(user) {
+  if (ACC.onlineFor === user.uid && ACC.onlineP) return ACC.onlineP;
+  ACC.onlineFor = user.uid;
+  ACC.onlineP = (async () => {
+    ACC.user = user;
+    const prov = (user.providerData || []).map(p => p.providerId);
+    Local.acct = {
+      uid: user.uid, email: user.email || '', verified: !!user.emailVerified,
+      name: user.displayName || (Local.acct && Local.acct.uid === user.uid && Local.acct.name) || String(user.email || '').split('@')[0],
+      picture: user.photoURL || '',
+      provider: prov.indexOf('google.com') >= 0 ? 'google' : 'password'
+    };
+    Local.gSkip = false; saveLocal();
+    await acctAttach(user);
+    renderNav(); setStatus(Sync.status);
+    cStartListen();
+    await cSync({ first: true, silent: true });
+    if (typeof noteSignedIn === 'function') noteSignedIn();
+  })().catch(e => { ACC.err = (e && e.message) || String(e); setStatus(Sync.status); });
+  return ACC.onlineP;
+}
+/* Each account gets its own profile on a device, so two people sharing a
+   laptop never see each other's desk. The desk you were using without an
+   account becomes your account's the first time you sign in. */
+async function acctAttach(user) {
+  const idx = Sync.index; if (!idx) return;
+  idx.links = idx.links || {};
+  let pid = idx.links[user.uid];
+  if (pid && !idx.profiles.some(p => p.id === pid)) { delete idx.links[user.uid]; pid = null; }
+  if (!pid) {
+    const cur = Sync.profile;
+    const owned = Object.keys(idx.links).some(u => idx.links[u] === cur.id);
+    if (!owned) {
+      pid = cur.id;
+      ACC.askMerge = !!(S.classes.length || S.tasks.length || S.notes.length || S.decks.length);
+    } else {
+      const p = { id: 'p' + uid(), name: user.email || 'My school', created: Date.now(), lastSeen: Date.now() };
+      idx.profiles.push(p); pid = p.id;
+    }
+    idx.links[user.uid] = pid;
+  }
+  const prof = idx.profiles.find(p => p.id === pid);
+  if (prof) { prof.uid = user.uid; prof.email = user.email || ''; }
+  await sset(IDX, idx).catch(() => { });
+  if (!Sync.profile || Sync.profile.id !== pid) await switchProfile(pid, true);
+}
+/* The desk this device had before you signed in is not the one in your account.
+   Asked on the sign-in screen when it's still up, otherwise in a sheet. */
+function mergeChoice() {
+  const what = S.classes.length + ' ' + W().clsP.toLowerCase() + ', ' + S.tasks.length + ' ' + W().taskP.toLowerCase() + ', ' + S.notes.length + ' pages and ' + S.decks.length + ' decks';
+  if (GATE.open) return new Promise(res => {
+    ACC.choosing = true;
+    GATE.view = 'merge'; GATE.note = ''; GATE.busy = false; GATE.merge = { what, res: v => { ACC.choosing = false; GATE.merge = null; GATE.view = 'work'; GATE.work = v === 'combine' ? 'Combining your work…' : 'Opening your account\'s desk…'; paintGate(); res(v); } };
+    paintGate();
+  });
+  return new Promise(res => {
+    let done = false;
+    const fin = v => { if (done) return; done = true; res(v); };
+    modal({
+      title: 'Your account already has a desk',
+      body: '<p style="margin:0 0 10px;color:var(--ink2)">This device also has work that isn\'t in any account yet: ' + what + '.</p>' +
+        '<p style="margin:0;color:var(--ink2)"><b>Combine them</b> to add it to your account. <b>Keep them separate</b> if it belongs to someone else; it stays on this device as its own profile.</p>',
+      foot: '<button class="btn" data-sep>Keep them separate</button><button class="btn p" data-ok>Combine them</button>',
+      onOk: () => fin('combine'),
+      onClose: () => fin('combine')
+    });
+    const b = $('[data-sep]'); if (b) b.addEventListener('click', () => { fin('separate'); closeModal(); });
+  });
+}
+async function acctSeparate(user) {
+  const idx = Sync.index;
+  const p = { id: 'p' + uid(), name: user.email || 'My account', created: Date.now(), lastSeen: Date.now(), uid: user.uid, email: user.email || '' };
+  const old = Sync.profile;
+  idx.profiles.push(p);
+  idx.links[user.uid] = p.id;
+  if (old) { old.name = old.name === 'My school' ? 'This device' : old.name; delete old.uid; delete old.email; }
+  await sset(IDX, idx).catch(() => { });
+  await switchProfile(p.id, true);
+}
+
+/* --- the desk in the cloud ---------------------------------------------
+   users/{uid}/desk/meta  : revision, part count, encoding, who wrote it
+   users/{uid}/desk/p0…pN : the desk, gzipped and split into pieces that
+                            each fit comfortably in one Firestore document
+   Every sync is one transaction: read what is there, merge it into what
+   is here with the same rules two tabs use, write the union back. */
+const PART = 700000;
+const deskDoc = (fb, uid, id) => fb.F.doc(fb.db, 'users', uid, 'desk', id);
+function hashOf(o) {
+  const c = Object.assign({}, o); delete c.session; delete c._devices;
+  const s = JSON.stringify(c);
+  let h = 5381;
+  for (let i = 0; i < s.length; i++) h = ((h * 33) ^ s.charCodeAt(i)) >>> 0;
+  return s.length + ':' + h.toString(36);
+}
+function b64(buf) {
+  const u = new Uint8Array(buf); let s = '';
+  for (let i = 0; i < u.length; i += 32768) s += String.fromCharCode.apply(null, u.subarray(i, i + 32768));
+  return btoa(s);
+}
+function unb64(s) { const b = atob(s); const u = new Uint8Array(b.length); for (let i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return u; }
+async function deskPack(obj) {
+  const json = JSON.stringify(obj);
+  let enc = 'json', body = json;
+  if (typeof CompressionStream !== 'undefined') {
+    try { body = b64(await new Response(new Blob([json]).stream().pipeThrough(new CompressionStream('gzip'))).arrayBuffer()); enc = 'gz64'; }
+    catch (e) { enc = 'json'; body = json; }
+  }
+  const parts = [];
+  for (let i = 0; i < body.length; i += PART) parts.push(body.slice(i, i + PART));
+  return { enc, parts: parts.length ? parts : [''], bytes: json.length };
+}
+async function deskUnpack(enc, parts) {
+  const body = parts.join('');
+  if (!body) return null;
+  if (enc === 'gz64') return JSON.parse(await new Response(new Blob([unb64(body)]).stream().pipeThrough(new DecompressionStream('gzip'))).text());
+  return JSON.parse(body);
+}
+async function cSync(opts) {
   const o = opts || {};
-  if (!gConfigured() || G.busy || !Sync.profile || Sync.locked) return false;
-  if (!gSignedIn() && !o.interactive) return false;
-  if (Sync.index.gProfile && Sync.index.gProfile !== Sync.profile.id) return false;   /* this profile stays on this device */
-  G.busy = true;
+  const user = ACC.user;
+  if (!user || !Sync.profile || Sync.locked || !cLinked()) return false;
+  if (ACC.busy) { ACC.again = true; return false; }
+  ACC.busy = true; ACC.lastPush = Date.now();
   let changed = false;
   try {
-    await gAuth(!!o.interactive);
-    if (G.scopes && G.scopes.indexOf('drive.appdata') < 0) throw new Error(G.err);
-    if (!Local.gUser) await gWhoAmI();
-    if (!Sync.index.gProfile) { Sync.index.gProfile = Sync.profile.id; sset(IDX, Sync.index).catch(() => { }); }
-    const remote = await gRead();
-    if (remote && remote.data) {
-      captureLive();
-      if (stampChanges()) Sync.dirty = true;
-      /* A desk set up on another device beats a brand-new one here, even if this one was touched more recently. */
-      if (!S.settings.setupDone && remote.data.settings && remote.data.settings.setupDone) S._settingsAt = 0;
-      const before = JSON.stringify(S);
-      S = mergeDB(S, remote.data);
-      S.settings = Object.assign(DEFAULTS().settings, S.settings || {});
-      primeHashes();
-      changed = JSON.stringify(S) !== before;
-      if (changed) { Sync.dirty = true; applyTheme(); if (!isTyping() && !$('.modal') && !SVY.open) render(); }
+    const fb = await fbStore();
+    if (o.first && ACC.askMerge) {
+      ACC.askMerge = false;
+      const m0 = await fb.F.getDoc(deskDoc(fb, user.uid, 'meta'));
+      if (m0.exists() && (m0.data().rev || 0) > 0 && await mergeChoice() === 'separate') await acctSeparate(user);
     }
-    await flush();
-    await gWrite(payloadNow());
-    G.err = '';
-    if (changed && !o.silent) toast('Caught up from your Google account');
+    captureLive();
+    if (stampChanges()) Sync.dirty = true;
+    S._devices = S._devices || {};
+    S._devices[DEV.id] = { name: DEV.name, at: Date.now() };
+    let res = null;
+    await fb.F.runTransaction(fb.db, async tx => {
+      res = { rev: ACC.rev, hash: ACC.hash, changed: false };
+      const ms = await tx.get(deskDoc(fb, user.uid, 'meta'));
+      const m = ms.exists() ? ms.data() : null;
+      const rrev = m ? (m.rev || 0) : 0;
+      let remoteHash = null;
+      if (m && rrev !== ACC.rev) {
+        const parts = [];
+        for (let i = 0; i < (m.parts || 1); i++) {
+          const p = await tx.get(deskDoc(fb, user.uid, 'p' + i));
+          parts.push(p.exists() ? String(p.data().d || '') : '');
+        }
+        let remote = null;
+        try { remote = await deskUnpack(m.enc, parts); } catch (e) { remote = null; }
+        if (remote) {
+          remoteHash = hashOf(remote);
+          /* a desk set up on another device beats a brand-new one here */
+          if (!S.settings.setupDone && remote.settings && remote.settings.setupDone) S._settingsAt = 0;
+          const before = hashOf(S);
+          S = mergeDB(S, remote);
+          S.settings = Object.assign(DEFAULTS().settings, S.settings || {});
+          primeHashes();
+          if (hashOf(S) !== before) res.changed = true;
+        }
+      }
+      const h = hashOf(S);
+      res.rev = rrev; res.hash = h;
+      if (!o.force && m && (h === remoteHash || (rrev === ACC.rev && h === ACC.hash))) return;   /* nothing new to say */
+      const pk = await deskPack(S);
+      pk.parts.forEach((d, i) => tx.set(deskDoc(fb, user.uid, 'p' + i), { d }));
+      for (let i = pk.parts.length; i < (m ? m.parts || 0 : 0); i++) tx.delete(deskDoc(fb, user.uid, 'p' + i));
+      res.rev = rrev + 1;
+      tx.set(deskDoc(fb, user.uid, 'meta'), { rev: res.rev, parts: pk.parts.length, enc: pk.enc, bytes: pk.bytes, at: Date.now(), dev: DEV.id, tab: TAB, v: 1 });
+    });
+    ACC.rev = res.rev; ACC.hash = res.hash; ACC.lastSync = Date.now(); ACC.err = ''; ACC.offline = false;
+    changed = res.changed;
+    if (changed) {
+      Sync.dirty = true;
+      applyTheme();
+      if (!isTyping() && !$('.modal') && !SVY.open && !GATE.open) render();
+      flush();
+      if (!o.silent) toast('Caught up from your account');
+    }
+    if (typeof noteQueue === 'function') noteQueue();
   } catch (e) {
-    G.err = e.message;
-    if (!o.silent) toast(e.message, true);
-    G.busy = false; setStatus(Sync.status); return false;
+    ACC.err = cloudErr(e);
+    ACC.offline = /Offline/.test(ACC.err);
   }
-  G.busy = false;
+  ACC.busy = false;
   setStatus(Sync.status); renderNav();
+  if (ACC.again) { ACC.again = false; cQueue(1500); }
   return changed;
 }
-function gQueuePush() {
-  if (!gConfigured() || !gSignedIn() || G.busy) return;
-  clearTimeout(G.pushTimer);
-  G.pushTimer = setTimeout(() => gSync({ silent: true }), 5000);
+function cStartListen() {
+  if (ACC.unsub || !ACC.user) return;
+  const uidNow = ACC.user.uid;
+  fbStore().then(fb => {
+    if (ACC.unsub || !ACC.user || ACC.user.uid !== uidNow) return;
+    ACC.unsub = fb.F.onSnapshot(deskDoc(fb, uidNow, 'meta'), snap => {
+      if (!ACC.user || ACC.user.uid !== uidNow || !snap.exists()) return;
+      const m = snap.data();
+      if ((m.rev || 0) !== ACC.rev && m.tab !== TAB) cQueue(300);
+    }, () => { });
+  }).catch(() => { });
 }
-async function gSignIn() {
-  await gAuth(true);
-  await gWhoAmI();
-  Local.gWas = true; saveLocal();
-  if (Sync.index && !Sync.index.gProfile) { Sync.index.gProfile = Sync.profile.id; sset(IDX, Sync.index).catch(() => { }); }
-  await gSync({ silent: true });
+function cStopListen() { if (ACC.unsub) { try { ACC.unsub(); } catch (e) { } ACC.unsub = null; } clearTimeout(ACC.timer); }
+function cQueue(ms) {
+  if (!ACC.user) return;
+  clearTimeout(ACC.timer);
+  ACC.timer = setTimeout(() => cSync({ silent: true }), ms || 0);
+}
+/* After a save here: at most one cloud write every 20 seconds while you work
+   (and straight away when you leave the page), which keeps everyone inside
+   the database's free daily allowance. */
+function cQueuePush() {
+  if (!ACC.user || !cLinked()) return;
+  cQueue(Math.max(4000, 20000 - (Date.now() - ACC.lastPush)));
+}
+
+/* --- strong passwords ---------------------------------------------------- */
+const COMMON_PW = ('password,123456,12345678,123456789,1234567890,qwerty,qwertyuiop,asdfghjkl,abc123,password1,password123,111111,000000,654321,121212,123123,' +
+  'iloveyou,letmein,welcome,monkey,dragon,football,baseball,basketball,soccer,sunshine,princess,admin,qwerty123,1q2w3e4r,zaq12wsx,1qaz2wsx,passw0rd,trustno1,' +
+  'superman,batman,starwars,whatever,freedom,master,hello123,shadow,michael,jennifer,hunter2,school,student,teacher,atlas,atlasdesk,homework,minecraft,fortnite,' +
+  'pokemon,chocolate,summer,winter,spring,autumn,butterfly,purple,orange,banana,cookie,flower,secret,changeme,default,computer,internet,samsung,iphone,google').split(',');
+function pwCheck(pw, email) {
+  pw = String(pw || '');
+  const lower = pw.toLowerCase(), bare = lower.replace(/[^a-z0-9]/g, '');
+  const local = String(email || '').split('@')[0].toLowerCase().replace(/[^a-z0-9]/g, '');
+  const kinds = [/[a-z]/, /[A-Z]/, /[0-9]/, /[^A-Za-z0-9]/].filter(r => r.test(pw)).length;
+  const common = COMMON_PW.some(c => bare === c || bare.replace(/\d+$/, '') === c || lower === c) ||
+    /(.)\1{3,}/.test(pw) || /(0123|1234|2345|3456|4567|5678|6789|abcd|bcde|qwer|wert|asdf|zxcv)/i.test(pw);
+  const rules = [
+    { ok: pw.length >= 10, t: 'At least 10 characters' },
+    { ok: pw.length >= 16 || kinds >= 3, t: 'Three of these: lowercase, capitals, numbers, symbols (or just 16+ characters)' },
+    { ok: pw.length > 0 && !common, t: 'Not a common or easy-to-guess password' },
+    { ok: pw.length > 0 && !(local.length >= 3 && bare.indexOf(local) >= 0), t: 'Doesn\'t contain your email name' }
+  ];
+  const pool = (/[a-z]/.test(pw) ? 26 : 0) + (/[A-Z]/.test(pw) ? 26 : 0) + (/[0-9]/.test(pw) ? 10 : 0) + (/[^A-Za-z0-9]/.test(pw) ? 32 : 0);
+  let bits = pw.length * Math.log2(Math.max(pool, 1));
+  if (common) bits = Math.min(bits, 18);
+  if (!rules[3].ok) bits -= 12;
+  const score = !pw ? 0 : bits < 34 ? 0 : bits < 46 ? 1 : bits < 58 ? 2 : bits < 75 ? 3 : 4;
+  const ok = rules.every(r => r.ok);
+  return { ok, rules, score: ok ? Math.max(score, 2) : Math.min(score, 1), label: ['Too weak', 'Weak', 'Good', 'Strong', 'Very strong'][ok ? Math.max(score, 2) : Math.min(score, 1)] };
+}
+const PW_WORDS = ('amber,anchor,apple,arrow,atlas,autumn,badger,bamboo,banjo,beacon,birch,bison,blossom,boulder,breeze,bridge,brook,cactus,canyon,carbon,cedar,cello,cherry,' +
+  'cinder,clover,cobalt,comet,copper,coral,cosmos,cotton,crater,cricket,crystal,cypress,dahlia,delta,desert,dolphin,dragonfly,ember,falcon,fern,fiddle,fjord,' +
+  'flint,forest,fossil,galaxy,garnet,geyser,ginger,glacier,granite,harbor,hazel,heron,horizon,iris,island,ivory,jasper,jungle,juniper,kayak,kettle,kiwi,lagoon,' +
+  'lantern,lemon,lilac,linen,lotus,magnet,mango,maple,marble,meadow,meteor,mint,mosaic,nebula,nectar,nimbus,nutmeg,oasis,ocean,olive,onyx,orbit,orchid,otter,' +
+  'paddle,papaya,pebble,pepper,pixel,planet,plume,pocket,poppy,prism,puffin,quartz,quill,radish,raven,reef,ripple,rocket,saffron,sapphire,sequoia,sierra,' +
+  'sparrow,spruce,summit,sunflower,tango,thistle,thunder,tidal,timber,topaz,tulip,tundra,turtle,velvet,violet,voyage,walnut,willow,winter,yarrow,zephyr').split(',');
+function pwSuggest() {
+  const r = n => { const a = new Uint32Array(1); crypto.getRandomValues(a); return a[0] % n; };
+  const cap = w => w[0].toUpperCase() + w.slice(1);
+  const words = [];
+  while (words.length < 4) { const w = PW_WORDS[r(PW_WORDS.length)]; if (words.indexOf(w) < 0) words.push(w); }
+  return words.map(cap).join('-') + '-' + (10 + r(90)) + '!@#$%&*?'[r(8)];
+}
+
+/* --- the sign-in screen ---------------------------------------------------
+   start  → Google, or "Continue with email"
+   email  → your address, then Sign in or Create an account
+   signin → password, "Forgot your password?" sends a one-time reset link
+   signup → a strong password, typed twice
+   sent   → check your inbox
+   reset  → choose a new password (opened from the emailed link)
+   done   → a confirmed email address, or an undone email change */
+const GATE = { open: false, view: 'start', note: '', busy: false, email: '', back: false, code: '', sentAt: 0, tick: null, work: '', title: '', text: '' };
+const GATE_TABS = [['Biology', 'Lab report due Thursday'], ['Calculus', 'Problem set 6'], ['World History', 'Essay outline'], ['Spanish', '12 cards to review'], ['Chemistry', 'Midterm in 9 days'], ['Literature', 'Read ch. 12']];
+function needGate() { return !acctKnown() && !Local.gSkip; }
+function openGate(opts) {
+  const o = opts || {};
+  GATE.view = o.view || 'start'; GATE.note = o.note || ''; GATE.busy = false;
+  GATE.back = o.back != null ? !!o.back : !needGate();
+  if (o.email) GATE.email = o.email;
+  if (GATE.open) return paintGate();
+  closeModal(); closePop();
+  $$('#gate.out').forEach(x => x.remove());          /* one still fading out */
+  GATE.open = true;
+  const el = document.createElement('div');
+  el.id = 'gate'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-labelledby', 'gateTitle');
+  el.innerHTML = '<div class="gate-main"></div><div class="gate-art" aria-hidden="true">' + GATE_TABS.map((t, i) => '<div class="gtab" style="--tc:' + PALETTE[i % PALETTE.length] + ';top:' + (13 + i * 12.5) + '%;width:' + (66 + (i % 3) * 8) + '%;animation-delay:' + (120 + i * 70) + 'ms">' +
+    '<span>' + t[0] + '<small>' + t[1] + '</small></span></div>').join('') + '</div>';
+  document.body.appendChild(el);
+  el.addEventListener('click', gateClick);
+  el.addEventListener('input', gateInput);
+  el.addEventListener('submit', gateSubmit);
+  el.addEventListener('keydown', e => { if (e.key === 'Escape' && GATE.back && !GATE.busy) { e.stopPropagation(); closeGate(); } });
+  paintGate();
+  if (acctConfigured()) acctStart().catch(() => { });          /* warm, so a tap opens Google's window at once */
+  if (gConfigured()) gLoadScript().catch(() => { });
+  ['#app', '#mobnav'].forEach(q => { const n = $(q); if (n) n.inert = true; });
+}
+function gateNote(html) { GATE.note = html || ''; const n = $('#gNote'); if (n) n.innerHTML = GATE.note; }
+function gateBusy(btn, label) {
+  if (!btn) return;
+  if (label) { btn.dataset.was = btn.dataset.was || btn.innerHTML; btn.disabled = true; btn.innerHTML = '<span class="spin" style="width:16px;height:16px;border-width:2px"></span>' + esc(label); GATE.busy = true; }
+  else { if (btn.dataset.was) btn.innerHTML = btn.dataset.was; delete btn.dataset.was; btn.disabled = false; GATE.busy = false; }
+}
+function paintGate() {
+  const el = $('#gate .gate-main'); if (!el) return;
+  clearInterval(GATE.tick); GATE.tick = null;
+  const v = GATE.view, em = esc(GATE.email);
+  const back = to => '<button class="gback" type="button" data-gate="' + to + '">‹ Back</button>';
+  const who = '<p class="gwho"><b>' + em + '</b><button class="linkbtn" type="button" data-gate="email">Use a different email</button></p>';
+  const eye = id => '<button type="button" class="pweye" data-gate="eye" data-for="' + id + '" aria-label="Show password" aria-pressed="false">' + ic('eye') + '</button>';
+  const pwf = (id, label, ac) => '<label class="f"><span>' + label + '</span><span class="pw"><input type="password" id="' + id + '" autocomplete="' + ac + '" spellcheck="false" autocapitalize="off" autocorrect="off"></span></label>';
+  const user = '<input type="email" class="vh" autocomplete="username" value="' + em + '" tabindex="-1" aria-hidden="true" readonly>';
+  const newpw = label => pwf('gPw1', 'Create a password', 'new-password').replace('</span></label>', eye('gPw1') + '</span></label>') +
+    '<div class="pwmeter" id="pwMeter" aria-live="polite"><i><b></b></i><span></span></div><ul class="pwrules" id="pwRules"></ul>' +
+    '<button type="button" class="linkbtn pwsug" data-gate="suggest">' + ic('wand') + 'Suggest a strong password</button>' +
+    pwf('gPw2', 'Type it again', 'new-password').replace('</span></label>', eye('gPw2') + '</span></label>') +
+    '<div class="pwmatch" id="pwMatch" aria-live="polite"></div>' +
+    '<button class="btn p big" type="submit" id="gNewGo" disabled>' + label + '</button>';
+  const slot = '<div class="gate-note-slot" id="gNote" role="alert">' + GATE.note + '</div>';
+  let body = '';
+  switch (v) {
+    case 'email':
+      body = back('start') + '<h2 class="gh" id="gateTitle">Use your email</h2><p class="gate-lead sm">Sign in, or make a free ATLAS account in a few seconds.</p>' +
+        '<form class="gform" data-gform="email" novalidate><label class="f"><span>Email</span><input type="email" id="gEmail" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" value="' + em + '" placeholder="you@example.com"></label>' +
+        '<div class="gacts"><button class="btn p big" type="submit">Sign in</button><button class="btn big" type="button" data-gate="toSignup">Create an account</button></div></form>' + slot;
+      break;
+    case 'signin':
+      body = back('email') + '<h2 class="gh" id="gateTitle">Welcome back</h2>' + who +
+        '<form class="gform" data-gform="signin" novalidate>' + user + pwf('gPw', 'Password', 'current-password').replace('</span></label>', eye('gPw') + '</span></label>') +
+        '<button class="btn p big" type="submit">Sign in</button></form>' +
+        '<p class="gsmall"><button class="linkbtn" type="button" data-gate="forgot">Forgot your password?</button></p>' + slot +
+        '<p class="gsmall">New to ATLAS? <button class="linkbtn" type="button" data-gate="toSignup">Create an account with this email</button></p>';
+      break;
+    case 'signup':
+      body = back('email') + '<h2 class="gh" id="gateTitle">Make your ATLAS account</h2>' + who +
+        '<form class="gform" data-gform="signup" novalidate>' + user +
+        '<label class="f"><span>Your first name <i>(optional)</i></span><input type="text" id="gName" autocomplete="given-name" value="' + esc(S.profile.name || '') + '"></label>' +
+        newpw('Create account') + '</form>' + slot +
+        '<p class="gate-fine">You\'ll get an email to confirm your address. By making an account you agree to how ATLAS handles your data: <a href="privacy.html" target="_blank" rel="noopener">Privacy</a>.</p>';
+      break;
+    case 'sent':
+      body = '<h2 class="gh" id="gateTitle">Check your email</h2>' +
+        '<p class="gate-lead sm">If <b>' + em + '</b> has an ATLAS account, a password reset link is on its way. It works once and expires in an hour, and it opens ATLAS on a page where you choose a new password.</p>' +
+        '<p class="gate-fine" style="margin:0 0 18px">Nothing after a minute or two? Check your spam or promotions folder.</p>' +
+        '<div class="gacts" style="max-width:400px"><button class="btn big" type="button" id="gResend" data-gate="resend">Send it again</button><button class="btn p big" type="button" data-gate="signin">Back to sign in</button></div>' + slot;
+      break;
+    case 'reset':
+      body = '<h2 class="gh" id="gateTitle">Choose a new password</h2><p class="gwho">for <b>' + em + '</b></p>' +
+        '<form class="gform" data-gform="reset" novalidate>' + user + newpw('Save and sign in') + '</form>' + slot;
+      break;
+    case 'done':
+      body = '<div class="gdone">' + ic('check') + '</div><h2 class="gh" id="gateTitle">' + esc(GATE.title) + '</h2><p class="gate-lead sm">' + GATE.text + '</p>' +
+        '<div class="gacts" style="max-width:400px"><button class="btn p big" type="button" data-gate="continue">Continue</button>' +
+        (GATE.extra ? GATE.extra : '') + '</div>' + slot;
+      break;
+    case 'work':
+      body = '<div class="gwork"><span class="spin"></span>' + esc(GATE.work || 'One moment…') + '</div>' + slot;
+      break;
+    case 'merge':
+      body = '<h2 class="gh" id="gateTitle">Your account already has a desk</h2>' +
+        '<p class="gate-lead sm">This device also has work that isn\'t in any account yet: ' + esc((GATE.merge && GATE.merge.what) || '') + '.</p>' +
+        '<p class="gate-lead sm"><b>Combine them</b> to add it to your account. <b>Keep them separate</b> if it belongs to someone else; it stays on this device as its own profile.</p>' +
+        '<div class="gacts" style="max-width:400px"><button class="btn p big" type="button" data-gate="mergeYes">Combine them</button><button class="btn big" type="button" data-gate="mergeNo">Keep them separate</button></div>' + slot;
+      break;
+    default:
+      body = '<div class="gate-strip" aria-hidden="true">' + PALETTE.slice(0, 6).map(c => '<i style="--tc:' + c + '"></i>').join('') + '</div>' +
+        '<div class="gate-mark"><div class="mark">A</div><b>ATLAS</b></div>' +
+        '<h1 id="gateTitle">Every class, deadline and note on one desk.</h1>' +
+        '<p class="gate-lead">Sign in and ATLAS keeps your desk in sync on your phone, your laptop and anywhere else you open it.</p>' +
+        (acctConfigured() ? '<div class="gate-ways"><div class="gsi" id="gsiBox"><button class="gbtn" type="button" data-gate="google"><svg viewBox="0 0 48 48" aria-hidden="true">' + GLOGO + '</svg><span>Continue with Google</span></button></div>' +
+          '<button class="ebtn" type="button" data-gate="email">' + ic('mail') + '<span>Continue with email</span></button></div>' +
+          '<p class="gate-fine">Free. Your desk is kept under your account, where only you can open it. <a href="privacy.html" target="_blank" rel="noopener">Privacy</a></p>'
+          : '<p class="gate-fine">Accounts aren\'t switched on for this copy of ATLAS yet.</p>') +
+        slot +
+        '<div class="gate-skip">Rather not make an account? <button type="button" data-gate="skip">Use ATLAS without one</button>. Your work stays in this browser.</div>';
+  }
+  el.innerHTML = '<div class="gate-in">' + (GATE.back && v !== 'work' ? '<button class="gclose" type="button" data-gate="close" aria-label="Close">✕</button>' : '') + body + '</div>';
+  if (v === 'start') gsiRender($('#gsiBox'));
+  if (v === 'signup' || v === 'reset') pwPaint();
+  if (v === 'sent') { GATE.tick = setInterval(sentTick, 1000); sentTick(); }
+  const f = v === 'email' ? $('#gEmail') : v === 'signin' ? $('#gPw') : v === 'signup' ? ($('#gName').value ? $('#gPw1') : $('#gName')) : v === 'reset' ? $('#gPw1') : null;
+  /* never pull focus away from a box someone has already started typing in */
+  if (f) setTimeout(() => { const a = document.activeElement; if (a && a !== f && a.matches && a.matches('#gate input')) return; try { f.focus(); } catch (e) { } }, 40);
+}
+function closeGate() {
+  const el = $('#gate');
+  GATE.open = false; GATE.busy = false;
+  clearInterval(GATE.tick); GATE.tick = null;
+  ['#app', '#mobnav'].forEach(q => { const n = $(q); if (n) n.inert = false; });
+  if (!el) return;
+  el.classList.add('out');
+  setTimeout(() => el.remove(), 280);
+}
+/* What comes after the first screen: setup for a new desk, otherwise the desk itself. */
+function afterGate() {
+  render();
+  const empty = !S.classes.length && !S.tasks.length && !S.notes.length;
+  if (!S.settings.setupDone && !S.settings.setupSeen && empty) openSurvey({ first: true });
+}
+function gateDone(msg) {
+  GATE.busy = false;
+  closeGate();
+  if (S.settings.setupDone) { render(); toast(msg || ('Welcome' + (acctName() ? ', ' + acctName() : ''))); }
+  else afterGate();
+}
+function sentTick() {
+  const b = $('#gResend'); if (!b) { clearInterval(GATE.tick); return; }
+  const left = Math.ceil((GATE.sentAt + 45000 - Date.now()) / 1000);
+  b.disabled = left > 0;
+  b.textContent = left > 0 ? 'Send it again in ' + left + 's' : 'Send it again';
+}
+function pwPaint(email) {
+  const a = $('#gPw1'), b = $('#gPw2'); if (!a) return;
+  const c = pwCheck(a.value, email != null ? email : GATE.email);
+  const m = $('#pwMeter');
+  if (m) {
+    m.dataset.s = a.value ? c.score : '';
+    $('b', m).style.width = a.value ? (20 + c.score * 20) + '%' : '0';
+    $('span', m).textContent = a.value ? c.label : '';
+  }
+  const r = $('#pwRules'); if (r) r.innerHTML = c.rules.map(x => '<li class="' + (x.ok ? 'ok' : '') + '">' + esc(x.t) + '</li>').join('');
+  const mt = $('#pwMatch');
+  const match = !!b && b.value.length > 0 && b.value === a.value;
+  if (mt) { mt.className = 'pwmatch' + (b && b.value ? (match ? ' ok' : ' bad') : ''); mt.textContent = b && b.value ? (match ? '✓ Passwords match' : 'These don\'t match yet') : ''; }
+  const go = $('#gNewGo'); if (go && !GATE.busy) go.disabled = !(c.ok && match);
+}
+function gateInput(e) { if (e.target && (e.target.id === 'gPw1' || e.target.id === 'gPw2')) pwPaint(); }
+function gateEmail() {
+  const inp = $('#gEmail');
+  const v = String(inp ? inp.value : GATE.email).trim().toLowerCase();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) { gateNote('Enter your email address, like name@example.com.'); if (inp) inp.focus(); return false; }
+  GATE.email = v; GATE.note = '';
+  return true;
+}
+async function gateClick(e) {
+  const b = e.target.closest('[data-gate]');
+  if (!b || GATE.busy) return;
+  const what = b.dataset.gate;
+  const view = v => { GATE.view = v; GATE.note = ''; paintGate(); };
+  switch (what) {
+    case 'skip': Local.gSkip = true; saveLocal(); closeGate(); afterGate(); return;
+    case 'close': closeGate(); if (!S.settings.setupDone) afterGate(); return;
+    case 'continue': gateDone(GATE.doneMsg); return;
+    case 'start': view('start'); return;
+    case 'email': view('email'); return;
+    case 'signin': view('signin'); return;
+    case 'toSignup': if (GATE.view === 'email' && !gateEmail()) return; view('signup'); return;
+    case 'eye': {
+      const i = $('#' + b.dataset.for); if (!i) return;
+      const show = i.type === 'password';
+      i.type = show ? 'text' : 'password';
+      b.setAttribute('aria-pressed', String(show)); b.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+      return;
+    }
+    case 'suggest': {
+      const p = pwSuggest();
+      ['gPw1', 'gPw2'].forEach(id => { const i = $('#' + id); if (i) { i.value = p; i.type = 'text'; } });
+      $$('#gate [data-gate="eye"]').forEach(x => x.setAttribute('aria-pressed', 'true'));
+      pwPaint();
+      gateNote('Here\'s a strong one: <b class="mono">' + esc(p) + '</b>. Your browser can save it for you when you continue, or write it down somewhere safe.');
+      return;
+    }
+    case 'forgot': return gateForgot(b);
+    case 'resend': return gateForgot(b, true);
+    case 'google': return gatePopup(b);
+    case 'mergeYes': if (GATE.merge) GATE.merge.res('combine'); return;
+    case 'mergeNo': if (GATE.merge) GATE.merge.res('separate'); return;
+  }
+}
+function gateSubmit(e) {
+  const f = e.target.closest('[data-gform]'); if (!f) return;
+  e.preventDefault();
+  if (GATE.busy) return;
+  const k = f.dataset.gform, btn = $('[type="submit"]', f);
+  if (k === 'email') { if (gateEmail()) { GATE.view = 'signin'; paintGate(); } return; }
+  if (k === 'signin') return gateSignIn(btn);
+  if (k === 'signup') return gateSignUp(btn);
+  if (k === 'reset') return gateReset(btn);
+}
+/* Waits for your desk to come down before the screen closes, so a new device
+   opens on your real desk instead of an empty one. Never longer than 15 s. */
+function settle(p) {
+  return Promise.race([p, new Promise(r => {
+    const t0 = Date.now();
+    const iv = setInterval(() => { if (!ACC.choosing && Date.now() - t0 > 15000) { clearInterval(iv); r(); } }, 400);
+    Promise.resolve(p).then(() => clearInterval(iv), () => clearInterval(iv));
+  })]);
+}
+async function gateSignIn(btn) {
+  const pw = ($('#gPw') || {}).value || '';
+  if (!pw) { gateNote('Enter your password.'); return; }
+  gateBusy(btn, 'Signing in…'); gateNote('');
+  try {
+    const fb = await fbAuth(); acctStart().catch(() => { });
+    const r = await fb.A.signInWithEmailAndPassword(fb.auth, GATE.email, pw);
+    gateBusy(btn, 'Opening your desk…');
+    await settle(acctOnline(r.user));
+    gateDone('Welcome back' + (acctName() ? ', ' + acctName() : ''));
+  } catch (e) {
+    gateBusy(btn);
+    const c = String((e && e.code) || '');
+    gateNote(esc(authErr(e)) + (/credential|wrong-password|user-not-found/.test(c)
+      ? '<br><button class="linkbtn" type="button" data-gate="forgot">Reset my password</button> · <button class="linkbtn" type="button" data-gate="toSignup">Create an account instead</button>' : ''));
+  }
+}
+async function gateSignUp(btn) {
+  const p1 = $('#gPw1').value, p2 = $('#gPw2').value, name = ($('#gName') || {}).value || '';
+  const c = pwCheck(p1, GATE.email);
+  if (!c.ok) { gateNote('Your password needs a little more: ' + esc(c.rules.filter(r => !r.ok).map(r => r.t.toLowerCase()).join('; ')) + '.'); return; }
+  if (p1 !== p2) { gateNote('The two passwords don\'t match.'); return; }
+  gateBusy(btn, 'Creating your account…'); gateNote('');
+  try {
+    const fb = await fbAuth(); acctStart().catch(() => { });
+    const r = await fb.A.createUserWithEmailAndPassword(fb.auth, GATE.email, p1);
+    if (name.trim()) {
+      await fb.A.updateProfile(r.user, { displayName: name.trim() }).catch(() => { });
+      if (!S.profile.name) { S.profile.name = name.trim(); save(); }
+    }
+    sendLink('verify', o => o ? fb.A.sendEmailVerification(r.user, o) : fb.A.sendEmailVerification(r.user)).catch(() => { });
+    gateBusy(btn, 'Setting up your desk…');
+    await settle(acctOnline(r.user));
+    if (Local.acct && name.trim()) { Local.acct.name = name.trim(); saveLocal(); }
+    gateDone('Your account is ready. Check your email to confirm it.');
+  } catch (e) {
+    gateBusy(btn); pwPaint();
+    const used = String((e && e.code) || '') === 'auth/email-already-in-use';
+    gateNote(esc(authErr(e)) + (used ? ' <button class="linkbtn" type="button" data-gate="signin">Sign in instead</button>' : ''));
+  }
+}
+async function gateForgot(btn, again) {
+  if (!GATE.email || !/@/.test(GATE.email)) { GATE.view = 'email'; paintGate(); gateNote('Enter your email first, then choose "Forgot your password?".'); return; }
+  gateBusy(btn, 'Sending…');
+  try {
+    const fb = await fbAuth();
+    await sendLink('reset', o => o ? fb.A.sendPasswordResetEmail(fb.auth, GATE.email, o) : fb.A.sendPasswordResetEmail(fb.auth, GATE.email));
+    GATE.sentAt = Date.now(); GATE.busy = false;
+    GATE.view = 'sent'; GATE.note = again ? 'Sent again.' : ''; paintGate();
+  } catch (e) { gateBusy(btn); gateNote(esc(authErr(e))); }
+}
+async function gateReset(btn) {
+  const p1 = $('#gPw1').value, p2 = $('#gPw2').value;
+  const c = pwCheck(p1, GATE.email);
+  if (!c.ok || p1 !== p2) { pwPaint(); gateNote(p1 !== p2 ? 'The two passwords don\'t match.' : 'Pick a stronger password.'); return; }
+  gateBusy(btn, 'Saving…');
+  try {
+    const fb = await fbAuth(); acctStart().catch(() => { });
+    await fb.A.confirmPasswordReset(fb.auth, GATE.code, p1);
+    gateBusy(btn, 'Signing in…');
+    const r = await fb.A.signInWithEmailAndPassword(fb.auth, GATE.email, p1);
+    await settle(acctOnline(r.user));
+    gateDone('Password changed. Welcome back');
+  } catch (e) {
+    gateBusy(btn); pwPaint();
+    gateNote(esc(authErr(e)) + (/action-code/.test(String(e && e.code)) ? ' <button class="linkbtn" type="button" data-gate="forgot">Send a new link</button>' : ''));
+  }
+}
+/* Google, the dependable way: Google's own button (it uses the browser's
+   built-in sign-in where there is one, so no pop-up to get blocked). The
+   ID token it hands back signs you in to your ATLAS account. */
+const GSI = { inited: false };
+function gsiRender(box) {
+  if (!box || !gConfigured()) return;
+  gLoadScript().then(() => {
+    const id = window.google && window.google.accounts && window.google.accounts.id;
+    if (!id || !box.isConnected) return;
+    if (!GSI.inited) {
+      id.initialize({ client_id: gClientId(), callback: gsiCredential, auto_select: false, cancel_on_tap_outside: true, itp_support: true, use_fedcm_for_button: true, context: 'signin', ux_mode: 'popup' });
+      GSI.inited = true;
+    }
+    const dark = document.documentElement.getAttribute('data-mode') === 'dark';
+    const w = Math.round(Math.min(400, Math.max(240, box.clientWidth || 320)));
+    const holder = document.createElement('div');
+    id.renderButton(holder, { type: 'standard', theme: dark ? 'filled_black' : 'outline', size: 'large', text: 'continue_with', shape: 'pill', logo_alignment: 'center', width: w });
+    box.innerHTML = ''; box.appendChild(holder); box.classList.add('live');
+  }).catch(() => { /* the plain button stays, and signs in through Firebase's Google window instead */ });
+}
+async function gsiCredential(resp) {
+  if (!resp || !resp.credential) return;
+  if (!GATE.open) openGate({ back: true });
+  GATE.view = 'work'; GATE.work = 'Signing in with Google…'; GATE.note = ''; paintGate();
+  try {
+    const fb = await fbAuth(); acctStart().catch(() => { });
+    const r = await fb.A.signInWithCredential(fb.auth, fb.A.GoogleAuthProvider.credential(resp.credential));
+    GATE.work = 'Opening your desk…'; paintGate();
+    await settle(acctOnline(r.user));
+    gateDone();
+  } catch (e) {
+    GATE.view = 'start'; GATE.note = esc(authErr(e)) + ' You can also use your email.'; paintGate();
+  }
+}
+/* The fallback when Google's button can't load: Firebase's own Google window.
+   It must open inside the tap, so nothing is awaited first when Firebase is warm. */
+function gatePopup(btn) {
+  const go = fb => {
+    const p = new fb.A.GoogleAuthProvider();
+    p.setCustomParameters({ prompt: 'select_account' });
+    return fb.A.signInWithPopup(fb.auth, p);
+  };
+  gateBusy(btn, 'Opening Google…'); gateNote('');
+  const run = FB.auth ? go(FB) : fbAuth().then(go);
+  run.then(async r => {
+    GATE.view = 'work'; GATE.work = 'Opening your desk…'; paintGate();
+    await settle(acctOnline(r.user));
+    gateDone();
+  }).catch(e => {
+    gateBusy(btn);
+    if (GATE.view !== 'start') { GATE.view = 'start'; paintGate(); }
+    gateNote(esc(authErr(e)) + ' You can also use your email.');
+  });
+}
+
+/* --- links from ATLAS's emails ----------------------------------------------
+   Firebase sends them to this page with ?mode=…&oobCode=…; the code is the
+   one-time secret, so it is taken out of the address bar straight away. */
+function actionLink() {
+  let q;
+  try { q = new URLSearchParams(location.search); } catch (e) { return null; }
+  const mode = q.get('mode'), code = q.get('oobCode');
+  if (!mode || !code) return null;
+  try { history.replaceState(null, '', location.pathname + location.hash); } catch (e) { }
+  return { mode, code };
+}
+async function handleAction(a) {
+  openGate({ view: 'work', back: !needGate() });
+  GATE.work = 'Checking your link…'; paintGate();
+  try {
+    const fb = await fbAuth(); acctStart().catch(() => { });
+    if (a.mode === 'resetPassword') {
+      GATE.email = await fb.A.verifyPasswordResetCode(fb.auth, a.code);
+      GATE.code = a.code; GATE.view = 'reset'; GATE.note = ''; paintGate();
+    } else if (a.mode === 'verifyEmail') {
+      await fb.A.applyActionCode(fb.auth, a.code);
+      if (fb.auth.currentUser) { await fb.A.reload(fb.auth.currentUser).catch(() => { }); if (Local.acct) { Local.acct.verified = true; saveLocal(); } }
+      GATE.title = 'Your email is confirmed'; GATE.text = 'Thanks. Your ATLAS account is all set.'; GATE.extra = ''; GATE.doneMsg = 'Email confirmed';
+      GATE.view = 'done'; GATE.note = ''; paintGate();
+    } else if (a.mode === 'recoverEmail') {
+      const info = await fb.A.checkActionCode(fb.auth, a.code);
+      await fb.A.applyActionCode(fb.auth, a.code);
+      GATE.email = (info && info.data && info.data.email) || GATE.email;
+      GATE.title = 'Your email is back to ' + GATE.email; GATE.text = 'If you didn\'t ask for that change, reset your password now so nobody else can get in.';
+      GATE.extra = '<button class="btn big" type="button" data-gate="forgot">Reset my password</button>'; GATE.doneMsg = '';
+      GATE.view = 'done'; GATE.note = ''; paintGate();
+    } else { closeGate(); if (needGate()) openGate(); }
+  } catch (e) {
+    GATE.view = 'email';
+    GATE.note = esc(authErr(e)) + (a.mode === 'resetPassword' ? ' Enter your email and choose "Sign in", then "Forgot your password?" for a new one.' : '');
+    paintGate();
+  }
+}
+
+/* --- the You sheet ------------------------------------------------------- */
+function accRow(icon, title, sub, act, extra) {
+  const tag = act ? 'button' : 'div';
+  return '<' + tag + ' class="acc-row' + (extra || '') + '"' + (act ? ' data-act="' + act + '" type="button"' : '') + '><span class="ai">' + ic(icon) + '</span><span style="flex:1;min-width:0"><b>' + title + '</b>' +
+    (sub ? '<span class="t">' + sub + '</span>' : '') + '</span>' + (act ? '<span class="go">›</span>' : '') + '</' + tag + '>';
+}
+function accountSheet() {
+  const a = Local.acct, known = acctKnown(), linked = cLinked();
+  const name = S.profile.name || (linked && a.name) || (Sync.profile && Sync.profile.name) || 'You';
+  let block = '';
+  if (!acctConfigured()) {
+    block = '<div class="gnote"><b>Use ATLAS on all your devices</b><span>Accounts aren\'t switched on for this copy of ATLAS yet, so your work is saved in this browser only.</span></div>';
+  } else if (!known) {
+    block = '<div class="gnote"><b>Keep your desk on every device</b><span>Make a free ATLAS account with your email, or sign in with Google. Your desk is kept under your account, where only you can open it.</span>' +
+      '<button class="btn p" data-act="acctOpen">Sign in or create an account</button></div>';
+  } else if (!linked) {
+    const pid = Sync.index && Sync.index.links && Sync.index.links[a.uid];
+    const other = ((Sync.index.profiles || []).find(p => p.id === pid) || {}).name || 'your account\'s desk';
+    block = '<div class="gnote"><b>This profile stays on this device</b><span>You\'re signed in as ' + esc(a.email) + '. Its desk is ' + esc(other) + '.</span>' +
+      (pid ? '<button class="btn sm" data-act="switchProf" data-id="' + pid + '">Open it</button>' : '') + '</div>';
+  } else {
+    const live = !!ACC.user;
+    const st = ACC.err ? (ACC.offline ? 'paused' : 'bad') : live ? '' : 'paused';
+    const head = ACC.err ? (ACC.offline ? 'Offline' : 'Sync needs attention') : !live ? 'Connecting to your account…' : ACC.busy ? 'Syncing…' : 'Synced';
+    const sub = ACC.err || (!live ? 'Your work is saved here in the meantime.' : ACC.lastSync ? 'Last synced ' + ago(ACC.lastSync) + '. Everything you do here follows you to your other devices.' : 'Syncing now.');
+    block = '<div class="gstate ' + st + '"><span class="sdot"></span><div style="flex:1;min-width:0"><b>' + head + '</b><span class="t">' + esc(sub) + '</span></div>' +
+      '<button class="btn sm" data-act="acctSyncNow">Sync now</button></div>' +
+      (a.provider === 'password' && !a.verified ? '<div class="vnote">' + ic('mail', 'width:18px;height:18px;flex:none;margin-top:1px') + '<span>Confirm your email: open the link we sent to <b>' + esc(a.email) + '</b>. It keeps your account recoverable. <button class="linkbtn" data-act="acctVerify">Send it again</button></span></div>' : '') +
+      '<div class="acc-rows">' +
+      (a.provider === 'password' ? accRow('key', 'Password', 'Change it any time', 'pwChange') : accRow('google', 'Signed in with Google', esc(a.email))) +
+      accRow('lock', 'Device lock', esc(lockLabel()) + ' · a passkey or pattern keeps ATLAS closed on this device', 'lockSheet') +
+      accRow('bell', 'Reminders', esc(noteLabel()), 'noteSheet') +
+      (gConfigured() ? accRow('down', 'Bring in an old Google Drive copy', Local.gWas ? 'This device used Google Drive sync before. Add that desk to your account.' : 'For desks saved by an older ATLAS', 'driveImport') : '') +
+      accRow('trash', 'Delete account', 'Removes your account and everything stored under it', 'acctDelete', ' dg') +
+      '</div>';
+  }
+  if (!known) block += '<div class="acc-rows">' + accRow('bell', 'Reminders', esc(noteLabel()), 'noteSheet') + '</div>';
+  const k = streak(), best = bestStreak(), total = S.sessions.reduce((x, s) => x + s.minutes, 0);
+  const reviews = S.decks.reduce((x, d) => x + d.cards.reduce((y, c) => y + (c.reps || 0), 0), 0);
+  const fig = (v, l) => '<div class="fig"><b>' + v + '</b><span>' + l + '</span></div>';
+  const got = earned().map(b => b.id);
+  modal({
+    title: 'You',
+    foot: (known ? '<button class="btn g" data-act="acctOut">Sign out</button>' : '') + '<span class="spacer"></span><button class="btn p" data-close>Done</button>',
+    body: '<div class="you-head"><span class="ava big">' + avatarHTML() + '</span><div style="min-width:0"><b>' + esc(name) + '</b><span class="em">' + esc(known ? a.email : 'Not signed in') + '</span></div></div>' + block +
+      (on('focus') || S.sessions.length ? '<div class="figs">' + fig(k, 'day streak') + fig(best, 'best streak') + fig(dur(total), 'focused in total') + (on('cards') ? fig(reviews, 'cards reviewed') : '') + '</div>' + heatmap(true) : '') +
+      (S.settings.celebrate !== false ? '<div class="eyebrow" style="margin:16px 0 8px">Badges, ' + got.length + ' of ' + BADGES.length + ' earned</div><div class="bgrid sm">' +
+        BADGES.slice().sort((x, y) => (got.indexOf(y.id) >= 0) - (got.indexOf(x.id) >= 0)).map(b => '<div class="badge' + (got.indexOf(b.id) >= 0 ? ' on' : '') + '" title="' + esc(b.hint) + '"><span class="bi">' + b.icon + '</span><b>' + esc(b.name) + '</b></div>').join('') + '</div>' : '')
+  });
+}
+/* Google's own button style, so people recognise what it does. */
+const GLOGO = '<path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>';
+function gButton(act, label, extra) {
+  return '<button class="gbtn" data-act="' + act + '" data-gauth' + (extra || '') + '><svg viewBox="0 0 48 48" aria-hidden="true">' + GLOGO + '</svg><span>' + esc(label) + '</span></button>';
+}
+
+/* A password field with a show/hide eye, for the sheets inside the app. */
+function pwField(id, label, ac) {
+  return '<label class="f"><span>' + label + '</span><span class="pw"><input type="password" id="' + id + '" autocomplete="' + ac + '" spellcheck="false" autocapitalize="off">' +
+    '<button type="button" class="pweye" data-act="pwEye" data-for="' + id + '" aria-label="Show password" aria-pressed="false">' + ic('eye') + '</button></span></label>';
+}
+function pwChangeSheet() {
+  const a = Local.acct; if (!a || !ACC.user) return toast('Connecting to your account. Try again in a moment.', true);
+  modal({
+    title: 'Change your password',
+    body: '<input type="email" class="vh" autocomplete="username" value="' + esc(a.email) + '" tabindex="-1" aria-hidden="true" readonly>' +
+      pwField('pwCur', 'Current password', 'current-password') +
+      '<div class="gform" style="max-width:none">' + pwField('gPw1', 'New password', 'new-password') +
+      '<div class="pwmeter" id="pwMeter"><i><b></b></i><span></span></div><ul class="pwrules" id="pwRules"></ul>' +
+      pwField('gPw2', 'Type it again', 'new-password') + '<div class="pwmatch" id="pwMatch"></div></div>' +
+      '<p class="dim" style="font-size:12.5px;margin:4px 0 0">Forgot the current one? Sign out, then choose "Forgot your password?" on the sign-in screen.</p>',
+    foot: '<button class="btn" data-close>Cancel</button><button class="btn p" id="gNewGo" disabled>Change password</button>'
+  });
+  const paint = () => pwPaint(a.email);
+  ['gPw1', 'gPw2'].forEach(id => $('#' + id).addEventListener('input', paint));
+  paint();
+  $('#gNewGo').addEventListener('click', async () => {
+    const b = $('#gNewGo'), cur = $('#pwCur').value, p1 = $('#gPw1').value;
+    if (!cur) return toast('Enter your current password.', true);
+    b.disabled = true; b.textContent = 'Changing…';
+    try {
+      const fb = await fbAuth();
+      await fb.A.reauthenticateWithCredential(ACC.user, fb.A.EmailAuthProvider.credential(a.email, cur));
+      await fb.A.updatePassword(ACC.user, p1);
+      closeModal(); toast('Password changed');
+    } catch (e) { b.disabled = false; b.textContent = 'Change password'; toast(authErr(e), true); }
+  });
+}
+/* Proving it's you again, for the few things that need it. */
+async function acctReauth(pw) {
+  const fb = await fbAuth(), u = ACC.user;
+  if (!u) throw new Error('Connecting to your account. Try again in a moment.');
+  if (acctPassword()) return fb.A.reauthenticateWithCredential(u, fb.A.EmailAuthProvider.credential(Local.acct.email, pw));
+  const p = new fb.A.GoogleAuthProvider();
+  p.setCustomParameters({ login_hint: Local.acct.email, prompt: 'select_account' });
+  return fb.A.reauthenticateWithPopup(u, p);
+}
+function acctDeleteSheet() {
+  const a = Local.acct; if (!a) return;
+  modal({
+    title: 'Delete your ATLAS account?',
+    body: '<p style="margin:0 0 10px;color:var(--ink2)">This deletes the account <b>' + esc(a.email) + '</b>, its synced desk and its reminders from ATLAS\'s cloud. It can\'t be undone.</p>' +
+      '<p style="margin:0 0 12px;color:var(--ink2)">Want a copy first? <button class="linkbtn" data-act="backup">Download a backup</button>.</p>' +
+      (acctPassword() ? pwField('delPw', 'Your password, to confirm', 'current-password') : '<p class="dim" style="font-size:13px;margin:0 0 10px">Google will ask you to confirm it\'s you.</p>') +
+      '<label class="check"><input type="checkbox" id="delLocal" checked><span>Also remove this desk from this device</span></label>',
+    foot: '<button class="btn" data-close>Keep my account</button><button class="btn p" id="delGo" style="background:var(--crimson);border-color:var(--crimson)">Delete account</button>'
+  });
+  $('#delGo').addEventListener('click', async () => {
+    const b = $('#delGo'), pw = $('#delPw') ? $('#delPw').value : '', wipe = $('#delLocal').checked;
+    if (acctPassword() && !pw) return toast('Enter your password to confirm.', true);
+    b.disabled = true; b.textContent = 'Deleting…';
+    try {
+      await acctReauth(pw);
+      const fb = await fbStore(), u = ACC.user, uidNow = u.uid;
+      cStopListen();
+      if (typeof noteForget === 'function') await noteForget().catch(() => { });
+      const m = await fb.F.getDoc(deskDoc(fb, uidNow, 'meta')).catch(() => null);
+      const n = m && m.exists() ? (m.data().parts || 1) : 0;
+      const batch = fb.F.writeBatch(fb.db);
+      for (let i = 0; i < Math.max(n, 1); i++) batch.delete(deskDoc(fb, uidNow, 'p' + i));
+      batch.delete(deskDoc(fb, uidNow, 'meta'));
+      batch.delete(fb.F.doc(fb.db, 'reminders', uidNow));
+      await batch.commit();
+      const fa = await fbAuth();
+      await fa.A.deleteUser(u);
+      closeModal();
+      await acctLeave(uidNow, wipe, true);
+      toast('Your account is deleted');
+    } catch (e) { b.disabled = false; b.textContent = 'Delete account'; toast(authErr(e), true); }
+  });
+}
+function acctOutSheet() {
+  const synced = !!ACC.user && !ACC.err && ACC.lastSync > 0;
+  modal({
+    title: 'Sign out of ATLAS here?',
+    body: '<p style="margin:0 0 12px;color:var(--ink2)">Your desk stays in your account. Sign in again on any device to pick it back up.</p>' +
+      '<label class="check"><input type="checkbox" id="outWipe"' + (synced ? ' checked' : ' disabled') + '><span>Also remove my desk from this device' +
+      (synced ? '' : '<br><small class="dim">Not everything has reached your account yet, so it stays here for now.</small>') + '</span></label>',
+    foot: '<button class="btn" data-close>Cancel</button><button class="btn p" id="outGo">Sign out</button>'
+  });
+  $('#outGo').addEventListener('click', async () => {
+    const b = $('#outGo'), wipe = $('#outWipe').checked;
+    b.disabled = true; b.textContent = 'Signing out…';
+    await acctSignOut(wipe);
+  });
+}
+async function acctSignOut(wipe) {
+  try { await flush(); if (ACC.user) await cSync({ silent: true }); } catch (e) { }
+  const synced = !!ACC.user && !ACC.err && !Sync.dirty;
+  if (typeof noteForget === 'function') await noteForget().catch(() => { });
+  const uidWas = Local.acct && Local.acct.uid;
+  cStopListen();
+  try { const fb = await fbAuth(); await fb.A.signOut(fb.auth); } catch (e) { }
+  closeModal();
+  await acctLeave(uidWas, wipe && synced, false);
+  toast(wipe && synced ? 'Signed out, and your desk is off this device' : 'Signed out');
+}
+/* Leaves the account's desk: move this device to a desk that belongs to no
+   account, optionally erasing the account's copy from this device. */
+async function acctLeave(uidWas, wipe, forget) {
+  ACC.user = null; ACC.onlineFor = null; ACC.onlineP = null; ACC.rev = 0; ACC.hash = ''; ACC.err = ''; ACC.lastSync = 0;
+  Local.acct = null; Local.gSkip = false; Local.lock = null; saveLocal();
+  const idx = Sync.index; idx.links = idx.links || {};
+  const pidWas = uidWas ? idx.links[uidWas] : null;
+  const owned = id => Object.keys(idx.links).some(u => idx.links[u] === id);
+  let free = idx.profiles.find(p => !owned(p.id) && p.id !== pidWas);
+  if (!free) { free = { id: 'p' + uid(), name: 'This device', created: Date.now(), lastSeen: Date.now() }; idx.profiles.push(free); }
+  if (forget || wipe) delete idx.links[uidWas];
+  await sset(IDX, idx).catch(() => { });
+  await switchProfile(free.id, true);
+  if (wipe && pidWas) {
+    idx.profiles = idx.profiles.filter(p => p.id !== pidWas);
+    await sset(IDX, idx).catch(() => { });
+    try { await Drv.del(dbKey(pidWas)); await Drv.del(dbKey(pidWas) + '.bak'); await Drv.del(snapKey(pidWas)); } catch (e) { }
+  }
   renderNav(); setStatus(Sync.status);
+  openGate();
 }
-/* The hour-long token runs out with no server to refresh it, so your next tap
-   renews it — a Google window may flash for a moment. Taps into fields and on
-   Google's own buttons are left alone. */
-function gRenewOnTap(e) {
-  if (!gConfigured() || !gKnown() || gSignedIn() || G.renewing || !G.loaded || SVY.open || GATE.open) return;
-  if (Date.now() - G.lastTry < 90000) return;
-  const t = e.target;
-  if (t && t.closest && (t.closest('input,textarea,select,label,[contenteditable],[data-gauth]'))) return;
-  if (Sync.index && Sync.index.gProfile && !gLinked()) return;
-  G.renewing = true; G.lastTry = Date.now();
-  gAuth(false).then(() => gSync({ silent: true })).catch(err => { G.err = err.message; })
-    .then(() => { G.renewing = false; setStatus(Sync.status); renderNav(); });
+/* An older ATLAS synced through a hidden folder in Google Drive. One tap
+   brings that copy in and folds it into this desk. */
+async function driveImport(btn) {
+  if (!gConfigured()) return;
+  if (btn) btn.disabled = true;
+  try {
+    await gAuth(true);
+    const remote = await gRead();
+    if (!remote || !remote.data) { toast('There\'s no ATLAS desk in that Google account\'s Drive.', true); return; }
+    captureLive(); stampChanges();
+    S = mergeDB(S, remote.data);
+    S.settings = Object.assign(DEFAULTS().settings, S.settings || {});
+    Sync.dirty = true; await flush();
+    Local.gWas = false; saveLocal();
+    applyTheme(); render();
+    closeModal();
+    toast('Brought in your Google Drive desk');
+    cQueuePush();
+  } catch (e) { toast(e.message, true); }
+  finally { if (btn && btn.isConnected) btn.disabled = false; }
 }
-async function gDisconnect() {
-  try { if (G.token && window.google && window.google.accounts) window.google.accounts.oauth2.revoke(G.token, () => { }); } catch (e) { }
-  G.token = null; G.exp = 0; G.scopes = ''; G.fileId = null; G.lastSync = 0; G.err = '';
-  Local.gUser = null; Local.gWas = false; saveLocal();
-  renderNav(); setStatus(Sync.status);
+
+/* ============================================================
+   Device lock. A passkey (Face ID, a fingerprint, Windows Hello or
+   the device's own PIN) or a drawn pattern keeps ATLAS closed on
+   this device until you unlock it: when it opens, and after you
+   have been away for a while. It guards a shared or borrowed
+   device. It is not encryption, and nothing about it leaves this
+   device. Forgot it? Sign in to your account again and it resets.
+   ============================================================ */
+const LOCK = { on: false, tries: 0, hiddenAt: 0, busy: false };
+function lockSet() { return !!(Local.lock && Local.acct && Local.lock.uid === Local.acct.uid); }
+function lockLabel() { return !lockSet() ? 'Off' : Local.lock.kind === 'passkey' ? 'Passkey' : 'Pattern'; }
+async function passkeyReady() {
+  try { return !!(window.isSecureContext && window.PublicKeyCredential && PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable && await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()); }
+  catch (e) { return false; }
+}
+const rndBytes = n => crypto.getRandomValues(new Uint8Array(n));
+const b64u = buf => b64(buf).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+function unb64u(s) { s = String(s).replace(/-/g, '+').replace(/_/g, '/'); while (s.length % 4) s += '='; return unb64(s); }
+async function patternHash(seq, salt, iter) {
+  const key = await crypto.subtle.importKey('raw', new TextEncoder().encode(seq.join('-') + '|' + (Local.acct ? Local.acct.uid : '')), 'PBKDF2', false, ['deriveBits']);
+  return b64u(await crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt: unb64u(salt), iterations: iter }, key, 256));
+}
+async function passkeyCreate() {
+  const a = Local.acct;
+  const cred = await navigator.credentials.create({
+    publicKey: {
+      rp: { name: 'ATLAS', id: location.hostname },
+      user: { id: rndBytes(16), name: a.email || 'ATLAS', displayName: a.name || a.email || 'ATLAS' },
+      challenge: rndBytes(32),
+      pubKeyCredParams: [{ type: 'public-key', alg: -7 }, { type: 'public-key', alg: -257 }],
+      authenticatorSelection: { authenticatorAttachment: 'platform', userVerification: 'required', residentKey: 'discouraged' },
+      timeout: 60000, attestation: 'none'
+    }
+  });
+  return b64u(cred.rawId);
+}
+async function passkeyCheck(id) {
+  const r = await navigator.credentials.get({
+    publicKey: { challenge: rndBytes(32), allowCredentials: [{ type: 'public-key', id: unb64u(id) }], userVerification: 'required', timeout: 60000, rpId: location.hostname }
+  });
+  /* the flags byte must say the person was verified, not just that someone tapped */
+  const ad = new Uint8Array(r.response.authenticatorData);
+  return ad.length > 32 && !!(ad[32] & 0x04);
+}
+
+/* --- the pattern pad: nine dots, draw through at least four --- */
+function patternPad(host, onDone) {
+  const pts = [];
+  for (let i = 0; i < 9; i++) pts.push({ x: 50 + (i % 3) * 100, y: 50 + Math.floor(i / 3) * 100 });
+  host.innerHTML = '<div class="pat" tabindex="0" role="application" aria-label="Pattern. Draw through the dots, or type the dot numbers 1 to 9 and press Enter.">' +
+    '<svg viewBox="0 0 300 300" aria-hidden="true"><polyline points=""/>' + pts.map((p, i) => '<circle class="ring" data-r="' + i + '" cx="' + p.x + '" cy="' + p.y + '" r="26"/><circle class="dot" data-i="' + i + '" cx="' + p.x + '" cy="' + p.y + '" r="11"/>').join('') + '</svg></div>' +
+    '<p class="pat-hint">Draw through at least 4 dots.</p>';
+  const pad = $('.pat', host), svg = $('svg', pad), line = $('polyline', svg);
+  let seq = [], drawing = false, cur = null;
+  const paint = () => {
+    $$('.dot', svg).forEach(d => d.classList.toggle('on', seq.indexOf(+d.dataset.i) >= 0));
+    $$('.ring', svg).forEach(d => d.classList.toggle('on', seq.indexOf(+d.dataset.r) >= 0));
+    line.setAttribute('points', seq.map(i => pts[i].x + ',' + pts[i].y).concat(cur ? [cur.x + ',' + cur.y] : []).join(' '));
+  };
+  const at = e => { const r = svg.getBoundingClientRect(); return { x: (e.clientX - r.left) / r.width * 300, y: (e.clientY - r.top) / r.height * 300 }; };
+  const hit = p => { for (let i = 0; i < 9; i++) if (seq.indexOf(i) < 0 && Math.hypot(pts[i].x - p.x, pts[i].y - p.y) < 36) return i; return -1; };
+  const reset = () => { seq = []; cur = null; pad.classList.remove('bad'); paint(); };
+  const finish = () => { drawing = false; cur = null; paint(); const s = seq.slice(); if (s.length) onDone(s, { reset, bad: () => { pad.classList.add('bad'); setTimeout(reset, 700); } }); };
+  pad.addEventListener('pointerdown', e => { e.preventDefault(); reset(); drawing = true; try { pad.setPointerCapture(e.pointerId); } catch (x) { } const p = at(e), i = hit(p); if (i >= 0) seq.push(i); cur = p; paint(); });
+  pad.addEventListener('pointermove', e => { if (!drawing) return; const p = at(e), i = hit(p); if (i >= 0) seq.push(i); cur = p; paint(); });
+  pad.addEventListener('pointerup', () => { if (drawing) finish(); });
+  pad.addEventListener('pointercancel', () => { if (drawing) finish(); });
+  pad.addEventListener('keydown', e => {
+    if (/^[1-9]$/.test(e.key)) { e.preventDefault(); const i = +e.key - 1; if (seq.indexOf(i) < 0) { seq.push(i); paint(); } }
+    else if (e.key === 'Enter') { e.preventDefault(); finish(); }
+    else if (e.key === 'Backspace' || e.key === 'Escape') { e.preventDefault(); reset(); }
+  });
+  return { reset, focus: () => pad.focus() };
+}
+
+/* --- the lock screen --- */
+function lockShow() {
+  if (!lockSet() || LOCK.on) return;
+  LOCK.on = true; LOCK.tries = 0;
+  closePop();
+  const el = document.createElement('div');
+  el.id = 'lockscr'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-label', 'ATLAS is locked');
+  el.innerHTML = '<div class="lock-in"><div class="gate-mark"><div class="mark">A</div><b>ATLAS</b></div><h2>Unlock ATLAS</h2><p class="lock-who">' + esc(Local.acct.email) + '</p>' +
+    '<div id="lockBody"></div><div class="lock-msg" id="lockMsg" role="alert"></div>' +
+    '<button class="linkbtn" type="button" id="lockForgot">Forgot it? Sign in again instead</button></div>';
+  document.body.appendChild(el);
+  ['#app', '#mobnav', '#overlay', '#gate', '.sv'].forEach(q => { const n = $(q); if (n) n.inert = true; });
+  $('#lockForgot').addEventListener('click', lockForgot);
+  const body = $('#lockBody');
+  if (Local.lock.kind === 'passkey') {
+    body.innerHTML = '<div class="lock-pk"><span class="pkico">' + ic('finger') + '</span><button class="btn p big" type="button" id="lockGo" style="width:auto;padding:0 26px">Unlock with passkey</button></div>';
+    $('#lockGo').addEventListener('click', lockPasskey);
+    if (!/iPhone|iPad|Macintosh.*Safari(?!.*Chrome)/.test(UA())) setTimeout(lockPasskey, 250);   /* Safari wants a tap first */
+  } else {
+    const pad = patternPad(body, async (seq, ui) => {
+      if (LOCK.busy) return;
+      LOCK.busy = true;
+      const ok = seq.length >= 4 && await patternHash(seq, Local.lock.salt, Local.lock.iter) === Local.lock.hash;
+      LOCK.busy = false;
+      if (ok) return lockHide();
+      ui.bad(); lockMiss();
+    });
+    setTimeout(() => pad.focus(), 60);
+  }
+}
+async function lockPasskey() {
+  if (LOCK.busy) return;
+  LOCK.busy = true;
+  const msg = $('#lockMsg'); if (msg) msg.textContent = '';
+  try {
+    if (await passkeyCheck(Local.lock.id)) { LOCK.busy = false; return lockHide(); }
+    lockMiss();
+  } catch (e) {
+    if (msg) msg.textContent = e && e.name === 'NotAllowedError' ? 'That didn\'t go through. Tap to try again.' : 'Your passkey isn\'t available. Sign in again instead.';
+  }
+  LOCK.busy = false;
+}
+function lockMiss() {
+  LOCK.tries++;
+  const msg = $('#lockMsg');
+  if (LOCK.tries >= 5) { if (msg) msg.textContent = 'Too many tries. Sign in again to get back in.'; setTimeout(lockForgot, 1200); return; }
+  if (msg) msg.textContent = 'That\'s not it. ' + (5 - LOCK.tries) + (5 - LOCK.tries === 1 ? ' try' : ' tries') + ' left.';
+}
+function lockHide() {
+  const el = $('#lockscr');
+  LOCK.on = false; LOCK.tries = 0;
+  if (el) el.remove();
+  ['#app', '#mobnav', '#overlay', '#gate', '.sv'].forEach(q => { const n = $(q); if (n) n.inert = false; });
+  if (GATE.open) ['#app', '#mobnav'].forEach(q => { const n = $(q); if (n) n.inert = true; });
+}
+/* Signing in again is always the way back in. The desk stays on this device. */
+async function lockForgot() {
+  lockHide();
+  Local.lock = null; saveLocal();
+  if (acctKnown()) await acctSignOut(false);
+}
+function lockWatch() {
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') { LOCK.hiddenAt = Date.now(); return; }
+    if (lockSet() && LOCK.hiddenAt && Date.now() - LOCK.hiddenAt >= (Local.lock.after == null ? 5 : Local.lock.after) * 60000) lockShow();
+  });
+}
+
+/* --- choosing a lock --- */
+async function lockSheet() {
+  if (!acctKnown()) { toast('Sign in first: your account is how you get back in if you forget it.', true); return; }
+  const pk = await passkeyReady();
+  const cur = lockSet() ? Local.lock.kind : 'off';
+  const after = lockSet() && Local.lock.after != null ? Local.lock.after : 5;
+  const opt = (k, icon, title, sub, dis) => '<button type="button" class="lockopt' + (cur === k ? ' on' : '') + '" data-lk="' + k + '"' + (dis ? ' disabled' : '') + '><span class="ai">' + ic(icon) + '</span><span><b>' + title + '</b><span class="t">' + sub + '</span></span></button>';
+  modal({
+    title: 'Device lock',
+    body: '<p class="muted" style="margin:0 0 14px;font-size:13.5px">Keep ATLAS closed on this device until you unlock it, when it opens and after you\'ve been away. Handy on a shared or family computer. It only protects this device, and your password or Google still works everywhere.</p>' +
+      opt('passkey', 'finger', 'Passkey', pk ? 'Face ID, your fingerprint, Windows Hello or your device PIN.' : 'This device or browser can\'t make a passkey.', !pk) +
+      opt('pattern', 'grid', 'Pattern', 'Draw a shape through nine dots.') +
+      opt('off', 'lock', 'No lock', 'ATLAS opens straight to your desk.') +
+      '<label class="f" style="margin-top:12px"><span>Lock again after I\'ve been away for</span><select id="lkAfter">' +
+      [[1, '1 minute'], [5, '5 minutes'], [15, '15 minutes'], [60, '1 hour'], [100000, 'Only when ATLAS opens']].map(o => '<option value="' + o[0] + '"' + (after === o[0] ? ' selected' : '') + '>' + o[1] + '</option>').join('') + '</select></label>' +
+      '<div id="lkSet"></div>',
+    foot: '<button class="btn p" data-close>Done</button>'
+  });
+  $('#lkAfter').addEventListener('change', e => { if (Local.lock) { Local.lock.after = +e.target.value; saveLocal(); toast('Saved'); } });
+  onModal(async e => {
+    const b = e.target.closest('[data-lk]'); if (!b || b.disabled) return;
+    const k = b.dataset.lk, wait = +$('#lkAfter').value;
+    if (k === 'off') { Local.lock = null; saveLocal(); toast('Device lock is off'); closeModal(); return; }
+    if (k === 'passkey') {
+      try {
+        const id = await passkeyCreate();
+        Local.lock = { kind: 'passkey', id, uid: Local.acct.uid, after: wait, at: Date.now() }; saveLocal();
+        toast('Passkey lock is on'); closeModal();
+      } catch (err) { toast(err && err.name === 'NotAllowedError' ? 'Passkey setup was cancelled.' : 'This device couldn\'t make a passkey. Try a pattern instead.', true); }
+      return;
+    }
+    /* pattern: draw it, then draw it again */
+    const host = $('#lkSet'); let first = null;
+    host.innerHTML = '<p class="eyebrow" style="margin:16px 0 8px" id="lkStep">Draw your pattern</p><div id="lkPad" style="display:flex;flex-direction:column;align-items:center"></div>';
+    const pad = patternPad($('#lkPad'), async (seq, ui) => {
+      if (seq.length < 4) { ui.bad(); $('#lkStep').textContent = 'Use at least 4 dots. Draw your pattern'; return; }
+      if (!first) { first = seq; ui.reset(); $('#lkStep').textContent = 'Draw it again to confirm'; return; }
+      if (first.join() !== seq.join()) { first = null; ui.bad(); $('#lkStep').textContent = 'Those didn\'t match. Draw your pattern'; return; }
+      const salt = b64u(rndBytes(16)), iter = 150000;
+      Local.lock = { kind: 'pattern', salt, iter, hash: await patternHash(seq, salt, iter), uid: Local.acct.uid, after: wait, at: Date.now() };
+      saveLocal(); closeModal(); toast('Pattern lock is on');
+    });
+    pad.focus();
+  });
+}
+
+/* ============================================================
+   Reminders. What's due tomorrow (in the evening) and today (in the
+   morning), tests and big projects a few days ahead, flashcards
+   waiting, and the end of a focus session.
+   · While ATLAS is open, this device shows them itself.
+   · When it's closed, they arrive as push notifications: ATLAS keeps
+     the next two weeks of reminders under your account, and a small
+     script on Google's servers sends each one when it's due.
+   Permission is per device. What you get is in Settings.
+   ============================================================ */
+const NOTE_DEF = { on: false, eve: true, eveAt: '19:00', morn: true, mornAt: '07:15', big: true, cards: false, cardsAt: '17:00', timer: true, names: true };
+const NOTE = { reg: null, regP: null, push: null, local: null, lastHash: '', tokenP: null };
+function noteCfg() { return Object.assign({}, NOTE_DEF, S.settings.notify || {}); }
+function noteSet(k, v) { S.settings.notify = Object.assign(noteCfg(), { [k]: v }); save(); noteQueue(); }
+function noteSupported() { return typeof window !== 'undefined' && 'Notification' in window && 'serviceWorker' in navigator && !!window.isSecureContext; }
+function notePerm() { return noteSupported() ? Notification.permission : 'unsupported'; }
+function noteHere() { return !!(Local.push && Local.push.on) && notePerm() === 'granted'; }
+function noteWanted() { return !!(S.settings.notify && S.settings.notify.on); }
+function isIOS() { return /iPhone|iPad|iPod/.test(UA()) || (/Macintosh/.test(UA()) && typeof navigator !== 'undefined' && navigator.maxTouchPoints > 1); }
+function isStandalone() { try { return matchMedia('(display-mode: standalone)').matches || navigator.standalone === true; } catch (e) { return false; } }
+function noteLabel() {
+  if (noteHere()) return Local.push.token ? 'On, even when ATLAS is closed' : 'On while ATLAS is open';
+  if (noteWanted()) return 'On for your account, off on this device';
+  return 'Off';
+}
+function swReg() {
+  if (NOTE.reg) return Promise.resolve(NOTE.reg);
+  if (!('serviceWorker' in navigator)) return Promise.reject(new Error('This browser can\'t show notifications.'));
+  if (!NOTE.regP) {
+    NOTE.regP = navigator.serviceWorker.register('sw.js', { scope: './' })
+      .then(r => navigator.serviceWorker.ready.then(() => { NOTE.reg = r; return r; }))
+      .catch(() => { NOTE.regP = null; throw new Error('Reminders couldn\'t start in this browser.'); });
+  }
+  return NOTE.regP;
+}
+async function noteShow(title, body, tag) {
+  try { const r = await swReg(); await r.showNotification(title, { body, tag: tag || undefined, data: { url: appUrl() }, badge: undefined }); return true; }
+  catch (e) { try { new Notification(title, { body, tag }); return true; } catch (x) { return false; } }
+}
+
+/* --- turning it on, on this device --- */
+async function noteEnable() {
+  if (isIOS() && !isStandalone()) { noteIOS(); return false; }
+  if (!noteSupported()) { toast('This browser can\'t show notifications. Try Chrome, Edge, Firefox or Safari.', true); return false; }
+  let perm = Notification.permission;
+  if (perm === 'default') { try { perm = await Notification.requestPermission(); } catch (e) { perm = 'denied'; } }
+  if (perm !== 'granted') {
+    toast(perm === 'denied' ? 'Notifications are blocked for ATLAS. Allow them in this site\'s settings in your browser, then try again.' : 'Reminders stay off.', true);
+    return false;
+  }
+  Local.push = Object.assign({}, Local.push, { on: true }); saveLocal();
+  if (!noteWanted()) { S.settings.notify = Object.assign(noteCfg(), { on: true }); save(true); }
+  await swReg().catch(() => null);
+  noteShow('Reminders are on', 'ATLAS will tell you what\'s coming up. Choose what you get in Settings.', 'atlas-hello');
+  noteLocalStart();
+  notePushToken().catch(() => { });
+  noteQueue(0);
+  return true;
+}
+async function noteDisable(everywhere) {
+  await noteForget().catch(() => { });
+  Local.push = Object.assign({}, Local.push, { on: false }); saveLocal();
+  if (everywhere) { S.settings.notify = Object.assign(noteCfg(), { on: false }); save(true); noteQueue(0); }
+}
+function noteIOS() {
+  modal({
+    title: 'Reminders on iPhone and iPad',
+    body: '<p style="margin:0 0 12px;color:var(--ink2)">Apple only lets web apps send notifications once they\'re on your Home Screen.</p>' +
+      '<ol style="margin:0 0 12px;padding-left:20px;color:var(--ink2);line-height:1.7"><li>Tap the <b>Share</b> button in Safari.</li><li>Choose <b>Add to Home Screen</b>, then <b>Add</b>.</li>' +
+      '<li>Open ATLAS from its new icon, then turn reminders on in Settings.</li></ol>' +
+      '<p class="dim" style="font-size:12.5px;margin:0">Needs iOS 16.4 or newer.</p>',
+    foot: '<button class="btn p" data-close>Got it</button>'
+  });
+}
+/* Push for when ATLAS is closed: this device's push address goes under your
+   account, next to the reminder list, and nowhere else. */
+async function notePushToken() {
+  if (!ACC.user || !ATLAS_CONFIG.vapidKey || !noteHere()) return null;
+  if (NOTE.tokenP) return NOTE.tokenP;
+  NOTE.tokenP = (async () => {
+    const reg = await swReg();
+    const [app, M] = await Promise.all([fbApp(), import(FB_SDK + 'firebase-messaging.js')]);
+    if (M.isSupported && !(await M.isSupported())) return null;
+    const token = await M.getToken(M.getMessaging(app), { vapidKey: ATLAS_CONFIG.vapidKey, serviceWorkerRegistration: reg });
+    if (!token || !ACC.user) return null;
+    const fb = await fbStore();
+    await fb.F.setDoc(fb.F.doc(fb.db, 'reminders', ACC.user.uid), { tokens: fb.F.arrayUnion(token), next: 0 }, { merge: true });
+    Local.push = Object.assign({}, Local.push, { token, tokenUid: ACC.user.uid, at: Date.now() }); saveLocal();
+    NOTE.lastHash = '';
+    noteQueue(0);
+    return token;
+  })().finally(() => { NOTE.tokenP = null; });
+  return NOTE.tokenP;
+}
+async function noteForget() {
+  const t = Local.push && Local.push.token, u = Local.push && Local.push.tokenUid;
+  if (t && u && ACC.user && ACC.user.uid === u) {
+    try { const fb = await fbStore(); await fb.F.setDoc(fb.F.doc(fb.db, 'reminders', u), { tokens: fb.F.arrayRemove(t) }, { merge: true }); } catch (e) { }
+  }
+  if (t) { try { const [app, M] = await Promise.all([fbApp(), import(FB_SDK + 'firebase-messaging.js')]); await M.deleteToken(M.getMessaging(app)); } catch (e) { } }
+  if (Local.push) { delete Local.push.token; delete Local.push.tokenUid; saveLocal(); }
+}
+function noteSignedIn() { if (noteHere()) notePushToken().catch(() => { }); noteQueue(500); }
+
+/* --- what to remind you about, for the next two weeks --- */
+function atTime(day, hhmm) { const d = parseYMD(day); const m = toMin(hhmm || '00:00'); d.setHours(Math.floor(m / 60), m % 60, 0, 0); return d.getTime(); }
+function noteItems(from) {
+  const c = noteCfg(), start = from == null ? Date.now() : from, until = Date.now() + 14 * 86400000, out = [];
+  const w = W();
+  if (on('tasks')) openTasks().forEach(t => {
+    if (!t.due) return;
+    const cl = cls(t.classId);
+    const what = c.names ? t.title + (cl ? ' (' + cl.name + ')' : '') : 'You have ' + w.taskAn;
+    const when = t.dueTime ? ' at ' + t.dueTime : '';
+    const big = (t.priority || 0) >= 3 || /\b(test|exam|quiz|midterm|final|project|essay|paper|presentation)s?\b/i.test(t.title || '');
+    if (c.eve) out.push({ at: atTime(addDays(t.due, -1), c.eveAt), title: 'Due tomorrow' + when, body: c.names ? what : what + ' due tomorrow.', tag: 'd1-' + t.id + '-' + t.due });
+    if (c.morn) out.push({ at: atTime(t.due, c.mornAt), title: 'Due today' + when, body: c.names ? what : what + ' due today.', tag: 'd0-' + t.id + '-' + t.due });
+    if (c.big && big) out.push({ at: atTime(addDays(t.due, -3), c.eveAt), title: 'Coming up in 3 days', body: c.names ? what : 'A test or big project is 3 days away.', tag: 'd3-' + t.id + '-' + t.due });
+  });
+  if (c.cards && on('cards') && S.decks.length) {
+    for (let i = 0; i < 8; i++) {
+      const day = addDays(today(), i);
+      const n = S.decks.reduce((a, d) => a + d.cards.filter(x => !x.due || x.due <= day).length, 0);
+      if (n) out.push({ at: atTime(day, c.cardsAt), title: 'Flashcards to review', body: n + (n === 1 ? ' card is' : ' cards are') + ' ready. A few minutes keeps them fresh.', tag: 'cards-' + day });
+    }
+  }
+  return out.filter(x => x.at > start && x.at <= until).sort((a, b) => a.at - b.at).slice(0, 80);
+}
+function noteQueue(ms) { clearTimeout(NOTE.push); NOTE.push = setTimeout(notePush, ms == null ? 4000 : ms); }
+/* Written only when the list actually changes. */
+async function notePush() {
+  if (!ACC.user || !cLinked()) return;
+  const items = noteWanted() ? noteItems() : [];
+  const h = JSON.stringify(items);
+  if (h === NOTE.lastHash) return;
+  try {
+    const fb = await fbStore();
+    await fb.F.setDoc(fb.F.doc(fb.db, 'reminders', ACC.user.uid), { items: h, next: items.length ? items[0].at : 4102444800000, tz: svTZ(), at: Date.now(), v: 1 }, { merge: true });
+    NOTE.lastHash = h;
+  } catch (e) { }
+}
+/* While ATLAS is open on a device without push, it shows them itself. */
+function noteLocalStart() { if (!NOTE.local) { NOTE.local = setInterval(noteLocalTick, 30000); setTimeout(noteLocalTick, 1500); } }
+function noteLocalTick() {
+  if (!noteHere() || !noteWanted()) return;
+  if (Local.push.token && ACC.user) return;                /* the push service has these */
+  const now = Date.now(), shown = Local.push.shown || (Local.push.shown = {});
+  noteItems(now - 15 * 60000).filter(x => x.at <= now && !shown[x.tag]).forEach(x => { shown[x.tag] = now; noteShow(x.title, x.body, x.tag); });
+  Object.keys(shown).forEach(k => { if (shown[k] < now - 172800000) delete shown[k]; });
+  saveLocal();
+}
+function noteTimer(wasFocus) {
+  if (!noteHere() || noteCfg().timer === false || document.visibilityState === 'visible') return;
+  noteShow(wasFocus ? 'Focus session done' : 'Break\'s over', wasFocus ? 'Nice work. Take ' + S.settings.pomodoro.short + ' minutes.' : 'Back to it whenever you\'re ready.', 'atlas-timer');
+}
+
+/* --- the Reminders sheet --- */
+function noteSheet() {
+  const c = noteCfg(), here = noteHere(), perm = notePerm();
+  const push = !!(here && Local.push.token && ACC.user);
+  const tick = (k, label, time) => '<div class="nrow"><label class="check"><input type="checkbox" data-nk="' + k + '"' + (c[k] ? ' checked' : '') + '><span>' + label + '</span></label>' +
+    (time ? '<input type="time" data-nt="' + time + '" value="' + esc(c[time]) + '" aria-label="Time">' : '') + '</div>';
+  let state;
+  if (here) state = '<div class="nstate on"><span class="sdot"></span><div style="flex:1"><b>On for this device</b><span class="t">' +
+    (push ? 'They reach you even when ATLAS is closed.' : !ACC.user ? 'While ATLAS is open. Sign in to get them when it\'s closed too.' : !ATLAS_CONFIG.vapidKey ? 'While ATLAS is open.' : 'While ATLAS is open. Connecting push for when it\'s closed…') +
+    '</span></div><button class="btn sm" data-act="noteOff">Turn off</button></div>';
+  else state = '<div class="nstate off"><span class="sdot"></span><div style="flex:1"><b>Off on this device</b><span class="t">' +
+    (perm === 'denied' ? 'Notifications are blocked for ATLAS in this browser\'s site settings.' : isIOS() && !isStandalone() ? 'On iPhone and iPad, add ATLAS to your Home Screen first.' : noteWanted() ? 'Reminders are on for your account. Turn them on here too.' : 'Your browser will ask once.') +
+    '</span></div><button class="btn p sm" data-act="noteOn">Turn on</button></div>';
+  modal({
+    title: 'Reminders', wide: true,
+    body: state +
+      '<div class="eyebrow" style="margin:4px 0 2px">Remind me about</div>' +
+      (on('tasks') ? tick('eve', 'Anything due tomorrow, the evening before at', 'eveAt') + tick('morn', 'Anything due today, in the morning at', 'mornAt') + tick('big', 'Tests and big projects, 3 days ahead') : '') +
+      (on('cards') ? tick('cards', 'Flashcards ready to review, each day at', 'cardsAt') : '') +
+      (on('focus') ? tick('timer', 'The end of a focus session or break, when ATLAS is in the background') : '') +
+      tick('names', 'Show what\'s due in the notification (turn off to keep it private on your lock screen)') +
+      '<p class="dim" style="font-size:12px;margin:12px 0 0">The times follow your account to every device. Each device asks for its own permission. ' +
+      '<a href="privacy.html#reminders" target="_blank" rel="noopener">How reminders work</a></p>',
+    foot: (here ? '<button class="btn" data-act="noteTest">Send a test</button>' : '') + '<span class="spacer"></span><button class="btn p" data-close>Done</button>'
+  });
+  onModal(e => {
+    const k = e.target.closest('[data-nk]'); if (k && k.tagName === 'INPUT') setTimeout(() => noteSet(k.dataset.nk, k.checked), 0);
+  });
+  $$('[data-nt]').forEach(i => i.addEventListener('change', () => { if (i.value) noteSet(i.dataset.nt, i.value); }));
 }
 
 /* --- Deck detail --- */
@@ -3808,7 +5413,7 @@ function viewDeck(id) {
   const c = cls(d.classId), due = dueCards(d).length;
   const rows = d.cards.length ? d.cards.map((card, i) =>
     '<div class="item"><div style="flex:1;min-width:0"><div class="ttl">' + esc(card.front) + '</div><div class="meta">' + esc(card.back) + '</div></div>' +
-    '<span class="chip" title="Next review">' + (card.due && card.due > today() ? 'in ' + daysBetween(today(), card.due) + 'd' : 'due') + '</span>' +
+    (card.due && card.due > today() ? '<span class="chip" title="Next review ' + esc(card.due) + '">Due ' + (daysBetween(today(), card.due) === 1 ? 'tomorrow' : 'in ' + daysBetween(today(), card.due) + ' days') + '</span>' : '<span class="chip w" title="Ready to review">Due now</span>') +
     '<button class="btn g sm" data-act="editCard" data-id="' + d.id + '" data-i="' + i + '">Edit</button>' +
     '<button class="btn g sm dg" data-act="delCard" data-id="' + d.id + '" data-i="' + i + '">✕</button></div>').join('')
     : '<div class="empty"><h3>Empty deck</h3><p>Add cards one at a time with the + button, or paste a whole term list.</p><button class="btn" data-act="pasteCards" data-id="' + d.id + '">Paste a list</button></div>';
@@ -3818,7 +5423,14 @@ function viewDeck(id) {
     '<span class="spacer"></span>' +
     (d.cards.length ? '<button class="btn p sm" data-act="reviewDeck" data-id="' + d.id + '">Review ' + (due ? due + ' due' : 'all') + '</button>' : '') +
     '<button class="btn sm" data-act="deckMenu" data-id="' + d.id + '" aria-label="More deck actions" aria-haspopup="menu">' + ic('dots') + '</button></div>' +
+    (aiReady() ? '<form class="adjust" id="adjForm" data-id="' + d.id + '">' + ic('wand') + '<input type="text" id="adjIn" autocomplete="off" aria-label="Tell the AI how to change this deck" placeholder="' +
+      (d.cards.length ? 'Tell the AI what to change: “shorter answers”, “add 5 cards on mitosis”, “make it harder”…' : 'Tell the AI what cards to make: “15 cards on the French Revolution”…') + '">' +
+      '<button class="btn p sm" type="submit">' + (d.cards.length ? 'Change' : 'Make') + '</button></form>' : '') +
     '<div class="card"><div class="list">' + rows + '</div></div></div>';
+}
+function mountDeck() {
+  const f = $('#adjForm'); if (!f) return;
+  f.addEventListener('submit', e => { e.preventDefault(); const i = $('#adjIn'); deckAdjust(f.dataset.id, i.value, $('[type="submit"]', f)); });
 }
 
 /* ---------- 8. actions ---------- */
@@ -4065,6 +5677,59 @@ const ACT = {
 
   /* AI enhancements — one shot each, no conversation */
   aiSetup: () => aiSetupSheet(),
+  tutor: () => {
+    const n = V.name === 'notes' && S.notes.find(x => x.id === V.sub);
+    if (!n) return go('tutor');
+    commitNote();
+    const c = tutorNew(n.classId, n.id);
+    go('tutor', c.id);
+  },
+  tutorNew: () => { const c = tutorNew(); go('tutor', c.id); },
+  tutorOpen: el => go('tutor', el.dataset.id),
+  tutorSend: () => tutorSend(),
+  tutorSug: el => { const t = $('#chatIn'); if (t) { t.value = el.dataset.t + ' '; t.focus(); t.dispatchEvent(new Event('input')); } },
+  tutorList: el => togglePop(el, [{ act: 'tutorNew', icon: 'plus', label: 'New chat' }, '-'].concat(S.chats.slice().sort((a, b) => (b.updated || 0) - (a.updated || 0)).slice(0, 12)
+    .map(c => ({ act: 'tutorOpen', icon: 'chat', label: c.title || 'New chat', data: { id: c.id } })))),
+  tutorMenu: el => togglePop(el, [
+    { act: 'tutorRename', icon: 'pencil', label: 'Rename', data: { id: el.dataset.id } },
+    { act: 'tutorDel', icon: 'trash', label: 'Delete chat', data: { id: el.dataset.id }, danger: true }
+  ]),
+  tutorRename: el => {
+    const c = tutorChat(el.dataset.id); if (!c) return;
+    modal({ title: 'Rename chat', body: '<label class="f"><span>Name</span><input type="text" id="tcName" value="' + esc(c.title || '') + '"></label>',
+      onOk: () => { c.title = $('#tcName').value.trim() || c.title; c.updated = Date.now(); save(); render(); } });
+  },
+  tutorDel: el => {
+    const c = tutorChat(el.dataset.id); if (!c) return;
+    confirmAsk('Delete this chat?', '"' + (c.title || 'New chat') + '" and its messages are removed from every device.', () => {
+      S.chats = S.chats.filter(x => x.id !== c.id); save(true); go('tutor');
+    }, true);
+  },
+  acctOpen: () => { closeModal(); openGate({ back: true }); },
+  acctMenu: () => accountSheet(),
+  acctSyncNow: async el => {
+    if (el) el.disabled = true;
+    if (!ACC.user) { try { await acctStart(); } catch (e) { } }
+    const ch = await cSync({ silent: true, force: false });
+    toast(ACC.err ? ACC.err : ch ? 'Caught up from your account' : 'Everything is in sync', !!ACC.err);
+    if ($('.modal')) accountSheet();
+  },
+  acctVerify: async el => {
+    if (el) el.disabled = true;
+    try { const fb = await fbAuth(); if (!ACC.user) throw new Error('Connecting to your account. Try again in a moment.'); await sendLink('verify', o => o ? fb.A.sendEmailVerification(ACC.user, o) : fb.A.sendEmailVerification(ACC.user)); toast('Sent. Check your inbox.'); }
+    catch (e) { toast(authErr(e), true); }
+  },
+  acctOut: () => acctOutSheet(),
+  acctDelete: () => acctDeleteSheet(),
+  pwChange: () => pwChangeSheet(),
+  pwEye: el => { const i = $('#' + el.dataset.for); if (!i) return; const show = i.type === 'password'; i.type = show ? 'text' : 'password'; el.setAttribute('aria-pressed', String(show)); },
+  lockSheet: () => lockSheet(),
+  noteSheet: () => noteSheet(),
+  noteOn: async () => { if (await noteEnable()) setTimeout(noteSheet, 300); else if ($('.modal')) noteSheet(); },
+  noteOff: async () => { await noteDisable(false); toast('Reminders are off on this device'); noteSheet(); },
+  noteOffAll: async () => { await noteDisable(true); toast('Reminders are off'); noteSheet(); },
+  noteTest: () => noteShow('A test reminder', 'This is how ATLAS reminders look on this device.', 'atlas-test'),
+  driveImport: el => driveImport(el),
   aiNote: (el) => {
     const n = S.notes.find(x => x.id === V.sub); if (!n) return;
     const body = $('#noteBody') ? $('#noteBody').value.trim() : (n.body || '').trim();
@@ -4272,22 +5937,9 @@ const ACT = {
       setTimeout(() => { if (GATE.open) { GATE.note = ''; paintGate(); } else accountSheet(); }, 0);
     }
   }),
-  gSignIn: async el => {
-    if (!gConfigured()) return ACT.gSetup();
-    const old = el ? el.innerHTML : ''; if (el) { el.disabled = true; }
-    try {
-      await gSignIn();
-      toast('Signed in as ' + (Local.gUser ? Local.gUser.email : 'you'));
-      if ($('.modal')) accountSheet();
-    } catch (e) { toast(e.message, true); if (el && el.isConnected) { el.disabled = false; el.innerHTML = old; } }
-  },
-  gSyncNow: async el => {
-    if (el) el.disabled = true;
-    const ch = await gSync({ interactive: true });
-    if (!G.err) toast(ch ? 'Caught up from your Google account' : 'Everything is in sync');
-    if ($('.modal')) accountSheet();
-  },
-  gOut: async () => { await gDisconnect(); Local.gSkip = false; saveLocal(); closeModal(); openGate(); toast('Signed out of Google. Your work stays in this browser.'); },
+  gSignIn: () => { closeModal(); openGate({ back: true }); },
+  gSyncNow: el => ACT.acctSyncNow(el),
+  gOut: () => acctOutSheet(),
   calMenu: el => togglePop(el, [
     on('tasks') && { act: 'planWeek', icon: 'wand', label: 'Plan study time' },
     { act: 'importICS', icon: 'down', label: 'Import a calendar' },
@@ -4302,6 +5954,7 @@ const ACT = {
   studyMenu: el => {
     if (!aiReady()) return aiSetupSheet();
     togglePop(el, [
+      on('tutor') && { act: 'tutor', icon: 'chat', label: 'Ask the tutor about this page' },
       { act: 'aiNote', icon: 'wand', label: 'Summarize', data: { mode: 'summary' } },
       on('cards') && { act: 'aiNote', icon: 'cards', label: 'Make flashcards', data: { mode: 'cards' } },
       { act: 'aiNote', icon: 'tasks', label: 'Quiz me', data: { mode: 'quiz' } },
@@ -4333,7 +5986,12 @@ const ACT = {
       });
   },
   syncNow: async () => { setStatus('syncing'); const ch = await pull({ force: true, silent: true }); await flush(); toast(ch ? 'Caught up' : 'Already up to date'); },
-  switchProf: el => { closeModal(); switchProfile(el.dataset.id); },
+  switchProf: el => {
+    const links = (Sync.index && Sync.index.links) || {};
+    const owner = Object.keys(links).find(u => links[u] === el.dataset.id);
+    if (owner && !(Local.acct && Local.acct.uid === owner)) { toast('That desk belongs to an account. Sign in to it to open it.', true); return; }
+    closeModal(); switchProfile(el.dataset.id);
+  },
   addProf: () => modal({
     title: 'New profile', body: '<label class="f"><span>Name it</span><input type="text" id="pfName" placeholder="Spring term"></label>' +
       '<p class="dim" style="font-size:12.5px;margin:0">A profile is its own school desk — separate classes, notes and cards. Your current one stays exactly as it is.</p>',
@@ -4344,6 +6002,8 @@ const ACT = {
     closeModal();
     confirmAsk('Delete ' + p.name + '?', 'Everything saved under that profile is removed. This one is untouched.', async () => {
       Sync.index.profiles = Sync.index.profiles.filter(x => x.id !== p.id);
+      const links = Sync.index.links || {};
+      Object.keys(links).forEach(u => { if (links[u] === p.id) delete links[u]; });
       await sset(IDX, Sync.index).catch(() => { });
       try { await Drv.del(dbKey(p.id)); await Drv.del(dbKey(p.id) + '.bak'); await Drv.del(snapKey(p.id)); } catch (e) { }
       toast('Deleted ' + p.name); render();
@@ -4581,7 +6241,22 @@ function paintTimer() {
     const c = 2 * Math.PI * 120;
     ring.style.strokeDasharray = c; ring.style.strokeDashoffset = c * (1 - (total - T.left) / total);
   }
+  const zt = $('#zenToggle'); if (zt) zt.textContent = T.running ? 'Pause' : 'Start';
+  const zl = $('#zenLabel'); if (zl) zl.textContent = T.mode === 'focus' ? 'Focus' : 'Break';
+  const zs = $('#zenSkip'); if (zs) zs.textContent = T.mode === 'focus' ? 'Skip to break' : 'Skip break';
   document.title = T.running ? txt + ' — ATLAS' : 'ATLAS — your school desk';
+}
+function resetTimer() {
+  if (T.running) { clearInterval(T.tick); T.running = false; T.endAt = null; logPartial(); }
+  T.left = (T.mode === 'focus' ? S.settings.pomodoro.focus : S.settings.pomodoro.short) * 60;
+  paintTimer();
+}
+function skipTimer() {
+  if (T.running) { clearInterval(T.tick); T.running = false; T.endAt = null; logPartial(); }
+  ambienceStop();
+  T.mode = T.mode === 'focus' ? 'break' : 'focus';
+  T.left = (T.mode === 'focus' ? S.settings.pomodoro.focus : S.settings.pomodoro.short) * 60;
+  paintTimer();
 }
 function toggleTimer() {
   T.running = !T.running;
@@ -4618,6 +6293,7 @@ function finishSession() {
   T.left = (T.mode === 'focus' ? S.settings.pomodoro.focus : S.settings.pomodoro.short) * 60;
   paintTimer();
   beep();
+  noteTimer(wasFocus);
   toast(wasFocus ? 'Session logged — take ' + S.settings.pomodoro.short + ' minutes' : 'Break over — back to it');
   if ($('#zenTime')) { const l = $('#zenLabel'); if (l) l.textContent = T.mode === 'focus' ? 'Focus' : 'Break'; }
   if (V.name === 'today') render();
@@ -4638,18 +6314,27 @@ function openZen() {
   const opts = openTasks().slice(0, 12);
   $('#overlay').innerHTML = '<div class="zen"><div>' +
     '<div class="eyebrow" id="zenLabel" style="margin-bottom:10px">' + (T.mode === 'focus' ? 'Focus' : 'Break') + '</div>' +
-    '<svg class="ring" width="270" height="270" viewBox="0 0 270 270" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-90deg)">' +
+    '<div class="zen-dial"><svg class="ring" viewBox="0 0 270 270">' +
     '<circle cx="135" cy="135" r="120" stroke="var(--rule)"/><circle id="zenRing" cx="135" cy="135" r="120" stroke="var(--ultra)"/></svg>' +
-    '<div class="big" id="zenTime" style="position:relative">25:00</div>' +
+    '<div class="big" id="zenTime">25:00</div></div>' +
+    (T.running ? '' : '<div class="zen-presets" id="zenPresets">' + [15, 25, 45, 60].map(m => '<button class="btn sm' + (S.settings.pomodoro.focus === m && T.mode === 'focus' ? ' p' : '') + '" data-zen-min="' + m + '">' + m + ' min</button>').join('') + '</div>') +
     '<div class="row" style="margin-top:22px;justify-content:center">' +
     '<select id="zenTask" style="width:auto;max-width:260px"><option value="">Not tied to an assignment</option>' +
     opts.map(t => '<option value="' + t.id + '"' + (T.taskId === t.id ? ' selected' : '') + '>' + esc(t.title) + '</option>').join('') + '</select></div>' +
     '<div class="row" style="justify-content:center;gap:10px;margin-top:16px">' +
     '<button class="btn p" id="zenToggle">' + (T.running ? 'Pause' : 'Start') + '</button>' +
+    '<button class="btn" id="zenReset">Reset</button>' +
+    '<button class="btn" id="zenSkip">' + (T.mode === 'focus' ? 'Skip to break' : 'Skip break') + '</button>' +
     '<button class="btn" data-act="closeZen">Close</button></div>' +
     '<p class="dim" style="font-size:12px;margin-top:18px">Time counts toward the assignment you pick and your streak.</p>' +
     '</div></div>';
-  $('#zenToggle').addEventListener('click', () => { toggleTimer(); $('#zenToggle').textContent = T.running ? 'Pause' : 'Start'; });
+  $('#zenToggle').addEventListener('click', () => { toggleTimer(); const p = $('#zenPresets'); if (p && T.running) p.remove(); });
+  $('#zenReset').addEventListener('click', () => { resetTimer(); openZen(); });
+  $('#zenSkip').addEventListener('click', () => { skipTimer(); openZen(); });
+  $$('[data-zen-min]').forEach(b => b.addEventListener('click', () => {
+    S.settings.pomodoro.focus = +b.dataset.zenMin; save(true);
+    T.mode = 'focus'; T.left = S.settings.pomodoro.focus * 60; openZen();
+  }));
   $('#zenTask').addEventListener('change', e => {
     T.taskId = e.target.value || null;
     const t = S.tasks.find(x => x.id === T.taskId);
@@ -4675,6 +6360,9 @@ function openPalette() {
   if (on('calendar')) items.push({ t: 'Export to Google Calendar', s: 'Command', act: () => ACT.exportICS() });
   if (on('focus')) items.push({ t: 'Start a focus session', s: 'Command', act: () => openZen() });
   items.push({ t: 'Change the theme', s: 'Command', act: () => themeGallery() });
+  if (on('tutor')) items.push({ t: 'Ask the AI tutor', s: 'Command', act: () => go('tutor') });
+  items.push({ t: 'Reminders', s: 'Command', act: () => noteSheet() });
+  items.push({ t: 'Device lock', s: 'Command', act: () => lockSheet() });
   items.push({ t: 'Personalize ATLAS', s: 'Command, retake the setup', act: () => openSurvey({}) });
   items.push({ t: 'Your account and progress', s: 'Command', act: () => accountSheet() });
   if (aiReady() && (on('notes') || on('cards'))) items.push({ t: 'Explain a topic', s: 'AI study tool', act: () => ACT.aiExplain() });
@@ -4719,43 +6407,6 @@ function ago(ts) {
   if (d < 86400000) return Math.round(d / 3600000) + ' hr ago';
   return new Date(ts).toLocaleDateString();
 }
-function accountSheet() {
-  const u = Local.gUser, signed = gSignedIn(), known = gKnown();
-  const name = (known && u.full) || S.profile.name || (Sync.profile && Sync.profile.name) || 'You';
-  let gblock;
-  if (!gConfigured()) {
-    gblock = '<div class="gnote"><b>Use ATLAS on all your devices</b><span>Google sign-in is not switched on for this copy of ATLAS yet, so your work is saved in this browser only.</span>' +
-      '<button class="linkbtn" data-act="gSetup">I host this copy and want to switch it on</button></div>';
-  } else if (!known) {
-    gblock = '<div class="gnote"><b>Use ATLAS on all your devices</b><span>Sign in with your Google account and your desk syncs through a private ATLAS folder in your Google Drive that only ATLAS can see. Free.</span>' + gButton('gSignIn', 'Sign in with Google') + '</div>';
-  } else if (Sync.index && Sync.index.gProfile && !gLinked()) {
-    const other = (Sync.index.profiles.find(p => p.id === Sync.index.gProfile) || {}).name || 'another profile';
-    gblock = '<div class="gnote"><b>This profile stays on this device</b><span>Your Google-synced desk is ' + esc(other) + '.</span><button class="btn sm" data-act="switchProf" data-id="' + Sync.index.gProfile + '">Open it</button></div>';
-  } else {
-    const st = G.err ? 'bad' : signed ? '' : 'paused';
-    gblock = '<div class="gstate ' + st + '"><span class="sdot"></span><div style="flex:1;min-width:0"><b>' + (G.err ? 'Sync needs attention' : signed ? 'Synced with Google' : 'Sync paused') + '</b>' +
-      '<span class="t">' + esc(G.err || (signed ? (G.lastSync ? 'Last synced ' + ago(G.lastSync) + '.' : 'Syncing now.') : 'Your work is saved here. Sync now to catch up with your other devices.')) + '</span></div>' +
-      '<button class="btn sm" data-act="gSyncNow" data-gauth>Sync now</button></div>';
-  }
-  const k = streak(), best = bestStreak(), total = S.sessions.reduce((a, x) => a + x.minutes, 0);
-  const reviews = S.decks.reduce((a, d) => a + d.cards.reduce((b, c) => b + (c.reps || 0), 0), 0);
-  const fig = (v, l) => '<div class="fig"><b>' + v + '</b><span>' + l + '</span></div>';
-  const got = earned().map(b => b.id);
-  modal({
-    title: 'You',
-    foot: (known ? '<button class="btn g" data-act="gOut">Sign out of Google</button>' : '') + '<span class="spacer"></span><button class="btn p" data-close>Done</button>',
-    body: '<div class="you-head"><span class="ava big">' + avatarHTML() + '</span><div style="min-width:0"><b>' + esc(name) + '</b><span class="em">' + esc(known ? u.email : 'Not signed in') + '</span></div></div>' + gblock +
-      (on('focus') || S.sessions.length ? '<div class="figs">' + fig(k, 'day streak') + fig(best, 'best streak') + fig(dur(total), 'focused in total') + (on('cards') ? fig(reviews, 'cards reviewed') : '') + '</div>' + heatmap(true) : '') +
-      (S.settings.celebrate !== false ? '<div class="eyebrow" style="margin:16px 0 8px">Badges, ' + got.length + ' of ' + BADGES.length + ' earned</div><div class="bgrid sm">' +
-        BADGES.slice().sort((a, b) => (got.indexOf(b.id) >= 0) - (got.indexOf(a.id) >= 0)).map(b => '<div class="badge' + (got.indexOf(b.id) >= 0 ? ' on' : '') + '" title="' + esc(b.hint) + '"><span class="bi">' + b.icon + '</span><b>' + esc(b.name) + '</b></div>').join('') + '</div>' : '')
-  });
-}
-/* Google's own button style, so people recognise what it does. */
-const GLOGO = '<path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>';
-function gButton(act, label, extra) {
-  return '<button class="gbtn" data-act="' + act + '" data-gauth' + (extra || '') + '><svg viewBox="0 0 48 48" aria-hidden="true">' + GLOGO + '</svg><span>' + esc(label) + '</span></button>';
-}
-
 /* ============================================================
    Setup. A short survey that builds the desk around the person:
    which tabs exist, what Today opens with, the words ATLAS uses,
@@ -4773,11 +6424,12 @@ const MODULES = [
   { id: 'tasks', icon: 'tasks', name: 'Deadlines', blurb: 'Everything due in one list, most urgent first.' },
   { id: 'notes', icon: 'book', name: 'Notebooks', blurb: 'A notebook for every class that saves as you type.' },
   { id: 'cards', icon: 'cards', name: 'Flashcards', blurb: 'Cards that come back right before you would forget them.' },
+  { id: 'tutor', icon: 'chat', name: 'AI tutor', blurb: 'A study partner that walks you to the answer instead of handing it over.' },
   { id: 'grades', icon: 'chart', name: 'Grades', blurb: 'Log scores, see where you stand, know what you need on the final.' },
   { id: 'focus', icon: 'timer', name: 'Focus timer', blurb: 'A timer, background sound and a streak to keep you going.' },
   { id: 'break', icon: 'play', name: 'Break room', blurb: 'Two quiet, turn-based games for a breather.' }
 ];
-const VIEW_MOD = { calendar: 'calendar', tasks: 'tasks', notes: 'notes', cards: 'cards', review: 'cards', grades: 'grades', break: 'break' };
+const VIEW_MOD = { calendar: 'calendar', tasks: 'tasks', notes: 'notes', cards: 'cards', review: 'cards', tutor: 'tutor', grades: 'grades', break: 'break' };
 const HOMES = {
   schedule: { need: 'calendar', icon: 'calendar', name: 'My day', blurb: 'Classes and study blocks on a timeline.' },
   due: { need: 'tasks', icon: 'tasks', name: 'What\'s due', blurb: 'The next deadlines, most urgent first.' },
@@ -4874,9 +6526,9 @@ function svDefaults() {
   const s = S.settings, tz = svTZ();
   const b = s.buffer == null ? 1 : +s.buffer;
   return {
-    name: S.profile.name || (gKnown() && Local.gUser.name) || '',
+    name: S.profile.name || (Local.acct && Local.acct.name) || '',
     level: LEVELS[s.level] ? s.level : null,
-    modules: Object.assign({ calendar: true, tasks: true, notes: true, cards: true, grades: true, focus: true, break: true }, s.modules || {}),
+    modules: Object.assign({ calendar: true, tasks: true, notes: true, cards: true, tutor: true, grades: true, focus: true, break: true }, s.modules || {}),
     home: s.home || 'schedule',
     rhythm: rhythmFromPomodoro(s.pomodoro),
     clock: clockFromDay(s.dayStart, s.dayEnd),
@@ -5015,7 +6667,7 @@ function svStepHtml(step, a) {
     case 'hello': {
       const pts = [['clock', 'About a minute', 'A handful of questions, most of them one tap.'], ['gear', 'Nothing is permanent', 'Every answer can be changed later in Settings.']];
       pts.push(hasData ? ['check', 'Nothing gets deleted', 'Your classes, notes and cards stay exactly as they are.']
-        : gKnown() ? ['check', 'Synced with Google', 'Everything you set up here follows you to your other devices.'] : ['check', 'Yours, and free', 'Saved in this browser. Sign in with Google any time from your avatar to sync your devices.']);
+        : acctKnown() ? ['check', 'Synced to your account', 'Everything you set up here follows you to your other devices.'] : ['check', 'Yours, and free', 'Saved in this browser. Make a free account any time from your avatar to sync your devices.']);
       return head('Welcome', 'Let\'s build your ATLAS.', 'Nobody studies the same way, so your desk should not look like everyone else\'s. Answer a few quick questions and ATLAS sets up its tabs, its words, your focus rhythm and its look around how you actually work.') +
         '<div class="sv-points">' + pts.map(p => '<div class="sv-point"><span class="ico">' + ic(p[0]) + '</span><div><b>' + p[1] + '</b><span>' + p[2] + '</span></div></div>').join('') + '</div>';
     }
@@ -5067,8 +6719,8 @@ function svStepHtml(step, a) {
           '<span>Or skip this and explore with a sample term — four classes, a few assignments and a deck. Erase it any time.</span></label>' : '');
     }
     case 'look': {
-      const list = SV_THEMES.indexOf(a.theme) >= 0 ? SV_THEMES : [a.theme].concat(SV_THEMES.slice(0, SV_THEMES.length - 1));
-      return head('The look', 'Pick a look.', 'Tap one to try it on — the whole screen changes. All ' + THEMES.length + ' themes, plus fonts and accents, are in Settings.') +
+      const list = SV_THEMES.concat(THEMES.map(t => t.id).filter(id => SV_THEMES.indexOf(id) < 0));
+      return head('The look', 'Pick a look.', 'Tap one to try it on — the whole screen changes. All ' + THEMES.length + ' are here; fonts and accents are in Settings.') +
         '<div class="sv-themes">' + list.map(id => svThemeTile(themeById(id), a.theme === id)).join('') + '</div>' +
         '<div class="sv-group" style="margin-top:22px"><span class="eyebrow">How much on screen</span><div class="seg">' +
         [['cozy', 'Roomy'], ['normal', 'Balanced'], ['compact', 'Compact']].map(d => '<button class="' + (a.density === d[0] ? 'on' : '') + '" data-sv-den="' + d[0] + '">' + d[1] + '</button>').join('') + '</div></div>' +
@@ -5077,7 +6729,7 @@ function svStepHtml(step, a) {
     }
     case 'done': {
       const p = personaFor(a), r = RHYTHMS[a.rhythm], c = CLOCKS[a.clock];
-      const tabs = ['today'].concat(['calendar', 'tasks', 'notes', 'cards', 'grades', 'break'].filter(v => a.modules[VIEW_MOD[v]])).concat(['settings']);
+      const tabs = ['today'].concat(['calendar', 'tasks', 'notes', 'cards', 'tutor', 'grades', 'break'].filter(v => a.modules[VIEW_MOD[v]])).concat(['settings']);
       const nCls = S.classes.length + a.classes.length;
       const rows = [['Tabs', tabs.map(n => '<span class="chip">' + esc(n === 'tasks' ? w.taskP : VIEWS[n].title) + '</span>').join('')]];
       if (svHomes(a).length) rows.push(['Opens on', esc(HOMES[svHomes(a).indexOf(a.home) >= 0 ? a.home : svHomes(a)[0]].name)]);
@@ -5105,7 +6757,7 @@ function svFoot(step, a) {
 function svPreview(a) {
   const w = W(a.level), m = a.modules, steps = svSteps(a);
   const main = ['today'].concat(['calendar', 'tasks', 'notes'].filter(v => m[VIEW_MOD[v]]));
-  const tools = ['cards', 'grades', 'break'].filter(v => m[VIEW_MOD[v]]).concat(['settings']);
+  const tools = ['cards', 'tutor', 'grades', 'break'].filter(v => m[VIEW_MOD[v]]).concat(['settings']);
   const nav = (n, i) => '<div class="pv-n' + (n === 'today' ? ' on' : '') + '" style="animation-delay:' + (i * 30) + 'ms">' + ic(VIEWS[n].icon) + '<span>' + esc(n === 'tasks' ? w.taskP : VIEWS[n].title) + '</span></div>';
   let classes = S.classes.map(c => [c.name, c.color]).concat(a.classes.map((n, i) => [n, PALETTE[(S.classes.length + i) % PALETTE.length]]));
   if (!classes.length && a.sample) classes = [['Biology', PALETTE[3]], ['US History', PALETTE[2]], ['Calculus', PALETTE[0]], ['Spanish III', PALETTE[1]]];
@@ -5233,85 +6885,6 @@ function setupSettings() {
     row('Celebrate wins', 'Badges, a streak and a little confetti.', '<input type="checkbox" data-act="setCelebrate"' + (s.celebrate !== false ? ' checked' : '') + ' aria-label="Celebrate wins">');
 }
 
-/* ============================================================
-   The first screen. Whoever opens ATLAS — on a site, as an
-   installed app, anywhere — is greeted by Google sign-in before
-   anything else. Signed in once, a browser goes straight to the
-   desk after that. "Use without an account" is the one way past
-   it without Google, and the browser remembers that choice.
-   ============================================================ */
-const GATE = { open: false, note: '' };
-const GATE_TABS = [['Biology', 'Lab report due Thursday'], ['Calculus', 'Problem set 6'], ['World History', 'Essay outline'], ['Spanish', '12 cards to review'], ['Chemistry', 'Midterm in 9 days'], ['Literature', 'Read ch. 12']];
-function needGate() { return !gKnown() && !Local.gSkip; }
-function openGate() {
-  if (GATE.open) return paintGate();
-  closeModal();
-  GATE.open = true; GATE.note = '';
-  const el = document.createElement('div');
-  el.id = 'gate'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-labelledby', 'gateTitle');
-  el.innerHTML = '<div class="gate-main"></div><div class="gate-art" aria-hidden="true">' + GATE_TABS.map((t, i) => '<div class="gtab" style="--tc:' + PALETTE[i % PALETTE.length] + ';top:' + (13 + i * 12.5) + '%;width:' + (66 + (i % 3) * 8) + '%;animation-delay:' + (120 + i * 70) + 'ms">' +
-    '<span>' + t[0] + '<small>' + t[1] + '</small></span></div>').join('') + '</div>';
-  document.body.appendChild(el);
-  el.addEventListener('click', gateClick);
-  paintGate();
-  if (gConfigured()) gLoadScript().catch(() => { });
-  /* Everything behind is inert: it cannot be tapped or tabbed to, so the first Tab lands on Google's button. */
-  ['#app', '#mobnav'].forEach(q => { const n = $(q); if (n) n.inert = true; });
-}
-function paintGate() {
-  const el = $('#gate .gate-main'); if (!el) return;
-  const busy = GATE.busy;
-  el.innerHTML = '<div class="gate-in">' +
-    '<div class="gate-strip" aria-hidden="true">' + PALETTE.slice(0, 6).map(c => '<i style="--tc:' + c + '"></i>').join('') + '</div>' +
-    '<div class="gate-mark"><div class="mark">A</div><b>ATLAS</b></div>' +
-    '<h1 id="gateTitle">Every class, deadline and note on one desk.</h1>' +
-    '<p class="gate-lead">Sign in with your Google account and ATLAS keeps your desk in sync on your phone, your laptop and anywhere else you open it.</p>' +
-    '<button class="gbtn" data-gate="google" data-gauth' + (busy ? ' disabled' : '') + '><svg viewBox="0 0 48 48" aria-hidden="true">' + GLOGO + '</svg><span>' + (busy ? 'Opening Google…' : 'Sign in with Google') + '</span></button>' +
-    '<p class="gate-fine">Free. ATLAS keeps your desk in a private folder in your Google Drive that only ATLAS can see. It never opens your other files. <a href="privacy.html" target="_blank" rel="noopener">Privacy</a></p>' +
-    (GATE.note ? '<div class="gate-note" role="alert">' + GATE.note + '</div>' : '') +
-    '<div class="gate-skip">No Google account? <button data-gate="skip">Use ATLAS without one</button>. Your work stays in this browser.</div>' +
-    '</div>';
-}
-function closeGate() {
-  const el = $('#gate');
-  GATE.open = false; GATE.busy = false;
-  ['#app', '#mobnav'].forEach(q => { const n = $(q); if (n) n.inert = false; });
-  if (!el) return;
-  el.classList.add('out');
-  setTimeout(() => el.remove(), 280);
-}
-/* What comes after the first screen: setup for a new desk, otherwise the desk itself. */
-function afterGate() {
-  render();
-  const empty = !S.classes.length && !S.tasks.length && !S.notes.length;
-  if (!S.settings.setupDone && !S.settings.setupSeen && empty) openSurvey({ first: true });
-}
-async function gateClick(e) {
-  const b = e.target.closest('[data-gate]');
-  if (!b) return;
-  const what = b.dataset.gate;
-  if (what === 'skip') { Local.gSkip = true; saveLocal(); closeGate(); afterGate(); return; }
-  if (what === 'host') { ACT.gSetup(); return; }
-  if (what !== 'google') return;
-  if (!gConfigured()) {
-    GATE.note = 'Google sign-in is not switched on for this copy of ATLAS yet. You can use it without an account for now; everything still saves in this browser.' +
-      '<br><button class="linkbtn" data-gate="host">I host this copy and want to switch it on</button>';
-    paintGate(); return;
-  }
-  GATE.busy = true; GATE.note = ''; paintGate();
-  try {
-    await gSignIn();                                  /* the pop-up opens inside this tap */
-    Local.gSkip = false; saveLocal();
-    closeGate();
-    if (S.settings.setupDone) { render(); toast('Welcome back' + (S.profile.name ? ', ' + S.profile.name : (Local.gUser ? ', ' + Local.gUser.name : ''))); }
-    else afterGate();
-  } catch (err) {
-    GATE.busy = false;
-    GATE.note = esc(err.message) + (/pop-up|closed/i.test(err.message) ? '' : ' If Google is blocked where you are, you can use ATLAS without an account for now.');
-    paintGate();
-  }
-}
-
 /* ---------- seed ---------- */
 function seedTerm() {
   const mk = (name, code, color, teacher, room, meets) => ({ id: uid(), name, code, color, teacher, room, credits: 1, meets, categories: [] });
@@ -5374,7 +6947,8 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') { if (POP.el) { closePop(); return; } closeModal(); return; }
   /* Cmd/Ctrl+C is copy, not "go to calendar"; Cmd+F is find, not the timer. */
   if (typing || e.metaKey || e.ctrlKey || e.altKey) return;
-  if (e.key === 'f' && $('.zen')) { toggleTimer(); const z = $('#zenToggle'); if (z) z.textContent = T.running ? 'Pause' : 'Start'; return; }
+  if (e.key === 'f' && $('.zen')) { toggleTimer(); return; }
+  if (e.key === 'Escape' && $('.zen')) { $('#overlay').innerHTML = ''; return; }
   if ($('#overlay').innerHTML || GATE.open) return;   /* a sheet, the palette, focus mode or the sign-in screen is up */
   if (V.name === 'break' && gameState().mode === 'tiles') {
     const map = { ArrowLeft: 0, ArrowUp: 1, ArrowRight: 2, ArrowDown: 3, a: 0, w: 1, d: 2, s: 3 };
@@ -5410,12 +6984,16 @@ async function boot() {
   $('#acctBtn').addEventListener('click', accountSheet);
   installManifest();
   if (Drv.name === 'memory') toast('This browser is blocking storage — nothing will be saved. Check private-browsing settings.', true);
-  if (gConfigured()) {
-    gLoadScript().catch(() => { });          /* loaded early, so a tap can open Google's window straight away */
-    setInterval(() => { if (gSignedIn() && document.visibilityState === 'visible') gSync({ silent: true }); }, 180000);
-    document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && gSignedIn()) gSync({ silent: true }); });
-  }
-  document.addEventListener('click', gRenewOnTap, true);
+  /* Signed in before on this device: Firebase restores the session in the background. */
+  if (acctKnown()) acctStart().catch(() => { });
+  lockWatch();
+  document.addEventListener('visibilitychange', () => {
+    if (!ACC.user) return;
+    if (document.visibilityState === 'visible') cQueue(400); else if (Sync.dirty || ACC.hash !== hashOf(S)) cSync({ silent: true });
+  });
+  window.addEventListener('online', () => { if (ACC.user) cQueue(500); });
+  setInterval(() => { if (ACC.user && document.visibilityState === 'visible' && !ACC.unsub) cSync({ silent: true }); }, 120000);
+  if (noteHere()) { swReg().catch(() => { }); noteLocalStart(); }
   renderNav(); setStatus(Sync.status);
   aiProbe().then(() => { if (!isTyping() && !$('#overlay').innerHTML) render(); });
   $('#view').addEventListener('scroll', closePop, { passive: true });
@@ -5441,8 +7019,12 @@ async function boot() {
   }, 60000);
   window.addEventListener('beforeunload', () => { if (T.running) logPartial(); flush(); });
 
-  /* The first thing anyone sees is Google sign-in; setup for a new desk comes after it. */
-  if (needGate()) openGate(); else afterGate();
+  /* The first thing anyone sees is the sign-in screen; setup for a new desk comes after it.
+     A link from one of ATLAS's emails (reset a password, confirm an address) opens on top. */
+  const link = actionLink();
+  if (needGate() && !link) openGate(); else afterGate();
+  if (link) handleAction(link);
+  if (lockSet() && !link) lockShow();
 }
 if (typeof document !== 'undefined' && document.addEventListener) document.addEventListener('DOMContentLoaded', boot);
 /*==MAIN==*/

@@ -28,32 +28,50 @@ a{color:var(--ultra);text-underline-offset:2px}
 <main>
   <a href="./" aria-label="Back to ATLAS" style="text-decoration:none;color:inherit"><span class="mark">A</span><span class="brand">ATLAS</span></a>
   <h1>Privacy</h1>
-  <p class="updated">Last updated October 18, 2026</p>
-  <p class="lead">ATLAS is a free school organizer made by one person. It has no server and no database of its own: your work stays with you, in your browser and, if you sign in, in your own Google Drive.</p>
+  <p class="updated">Last updated October 19, 2026</p>
+  <p class="lead">ATLAS is a free school organizer made by one person. Your work is saved in the browser you use it in. If you make an account, a copy is kept under that account so it follows you to your other devices.</p>
 
   <section>
     <h2>What ATLAS keeps, and where</h2>
-    <p>Your classes, assignments, notes, flashcards, grades, focus history and settings are saved in the browser you use ATLAS in.</p>
-    <p>If you sign in with Google, a copy is also saved in a hidden ATLAS folder in your own Google Drive (Drive's “app data” folder), so your other devices can catch up. ATLAS can only see that one folder. It cannot see, open or change any of your other Drive files, and nobody else, including the person who makes ATLAS, can read it.</p>
+    <p>Your classes, assignments, notes, flashcards, tutor chats, grades, focus history and settings are saved in the browser you use ATLAS in.</p>
+    <p>If you make an account (with your email or with Google), a copy of your desk is also stored under that account in ATLAS's database, Google Cloud Firestore. Its security rules let only your signed-in account read or write your desk. Nobody else using ATLAS can see it.</p>
+    <p>Be aware: your desk is not end-to-end encrypted. The person who runs ATLAS administers the database and could technically open it, but doesn't look at people's desks and never shares or sells them. If that isn't good enough for something, keep it out of ATLAS, or use ATLAS without an account so nothing leaves your browser.</p>
   </section>
 
   <section>
-    <h2>What ATLAS gets from your Google account</h2>
+    <h2>Your account</h2>
     <ul>
-      <li>Your name, email address and profile picture, used only to show who is signed in.</li>
-      <li>Access to ATLAS's own hidden folder in your Drive, used only to sync your desk.</li>
+      <li><b>Email accounts:</b> your email address, an optional first name, and your password. Passwords are handled by Google's Firebase Authentication and stored there in hashed form. ATLAS never sees or keeps your password.</li>
+      <li><b>Google accounts:</b> your name, email address and profile picture, used only to show who is signed in.</li>
+      <li>ATLAS emails you only to confirm your address or to reset your password. Those emails come from Google's Firebase on ATLAS's behalf.</li>
     </ul>
-    <p>That's all. ATLAS does not read your email, your calendar, your contacts or your files. ATLAS's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+    <p>ATLAS does not read your email, calendar, contacts or files. Its use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+    <p>An older ATLAS kept desks in a hidden folder in your Google Drive. If you choose to bring that copy in, ATLAS reads only that hidden folder, once, when you ask.</p>
+  </section>
+
+  <section id="reminders">
+    <h2>Reminders</h2>
+    <p>Reminders are off until you turn them on, and each device asks for its own permission.</p>
+    <ul>
+      <li>While ATLAS is open, your device shows reminders itself.</li>
+      <li>To get them when ATLAS is closed, the next two weeks of reminders are kept under your account, with the push address your browser gives that device. That means the time, plus the assignment's name unless you turn off "Show what's due". A small script on Google's servers, run by the person who runs ATLAS, reads only that list and sends each reminder when it's due through Firebase Cloud Messaging. It never opens your desk.</li>
+      <li>Turning reminders off, signing out or deleting your account removes the list and the push address.</li>
+    </ul>
   </section>
 
   <section>
-    <h2>AI study tools</h2>
-    <p>The AI buttons (summarize, make flashcards, quiz me and the rest) only run when you press one. When they do, the text you are working on is sent to Google:</p>
+    <h2>Device lock</h2>
+    <p>If you set a passkey or a pattern to lock ATLAS on a device, it stays on that device. A passkey is checked by your device itself (Face ID, a fingerprint, Windows Hello or the device PIN). ATLAS stores only a scrambled form of a pattern, never the pattern itself. Neither is sent anywhere.</p>
+  </section>
+
+  <section>
+    <h2>AI study tools and the tutor</h2>
+    <p>The AI features (the tutor, summarize, make flashcards, quiz me and the rest) only run when you use them. When they do, what you ask, and the page you point them at, is sent to Google:</p>
     <ul>
-      <li>If your computer has Chrome's on-device AI, it can run on the computer itself, and nothing leaves it.</li>
+      <li>If your computer has Chrome's on-device AI, some of it can run on the computer itself, and nothing leaves it.</li>
       <li>Otherwise it goes to Google's Gemini service through ATLAS's Firebase project. Google's free tier is used, and Google may use what you send to improve its products. Please leave anything private out.</li>
     </ul>
-    <p>To stop other sites from using ATLAS's free AI, the AI tools are protected by reCAPTCHA; Google's <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply. You can switch the AI tools off in Settings.</p>
+    <p>Your tutor chats are saved with your desk, like everything else. To stop other sites from using ATLAS's free AI, it's protected by reCAPTCHA; Google's <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply. You can switch the AI tools off in Settings.</p>
   </section>
 
   <section>
@@ -67,15 +85,15 @@ a{color:var(--ultra);text-underline-offset:2px}
   <section>
     <h2>Deleting your data</h2>
     <ul>
-      <li>In ATLAS, open Settings, then Your data, then <b>Erase everything</b>.</li>
-      <li>To remove the Drive copy: in Google Drive, open Settings, then Manage apps, find ATLAS and choose <b>Delete hidden app data</b>.</li>
-      <li>To take back ATLAS's access to your Google account, visit <a href="https://myaccount.google.com/connections">myaccount.google.com/connections</a>.</li>
+      <li><b>Your account:</b> in ATLAS, open You (your name in the corner), then <b>Delete account</b>. This removes the account, its desk and its reminders from ATLAS's cloud straight away.</li>
+      <li><b>This browser:</b> open Settings, then Your data, then <b>Erase everything</b>.</li>
+      <li><b>An old Google Drive copy:</b> in Google Drive, open Settings, then Manage apps, find ATLAS and choose <b>Delete hidden app data</b>. To take back ATLAS's access to your Google account, visit <a href="https://myaccount.google.com/connections">myaccount.google.com/connections</a>.</li>
     </ul>
   </section>
 
   <section>
     <h2>Students</h2>
-    <p>ATLAS is made for students. If you are under the age where your country lets you agree to this on your own, use ATLAS with a parent's or guardian's permission. School-issued Google accounts may need the school's approval before they can sign in; ATLAS also works without an account.</p>
+    <p>ATLAS is made for students. If you are under the age where your country lets you agree to this on your own, use ATLAS with a parent's or guardian's permission. School-issued Google accounts may need the school's approval before they can sign in. You can always make an ATLAS account with your email instead, or use ATLAS without an account.</p>
   </section>
 
   <section>

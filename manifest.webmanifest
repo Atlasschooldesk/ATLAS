@@ -1,0 +1,14 @@
+{
+  "name": "ATLAS — school desk",
+  "short_name": "ATLAS",
+  "description": "A free school organizer: classes, deadlines, notebooks, flashcards, a focus timer and an AI tutor.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#E9ECF2",
+  "theme_color": "#E9ECF2",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
