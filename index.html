@@ -919,13 +919,14 @@ details.adv .advb{padding-top:10px}
 @media (max-width:420px){.addbtn.split #quickAdd .lbl{display:none}}
 
 /* ---------- the first screen: sign in with Google ---------- */
-#gate{position:fixed;inset:0;z-index:95;background-color:var(--bg);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);overflow:hidden;color:var(--ink)}
+#gate{position:fixed;inset:0;z-index:95;background-color:var(--bg);overflow-x:hidden;overflow-y:auto;color:var(--ink);overscroll-behavior:contain}
+.gate-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);min-height:100vh;min-height:100dvh}
 #gate.out{animation:gateOut .28s ease both;pointer-events:none}
 .gate-fine a{color:inherit;text-underline-offset:2px}
 /* reCAPTCHA's floating badge sat on top of the phone tab bar; the required notice is in the AI sheet instead */
 .grecaptcha-badge{visibility:hidden}
 @keyframes gateOut{to{opacity:0;transform:scale(1.01)}}
-.gate-main{display:flex;flex-direction:column;justify-content:center;padding:48px clamp(24px,7vw,100px);min-width:0;overflow-y:auto}
+.gate-main{display:flex;flex-direction:column;justify-content:center;padding:48px clamp(24px,7vw,100px);min-width:0}
 .gate-in{max-width:520px}
 .gate-mark{display:flex;align-items:center;gap:12px;margin-bottom:44px}
 .gate-mark .mark{width:40px;height:40px;border-radius:9px}
@@ -941,7 +942,65 @@ details.adv .advb{padding-top:10px}
 .gate-skip button{color:var(--ink2);font-weight:600;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
 .gate-skip button:hover{color:var(--ink)}
 /* the art: a binder's divider tabs, one per subject, fanned out the way ATLAS files your classes */
-.gate-art{position:relative;background:color-mix(in srgb,var(--panel) 55%,var(--bg));border-left:1px solid var(--rule);overflow:hidden}
+.gate-art{position:relative;background:color-mix(in srgb,var(--panel) 55%,var(--bg));border-left:1px solid var(--rule);display:flex;flex-direction:column;justify-content:center;gap:9px;padding:36px 0 36px 28px;min-width:0}
+.gfhint{margin:0 28px 6px 0;font-size:12.5px;color:var(--ink3)}
+.gfhint b{color:var(--ink2);font-weight:700;letter-spacing:.02em;text-transform:uppercase;font-size:11.5px}
+.gfhint .tap{display:none}
+@media (hover:none){ .gfhint .hov{display:none} .gfhint .tap{display:inline} }
+.gfeat{display:flex;align-items:flex-start;gap:14px;margin-left:auto;width:var(--w);padding:13px 22px 13px 16px;background:var(--panel);border:1px solid var(--rule);border-right:none;border-left:6px solid var(--tc);border-radius:14px 0 0 14px;box-shadow:var(--shadow);
+  cursor:pointer;text-align:left;outline:none;transition:width .35s cubic-bezier(.2,.8,.25,1),opacity .25s,box-shadow .25s;animation:gtabIn .7s cubic-bezier(.2,.8,.25,1) both}
+.gfi{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex:none;background:color-mix(in srgb,var(--tc) 14%,transparent);color:var(--tc)}
+.gfi svg{width:18px;height:18px}
+.gft{display:flex;flex-direction:column;min-width:0;flex:1}
+.gft > b{font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-.02em;color:var(--ink)}
+.gft > small{font-size:12.5px;color:var(--ink3);margin-top:1px}
+.gfm{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s cubic-bezier(.2,.8,.25,1)}
+.gfm > span{overflow:hidden;display:block}
+.gfp{display:block;font-size:13.5px;line-height:1.55;color:var(--ink2);margin-top:10px}
+.gfl{display:flex;flex-direction:column;gap:5px;margin-top:10px;padding-bottom:2px}
+.gfl span{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--ink)}
+.gfl svg{width:14px;height:14px;color:var(--tc);flex:none}
+.gfeat.open,.gfeat:focus-visible{width:96%;box-shadow:0 14px 40px rgba(20,30,60,.16)}
+.gfeat.open .gfm,.gfeat:focus-visible .gfm{grid-template-rows:1fr}
+@media (hover:hover){
+  .gfeat:hover{width:96%;box-shadow:0 14px 40px rgba(20,30,60,.16)}
+  .gfeat:hover .gfm{grid-template-rows:1fr}
+  .gate-art:hover .gfeat:not(:hover):not(.open){opacity:.72}
+}
+.gate-have{margin:14px 0 0;font-size:13.5px;color:var(--ink2)}
+.gate-proof{list-style:none;display:flex;flex-wrap:wrap;gap:6px 16px;margin:18px 0 0;padding:0;max-width:440px}
+.gate-proof li{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--ink2)}
+.gate-proof svg{width:14px;height:14px;color:var(--moss)}
+.gate-fine a{color:var(--ink3)}
+.gtourcue{display:inline-flex;align-items:center;gap:8px;margin-top:26px;padding:9px 16px;border-radius:20px;border:1px solid var(--rule2);background:var(--panel);font-size:13.5px;font-weight:600;color:var(--ink)}
+.gtourcue span{display:inline-block;animation:cue 1.6s ease-in-out infinite}
+.gtourcue:hover{border-color:var(--ultra);color:var(--ultra)}
+@keyframes cue{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+#gate:not([data-v="start"]) .gate-tour{display:none}
+.gate-tour{border-top:1px solid var(--rule);padding:72px clamp(20px,6vw,96px) 80px;background:color-mix(in srgb,var(--panel) 35%,var(--bg))}
+.gt-head{text-align:center;max-width:640px;margin:0 auto 56px}
+.gt-eye{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ultra)}
+.gt-head h2,.gt-end h2{font-family:var(--display);font-size:clamp(30px,4vw,44px);letter-spacing:-.04em;line-height:1.05;margin:8px 0 10px;font-weight:800}
+.gt-head p,.gt-end p{font-size:16px;color:var(--ink2);margin:0}
+.gt-row{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.35fr);gap:clamp(24px,5vw,72px);align-items:center;max-width:1180px;margin:0 auto 88px}
+.gt-row.rev{grid-template-columns:minmax(0,1.35fr) minmax(0,.8fr)}
+.gt-row.rev .gt-copy{order:2}
+.gt-num{font-family:var(--mono);font-size:12.5px;color:var(--ink3)}
+.gt-copy h3{font-family:var(--display);font-size:clamp(24px,2.6vw,32px);letter-spacing:-.035em;line-height:1.1;margin:6px 0 12px;font-weight:800}
+.gt-copy p{font-size:15.5px;line-height:1.6;color:var(--ink2);margin:0 0 16px}
+.gt-copy ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.gt-copy li{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:600}
+.gt-copy li svg{width:15px;height:15px;color:var(--moss);flex:none}
+.gt-shot{margin:0;border-radius:14px;overflow:hidden;background:var(--panel);border:1px solid var(--rule2);box-shadow:0 24px 60px rgba(20,30,60,.16),0 2px 6px rgba(20,30,60,.06)}
+.gt-shot img{display:block;width:100%;height:auto}
+.gt-bar{display:flex;gap:6px;padding:10px 12px;background:var(--panel2);border-bottom:1px solid var(--rule)}
+.gt-bar i{width:10px;height:10px;border-radius:50%;background:var(--rule2)}
+.gt-phones{display:flex;justify-content:center;gap:clamp(14px,3vw,32px)}
+.gt-shot.phone{width:min(260px,44%);border-radius:30px;border:6px solid #111827;box-shadow:0 24px 60px rgba(20,30,60,.22)}
+.gt-phones .gt-shot.phone:nth-child(2){margin-top:48px}
+.gt-end{text-align:center;max-width:620px;margin:0 auto;padding-top:8px}
+.gt-cta{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:24px}
+.gt-cta .btn.big{width:auto;flex:0 1 auto;min-width:200px;padding:0 26px}
 .gtab{position:absolute;right:-12%;height:64px;display:flex;align-items:center;padding:0 22px;background:var(--panel);border:1px solid var(--rule);border-left:7px solid var(--tc);border-radius:12px 0 0 12px;box-shadow:var(--shadow);
   font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.02em;color:var(--ink2);animation:gtabIn .7s cubic-bezier(.2,.8,.25,1) both}
 .gtab small{display:block;font-family:var(--body);font-weight:500;font-size:12px;color:var(--ink3);letter-spacing:0;margin-top:1px}
@@ -949,8 +1008,15 @@ details.adv .advb{padding-top:10px}
 .gate-strip{display:none;gap:5px;margin-bottom:26px}
 .gate-strip i{display:block;height:6px;flex:1;border-radius:3px;background:var(--tc)}
 @media (max-width:820px){
-  #gate{grid-template-columns:1fr}
-  .gate-art{display:none}
+  .gate-hero{grid-template-columns:1fr;min-height:0}
+  .gate-art{border-left:none;border-top:1px solid var(--rule);padding:28px 20px 32px;gap:8px;justify-content:flex-start}
+  .gfhint{margin:0 0 6px}
+  .gfeat,.gfeat.open,.gfeat:focus-visible{width:100%;border-right:1px solid var(--rule);border-radius:14px;animation:none}
+  .gate-tour{padding:56px 20px 64px}
+  .gt-head{margin-bottom:36px}
+  .gt-row,.gt-row.rev{grid-template-columns:1fr;gap:22px;margin-bottom:56px}
+  .gt-row.rev .gt-copy{order:0}
+  .gt-shot.phone{width:min(220px,46%);border-width:5px;border-radius:26px}
   .gate-main{justify-content:flex-start;padding:max(40px,8vh) 24px 32px}
   .gate-mark{margin-bottom:34px}
   .gate-strip{display:flex}
@@ -5333,8 +5399,43 @@ function pwSuggest() {
    sent   → check your inbox
    reset  → choose a new password (opened from the emailed link)
    done   → a confirmed email address, or an undone email change */
-const GATE = { open: false, view: 'start', note: '', busy: false, email: '', back: false, code: '', sentAt: 0, tick: null, work: '', title: '', text: '' };
-const GATE_TABS = [['Biology', 'Lab report due Thursday'], ['Calculus', 'Problem set 6'], ['World History', 'Essay outline'], ['Spanish', '12 cards to review'], ['Chemistry', 'Midterm in 9 days'], ['Literature', 'Read ch. 12']];
+const GATE = { intent: 'signin', open: false, view: 'start', note: '', busy: false, email: '', back: false, code: '', sentAt: 0, tick: null, work: '', title: '', text: '' };
+const GATE_FEATS = [
+  ['clock', 'Today\'s Schedule', 'Your day, class by class.', 'Put your week in once. Every morning ATLAS shows the day\'s classes in order, what\'s on now and next, and a checklist of what to bring.', ['Now and next, at a glance', 'A what-to-bring checklist for every class', 'One block for every day it happens']],
+  ['tasks', 'Deadlines that plan themselves', 'Everything due, most urgent first.', 'Add work by hand or pull it in from Canvas, Google Classroom or Google Calendar. One tap books study time before each due date, around your classes.', ['Auto-scheduled study time', 'Imports from your school\'s calendar', 'Reminders the evening before']],
+  ['cards', 'Flashcards that remember for you', 'Cards come back right before you\'d forget them.', 'ATLAS uses the same memory science as the best flashcard apps. Link a deck to a test and it paces your reviews so you\'re ready on the day.', ['Test dates set the pace', 'A readiness score for every deck', 'Cards made from your notes in one tap']],
+  ['chat', 'An AI tutor you can name', 'It answers, explains and quizzes you.', 'Ask for the answer and you get it, with the steps. Ask to learn it and it teaches. Point it at your notes and it works from them. Free, no key needed.', ['Pick its name and personality', 'Quizzes you before a test', 'Works from your own notes']],
+  ['book', 'A notebook for every class', 'Notes that save as you type.', 'One notebook per class, on every device. Turn any page into a summary, a quiz or a deck of flashcards.', ['Saves and syncs as you type', 'Summaries and quizzes from a page', 'Search everything at once']],
+  ['timer', 'Focus timer and streaks', 'Get started, then keep going.', 'A focus timer with background sounds made right in the browser, a streak worth protecting, and badges to earn. Two quiet games for your breaks.', ['Rain, café and brown-noise sounds', 'Streaks and badges', 'A break room']],
+  ['briefcase', 'School and work, one switch', 'A separate side for your job.', 'Flip to Work and the same tools become projects, tasks and meetings, with their own hours. Your school side stays exactly as you left it.', ['Projects instead of classes', 'Its own hours and tools', 'One tap to switch sides']],
+  ['lock', 'Private, free, everywhere', 'Only you can open your desk.', 'Your desk syncs to every device you sign in on and keeps working offline. Install it like an app and lock it with a passkey. No ads, no cost.', ['Phone, tablet and computer', 'Works offline', 'Passkey or pattern lock']]
+];
+const GATE_TOUR = [
+  ['today', 'desk', 'Your whole day on one screen', 'Today shows what\'s due next, your classes on a timeline, and the notes you were last working on. Nothing you have to dig for.', ['What\'s due, most urgent first', 'Your classes on a timeline', 'One tap to start focusing']],
+  ['schedule,phone', 'phones', 'Wake up to the right day', 'Put your week in once. Each morning Today\'s Schedule shows your classes in order, what\'s on right now, and what to pack. On your phone it works like an app.', ['Now and next, with rooms and teachers', 'A packing checklist for the day', 'Installs on your home screen']],
+  ['calendar', 'desk', 'Study time that books itself', 'Press Auto-schedule and ATLAS finds time for every assignment before it\'s due, around your classes, inside the hours you chose.', ['Blocks finish before the deadline', 'Imports Canvas, Classroom and Google Calendar', 'Exports back to any calendar app']],
+  ['cards', 'desk', 'Flashcards that know when you\'ll forget', 'Each card comes back just before you\'d forget it, and each answer shows when you\'ll see it next. Link a deck to a test and the reviews finish in time.', ['Spaced repetition that adapts to you', 'Practice mode before a test', 'Cards made from your notes']],
+  ['tutor', 'desk', 'A tutor that actually answers', 'Ask a question and get the answer, with the steps to get there. Ask to be quizzed and it quizzes you. Give it a name and pick how it talks.', ['Works from your own notes', 'Explains it another way when you\'re stuck', 'Free, with nothing to set up']],
+  ['work', 'desk', 'School by day, work by night', 'Switch to Work and the same tools turn into projects, tasks and meetings with their own hours. Your school side stays exactly where you left it.', ['Projects, tasks and meetings', 'Separate hours and tools', 'One switch next to your name']]
+];
+function gateFeatsHTML() {
+  const ws = ['84%', '92%', '78%', '88%', '82%', '90%', '80%', '86%'];
+  return '<p class="gfhint"><b>What\'s inside</b><span class="hov"> · hover a card for more</span><span class="tap"> · tap a card for more</span></p>' +
+    GATE_FEATS.map((f, i) => '<div class="gfeat" tabindex="0" role="button" aria-expanded="false" data-gate="feat" style="--tc:' + PALETTE[i % PALETTE.length] + ';--w:' + ws[i % ws.length] + ';animation-delay:' + (120 + i * 60) + 'ms">' +
+      '<span class="gfi">' + ic(f[0]) + '</span><span class="gft"><b>' + esc(f[1]) + '</b><small>' + esc(f[2]) + '</small>' +
+      '<span class="gfm"><span><span class="gfp">' + esc(f[3]) + '</span><span class="gfl">' + f[4].map(x => '<span>' + ic('check') + esc(x) + '</span>').join('') + '</span></span></span></span></div>').join('');
+}
+function gateTourHTML() {
+  const shot = (n, kind, alt) => '<figure class="gt-shot ' + kind + '">' + (kind === 'desk' ? '<span class="gt-bar" aria-hidden="true"><i></i><i></i><i></i></span>' : '') +
+    '<img src="tour-' + n + '.webp" alt="' + esc(alt) + '" loading="lazy" decoding="async" width="' + (kind === 'desk' ? 1200 : 560) + '" height="' + (kind === 'desk' ? 750 : 1212) + '" onerror="this.closest(\'figure\').remove()"></figure>';
+  return '<section class="gate-tour" id="gateTour" aria-labelledby="gtTitle"><div class="gt-head"><span class="gt-eye">A look inside</span><h2 id="gtTitle">See how ATLAS works</h2>' +
+    '<p>Real screens from ATLAS, with a sample term filled in.</p></div>' +
+    GATE_TOUR.map((t, i) => '<div class="gt-row' + (i % 2 ? ' rev' : '') + '"><div class="gt-copy"><span class="gt-num">0' + (i + 1) + '</span><h3>' + esc(t[2]) + '</h3><p>' + esc(t[3]) + '</p>' +
+      '<ul>' + t[4].map(x => '<li>' + ic('check') + esc(x) + '</li>').join('') + '</ul></div>' +
+      (t[1] === 'phones' ? '<div class="gt-phones">' + t[0].split(',').map(n => shot(n, 'phone', t[2])).join('') + '</div>' : shot(t[0], 'desk', t[2])) + '</div>').join('') +
+    '<div class="gt-end"><h2>Ready when you are.</h2><p>Free, private, and yours on every device.</p>' +
+    '<div class="gt-cta"><button class="btn p big" type="button" data-gate="create">Create an ATLAS Account</button><button class="btn big" type="button" data-gate="top">Sign in</button></div></div></section>';
+}
 function needGate() { return !acctKnown() && !Local.gSkip; }
 function openGate(opts) {
   const o = opts || {};
@@ -5347,13 +5448,15 @@ function openGate(opts) {
   GATE.open = true;
   const el = document.createElement('div');
   el.id = 'gate'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-labelledby', 'gateTitle');
-  el.innerHTML = '<div class="gate-main"></div><div class="gate-art" aria-hidden="true">' + GATE_TABS.map((t, i) => '<div class="gtab" style="--tc:' + PALETTE[i % PALETTE.length] + ';top:' + (13 + i * 12.5) + '%;width:' + (66 + (i % 3) * 8) + '%;animation-delay:' + (120 + i * 70) + 'ms">' +
-    '<span>' + t[0] + '<small>' + t[1] + '</small></span></div>').join('') + '</div>';
+  el.innerHTML = '<div class="gate-hero"><div class="gate-main"></div><aside class="gate-art" aria-label="What ATLAS does">' + gateFeatsHTML() + '</aside></div>' + gateTourHTML();
   document.body.appendChild(el);
   el.addEventListener('click', gateClick);
   el.addEventListener('input', gateInput);
   el.addEventListener('submit', gateSubmit);
-  el.addEventListener('keydown', e => { if (e.key === 'Escape' && GATE.back && !GATE.busy) { e.stopPropagation(); closeGate(); } });
+  el.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && GATE.back && !GATE.busy) { e.stopPropagation(); closeGate(); }
+    if ((e.key === 'Enter' || e.key === ' ') && e.target.classList && e.target.classList.contains('gfeat')) { e.preventDefault(); e.target.click(); }
+  });
   paintGate();
   if (acctConfigured()) acctStart().catch(() => { });          /* warm, so a tap opens Google's window at once */
   if (gConfigured()) gLoadScript().catch(() => { });
@@ -5383,11 +5486,17 @@ function paintGate() {
   const slot = '<div class="gate-note-slot" id="gNote" role="alert">' + GATE.note + '</div>';
   let body = '';
   switch (v) {
-    case 'email':
-      body = back('start') + '<h2 class="gh" id="gateTitle">Use your email</h2><p class="gate-lead sm">Sign in, or make a free ATLAS account in a few seconds.</p>' +
-        '<form class="gform" data-gform="email" novalidate><label class="f"><span>Email</span><input type="email" id="gEmail" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" value="' + em + '" placeholder="you@example.com"></label>' +
-        '<div class="gacts"><button class="btn p big" type="submit">Sign in</button><button class="btn big" type="button" data-gate="toSignup">Create an account</button></div></form>' + slot;
+    case 'email': {
+      const mail = '<label class="f"><span>Email</span><input type="email" id="gEmail" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" value="' + em + '" placeholder="you@example.com"></label>';
+      body = GATE.intent === 'create'
+        ? back('start') + '<h2 class="gh" id="gateTitle">Create your ATLAS account</h2><p class="gate-lead sm">Free, and it takes a few seconds. Start with your email, then choose a password.</p>' +
+          '<form class="gform" data-gform="email" novalidate>' + mail + '<div class="gacts"><button class="btn p big" type="submit">Continue</button></div></form>' + slot +
+          '<p class="gsmall">Already have an account? <button class="linkbtn" type="button" data-gate="email">Sign in instead</button></p>'
+        : back('start') + '<h2 class="gh" id="gateTitle">Sign in with email</h2><p class="gate-lead sm">Use the email address you made your ATLAS account with.</p>' +
+          '<form class="gform" data-gform="email" novalidate>' + mail +
+          '<div class="gacts"><button class="btn p big" type="submit">Sign in</button><button class="btn big" type="button" data-gate="toSignup">Create an account</button></div></form>' + slot;
       break;
+    }
     case 'signin':
       body = back('email') + '<h2 class="gh" id="gateTitle">Welcome back</h2>' + who +
         '<form class="gform" data-gform="signin" novalidate>' + user + pwf('gPw', 'Password', 'current-password').replace('</span></label>', eye('gPw') + '</span></label>') +
@@ -5430,15 +5539,19 @@ function paintGate() {
       body = '<div class="gate-strip" aria-hidden="true">' + PALETTE.slice(0, 6).map(c => '<i style="--tc:' + c + '"></i>').join('') + '</div>' +
         '<div class="gate-mark"><div class="mark" aria-hidden="true"></div><b>ATLAS</b></div>' +
         '<h1 id="gateTitle">Every class, deadline and note on one desk.</h1>' +
-        '<p class="gate-lead">Sign in and ATLAS keeps your desk in sync on your phone, your laptop and anywhere else you open it.</p>' +
+        '<p class="gate-lead">Your schedule, deadlines, notes, flashcards and an AI tutor in one place, planned around your week and in sync on every device.</p>' +
         (acctConfigured() ? '<div class="gate-ways"><div class="gsi" id="gsiBox"><button class="gbtn" type="button" data-gate="google"><svg viewBox="0 0 48 48" aria-hidden="true">' + GLOGO + '</svg><span>Continue with Google</span></button></div>' +
-          '<button class="ebtn" type="button" data-gate="email">' + ic('mail') + '<span>Continue with email</span></button></div>' +
-          '<p class="gate-fine">Free. Your desk is kept under your account, where only you can open it. <a href="privacy.html" target="_blank" rel="noopener">Privacy</a></p>'
+          '<button class="ebtn" type="button" data-gate="create">' + ic('mail') + '<span>Create an ATLAS Account</span></button></div>' +
+          '<p class="gate-have">Already have an account? <button class="linkbtn" type="button" data-gate="email">Sign in with email</button></p>' +
+          '<ul class="gate-proof"><li>' + ic('check') + 'Free</li><li>' + ic('check') + 'No ads</li><li>' + ic('check') + 'Syncs to every device</li><li>' + ic('check') + 'Only you can open it</li></ul>' +
+          '<p class="gate-fine"><a href="privacy.html" target="_blank" rel="noopener">How ATLAS handles your data</a></p>'
           : '<p class="gate-fine">Accounts aren\'t switched on for this copy of ATLAS yet.</p>') +
         slot +
+        '<button class="gtourcue" type="button" data-gate="tour">See how it works<span aria-hidden="true">↓</span></button>' +
         '<div class="gate-skip">Rather not make an account? <button type="button" data-gate="skip">Use ATLAS without one</button>. Your work stays in this browser.</div>';
   }
   el.innerHTML = '<div class="gate-in">' + (GATE.back && v !== 'work' ? '<button class="gclose" type="button" data-gate="close" aria-label="Close">✕</button>' : '') + body + '</div>';
+  const g = $('#gate'); if (g) { if (g.dataset.v && g.dataset.v !== v) g.scrollTop = 0; g.dataset.v = v; }
   if (v === 'start') gsiRender($('#gsiBox'));
   if (v === 'signup' || v === 'reset') pwPaint();
   if (v === 'sent') { GATE.tick = setInterval(sentTick, 1000); sentTick(); }
@@ -5506,7 +5619,16 @@ async function gateClick(e) {
     case 'close': closeGate(); if (!S.settings.setupDone) afterGate(); return;
     case 'continue': gateDone(GATE.doneMsg); return;
     case 'start': view('start'); return;
-    case 'email': view('email'); return;
+    case 'email': GATE.intent = 'signin'; view('email'); return;
+    case 'create': GATE.intent = 'create'; view('email'); return;
+    case 'tour': { const t = $('#gateTour'), g = $('#gate'); if (t && g) g.scrollTo({ top: t.offsetTop - 8, behavior: 'smooth' }); return; }
+    case 'top': { const g = $('#gate'); if (g) g.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+    case 'feat': {
+      const open = !b.classList.contains('open');
+      $$('#gate .gfeat.open').forEach(x => { x.classList.remove('open'); x.setAttribute('aria-expanded', 'false'); });
+      b.classList.toggle('open', open); b.setAttribute('aria-expanded', String(open));
+      return;
+    }
     case 'signin': view('signin'); return;
     case 'toSignup': if (GATE.view === 'email' && !gateEmail()) return; view('signup'); return;
     case 'eye': {
@@ -5536,7 +5658,7 @@ function gateSubmit(e) {
   e.preventDefault();
   if (GATE.busy) return;
   const k = f.dataset.gform, btn = $('[type="submit"]', f);
-  if (k === 'email') { if (gateEmail()) { GATE.view = 'signin'; paintGate(); } return; }
+  if (k === 'email') { if (gateEmail()) { GATE.view = GATE.intent === 'create' ? 'signup' : 'signin'; paintGate(); } return; }
   if (k === 'signin') return gateSignIn(btn);
   if (k === 'signup') return gateSignUp(btn);
   if (k === 'reset') return gateReset(btn);
