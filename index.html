@@ -130,6 +130,17 @@ a{color:var(--ultra)}
 .tab.on{background:var(--panel2);color:var(--ink);font-weight:600;transform:translateX(4px)}
 .tab .tt{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .tab .tcode{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--ink3)}
+/* classes as a two-across grid, so a long list stays short */
+#navClasses{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;padding:0 2px}
+#navClasses.shut{display:none}
+#navClasses .tab{margin-left:0;padding:7px 8px 7px 9px;border-left-width:3px;border-radius:var(--r3,6px) var(--r2) var(--r2) var(--r3,6px);background:var(--panel2);font-size:12.5px;min-width:0}
+#navClasses .tab:hover,#navClasses .tab.on{transform:none;background:var(--panel3)}
+#navClasses .tab.on{box-shadow:inset 0 0 0 1px var(--tc)}
+#navClasses .navnone{grid-column:1/-1;padding:6px 8px;font-size:12px}
+.navsec .eyebrow .navtog{display:flex;align-items:center;gap:5px;color:inherit;font:inherit;font-size:inherit;letter-spacing:inherit;text-transform:inherit;padding:2px 4px 2px 0;line-height:inherit}
+.navsec .eyebrow .navtog:hover{background:none;color:var(--ink)}
+.navtog .chev{font-style:normal;font-size:10px;transition:transform .15s}
+.navtog[aria-expanded="false"] .chev{transform:rotate(-90deg)}
 .sidefoot{border-top:1px solid var(--rule);padding:8px 10px;display:flex;gap:6px;align-items:center}
 .acct{display:flex;align-items:center;gap:9px;flex:1;min-width:0;padding:5px 7px;border-radius:var(--r2);transition:background .12s;text-align:left}
 .acct:hover{background:var(--panel3)}
@@ -224,7 +235,8 @@ hr.rule{border:none;border-top:1px solid var(--rule);margin:16px 0}
 .hello .date{font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.09em;text-transform:uppercase}
 .ribbon{position:relative;height:74px;background:var(--panel);border:1px solid var(--rule);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;margin-bottom:14px}
 .ribbon .hr{position:absolute;top:0;bottom:0;border-left:1px solid var(--rule);font-family:var(--mono);font-size:9px;color:var(--ink3);padding:3px 0 0 4px}
-.rb{position:absolute;top:20px;height:46px;border-radius:7px;padding:5px 8px;overflow:hidden;font-size:11.5px;font-weight:600;color:#fff;box-shadow:inset 0 -2px 0 rgba(0,0,0,.2);animation:grow .5s cubic-bezier(.2,.8,.3,1) both}
+.rb{position:absolute;top:20px;height:46px;border-radius:7px;padding:5px 8px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:11.5px;font-weight:600;color:#fff;box-shadow:inset 0 -2px 0 rgba(0,0,0,.2);animation:grow .5s cubic-bezier(.2,.8,.3,1) both;min-width:30px}
+.rb small{display:block;overflow:hidden;text-overflow:ellipsis}
 .rb small{display:block;font-family:var(--mono);font-size:9px;opacity:.85;font-weight:400}
 @keyframes grow{from{transform:scaleX(.2);opacity:0;transform-origin:left}to{transform:scaleX(1);opacity:1;transform-origin:left}}
 .nowline{position:absolute;top:0;bottom:0;width:2px;background:var(--crimson);z-index:5}
@@ -377,6 +389,39 @@ hr.rule{border:none;border-top:1px solid var(--rule);margin:16px 0}
 .schrow.bad{background:var(--crimsonSoft);border-radius:var(--r2);padding-left:8px;padding-right:8px}
 .schempty{font-size:13.5px;margin:0}
 .blkpills{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.blkhint{font-size:13px;margin:-4px 0 12px;line-height:1.5}
+.blkgrid{display:grid;grid-template-columns:190px minmax(0,1fr);gap:16px;align-items:start}
+.blkpal{position:sticky;top:8px;display:flex;flex-direction:column;gap:8px}
+.blkpchips{display:flex;flex-direction:column;gap:6px}
+.blkpchip{display:block;width:100%;padding:8px 11px;border:1px solid var(--rule2);border-left:4px solid var(--bc);border-radius:var(--r2);background:var(--panel);font-size:13px;font-weight:600;color:var(--ink);
+  text-align:left;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.blkpchip:hover{border-color:var(--bc);box-shadow:0 2px 8px rgba(20,30,60,.08)}
+.blkghost{position:fixed;z-index:400;width:auto;max-width:220px;pointer-events:none;transform:translate(-50%,-50%) rotate(-2deg);box-shadow:0 12px 30px rgba(20,30,60,.22)}
+body.blkdragging,body.blkdragging *{cursor:grabbing !important;user-select:none;-webkit-user-select:none}
+.blktl{position:relative;border:1px solid var(--rule);border-radius:var(--r2);background:var(--panel);overflow:hidden}
+.blkhr{position:absolute;left:0;right:0;border-top:1px solid var(--rule)}
+.blkhr span{position:absolute;left:8px;top:3px;font-family:var(--mono);font-size:10.5px;color:var(--ink3)}
+.blkevs{position:absolute;top:0;bottom:0;left:56px;right:6px}
+.blkev{position:absolute;display:flex;flex-direction:column;gap:1px;padding:4px 9px;border-radius:8px;overflow:hidden;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;
+  background:color-mix(in srgb,var(--bc) 15%,var(--panel));border-left:4px solid var(--bc);box-shadow:0 1px 2px rgba(20,30,60,.06);transition:box-shadow .15s}
+.blkev b{font-size:13px;line-height:1.25;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.blkev small{font-size:11px;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.blkev.short{flex-direction:row;align-items:center;gap:8px;padding-top:0;padding-bottom:0}
+.blkev:hover{box-shadow:0 4px 14px rgba(20,30,60,.12)}
+.blkev:focus-visible{outline:2px solid var(--ultra);outline-offset:1px}
+.blkev.dragging{z-index:5;box-shadow:0 12px 28px rgba(20,30,60,.2);transition:none}
+.blkev.preview{z-index:4;opacity:.8;border-left-style:dashed;pointer-events:none}
+.blkrs{position:absolute;left:0;right:0;bottom:0;height:10px;cursor:ns-resize;touch-action:none}
+.blkrs::after{content:'';position:absolute;left:50%;bottom:3px;width:26px;height:3px;margin-left:-13px;border-radius:2px;background:color-mix(in srgb,var(--bc) 55%,transparent)}
+@media (max-width:700px){
+  .blkgrid{grid-template-columns:1fr;gap:12px}
+  .blkpal{position:static}
+  .blkpchips{flex-direction:row;flex-wrap:wrap}
+  .blkpchip{width:auto;max-width:48%;padding:7px 10px}
+  .blkevs{left:50px}
+  .blkrs{height:16px}
+}
+
 .blkpills::-webkit-scrollbar{display:none}
 .schedit .blkpills{padding:10px;border-bottom:1px solid var(--rule)}
 .schedit .blkbody{padding:16px 18px 18px}
@@ -499,6 +544,17 @@ hr.rule{border:none;border-top:1px solid var(--rule);margin:16px 0}
 /* ---------- focus timer ---------- */
 .focusbar{display:flex;align-items:center;gap:10px;padding:5px 10px;border-radius:20px;background:var(--panel);border:1px solid var(--rule2);font-family:var(--mono);font-size:13px;font-weight:600}
 .focusbar.run{border-color:var(--ultra);color:var(--ultra);background:var(--ultraSoft)}
+.updcard{position:fixed;right:18px;bottom:18px;z-index:170;width:min(390px,calc(100vw - 24px));background:var(--panel);border:1px solid var(--rule2);border-radius:16px;box-shadow:var(--shadowUp);padding:16px 18px 18px;animation:pop .25s cubic-bezier(.2,.9,.3,1) both}
+.updhead{display:flex;align-items:center;gap:9px;margin-bottom:8px}
+.updhead svg{width:18px;height:18px;color:var(--ultra)}
+.updhead b{font-size:15.5px}
+.updcard ul{margin:0 0 14px;padding-left:18px;color:var(--ink2);font-size:13.5px;line-height:1.5;max-height:min(46vh,320px);overflow-y:auto}
+.updcard li{margin-bottom:4px}
+.updcard .btn{width:100%;justify-content:center;height:42px;font-size:14.5px}
+@media (max-width:900px){.updcard{left:12px;right:12px;width:auto;bottom:calc(84px + env(safe-area-inset-bottom))}}
+.awakebtn[hidden]{display:none}
+.awakebtn svg{width:14px;height:14px}
+.awakebtn.on{color:var(--moss);border-color:var(--moss);background:var(--mossSoft)}
 .focusbar.brk{color:var(--moss)}
 .focusbar.brk.run{border-color:var(--moss);background:var(--mossSoft)}
 .focusbar .btn svg,#searchBtn svg{width:13px;height:13px}
@@ -1029,7 +1085,7 @@ details.adv .advb{padding-top:10px}
   #side{position:fixed;inset:0 auto 0 0;width:270px;transform:translateX(-102%);transition:transform .24s cubic-bezier(.2,.85,.3,1);box-shadow:var(--shadowUp)}
   #side.open{transform:none}
   #sideScrim{position:fixed;inset:0;background:rgba(12,15,22,.4);z-index:35}
-  #view{--vp:14px;padding:14px 14px 78px}
+  #view{--vp:14px;padding:14px max(14px, env(safe-area-inset-right)) calc(84px + env(safe-area-inset-bottom)) max(14px, env(safe-area-inset-left))}
   .cols2,.nbwrap{grid-template-columns:1fr}
   .stats{grid-template-columns:repeat(2,1fr)}
   #mobnav{
@@ -1053,12 +1109,29 @@ details.adv .advb{padding-top:10px}
   #noteTitle{font-size:22px}
 }
 @media (max-width:600px){
-  #top{gap:8px;padding:10px 12px}
+  #top{gap:6px;padding:calc(8px + env(safe-area-inset-top)) max(10px, env(safe-area-inset-right)) 8px max(10px, env(safe-area-inset-left))}
+  /* the timer shrinks to one button until it's running, so the page title has room */
+  .focusbar:not(.run) #focusTime{display:none}
+  .focusbar:not(.run){padding:3px;border-radius:50%}
+  #focusTime{font-size:12px}
+  #menuBtn{padding:6px 9px}
+  .hello h2{font-size:23px;line-height:1.15}
+  .glance{gap:5px;margin-top:7px}
+  .g-chip{padding:3px 9px;font-size:12px}
+  .card .cardhead{padding-left:14px;padding-right:12px}
+  .tutor{gap:10px;height:calc(100dvh - 190px - env(safe-area-inset-bottom));min-height:360px}
+  .thead{padding:8px 10px;gap:6px}
+  .thead select{flex:1 1 40%;max-width:none;min-width:0}
+  .tlog{padding:14px 12px}
+  .tsugs{gap:6px}
+  .tsug{font-size:12.5px;padding:7px 11px}
+  .tcomp{padding:8px 10px}
+  .modal{max-height:calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom))}
   #top > .spacer{display:none}
   #top .ttlbox{flex:1}
   #top h1{font-size:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   #vSub{display:none}
-  #searchBtn .lbl,#searchBtn .kb,.focusbar .lbl{display:none}
+  #searchBtn .lbl,#searchBtn .kb,.focusbar .lbl,.awakebtn .lbl{display:none}
   #searchBtn{padding:6px 8px}
   .focusbar{padding:3px 4px 3px 10px;gap:4px}
   .focusbar .btn{padding:4px 6px}
@@ -1266,7 +1339,7 @@ button.acc-row:hover{background:var(--panel2)}
     <div class="navwrap">
       <nav id="navMain"></nav>
       <div class="navsec">
-        <div class="eyebrow"><span id="navClsLabel">Classes</span><button id="addClassBtn" title="Add a class">+</button></div>
+        <div class="eyebrow"><button type="button" class="navtog" id="navClsTog" aria-expanded="true" aria-controls="navClasses"><span id="navClsLabel">Classes</span><i class="chev" aria-hidden="true">▾</i></button><button id="addClassBtn" title="Add a class">+</button></div>
         <nav id="navClasses"></nav>
       </div>
       <div class="navsec">
@@ -1295,6 +1368,7 @@ button.acc-row:hover{background:var(--panel2)}
         <span id="focusTime">25:00</span>
         <button class="btn g sm" id="focusToggle" aria-label="Start or pause the timer">Start</button>
       </div>
+      <button class="btn g sm awakebtn" id="awakeBtn" data-act="awake" aria-pressed="false" hidden></button>
       <button class="btn g sm" id="searchBtn" title="Search everything" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><span class="lbl">Search</span> <span class="mono dim kb" id="searchKb" style="font-size:10px">⌘K</span></button>
       <div class="addbtn" id="addWrap"><button class="btn p sm" id="quickAdd" aria-label="Add something">+<span class="lbl"> New</span></button><button class="btn p sm hidden" id="quickMore" aria-label="More things to add" aria-haspopup="menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></div>
     </header>
@@ -2146,6 +2220,11 @@ function meetingsOn(cls, day) {
   });
   return out;
 }
+/* Classes live on Today's Schedule. The Today timeline and the calendar are for the work
+   around them: study blocks, events and what's due. (At work, and without Today's Schedule,
+   meetings and classes still show, since there is nowhere else they would.) */
+function classesElsewhere() { return !isWork() && on('schedule'); }
+function planAgenda(day) { const a = dayAgenda(day); return classesElsewhere() ? a.filter(e => e.kind !== 'class') : a; }
 function dayAgenda(day, skipAuto) {
   const out = [];
   MY('classes').forEach(c => out.push(...meetingsOn(c, day)));
@@ -2770,9 +2849,12 @@ function renderNav() {
     (counts[n] ? '<span class="cnt">' + counts[n] + '</span>' : '') + '</button>';
   $('#navMain').innerHTML = main.map(btn).join('');
   $('#navTools').innerHTML = tools.map(btn).join('');
+  const shut = !!Local.navClsShut;
   $('#navClasses').innerHTML = MY('classes').length
-    ? MY('classes').map(c => '<button class="tab' + (V.name === 'class' && V.param === c.id ? ' on' : '') + '" style="--tc:' + c.color + '" data-class="' + c.id + '"><span class="tt">' + esc(c.name) + '</span><span class="tcode">' + esc(c.code || '') + '</span></button>').join('')
-    : '<div class="dim" style="padding:6px 10px;font-size:12px">No ' + w.clsP.toLowerCase() + ' yet.</div>';
+    ? MY('classes').map(c => '<button class="tab' + (V.name === 'class' && V.param === c.id ? ' on' : '') + '" style="--tc:' + c.color + '" data-class="' + c.id + '" title="' + esc(c.name + (c.code ? ' · ' + c.code : '')) + '"><span class="tt">' + esc(c.name) + '</span></button>').join('')
+    : '<div class="dim navnone">No ' + w.clsP.toLowerCase() + ' yet.</div>';
+  $('#navClasses').classList.toggle('shut', shut);
+  const tog = $('#navClsTog'); if (tog) { tog.setAttribute('aria-expanded', String(!shut)); tog.title = (shut ? 'Show ' : 'Hide ') + w.clsP.toLowerCase(); }
   const lbl = $('#navClsLabel'); if (lbl) lbl.textContent = w.clsP;
   const acb = $('#addClassBtn'); if (acb) acb.title = 'Add a ' + w.cls.toLowerCase();
   /* the phone bar holds six tabs plus Settings; the rest stay one tap away in the menu */
@@ -2784,6 +2866,7 @@ function renderNav() {
   mn.style.gridTemplateColumns = 'repeat(' + mob.length + ',1fr)';
   mn.innerHTML = mob.map(n => '<button class="' + (V.name === n ? 'on' : '') + '" data-go="' + n + '">' + ic(VIEWS[n].icon) + '<span>' + esc(SHORT[n]) + '</span></button>').join('');
   const fb = $('#focusBar'); if (fb) fb.classList.toggle('hidden', !on('focus'));
+  awakePaint(); awakeSync();
   $('#termLabel').textContent = termLabel();
   const sw = $('#modeSw');
   if (sw) {
@@ -2808,7 +2891,7 @@ function avatarHTML() {
 function viewToday() {
   const d = today(), agenda = dayAgenda(d), nm = nowMin();
   const home = homeView();
-  const ribbon = on('calendar') ? todayRibbon(agenda, nm) : '';
+  const ribbon = on('calendar') ? todayRibbon(classesElsewhere() ? agenda.filter(e => e.kind !== 'class') : agenda, nm) : '';
   /* What you said you want to see first goes first. */
   const hero = home === 'schedule' ? ribbon : home === 'due' ? dueCard(true) : home === 'focus' ? focusHero(agenda, nm)
     : home === 'notes' ? notesCard(true) : home === 'cards' ? reviewCard(true) : '';
@@ -2858,7 +2941,7 @@ function todayRibbon(agenda, nm) {
         esc(e.title) + '<small>' + fmt12(e.start) + '</small></div>';
     }).join('') +
     (nm >= ds && nm <= de ? '<div class="nowline" style="left:' + pos(nm) + '%"></div>' : '') +
-    (agenda.length ? '' : '<div style="position:absolute;inset:0;display:grid;place-items:center" class="dim">Nothing scheduled — the whole day is yours.</div>') +
+    (agenda.length ? '' : '<div style="position:absolute;inset:0;display:grid;place-items:center" class="dim"><span style="background:var(--panel);padding:2px 10px;border-radius:12px">' + (classesElsewhere() ? 'No study time planned today.' : 'Nothing scheduled — the whole day is yours.') + '</span></div>') +
     '</div>';
 }
 function dueCard(hero) {
@@ -3074,7 +3157,7 @@ function monthGrid(anchor) {
     const day = addDays(start, i);
     const dd = parseYMD(day);
     const out = dd.getMonth() !== d.getMonth();
-    const ag = dayAgenda(day);
+    const ag = planAgenda(day);
     const tks = MY('tasks').filter(t => t.due === day);
     const hidden = Math.max(0, ag.length - 3) + Math.max(0, tks.length - 2);
     cells.push('<div class="cd' + (out ? ' out' : '') + (day === today() ? ' today' : '') + '" data-act="dayClick" data-day="' + day + '">' +
@@ -3090,7 +3173,7 @@ function monthGrid(anchor) {
 function weekGrid(anchor) {
   const start = startOfWeek(anchor, S.settings.weekStart);
   const ags = [];
-  for (let i = 0; i < 7; i++) ags.push(dayAgenda(addDays(start, i)));
+  for (let i = 0; i < 7; i++) ags.push(planAgenda(addDays(start, i)));
   /* The grid stretches to whatever is actually booked, so an early lab or a late
      review session is never drawn off the top or bottom of the week. */
   let ds = Math.floor(toMin(ms().dayStart) / 60) * 60, de = toMin(ms().dayEnd);
@@ -3228,19 +3311,170 @@ function blkHTML(src) {
   const dw = src.day, rows = src.get(dw), w = src.words, e = BLK.ed && BLK.ed.day === dw ? BLK.ed : null;
   const pills = '<div class="blkpills" role="tablist" aria-label="Day of the week">' + src.order.map(d => { const n = src.get(d).length;
     return '<button class="schpill' + (d === dw ? ' on' : '') + '" data-blk="day" data-d="' + d + '" role="tab" aria-selected="' + (d === dw) + '">' + DAYS[d] + (n ? '<i>' + n + '</i>' : '') + '</button>'; }).join('') + '</div>';
-  const list = rows.map((r, i) => e && e.at === i ? blkEditor(src) : blkRow(src, r, i)).join('');
-  const adding = e && e.at == null;
-  const empty = !rows.length && !adding ? '<p class="dim blkempty">Nothing on ' + DAY_NAMES[dw] + 's yet. Add each part of the day, one block at a time.' +
-    (src.classes.length ? '' : ' Add your ' + esc(w.clsP.toLowerCase()) + (src.setup ? ' a step back' : ' first') + ' to pick them here.') + '</p>' : '';
+  const hint = '<p class="dim blkhint">' + (src.classes.length ? 'Drag ' + (src.setup ? 'each one' : 'a ' + esc(w.cls.toLowerCase())) + ' onto the day. Drag a block to move it, pull its bottom edge to change how long it is, and tap it for the details.'
+    : 'Add your ' + esc(w.clsP.toLowerCase()) + (src.setup ? ' a step back' : ' first') + ' to drag them in here. Lunch and breaks work already.') + '</p>';
+  const grid = '<div class="blkgrid">' + blkPalette(src) + blkTimeline(src, rows) + '</div>';
   let foot = '';
-  if (adding) foot = blkEditor(src);
+  if (e) foot = blkEditor(src);
   else if (BLK.copy && BLK.copy.from === dw) foot = '<div class="blkcopy"><span>Copy ' + DAY_NAMES[dw] + ' to</span><div class="blkchips">' +
     src.order.filter(d => d !== dw).map(d => '<button class="blkdchip' + (BLK.copy.to.indexOf(d) >= 0 ? ' on' : '') + '" data-blk="copyday" data-d="' + d + '" aria-pressed="' + (BLK.copy.to.indexOf(d) >= 0) + '">' + DAYS[d] + '</button>').join('') + '</div>' +
     '<p class="dim">Those days get exactly ' + DAY_NAMES[dw] + '\'s blocks, replacing what\'s on them.</p>' +
     '<div class="blkacts"><span class="spacer"></span><button class="btn sm" data-blk="copyx">Cancel</button><button class="btn p sm" data-blk="copygo"' + (BLK.copy.to.length ? '' : ' disabled') + '>Copy</button></div></div>';
   else if (!e) foot = '<div class="blkfoot"><button class="btn sm p" data-blk="add">' + ic('plus') + 'Add a block</button><span class="spacer"></span>' +
     (rows.length ? '<button class="linkbtn" data-blk="copy">Copy to other days</button>' + (src.setup ? '' : '<button class="linkbtn dg" data-blk="clear">Clear day</button>') : '') + '</div>';
-  return pills + '<div class="blkbody"><h3 class="schedh">' + DAY_NAMES[dw] + '</h3>' + (list ? '<div class="blklist">' + list + '</div>' : '') + empty + foot + '</div>';
+  return pills + '<div class="blkbody"><h3 class="schedh">' + DAY_NAMES[dw] + '</h3>' + hint + grid + foot + '</div>';
+}
+/* --- the day as a timeline you drag things onto --- */
+function blkRange(rows) {
+  let s = 7 * 60, e = 18 * 60;
+  rows.forEach(r => { s = Math.min(s, Math.floor(toMin(r.start) / 60) * 60); e = Math.max(e, Math.ceil(toMin(r.end) / 60) * 60); });
+  return [s, Math.min(e, 1440)];
+}
+/* Blocks that overlap sit side by side. */
+function blkLanes(rows) {
+  const out = [], idx = rows.map((r, i) => i).sort((a, b) => toMin(rows[a].start) - toMin(rows[b].start) || toMin(rows[a].end) - toMin(rows[b].end));
+  let group = [], groupEnd = -1, ends = [];
+  const close = () => { group.forEach(i => { out[i].lanes = ends.length; }); group = []; ends = []; };
+  idx.forEach(i => {
+    const s = toMin(rows[i].start), e = toMin(rows[i].end);
+    if (group.length && s >= groupEnd) close();
+    let lane = ends.findIndex(x => x <= s);
+    if (lane < 0) { lane = ends.length; ends.push(e); } else ends[lane] = e;
+    out[i] = { lane, lanes: 1 }; group.push(i); groupEnd = Math.max(groupEnd, e);
+  });
+  if (group.length) close();
+  return out;
+}
+function blkPPH() { return typeof innerWidth !== 'undefined' && innerWidth < 600 ? 54 : 60; }
+function blkTimeline(src, rows) {
+  const [s, e] = blkRange(rows), pph = blkPPH(), lanes = blkLanes(rows);
+  let hrs = '';
+  for (let m = s; m <= e; m += 60) hrs += '<div class="blkhr" style="top:' + ((m - s) / 60 * pph) + 'px"><span>' + fmt12(toHHMM(m)) + '</span></div>';
+  const evs = rows.map((r, i) => {
+    const c = src.classes.find(x => x[0] === r.what), a = toMin(r.start), b = toMin(r.end), L = lanes[i];
+    const top = (a - s) / 60 * pph, ht = Math.max((b - a) / 60 * pph, 20), room = r.room || (c && c[3]) || '';
+    return '<div class="blkev' + (ht < 44 ? ' short' : '') + '" data-blk-ev="' + i + '" tabindex="0" role="button" aria-label="' + esc((blkName(src, r) || 'Untitled') + ', ' + fmt12(r.start) + ' to ' + fmt12(r.end)) + '"' +
+      ' style="top:' + top + 'px;height:' + ht + 'px;--bc:' + (c ? c[2] : 'var(--ink3)') + ';left:calc(' + (L.lane / L.lanes * 100) + '% + 2px);width:calc(' + (100 / L.lanes) + '% - 4px)">' +
+      '<b>' + esc(blkName(src, r) || 'Untitled') + '</b><small>' + fmt12(r.start) + '–' + fmt12(r.end) + (room ? ' · ' + esc(room) : '') + '</small>' +
+      '<span class="blkrs" data-blk-rs="' + i + '" aria-hidden="true"></span></div>';
+  }).join('');
+  return '<div class="blktl" data-blk-tl data-s="' + s + '" data-e="' + e + '" data-pph="' + pph + '" style="height:' + ((e - s) / 60 * pph) + 'px">' + hrs + '<div class="blkevs">' + evs + '</div></div>';
+}
+function blkPalette(src) {
+  const chip = (v, label, col) => '<button type="button" class="blkpchip" data-blk-drag="' + esc(v) + '" style="--bc:' + (col || 'var(--rule2)') + '">' + esc(label) + '</button>';
+  return '<div class="blkpal"><span class="blkl">' + esc(src.words.clsP) + ' and more</span><div class="blkpchips">' +
+    src.classes.map(x => chip(x[0], x[1], x[2])).join('') + src.others.map(o => chip('o:' + o, o)).join('') + chip('o:*', 'Something else') + '</div></div>';
+}
+/* How long a new block starts out: that class's usual length, else the day's usual, else 50 minutes. */
+function blkDefLen(src, what) {
+  const lens = [], mine = [];
+  src.order.forEach(d => src.get(d).forEach(x => { const l = toMin(x.end) - toMin(x.start); if (l > 0) { lens.push(l); if (x.what === what) mine.push(l); } }));
+  const mode = a => a.slice().sort((p, q) => a.filter(x => x === q).length - a.filter(x => x === p).length)[0];
+  return mine.length ? mode(mine) : lens.length ? mode(lens) : 50;
+}
+const DRG = { on: false };
+function blkScroller(el) {
+  for (let n = el && el.parentElement; n; n = n.parentElement) {
+    const o = getComputedStyle(n).overflowY;
+    if ((o === 'auto' || o === 'scroll') && n.scrollHeight > n.clientHeight) return n;
+  }
+  return document.scrollingElement || document.documentElement;
+}
+function blkTimes(el, a, b) { const s = el && el.querySelector('small'); if (s) s.textContent = fmt12(toHHMM(a)) + '–' + fmt12(toHHMM(b)); }
+function blkDragEnd() {
+  if (DRG.ghost) DRG.ghost.remove();
+  if (DRG.preview) DRG.preview.remove();
+  if (DRG.el) DRG.el.classList.remove('dragging');
+  document.body.classList.remove('blkdragging');
+  clearInterval(DRG.scrollIv);
+  Object.keys(DRG).forEach(k => { delete DRG[k]; });
+  DRG.on = false;
+}
+if (typeof document !== 'undefined' && document.addEventListener) {
+  document.addEventListener('pointerdown', e => {
+    const t = e.target.closest && e.target.closest('[data-blk-rs],[data-blk-ev],[data-blk-drag],[data-blk-tl]');
+    if (!t || (e.pointerType === 'mouse' && e.button !== 0) || DRG.on) return;
+    const body = t.closest('.blkbody'), tl = body && body.querySelector('[data-blk-tl]');
+    if (!tl) return;
+    const src = blkSrc(!!t.closest('.sv'));
+    Object.assign(DRG, { on: true, src, tl, s0: +tl.dataset.s, e0: +tl.dataset.e, pph: +tl.dataset.pph, x0: e.clientX, y0: e.clientY, moved: false, pid: e.pointerId, rows: src.get(src.day) });
+    if (t.hasAttribute('data-blk-rs')) Object.assign(DRG, { kind: 'size', i: +t.dataset.blkRs, el: t.closest('.blkev') });
+    else if (t.hasAttribute('data-blk-ev')) Object.assign(DRG, { kind: 'move', i: +t.dataset.blkEv, el: t });
+    else if (t.hasAttribute('data-blk-drag')) Object.assign(DRG, { kind: 'new', what: t.dataset.blkDrag, chip: t });
+    else Object.assign(DRG, { kind: 'tap' });
+    if (DRG.kind !== 'tap') { e.preventDefault(); try { t.setPointerCapture(e.pointerId); } catch (x) { } }
+  });
+  document.addEventListener('pointermove', e => {
+    if (!DRG.on || e.pointerId !== DRG.pid) return;
+    if (!DRG.moved) {
+      if (Math.hypot(e.clientX - DRG.x0, e.clientY - DRG.y0) < 5) return;
+      if (DRG.kind === 'tap') { blkDragEnd(); return; }                 /* that was a scroll */
+      DRG.moved = true; BLK.ed = null; BLK.copy = null;
+      document.body.classList.add('blkdragging');
+      if (DRG.kind === 'new') {
+        const g = DRG.chip.cloneNode(true); g.classList.add('blkghost'); g.removeAttribute('data-blk-drag'); document.body.appendChild(g); DRG.ghost = g;
+        DRG.len = blkDefLen(DRG.src, DRG.what);
+      } else DRG.el.classList.add('dragging');
+      DRG.sc = blkScroller(DRG.tl);
+      DRG.scrollIv = setInterval(() => { if (DRG.vy) DRG.sc.scrollTop += DRG.vy; }, 16);
+    }
+    e.preventDefault();
+    const vh = typeof innerHeight !== 'undefined' ? innerHeight : 800;
+    DRG.vy = e.clientY < 70 ? -10 : e.clientY > vh - 70 ? 10 : 0;
+    const r = DRG.tl.getBoundingClientRect(), snap = m => Math.round(m / 5) * 5, at = y => DRG.s0 + (y - r.top) / DRG.pph * 60;
+    if (DRG.kind === 'size') {
+      const row = DRG.rows[DRG.i], a = toMin(row.start), b = clamp(snap(at(e.clientY)), a + 15, DRG.e0);
+      DRG.nb = b; DRG.el.style.height = ((b - a) / 60 * DRG.pph) + 'px'; blkTimes(DRG.el, a, b);
+    } else if (DRG.kind === 'move') {
+      const row = DRG.rows[DRG.i], a0 = toMin(row.start), len = toMin(row.end) - a0;
+      const a = clamp(snap(a0 + (e.clientY - DRG.y0) / DRG.pph * 60), DRG.s0, DRG.e0 - len);
+      DRG.na = a; DRG.el.style.top = ((a - DRG.s0) / 60 * DRG.pph) + 'px'; blkTimes(DRG.el, a, a + len);
+    } else if (DRG.kind === 'new') {
+      DRG.ghost.style.left = e.clientX + 'px'; DRG.ghost.style.top = e.clientY + 'px';
+      const inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top - 20 && e.clientY <= r.bottom + 20;
+      if (!inside) { DRG.na = null; if (DRG.preview) DRG.preview.style.display = 'none'; return; }
+      const a = clamp(snap(at(e.clientY) - 10), DRG.s0, DRG.e0 - Math.min(DRG.len, DRG.e0 - DRG.s0));
+      DRG.na = a;
+      if (!DRG.preview) {
+        const p = document.createElement('div'); p.className = 'blkev preview';
+        p.innerHTML = '<b>' + esc(DRG.chip.textContent) + '</b><small></small>'; p.style.setProperty('--bc', DRG.chip.style.getPropertyValue('--bc') || 'var(--ink3)');
+        p.style.left = '2px'; p.style.width = 'calc(100% - 4px)';
+        DRG.tl.querySelector('.blkevs').appendChild(p); DRG.preview = p;
+      }
+      DRG.preview.style.display = ''; DRG.preview.style.top = ((a - DRG.s0) / 60 * DRG.pph) + 'px'; DRG.preview.style.height = (DRG.len / 60 * DRG.pph) + 'px';
+      blkTimes(DRG.preview, a, a + DRG.len);
+    }
+  }, { passive: false });
+  const up = e => {
+    if (!DRG.on || e.pointerId !== DRG.pid) return;
+    const d = Object.assign({}, DRG); blkDragEnd();
+    if (e.type === 'pointercancel') { if (d.moved) d.src.paint(); return; }
+    const src = d.src, dw = src.day, rows = src.get(dw);
+    if (!d.moved) {
+      if (d.kind === 'move' || d.kind === 'size') { blkOpen(src, d.i); return src.paint(); }
+      if (d.kind === 'new') { blkOpen(src, null); BLK.ed.what = d.what; return src.paint(); }
+      if (d.kind === 'tap' && !(e.target.closest && e.target.closest('.blkev'))) {
+        const r = d.tl.getBoundingClientRect(), a = clamp(Math.floor((d.s0 + (e.clientY - r.top) / d.pph * 60) / 15) * 15, d.s0, d.e0 - 15);
+        blkOpen(src, null); BLK.ed.start = toHHMM(a); BLK.ed.end = toHHMM(Math.min(a + blkDefLen(src, ''), 1439));
+        return src.paint();
+      }
+      return;
+    }
+    if (d.kind === 'move' && d.na != null) { const r = rows[d.i], len = toMin(r.end) - toMin(r.start); r.start = toHHMM(d.na); r.end = toHHMM(d.na + len); src.set(dw, blkSort(rows)); }
+    if (d.kind === 'size' && d.nb != null) { rows[d.i].end = toHHMM(d.nb); src.set(dw, blkSort(rows)); }
+    if (d.kind === 'new' && d.na != null) {
+      const start = toHHMM(d.na), end = toHHMM(Math.min(d.na + d.len, d.e0));
+      if (d.what === 'o:*') { blkOpen(src, null); Object.assign(BLK.ed, { what: 'o:*', start, end }); return src.paint(); }   /* name it first */
+      rows.push({ start, end, what: d.what, label: '', room: '', ph: '' }); src.set(dw, blkSort(rows));
+    }
+    src.paint();
+  };
+  document.addEventListener('pointerup', up);
+  document.addEventListener('pointercancel', up);
+  document.addEventListener('keydown', e => {
+    const t = e.target; if (!t || !t.matches || !t.matches('[data-blk-ev]') || (e.key !== 'Enter' && e.key !== ' ')) return;
+    e.preventDefault(); const src = blkSrc(!!t.closest('.sv')); blkOpen(src, +t.dataset.blkEv); src.paint();
+  });
 }
 function blkRow(src, r, i) {
   const c = src.classes.find(x => x[0] === r.what), room = r.room || (c && c[3]) || '';
@@ -3718,6 +3952,8 @@ function viewSettings() {
     (isWork() ? '' : row('Words ATLAS uses', 'Match your school: classes or courses, assignments or coursework.', '<select data-act="setLevel" aria-label="Words ATLAS uses">' +
       Object.keys(LEVELS).map(k => '<option value="' + k + '"' + ((LEVELS[s.level] ? s.level : 'high') === k ? ' selected' : '') + '>' + LEVELS[k].clsP + ' and ' + LEVELS[k].taskP.toLowerCase() + ' (' + LEVELS[k].name.toLowerCase() + ')</option>').join('') + '</select>')) +
     (homes.length > 1 ? row('Today starts with', 'The first thing on the Today page.', '<select data-act="setHome" aria-label="Today starts with">' + homes.map(k => '<option value="' + k + '"' + (homeView() === k ? ' selected' : '') + '>' + esc(homeInfo(k).name) + '</option>').join('') + '</select>') : '') +
+    (isWork() && awakeCan() ? row('Keep this computer awake', 'While ATLAS is open on screen, your computer won\'t dim or go to sleep. It lets go when you switch away from ATLAS or close it. Also in the bar at the top.',
+      '<input type="checkbox" id="awakeSet" data-act="awakeSet"' + (Local.awake ? ' checked' : '') + ' aria-label="Keep this computer awake">') : '') +
     (on('grades') && !isWork() ? row('Show grades as', '', '<select data-act="setGrading" aria-label="Show grades as">' + Object.keys(GRADINGS).map(k => '<option value="' + k + '"' + (grading() === k ? ' selected' : '') + '>' + GRADINGS[k].name + ' (' + GRADINGS[k].sample + ')</option>').join('') + '</select>') : '');
   body.tools = '<div class="toolgrid">' + modList(isWork()).map(m => { const mi = modInfo(m); return '<label class="toolcard" data-q="' + esc((mi.name + ' ' + (m.id === 'tasks' ? w.taskP : '') + ' ' + mi.blurb).toLowerCase()) + '">' +
     '<input type="checkbox" data-act="modToggle" data-m="' + m.id + '"' + (on(m.id) ? ' checked' : '') + '>' +
@@ -4748,7 +4984,7 @@ function viewTutor() {
     '<div class="tfoot">Uses ATLAS\'s free AI. Leave out anything private. ' + esc(aiNamed() ? aiName() : wk('The tutor', 'The assistant')) + ' can make mistakes, so check what matters.</div></section></div></div>';
 }
 function mountTutor() {
-  const log = $('#tutLog'); if (log) log.scrollTop = log.scrollHeight;
+  const log = $('#tutLog'); if (log && log.querySelector('.tmsg')) log.scrollTop = log.scrollHeight;   /* a new chat starts at the top */
   const ta = $('#chatIn'); if (!ta) return;
   const fit = () => { ta.style.height = 'auto'; ta.style.height = Math.min(ta.scrollHeight, 180) + 'px'; };
   fit();
@@ -5433,7 +5669,7 @@ const GATE_FEATS = [
   ['lock', 'Private, free, everywhere', 'Only you can open your desk.', 'Your desk syncs to every device you sign in on and keeps working offline. Install it like an app and lock it with a passkey. No ads, no cost.', ['Phone, tablet and computer', 'Works offline', 'Passkey or pattern lock']]
 ];
 const GATE_TOUR = [
-  ['today', 'desk', 'Your whole day on one screen', 'Today shows what\'s due next, your classes on a timeline, and the notes you were last working on. Nothing you have to dig for.', ['What\'s due, most urgent first', 'Your classes on a timeline', 'One tap to start focusing']],
+  ['today', 'desk', 'Your whole day on one screen', 'Today shows what\'s due next, the study time you\'ve planned, and the notes you were last working on. Nothing you have to dig for.', ['What\'s due, most urgent first', 'Study time on a timeline', 'One tap to start focusing']],
   ['schedule,phone', 'phones', 'Wake up to the right day', 'Put your week in once. Each morning Today\'s Schedule shows your classes in order, what\'s on right now, and what to pack. On your phone it works like an app.', ['Now and next, with rooms and teachers', 'A packing checklist for the day', 'Installs on your home screen']],
   ['calendar', 'desk', 'Study time that books itself', 'Press Auto-schedule and ATLAS finds time for every assignment before it\'s due, around your classes, inside the hours you chose.', ['Blocks finish before the deadline', 'Imports Canvas, Classroom and Google Calendar', 'Exports back to any calendar app']],
   ['cards', 'desk', 'Flashcards that know when you\'ll forget', 'Each card comes back just before you\'d forget it, and each answer shows when you\'ll see it next. Link a deck to a test and the reviews finish in time.', ['Spaced repetition that adapts to you', 'Practice mode before a test', 'Cards made from your notes']],
@@ -6499,6 +6735,106 @@ function launchShortcut() {
   if (d === 'study' && on('cards')) ACT.reviewAll();
 }
 
+
+/* ============================================================
+   Keep awake (work side). While ATLAS is open on screen, the computer
+   doesn't dim or go to sleep: the browser's own Screen Wake Lock.
+   It lets go when ATLAS is hidden or closed, and comes back with it.
+   ============================================================ */
+const WAKE = { lock: null, busy: false };
+function awakeCan() { return typeof navigator !== 'undefined' && 'wakeLock' in navigator; }
+function awakeWanted() { return isWork() && !!Local.awake && awakeCan() && typeof document !== 'undefined' && document.visibilityState === 'visible'; }
+async function awakeSync() {
+  if (WAKE.busy) return;
+  WAKE.busy = true;
+  try {
+    if (awakeWanted() && !WAKE.lock) {
+      const l = await navigator.wakeLock.request('screen');
+      WAKE.lock = l;
+      l.addEventListener && l.addEventListener('release', () => { if (WAKE.lock === l) WAKE.lock = null; awakePaint(); });
+    } else if (!awakeWanted() && WAKE.lock) { const l = WAKE.lock; WAKE.lock = null; await l.release(); }
+  } catch (e) { WAKE.lock = null; }
+  WAKE.busy = false;
+  awakePaint();
+}
+function awakePaint() {
+  const b = typeof document !== 'undefined' && document.getElementById('awakeBtn'); if (!b) return;
+  const show = isWork() && awakeCan(), onNow = !!Local.awake;
+  b.hidden = !show;
+  if (!show) return;
+  b.classList.toggle('on', onNow); b.setAttribute('aria-pressed', String(onNow));
+  b.innerHTML = ic('eye') + '<span class="lbl">' + (onNow ? 'Awake' : 'Keep awake') + '</span>';
+  b.title = onNow ? 'Your computer stays awake while ATLAS is open on screen. Click to let it sleep.' : 'Keep this computer from dimming or sleeping while ATLAS is open';
+}
+if (typeof document !== 'undefined' && document.addEventListener) document.addEventListener('visibilitychange', () => { awakeSync(); });
+
+
+/* ============================================================
+   Updates. Each release carries its version and a short recap;
+   version.json next to the page says what's live. An open ATLAS
+   checks it now and then, and when it's newer shows the recap with
+   "Load new update". Opening ATLAS after an update shows it once.
+   (Each release: bump ATLAS_RELEASE here and version.json together.)
+   ============================================================ */
+const ATLAS_RELEASE = {"version": "2026.10.22.2", "notes": ["Drag classes onto Today's Schedule to set their times, then drag or stretch them to change them.", "Today and the calendar now show your study time and deadlines. Classes stay on Today's Schedule.", "The class list in the sidebar is two across and folds away.", "New accounts confirm their email on a screen that moves on by itself.", "Reminders are simpler: one switch for each kind.", "More room on phones, with nothing hidden behind the notch or the home bar.", "Work side: Keep awake stops your laptop from sleeping while ATLAS is open."]};
+const UPD = { remote: null, last: 0, open: false };
+function updNewer(a, b) {
+  const p = v => String(v || '').split('.').map(n => parseInt(n, 10) || 0), x = p(a), y = p(b);
+  for (let i = 0; i < Math.max(x.length, y.length); i++) { if ((x[i] || 0) !== (y[i] || 0)) return (x[i] || 0) > (y[i] || 0); }
+  return false;
+}
+async function updCheck(force) {
+  if (typeof fetch === 'undefined' || typeof location === 'undefined' || !/^https?:/.test(location.protocol)) return;
+  if (!force && Date.now() - UPD.last < 5 * 60e3) return;
+  UPD.last = Date.now();
+  try {
+    const r = await fetch(new URL('version.json', location.href).href + '?t=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) return;
+    const j = await r.json();
+    if (j && j.version && updNewer(j.version, ATLAS_RELEASE.version)) { UPD.remote = j; updShow('load'); }
+  } catch (e) { }
+}
+function updShow(kind) {
+  if (UPD.open === 'load' || (UPD.open && kind !== 'load')) return;
+  const rel = kind === 'load' ? UPD.remote : ATLAS_RELEASE;
+  const old = document.getElementById('updCard'); if (old) old.remove();
+  const el = document.createElement('div');
+  el.id = 'updCard'; el.className = 'updcard'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-labelledby', 'updT');
+  el.innerHTML = '<div class="updhead">' + ic('spark') + '<b id="updT">' + (kind === 'load' ? 'A new version of ATLAS is ready' : 'What\'s new in ATLAS') + '</b></div>' +
+    ((rel && rel.notes || []).length ? '<ul>' + rel.notes.slice(0, 8).map(n => '<li>' + esc(n) + '</li>').join('') + '</ul>' : '') +
+    '<button class="btn p" id="updGo" type="button">' + (kind === 'load' ? 'Load new update' : 'Got it') + '</button>';
+  document.body.appendChild(el);
+  UPD.open = kind;
+  el.querySelector('#updGo').addEventListener('click', () => {
+    if (kind === 'load') {
+      Local.seenVersion = UPD.remote.version; saveLocal();
+      el.querySelector('#updGo').disabled = true; el.querySelector('#updGo').textContent = 'Loading…';
+      try { flush(); } catch (e) { }
+      setTimeout(() => location.reload(), 150);
+    } else {
+      Local.seenVersion = ATLAS_RELEASE.version; saveLocal();
+      el.remove(); UPD.open = false;
+    }
+  });
+}
+/* After an update: the recap once, when nothing else is on screen. A brand-new desk just starts on this version. */
+function updWelcome() {
+  if (!Local.seenVersion) {
+    /* Someone brand new has nothing to compare against. Someone who used ATLAS before
+       update recaps existed has, so they get this one too. */
+    const before = S && S.settings && (S.settings.setupDone || S.settings.setupSeen);
+    if (!before) { Local.seenVersion = ATLAS_RELEASE.version; saveLocal(); return; }
+    Local.seenVersion = '0';
+  }
+  if (!updNewer(ATLAS_RELEASE.version, Local.seenVersion)) return;
+  let tries = 0;
+  const iv = setInterval(() => {
+    if (++tries > 300) return clearInterval(iv);
+    if ((typeof GATE !== 'undefined' && GATE.open) || (typeof SVY !== 'undefined' && SVY.open) || (typeof LOCK !== 'undefined' && LOCK.on)) return;
+    clearInterval(iv); updShow('new');
+  }, 1500);
+}
+
 /* --- turning it on, on this device --- */
 async function noteEnable() {
   if (isIOS() && !isStandalone()) { noteIOS(); return false; }
@@ -7372,6 +7708,8 @@ const ACT = {
   },
   addMenu: el => togglePop(el, addItems()),
   install: () => installSheet(),
+  awake: () => { Local.awake = !Local.awake; saveLocal(); awakeSync(); if ($('#awakeSet')) $('#awakeSet').checked = !!Local.awake; toast(Local.awake ? 'Your computer stays awake while ATLAS is open' : 'Your computer can sleep again'); },
+  awakeSet: el => { Local.awake = !!el.checked; saveLocal(); awakeSync(); },
   instTip: el => {
     const k = el.dataset.k;
     if (k === 'go') return installSheet();
@@ -7915,13 +8253,13 @@ function ago(ts) {
    ============================================================ */
 const LEVELS = {
   middle: { name: 'Middle school', blurb: 'Classes, homework and tests.', icon: 'pencil', cls: 'Class', clsP: 'Classes', task: 'Homework', taskP: 'Homework', taskA: 'homework', taskAn: 'homework', short: 'Homework', term: 'This school year' },
-  high: { name: 'High school', blurb: 'Classes, assignments, exams.', icon: 'school', cls: 'Class', clsP: 'Classes', task: 'Assignment', taskP: 'Assignments', taskA: 'assignment', taskAn: 'an assignment', short: 'Work', term: 'This semester' },
-  uni: { name: 'College or university', blurb: 'Courses, problem sets, papers, finals.', icon: 'cap', cls: 'Course', clsP: 'Courses', task: 'Assignment', taskP: 'Assignments', taskA: 'assignment', taskAn: 'an assignment', short: 'Work', term: 'This semester' },
+  high: { name: 'High school', blurb: 'Classes, assignments, exams.', icon: 'school', cls: 'Class', clsP: 'Classes', task: 'Assignment', taskP: 'Assignments', taskA: 'assignment', taskAn: 'an assignment', short: 'Due', term: 'This semester' },
+  uni: { name: 'College or university', blurb: 'Courses, problem sets, papers, finals.', icon: 'cap', cls: 'Course', clsP: 'Courses', task: 'Assignment', taskP: 'Assignments', taskA: 'assignment', taskAn: 'an assignment', short: 'Due', term: 'This semester' },
   self: { name: 'Learning on my own', blurb: 'An online course, a language, a test to prep for.', icon: 'compass', cls: 'Subject', clsP: 'Subjects', task: 'Task', taskP: 'Tasks', taskA: 'task', taskAn: 'a task', short: 'Tasks', term: 'Right now' }
 };
 const MODULES = [
   { id: 'schedule', icon: 'clock', name: 'Today\'s Schedule', blurb: 'Your day, class by class, with what to bring to each one.' },
-  { id: 'calendar', icon: 'calendar', name: 'Calendar', blurb: 'Your timetable on a week grid, with time blocked for studying.' },
+  { id: 'calendar', icon: 'calendar', name: 'Calendar', blurb: 'Your week on a grid: study time, events and what\'s due.' },
   { id: 'tasks', icon: 'tasks', name: 'Deadlines', blurb: 'Everything due in one list, most urgent first.' },
   { id: 'notes', icon: 'book', name: 'Notebooks', blurb: 'A notebook for every class that saves as you type.' },
   { id: 'cards', icon: 'cards', name: 'Flashcards', blurb: 'Cards that come back right before you would forget them.' },
@@ -7932,7 +8270,7 @@ const MODULES = [
 ];
 const VIEW_MOD = { schedule: 'schedule', calendar: 'calendar', tasks: 'tasks', notes: 'notes', cards: 'cards', review: 'cards', tutor: 'tutor', grades: 'grades', break: 'break' };
 const HOMES = {
-  schedule: { need: 'calendar', icon: 'calendar', name: 'My day', blurb: 'Classes and study blocks on a timeline.' },
+  schedule: { need: 'calendar', icon: 'calendar', name: 'My day', blurb: 'Study time and plans on a timeline.' },
   due: { need: 'tasks', icon: 'tasks', name: 'What\'s due', blurb: 'The next deadlines, most urgent first.' },
   focus: { need: 'focus', icon: 'timer', name: 'A start button', blurb: 'One tap and a focus session begins.' },
   notes: { need: 'notes', icon: 'book', name: 'My notes', blurb: 'The last pages you were working on.' },
@@ -8682,6 +9020,7 @@ async function boot() {
   $('#quickAdd').addEventListener('click', () => { const p = addPrimary(); if (p) { closePop(); p.run(); } else togglePop($('#addWrap'), addItems()); });
   $('#quickMore').addEventListener('click', () => togglePop($('#quickMore'), addItems()));
   $('#addClassBtn').addEventListener('click', () => classModal());
+  $('#navClsTog').addEventListener('click', () => { Local.navClsShut = !Local.navClsShut; saveLocal(); renderNav(); });
   $('#focusToggle').addEventListener('click', toggleTimer);
   $('#focusBar').addEventListener('click', e => { if (!e.target.closest('#focusToggle')) openZen(); });   /* the icon inside the button is not the button */
   setInterval(() => {
@@ -8700,6 +9039,10 @@ async function boot() {
   if (link) handleAction(link);
   else if (!GATE.open) launchShortcut();
   if (lockSet() && !link) lockShow();
+  updWelcome();
+  setTimeout(() => updCheck(true), 5000);
+  setInterval(() => { if (document.visibilityState === 'visible') updCheck(); }, 15 * 60e3);
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') updCheck(); });
 }
 if (typeof document !== 'undefined' && document.addEventListener) document.addEventListener('DOMContentLoaded', boot);
 /*==MAIN==*/
