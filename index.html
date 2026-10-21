@@ -11,6 +11,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%2232 32 960 960%22%3E%3Cdefs%3E %3ClinearGradient id=%22bg%22 x1=%2296%22 y1=%2270%22 x2=%22928%22 y2=%22954%22 gradientUnits=%22userSpaceOnUse%22%3E %3Cstop stop-color=%22%23163B6A%22/%3E %3Cstop offset=%221%22 stop-color=%22%2307192F%22/%3E %3C/linearGradient%3E %3ClinearGradient id=%22accent%22 x1=%22390%22 y1=%22250%22 x2=%22640%22 y2=%22780%22 gradientUnits=%22userSpaceOnUse%22%3E %3Cstop stop-color=%22%2362D9FF%22/%3E %3Cstop offset=%221%22 stop-color=%22%23159BE0%22/%3E %3C/linearGradient%3E %3C/defs%3E %3Crect x=%2232%22 y=%2232%22 width=%22960%22 height=%22960%22 rx=%22216%22 fill=%22url(%23bg)%22/%3E %3Cpath d=%22M512 174 276 786h132l50-132h108l50 132h132L512 174Zm0 180 55 166H457Z%22 fill=%22%23fff%22/%3E %3Cpath d=%22M512 184 587 359 512 326 437 359Z%22 fill=%22url(%23accent)%22/%3E %3Cpath d=%22M400 525h224M429 604h166%22 fill=%22none%22 stroke=%22%230D3158%22 stroke-width=%2232%22 stroke-linecap=%22round%22/%3E %3Ccircle cx=%22512%22 cy=%22417%22 r=%2220%22 fill=%22%2362D9FF%22/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <meta name="description" content="A single-file school organizer: notebooks, calendar, assignments, flashcards and focus tracking.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -98,9 +100,9 @@ a{color:var(--ultra)}
 }
 .brand{display:flex;align-items:center;gap:10px;padding:16px 16px 12px}
 .mark{
-  width:30px;height:30px;border-radius:9px;background:var(--ultra);color:#fff;display:grid;place-items:center;
-  font-family:var(--display);font-weight:800;font-size:16px;flex:none;
-  box-shadow:inset 0 -2px 0 rgba(0,0,0,.18);
+  width:30px;height:30px;border-radius:7px;flex:none;display:block;
+  background:#0B2340 url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%2232 32 960 960%22%3E%3Cdefs%3E %3ClinearGradient id=%22bg%22 x1=%2296%22 y1=%2270%22 x2=%22928%22 y2=%22954%22 gradientUnits=%22userSpaceOnUse%22%3E %3Cstop stop-color=%22%23163B6A%22/%3E %3Cstop offset=%221%22 stop-color=%22%2307192F%22/%3E %3C/linearGradient%3E %3ClinearGradient id=%22accent%22 x1=%22390%22 y1=%22250%22 x2=%22640%22 y2=%22780%22 gradientUnits=%22userSpaceOnUse%22%3E %3Cstop stop-color=%22%2362D9FF%22/%3E %3Cstop offset=%221%22 stop-color=%22%23159BE0%22/%3E %3C/linearGradient%3E %3C/defs%3E %3Crect x=%2232%22 y=%2232%22 width=%22960%22 height=%22960%22 rx=%22216%22 fill=%22url(%23bg)%22/%3E %3Cpath d=%22M512 174 276 786h132l50-132h108l50 132h132L512 174Zm0 180 55 166H457Z%22 fill=%22%23fff%22/%3E %3Cpath d=%22M512 184 587 359 512 326 437 359Z%22 fill=%22url(%23accent)%22/%3E %3Cpath d=%22M400 525h224M429 604h166%22 fill=%22none%22 stroke=%22%230D3158%22 stroke-width=%2232%22 stroke-linecap=%22round%22/%3E %3Ccircle cx=%22512%22 cy=%22417%22 r=%2220%22 fill=%22%2362D9FF%22/%3E%3C/svg%3E") center/100% 100% no-repeat;
+  box-shadow:0 1px 2px rgba(7,25,47,.25);
 }
 .brand b{font-family:var(--display);font-size:19px;letter-spacing:-.03em}
 .brand small{display:block;font-size:11.5px;color:var(--ink3);margin-top:-1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:170px}
@@ -280,9 +282,61 @@ hr.rule{border:none;border-top:1px solid var(--rule);margin:16px 0}
 .flipwrap{perspective:1400px;max-width:620px;margin:0 auto}
 .flip{position:relative;min-height:300px;transition:transform .5s cubic-bezier(.3,.9,.3,1);transform-style:preserve-3d;cursor:pointer}
 .flip.f{transform:rotateY(180deg)}
-.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:grid;place-items:center;text-align:center;padding:30px;background:var(--panel);border:1px solid var(--rule);border-radius:var(--r);box-shadow:var(--shadowUp)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;align-items:center;justify-content:center;text-align:center;padding:30px;background:var(--panel);border:1px solid var(--rule);border-radius:var(--r);box-shadow:var(--shadowUp)}
 .face.back{transform:rotateY(180deg);background:var(--panel2)}
-.face p{font-size:20px;font-weight:500;line-height:1.45;margin:0;max-width:100%;overflow-wrap:anywhere}
+.face p{font-size:20px;font-weight:500;line-height:1.45;margin:0;max-width:100%;overflow-wrap:anywhere;white-space:pre-line}
+.face p.long{font-size:16px;line-height:1.5}
+.face{overflow:auto}
+.face.back{flex-direction:column}
+.face .faceq{font-size:13px;color:var(--ink3);margin:0 0 12px;max-width:92%;white-space:pre-line;overflow-wrap:anywhere}
+.face .tag{position:absolute;top:12px;right:14px}
+.grade.two{grid-template-columns:1fr 1fr}
+.grade button .k{display:inline-block;font-family:var(--mono);font-size:10px;color:var(--ink3);font-weight:500;margin-right:6px;padding:0 4px;border:1px solid var(--rule2);border-radius:4px;line-height:14px;vertical-align:1px}
+.rv-top{max-width:620px;margin:0 auto 12px;gap:8px}
+.rv-bar{max-width:620px;margin:0 auto 16px}
+.revtools{display:flex;justify-content:center;gap:6px;margin-top:14px;flex-wrap:wrap}
+.revhint{text-align:center;font-size:11.5px;color:var(--ink3);margin-top:8px}
+@media (hover:none){.revhint,.grade button .k{display:none}}
+.rv-done{max-width:560px;margin:5vh auto;text-align:center}
+.rv-done .pad{padding:30px 26px}
+.rv-done h3{font-size:18px;margin:0 0 16px}
+.rv-pct{font-family:var(--display);font-size:56px;letter-spacing:-.045em;line-height:1;color:var(--ultra);margin-bottom:6px}
+.rv-stats{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.rv-stats div{min-width:96px;padding:10px 12px;border:1px solid var(--rule);border-radius:var(--r2);background:var(--panel2)}
+.rv-stats b{display:block;font-family:var(--display);font-size:20px;letter-spacing:-.03em}
+.rv-stats span{font-size:11.5px;color:var(--ink3)}
+.rv-lines{color:var(--ink2);font-size:13.5px;line-height:1.55;margin:0 auto 16px;max-width:440px}
+.rv-big small{display:block;font-size:12.5px;color:var(--ink3);margin-top:2px}
+.deckhead{margin-bottom:14px;flex-wrap:wrap;gap:8px}
+.deck-test{display:flex;align-items:center;gap:6px;margin-top:10px;padding-top:9px;border-top:1px solid var(--rule);font-size:12px;color:var(--ink2);font-weight:600}
+.deck-test svg{width:14px;height:14px;color:var(--ink2);flex:none}
+.kbhint{font-family:var(--mono);font-size:10px;opacity:.7;margin-left:6px}
+@media (hover:none){.kbhint{display:none}}
+.deck-test.soon,.deck-test.soon svg{color:var(--crimson)}
+.dstats{display:grid;grid-template-columns:repeat(4,1fr);margin-bottom:12px}
+.dstat{padding:12px 16px;border-right:1px solid var(--rule);min-width:0}
+.dstat:last-child{border-right:none}
+.dstat b{display:block;font-family:var(--display);font-size:22px;letter-spacing:-.03em;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dstat span{font-size:12px;color:var(--ink3)}
+.testcard{margin-bottom:12px}
+.testcard .testname{font-size:15.5px}
+.testcard .ready{min-width:150px}
+.testcard .ready b{font-family:var(--display);font-size:22px;letter-spacing:-.03em}
+.testcard .ready span{font-size:12.5px;color:var(--ink3)}
+.testcard .ready .bar i{background:var(--moss)}
+.testcard.soon{border-color:color-mix(in srgb,var(--crimson) 35%,var(--rule))}
+.testnote{font-size:12.5px;margin:10px 0 0;line-height:1.5}
+.testhint{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 14px;margin-bottom:12px;border:1px dashed var(--rule2);border-radius:var(--r2);font-size:13.5px;color:var(--ink2)}
+.testhint svg{width:16px;height:16px;color:var(--ultra);flex:none}
+.cardfind{margin:0 0 10px;max-width:320px}
+.item.addrow{width:100%;justify-content:center;align-items:center;gap:6px;color:var(--ultra);font-weight:600;font-size:13.5px;border-bottom:none}
+.item.addrow svg{width:15px;height:15px}
+.cardback{white-space:pre-line}
+@media (max-width:640px){
+  .dstats{grid-template-columns:1fr 1fr}
+  .dstat:nth-child(2){border-right:none}
+  .dstat:nth-child(-n+2){border-bottom:1px solid var(--rule)}
+}
 .face .eyebrow{position:absolute;top:14px;left:16px}
 .grade{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:620px;margin:16px auto 0}
 .grade button{padding:10px 4px;border-radius:var(--r2);border:1px solid var(--rule2);background:var(--panel);font-weight:600;font-size:13px;transition:transform .08s,background .12s}
@@ -621,24 +675,56 @@ details.adv .advb{padding-top:10px}
 .addbtn.split #quickAdd{border-top-right-radius:0;border-bottom-right-radius:0}
 .addbtn #quickMore{border-top-left-radius:0;border-bottom-left-radius:0;padding:4px 6px;border-left:1px solid color-mix(in srgb,#fff 32%,transparent)}
 .addbtn #quickMore svg{width:14px;height:14px}
-.setwrap{max-width:1000px;display:grid;grid-template-columns:168px minmax(0,1fr);gap:28px;align-items:start}
+.setwrap{max-width:1040px;display:grid;grid-template-columns:250px minmax(0,1fr);gap:26px;align-items:start}
 .setnav{position:sticky;top:0;display:flex;flex-direction:column;gap:2px;padding-top:2px}
-.setnav button{text-align:left;padding:7px 10px;border-radius:var(--r2);color:var(--ink2);font-weight:500}
+.setnav input[type=search]{margin:0 0 10px;height:36px;font-size:13.5px}
+.setnav button{display:flex;align-items:flex-start;gap:10px;text-align:left;padding:9px 10px;border-radius:var(--r2);color:var(--ink2);width:100%}
+.setnav button svg{width:17px;height:17px;flex:none;margin-top:1px;color:var(--ink3)}
+.setnav button span{flex:1;min-width:0}
+.setnav button b{display:block;font-weight:600;font-size:14px}
+.setnav button small{display:block;font-size:12px;color:var(--ink3);margin-top:1px;line-height:1.35}
+.setnav button .go{display:none;font-style:normal;color:var(--ink3);font-size:18px;line-height:1}
 .setnav button:hover{background:var(--panel3);color:var(--ink)}
-.set{background:var(--panel);border:1px solid var(--rule);border-radius:var(--r);padding:18px 20px 8px;margin-bottom:16px;scroll-margin-top:12px}
-.set > h2{font-size:18px;margin:0 0 4px}
+.setnav button.on{background:var(--ultraSoft);color:var(--ultra)}
+.setnav button.on svg{color:var(--ultra)}
+.set{display:none;background:var(--panel);border:1px solid var(--rule);border-radius:var(--r);padding:18px 20px 8px;margin-bottom:16px}
+.set.on{display:block}
+.set > h2{font-size:19px;margin:0}
+.setlead{margin:2px 0 10px;font-size:13px;color:var(--ink3)}
+.set .subhead{font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--ink3);font-weight:700;margin:16px 0 0;padding-bottom:6px}
+.set .subhead + .srow,.setlead + .srow{border-top:none}
 .srow{display:flex;align-items:center;gap:16px;padding:12px 0;border-top:1px solid var(--rule)}
-.set > h2 + .srow,.persona + .srow{border-top:none}
 .srow.col{flex-direction:column;align-items:stretch;gap:10px}
 .srow .sl{flex:1;min-width:0}
 .srow .sl b{display:block;font-size:14px;font-weight:600}
 .srow .sl span{display:block;font-size:12.5px;color:var(--ink3);margin-top:1px}
+.srow .sl span b{display:inline;font-size:inherit;color:var(--ink2)}
 .srow .sc{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
 .srow .sc input[type=number]{width:84px}
 .srow .sc input[type=time]{width:auto}
 .srow .sc select{width:auto;max-width:280px}
 .srow .sc input[type=text]{width:230px}
 .srow details.adv{margin-top:0;border-top:none;padding-top:0}
+.swatch{width:46px;height:46px;border-radius:12px;flex:none;position:relative;border:1px solid var(--rule2);overflow:hidden}
+.swatch i{position:absolute;border-radius:4px}
+.swatch i:first-child{left:8px;top:9px;width:30px;height:12px;background:var(--sp)}
+.swatch i:last-child{left:8px;top:26px;width:16px;height:10px;background:var(--sw)}
+.toolgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;margin:4px 0 10px}
+.toolcard{display:flex;align-items:flex-start;gap:10px;padding:12px;border:1px solid var(--rule);border-radius:var(--r2);cursor:pointer;background:var(--panel)}
+.toolcard:hover{border-color:var(--rule2)}
+.toolcard input{margin-top:2px;flex:none}
+.toolcard .ti svg{width:18px;height:18px;color:var(--ultra)}
+.toolcard .tt b{display:block;font-size:14px}
+.toolcard .tt span{display:block;font-size:12px;color:var(--ink3);line-height:1.4;margin-top:1px}
+.toolcard:has(input:not(:checked)){opacity:.62}
+.setnote{font-size:12.5px;margin:0 0 12px}
+.setback{display:none;margin-bottom:12px}
+.setnone{display:none;color:var(--ink3);font-size:13.5px;padding:16px 4px}
+.setwrap.finding .set{display:none}
+.setwrap.finding .set.hit{display:block}
+.setwrap.finding .subhead,.setwrap.finding .setnote{display:none}
+.setwrap.finding .setnav button.on{background:none;color:var(--ink2)}
+.setwrap.nohit .setnone{display:block}
 .setfoot{text-align:center;font-size:12.5px;padding:6px 0 30px;margin:0}
 .persona{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:6px 0 14px}
 .persona b{display:block;font-family:var(--display);font-size:22px;letter-spacing:-.035em}
@@ -682,14 +768,27 @@ details.adv .advb{padding-top:10px}
 .syncstate.paused::before{background:var(--marigold);animation:none}
 .sv-google{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;padding-top:16px;border-top:1px solid var(--rule);font-size:13.5px;color:var(--ink2)}
 @media (max-width:900px){
-  .setwrap{grid-template-columns:1fr}
-  .setnav{display:none}
+  .setwrap{grid-template-columns:1fr;gap:0}
+  .setnav{position:static}
+  .setnav button{padding:13px 12px;border-bottom:1px solid var(--rule);border-radius:0;background:var(--panel)}
+  .setnav button:first-of-type{border-radius:var(--r) var(--r) 0 0}
+  .setnav button:last-of-type{border-radius:0 0 var(--r) var(--r);border-bottom:none}
+  .setnav button.on{background:var(--panel);color:var(--ink2)}
+  .setnav button.on svg{color:var(--ink3)}
+  .setnav button .go{display:block}
+  .setnav{gap:0}
+  .setwrap:not(.finding) .setmain{display:none}
+  .setwrap.open .setmain{display:block}
+  .setwrap.open .setnav{display:none}
+  .setwrap.finding .setnav button{display:none}
+  .setwrap.finding .setmain{display:block}
+  .setwrap.open:not(.finding) .setback{display:inline-flex}
   .set{padding:16px 16px 6px}
   .srow{flex-wrap:wrap;gap:10px}
   .srow .sc{justify-content:flex-start}
   .srow .sc input[type=text]{width:100%}
 }
-@media (max-width:600px){.srow .sl{flex:1 1 100%}.srow .sc input[type=number]{width:96px}}
+@media (max-width:600px){.srow .sl{flex:1 1 100%}.srow .sc input[type=number]{width:80px}.srow.tight{flex-wrap:nowrap}.srow.tight .sl{flex:1 1 auto}}
 @media (max-width:420px){.addbtn.split #quickAdd .lbl{display:none}}
 
 /* ---------- the first screen: sign in with Google ---------- */
@@ -702,7 +801,7 @@ details.adv .advb{padding-top:10px}
 .gate-main{display:flex;flex-direction:column;justify-content:center;padding:48px clamp(24px,7vw,100px);min-width:0;overflow-y:auto}
 .gate-in{max-width:520px}
 .gate-mark{display:flex;align-items:center;gap:12px;margin-bottom:44px}
-.gate-mark .mark{width:40px;height:40px;border-radius:12px;font-size:21px}
+.gate-mark .mark{width:40px;height:40px;border-radius:9px}
 .gate-mark b{font-family:var(--display);font-size:25px;letter-spacing:-.035em}
 #gate h1{font-family:var(--display);font-size:clamp(34px,4.6vw,56px);line-height:1.02;letter-spacing:-.045em;margin:0 0 18px;font-weight:800}
 .gate-lead{font-size:16.5px;line-height:1.55;color:var(--ink2);margin:0 0 32px;max-width:440px}
@@ -949,7 +1048,7 @@ button.acc-row:hover{background:var(--panel2)}
 <div id="app">
   <aside id="side">
     <div class="brand">
-      <div class="mark">A</div>
+      <div class="mark" aria-hidden="true"></div>
       <div><b>ATLAS</b><small id="termLabel">your school desk</small></div>
     </div>
     <div class="navwrap">
@@ -1678,31 +1777,149 @@ function startSync() {
 
 /* ---------- 4. domain logic (pure, testable) ---------- */
 
-/* 4a. spaced repetition — SM-2 */
-function schedule(card, q) {
-  const c = Object.assign({ ease: 2.5, interval: 0, reps: 0, lapses: 0 }, card);
-  if (q < 3) { c.reps = 0; c.lapses++; c.interval = q === 0 ? 0 : 1; }
-  else {
-    c.reps++;
-    if (c.reps === 1) c.interval = 1;
-    else if (c.reps === 2) c.interval = 6;
-    else c.interval = Math.round(c.interval * c.ease);
-    c.ease = Math.max(1.3, c.ease + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.02)));
+/* 4a. spaced repetition — FSRS-5, with its published default weights.
+   A studied card keeps s (stability: days until the chance of remembering it
+   falls to 90%), d (difficulty, 1-10), last (the day of its last review) and due.
+   A new card has none of these until its first review. Answers are 1 again,
+   2 hard, 3 good, 4 easy. */
+const FSRS_W = [0.40255, 1.18385, 3.173, 15.69105, 7.1949, 0.5345, 1.4604, 0.0046, 1.54575, 0.1192, 1.01925, 1.9395, 0.11, 0.29605, 2.2698, 0.2315, 2.9898, 0.51655, 0.6621];
+const FSRS_DECAY = -0.5, FSRS_FACTOR = 19 / 81, CARD_MAX_DAYS = 365;
+function fsrsRecall(t, s) { return Math.pow(1 + FSRS_FACTOR * Math.max(0, t) / Math.max(s, 0.01), FSRS_DECAY); }
+function fsrsD0(g) { return clamp(FSRS_W[4] - Math.exp(FSRS_W[5] * (g - 1)) + 1, 1, 10); }
+function fsrsNextD(d, g) {
+  const w = FSRS_W, d1 = d - w[6] * (g - 3) * (10 - d) / 9;
+  return clamp(w[7] * fsrsD0(4) + (1 - w[7]) * d1, 1, 10);
+}
+function fsrsNextS(d, s, r, g, t) {
+  const w = FSRS_W;
+  if (t === 0) return s * Math.exp(w[17] * (g - 3 + w[18]));          /* seen again the same day */
+  if (g === 1) return Math.min(s, w[11] * Math.pow(d, -w[12]) * (Math.pow(s + 1, w[13]) - 1) * Math.exp(w[14] * (1 - r)));
+  return s * (1 + Math.exp(w[8]) * (11 - d) * Math.pow(s, -w[9]) * (Math.exp(w[10] * (1 - r)) - 1) * (g === 2 ? w[15] : 1) * (g === 4 ? w[16] : 1));
+}
+/* A card's memory, or null for a card never studied. Cards studied before this
+   version kept SM-2 numbers (ease, interval); those are read as FSRS. */
+function cardMem(c) {
+  if (!c) return null;
+  if (c.s > 0) return { s: c.s, d: c.d || 5, last: c.last || c.seen || today() };
+  if (!((c.reps || 0) > 0 || (c.lapses || 0) > 0 || c.seen)) return null;
+  const ivl = Math.max(1, c.interval || 1);
+  return { s: ivl, d: clamp(5 + (2.5 - (c.ease || 2.5)) * 4, 1, 10), last: c.seen || addDays(c.due || today(), -ivl) };
+}
+/* What each answer would do to a card on a given day: [again, hard, good, easy]. */
+function cardOutcomes(card, day) {
+  const m = cardMem(card), out = [];
+  for (let g = 1; g <= 4; g++) {
+    let s, d;
+    if (!m) { s = FSRS_W[g - 1]; d = fsrsD0(g); }
+    else {
+      const t = Math.max(0, daysBetween(m.last, day));
+      s = fsrsNextS(m.d, m.s, fsrsRecall(t, m.s), g, t); d = fsrsNextD(m.d, g);
+    }
+    s = clamp(s, 0.05, 36500);
+    out.push({ s, d, days: g === 1 ? 0 : clamp(Math.round(s), 1, CARD_MAX_DAYS) });
   }
-  c.interval = clamp(c.interval, 0, 365);
-  c.due = addDays(today(), Math.max(c.interval, 0));
-  c.seen = today();
+  /* at 90% target recall the interval is the stability; keep the buttons in order */
+  out[2].days = Math.min(CARD_MAX_DAYS, Math.max(out[2].days, out[1].days + 1));
+  out[3].days = Math.min(CARD_MAX_DAYS, Math.max(out[3].days, out[2].days + 1));
+  return out;
+}
+function schedule(card, g, opts) {
+  const o = opts || {}, day = o.day || today();
+  g = clamp(Math.round(+g) || 1, 1, 4);
+  const was = cardMem(card), r = cardOutcomes(card, day)[g - 1];
+  const c = Object.assign({}, card, { s: r.s, d: r.d, last: day, seen: day, reps: (card.reps || 0) + 1 });
+  if (!was) c.first = day;
+  if (was && g === 1 && daysBetween(was.last, day) > 0) c.lapses = (card.lapses || 0) + 1;
+  c.due = testCap(addDays(day, r.days), o.test, day);
+  c.interval = daysBetween(day, c.due);          /* older copies of ATLAS still read this */
   return c;
 }
-function nextDueLabel(deck) {
-  const next = deck.cards.map(c => c.due).filter(x => x && x > today()).sort()[0];
-  if (!next) return 'all caught up';
-  const n = daysBetween(today(), next);
-  return 'next due ' + (n === 1 ? 'tomorrow' : 'in ' + n + ' days');
+/* Studying for a test: a review that would land after it lands the day before instead. */
+function testCap(due, test, day) {
+  if (!test || due <= day) return due;
+  const eve = addDays(test, -1);
+  return day < eve && due > eve ? eve : due;
 }
+function cardsPerDay() { return clamp(Math.round(+S.settings.newPerDay) || 20, 1, 500); }
+/* The test a deck is for: one of your assignments (its date follows the assignment) or a date you typed. */
+function deckTest(d) {
+  if (!d) return null;
+  if (d.testId) { const t = S.tasks.find(x => x.id === d.testId); if (t && t.due) return { date: t.due, title: t.title, taskId: t.id }; }
+  if (d.testDate) return { date: d.testDate, title: d.testName || 'Test' };
+  return null;
+}
+function nextTest(d, day) { const t = deckTest(d); return t && t.date >= (day || today()) ? t : null; }
+function isTestTitle(s) { return /\b(test|exam|quiz|midterm|final)s?\b/i.test(s || ''); }
+/* Studied cards whose next review has come. */
 function dueCards(deck, day) {
   const d = day || today();
-  return (deck.cards || []).filter(c => !c.due || c.due <= d);
+  return ((deck && deck.cards) || []).filter(c => !c.off && cardMem(c) && (!c.due || c.due <= d));
+}
+/* New cards to start on a day: a daily allowance, sped up so a deck with a test gets through every card in time. */
+function newCards(deck, day) {
+  const d = day || today(), cards = (deck && deck.cards) || [];
+  const fresh = cards.filter(c => !c.off && !cardMem(c));
+  if (!fresh.length) return [];
+  const started = cards.filter(c => c.first === d).length;
+  let per = cardsPerDay();
+  const t = nextTest(deck, d);
+  if (t) per = Math.max(per, Math.ceil((fresh.length + started) / Math.max(1, daysBetween(d, t.date))));
+  return fresh.slice(0, Math.max(0, per - started));
+}
+function studyCount(deck, day) { return dueCards(deck, day).length + newCards(deck, day).length; }
+function allStudyCount(day) { return S.decks.reduce((a, d) => a + studyCount(d, day), 0); }
+function splitLabel(due, nw) { return [due ? due + ' to review' : '', nw ? nw + ' new' : ''].filter(Boolean).join(' · '); }
+function nextReviewDay(deck) {
+  const t = today(); let n = null;
+  (deck ? [deck] : S.decks).forEach(dk => dk.cards.forEach(c => { if (!c.off && cardMem(c) && c.due && c.due > t && (!n || c.due < n)) n = c.due; }));
+  return n;
+}
+function whenLabel(day) {
+  const n = daysBetween(today(), day);
+  if (n <= 0) return 'today';
+  if (n === 1) return 'tomorrow';
+  if (n < 7) return 'in ' + n + ' days';
+  const d = parseYMD(day);
+  return 'on ' + MONTHS[d.getMonth()].slice(0, 3) + ' ' + d.getDate();
+}
+function testWhen(day) { const n = daysBetween(today(), day); return n <= 0 ? 'today' : n === 1 ? 'tomorrow' : 'in ' + n + ' days'; }
+function nextDueLabel(deck) {
+  const n = nextReviewDay(deck);
+  return n ? 'next ' + whenLabel(n) : deck.cards.length ? 'all caught up' : 'no cards yet';
+}
+function ivlLabel(days) {
+  if (days <= 0) return 'this session';
+  if (days === 1) return '1 day';
+  if (days < 14) return days + ' days';
+  if (days < 60) return Math.round(days / 7) + ' weeks';
+  if (days < 330) return Math.round(days / 30) + ' months';
+  return '1 year';
+}
+/* How much of a deck you'd remember on a day if you stopped studying now (new cards count as nothing). */
+function deckRecall(deck, day) {
+  const cs = ((deck && deck.cards) || []).filter(c => !c.off);
+  if (!cs.length) return 0;
+  const d = day || today();
+  return cs.reduce((a, c) => { const m = cardMem(c); return a + (m ? fsrsRecall(Math.max(0, daysBetween(m.last, d)), m.s) : 0); }, 0) / cs.length;
+}
+/* A test was just set: anything already scheduled after it comes back before it. */
+function capForTest(deck) {
+  const t = nextTest(deck); if (!t) return 0;
+  let n = 0;
+  deck.cards.forEach(c => { if (cardMem(c) && c.due) { const v = testCap(c.due, t.date, today()); if (v !== c.due) { c.due = v; n++; } } });
+  return n;
+}
+/* Today's study: reviews (shuffled) with new cards woven in, one after every two reviews. */
+function studyQueue(decks, day) {
+  const d = day || today(), due = [], fresh = [];
+  decks.forEach(dk => { dueCards(dk, d).forEach(c => due.push(c.id)); newCards(dk, d).forEach(c => fresh.push(c.id)); });
+  shuffle(due);
+  const out = [];
+  while (due.length || fresh.length) {
+    for (let k = 0; k < 2 && due.length; k++) out.push(due.shift());
+    if (fresh.length) out.push(fresh.shift());
+  }
+  return out;
 }
 
 /* 4b. class meeting expansion → concrete day events */
@@ -2083,6 +2300,7 @@ const ICONS = {
   key: '<circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 7l3 3M14 9l2 2"/>',
   lock: '<rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 018 0v3"/>',
   bell: '<path d="M6 16.5V11a6 6 0 0112 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 004 0"/>',
+  flag: '<path d="M5 21V4"/><path d="M5 4.5h11.5l-2.2 4 2.2 4H5"/>',
   chat: '<path d="M4.5 5.5h15a1.5 1.5 0 011.5 1.5v9a1.5 1.5 0 01-1.5 1.5H10l-4.5 3.5V17.5h-1A1.5 1.5 0 013 16V7a1.5 1.5 0 011.5-1.5z"/><path d="M8 10h8M8 13.5h5"/>',
   send: '<path d="M4 12l16-7.5L13.5 20l-2.5-6.5z"/><path d="M11 13.5l9-9"/>',
   finger: '<path d="M8.5 20c1-2.5 1.5-5 1.5-8a2 2 0 014 0c0 3.5-.5 6.5-2 9"/><path d="M5.5 17.5c.7-1.8 1-3.6 1-5.5a5.5 5.5 0 0111 0c0 1.2 0 2.4-.2 3.5"/><path d="M4 9.5a8.5 8.5 0 0116 0M16 20c.5-1.2.9-2.5 1.1-3.8"/>',
@@ -2328,7 +2546,7 @@ function renderNav() {
   const w = W();
   const main = ['today'].concat(['calendar', 'tasks', 'notes'].filter(viewOn));
   const tools = ['cards', 'tutor', 'grades', 'break'].filter(viewOn).concat(['settings']);
-  const counts = { tasks: openTasks().filter(t => t.due && t.due <= addDays(today(), 2)).length, cards: S.decks.reduce((a, d) => a + dueCards(d).length, 0) };
+  const counts = { tasks: openTasks().filter(t => t.due && t.due <= addDays(today(), 2)).length, cards: allStudyCount() };
   const btn = n => '<button class="nav' + (V.name === n ? ' on' : '') + '" data-go="' + n + '">' + ic(VIEWS[n].icon) + '<span>' + esc(viewTitle(n)) + '</span>' +
     (counts[n] ? '<span class="cnt">' + counts[n] + '</span>' : '') + '</button>';
   $('#navMain').innerHTML = main.map(btn).join('');
@@ -2339,7 +2557,7 @@ function renderNav() {
   const lbl = $('#navClsLabel'); if (lbl) lbl.textContent = w.clsP;
   const acb = $('#addClassBtn'); if (acb) acb.title = 'Add a ' + w.cls.toLowerCase();
   /* the phone bar holds six tabs plus Settings; the rest stay one tap away in the menu */
-  const SHORT = { today: 'Today', calendar: 'Cal', tasks: w.short, notes: 'Notes', cards: 'Cards', tutor: 'Tutor', grades: 'Grades', break: 'Break', settings: 'Setup' };
+  const SHORT = { today: 'Today', calendar: 'Cal', tasks: w.short, notes: 'Notes', cards: 'Cards', tutor: 'Tutor', grades: 'Grades', break: 'Break', settings: 'Settings' };
   const mob = ['today'].concat(['calendar', 'tasks', 'notes', 'cards', 'tutor', 'grades', 'break'].filter(viewOn));
   ['break', 'grades', 'cards', 'tutor', 'notes'].forEach(n => { if (mob.length > 6 && mob.indexOf(n) >= 0) mob.splice(mob.indexOf(n), 1); });
   mob.push('settings');
@@ -2394,7 +2612,7 @@ function glance() {
     if (od) bits.push('<button class="g-chip bad" data-go="tasks">' + od + ' overdue</button>');
     bits.push('<button class="g-chip" data-go="tasks">' + (wk ? wk + ' due this week' : 'Nothing due this week') + '</button>');
   }
-  if (on('cards')) { const c = S.decks.reduce((a, x) => a + dueCards(x).length, 0); if (c) bits.push('<button class="g-chip" data-act="reviewAll">' + c + (c === 1 ? ' card' : ' cards') + ' to review</button>'); }
+  if (on('cards')) { const c = allStudyCount(); if (c) bits.push('<button class="g-chip" data-act="reviewAll">' + c + (c === 1 ? ' card' : ' cards') + ' to study</button>'); }
   if (on('focus')) { const k = streak(); if (k) bits.push('<button class="g-chip good" data-act="acct">' + k + '-day streak</button>'); }
   if (on('grades')) { const ts = termSummary(); if (ts.has) bits.push('<button class="g-chip" data-go="grades">' + (grading() === 'gpa4' ? 'GPA ' : 'Average ') + esc(ts.value) + '</button>'); }
   return bits.length ? '<div class="glance">' + bits.join('') + '</div>' : '';
@@ -2449,20 +2667,22 @@ function notesCard(hero) {
     '<div style="flex:1;min-width:0"><div class="ttl">' + esc(n.title || 'Untitled') + '</div><div class="meta">' + esc(n.classId ? clsName(n.classId) : 'Unfiled') + ', ' + ago(n.updated) + '</div></div></button>').join('') + '</div></div>';
 }
 function reviewCard(hero) {
-  const decks = S.decks.map(dk => ({ dk, due: dueCards(dk).length })).sort((a, b) => b.due - a.due);
-  const total = decks.reduce((a, x) => a + x.due, 0);
-  const head = '<div class="cardhead">' + ic('cards', 'width:15px;height:15px') + '<h3>' + (hero ? 'Cards to review' : 'Your decks') + '</h3><span class="spacer"></span>' +
-    (!hero && total ? '<button class="btn p sm" data-act="reviewAll">Review ' + total + '</button>' : '') + '<button class="btn g sm" data-go="cards">All decks</button></div>';
+  const day = today();
+  const decks = S.decks.map(dk => ({ dk, due: dueCards(dk, day).length, nw: newCards(dk, day).length, test: nextTest(dk, day) }))
+    .sort((a, b) => (b.due + b.nw) - (a.due + a.nw));
+  const due = decks.reduce((a, x) => a + x.due, 0), nw = decks.reduce((a, x) => a + x.nw, 0), total = due + nw;
+  const head = '<div class="cardhead">' + ic('cards', 'width:15px;height:15px') + '<h3>' + (hero ? 'Flashcards' : 'Your decks') + '</h3><span class="spacer"></span>' +
+    (!hero && total ? '<button class="btn p sm" data-act="reviewAll">Study ' + total + '</button>' : '') + '<button class="btn g sm" data-go="cards">All decks</button></div>';
   if (!S.decks.length) return '<div class="card' + (hero ? ' hero' : '') + '">' + head + '<div class="empty"><p>No decks yet. Make one by hand, paste a term list, or turn a page of notes into cards.</p><button class="btn" data-act="newDeck">New deck</button></div></div>';
-  let next = null;
-  S.decks.forEach(dk => dk.cards.forEach(c => { if (c.due && c.due > today() && (!next || c.due < next)) next = c.due; }));
+  const next = nextReviewDay();
   const lead = total
-    ? '<div class="rv-big"><b>' + total + '</b><span>' + (total === 1 ? 'card is' : 'cards are') + ' due today</span></div><button class="btn p" data-act="reviewAll">Review now</button>'
-    : '<div class="rv-big"><b>✓</b><span>All caught up' + (next ? '. Next review ' + (fmtDate(next) === 'Tomorrow' ? 'tomorrow' : 'on ' + fmtDate(next)) : '') + '</span></div>';
+    ? '<div class="rv-big"><b>' + total + '</b><span>' + (total === 1 ? 'card' : 'cards') + ' to study today<small>' + splitLabel(due, nw) + '</small></span></div><button class="btn p" data-act="reviewAll">Study now</button>'
+    : '<div class="rv-big"><b>✓</b><span>All caught up' + (next ? '. Next review ' + whenLabel(next) : '') + '</span></div>';
   const rows = decks.slice(0, hero ? 4 : 5).map(x => '<button class="item" data-act="openDeck" data-id="' + x.dk.id + '" style="width:100%;text-align:left">' +
     '<span class="dot" style="--tc:' + (x.dk.classId ? clsColor(x.dk.classId) : 'var(--ink3)') + ';margin-top:6px"></span>' +
-    '<div style="flex:1;min-width:0"><div class="ttl">' + esc(x.dk.name) + '</div><div class="meta">' + x.dk.cards.length + ' cards</div></div>' +
-    '<span class="chip ' + (x.due ? 'w' : 'g') + '">' + (x.due ? x.due + ' due' : 'done') + '</span></button>').join('');
+    '<div style="flex:1;min-width:0"><div class="ttl">' + esc(x.dk.name) + '</div><div class="meta">' + x.dk.cards.length + ' cards' +
+    (x.test ? ' · ' + esc(x.test.title) + ' ' + testWhen(x.test.date) : '') + '</div></div>' +
+    '<span class="chip ' + (x.due ? 'w' : x.nw ? 'b' : 'g') + '">' + (x.due + x.nw ? splitLabel(x.due, x.nw) : 'done') + '</span></button>').join('');
   return '<div class="card' + (hero ? ' hero' : '') + '">' + head + (hero ? '<div class="pad row" style="gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--rule)">' + lead + '</div>' : '') +
     '<div class="list">' + rows + '</div></div>';
 }
@@ -2524,7 +2744,7 @@ function viewClass(c) {
   if (on('notes')) cards.push('<div class="card"><div class="cardhead">' + ic('book', 'width:15px;height:15px') + '<h3>Notebook</h3></div>' +
     '<div class="list">' + (notes.length ? notes.slice(0, 6).map(n => '<button class="item" data-act="openNote" data-id="' + n.id + '" style="width:100%;text-align:left"><div style="flex:1;min-width:0"><div class="ttl">' + esc(n.title || 'Untitled') + '</div><div class="meta">' + esc((n.body || '').slice(0, 60).replace(/\n/g, ' ')) + '</div></div></button>').join('') : '<div class="empty"><p>No pages yet.</p><button class="linkbtn" data-act="newNote" data-class="' + c.id + '">Start a page</button></div>') + '</div></div>');
   if (on('cards')) cards.push('<div class="card"><div class="cardhead">' + ic('cards', 'width:15px;height:15px') + '<h3>Decks</h3></div>' +
-    '<div class="list">' + (decks.length ? decks.map(d => '<button class="item" data-act="openDeck" data-id="' + d.id + '" style="width:100%;text-align:left"><div style="flex:1"><div class="ttl">' + esc(d.name) + '</div><div class="meta">' + d.cards.length + ' cards · ' + dueCards(d).length + ' due</div></div></button>').join('') : '<div class="empty"><p>No decks yet.</p><button class="linkbtn" data-act="newDeck" data-class="' + c.id + '">Make a deck</button></div>') + '</div></div>');
+    '<div class="list">' + (decks.length ? decks.map(d => '<button class="item" data-act="openDeck" data-id="' + d.id + '" style="width:100%;text-align:left"><div style="flex:1"><div class="ttl">' + esc(d.name) + '</div><div class="meta">' + d.cards.length + ' cards' + (studyCount(d) ? ' · ' + splitLabel(dueCards(d).length, newCards(d).length) : '') + '</div></div></button>').join('') : '<div class="empty"><p>No decks yet.</p><button class="linkbtn" data-act="newDeck" data-class="' + c.id + '">Make a deck</button></div>') + '</div></div>');
 
   return '<div class="wrap" style="--tc:' + c.color + '">' +
     '<div class="card spine" style="margin-bottom:16px"><div class="pad row" style="flex-wrap:wrap;gap:14px">' +
@@ -2704,65 +2924,101 @@ function viewTasks() {
 function viewDecks() {
   if (V.param) return viewDeck(V.param);
   if (!S.decks.length) return '<div class="wrap"><div class="card"><div class="empty"><h3>No decks yet</h3>' +
-    '<p>Build a deck by hand, paste a term list, or generate one from a topic or a notebook page. Reviews use spaced repetition, so each card comes back right before you would forget it.</p>' +
+    '<p>Build a deck by hand, paste a term list, or generate one from a topic or a notebook page. Each card comes back right before you would forget it, and before your test if you link one.</p>' +
     '<div class="row" style="justify-content:center;gap:8px"><button class="btn p" data-act="newDeck">New deck</button>' + (aiReady() ? '<button class="btn" data-act="aiDeck">Generate from a topic</button>' : '') + '</div></div></div></div>';
-  const totalDue = S.decks.reduce((a, d) => a + dueCards(d).length, 0);
-  const head = '<div class="row" style="margin-bottom:14px;flex-wrap:wrap;gap:8px">' +
-    (totalDue ? '<button class="btn p sm" data-act="reviewAll">Review ' + totalDue + ' due ' + (totalDue === 1 ? 'card' : 'cards') + '</button>' : '<span class="dim" style="font-size:13px">All caught up. Nothing is due.</span>') +
-    '<span class="spacer"></span>' + (aiReady() ? '<button class="btn sm" data-act="aiDeck">' + ic('wand') + 'Generate cards</button>' : '') + '</div>';
+  const day = today();
+  const due = S.decks.reduce((a, d) => a + dueCards(d, day).length, 0), nw = S.decks.reduce((a, d) => a + newCards(d, day).length, 0), next = nextReviewDay();
+  const head = '<div class="row deckhead">' +
+    (due + nw ? '<button class="btn p sm" data-act="reviewAll">Study ' + (due + nw) + ' ' + (due + nw === 1 ? 'card' : 'cards') + '</button><span class="dim" style="font-size:13px">' + splitLabel(due, nw) + '</span>'
+      : '<span class="dim" style="font-size:13px">All caught up.' + (next ? ' Next review ' + whenLabel(next) + '.' : '') + '</span>') +
+    '<span class="spacer"></span>' + (aiReady() ? '<button class="btn sm" data-act="aiDeck">' + ic('wand') + 'Generate cards</button>' : '') +
+    '<button class="btn sm" data-act="newDeck">' + ic('plus') + 'New deck</button></div>';
   const grid = S.decks.map(d => {
-    const due = dueCards(d).length, c = cls(d.classId);
-    const learned = d.cards.filter(x => (x.reps || 0) >= 2).length;
-    const pct = d.cards.length ? Math.round(learned / d.cards.length * 100) : 0;
+    const c = cls(d.classId), du = dueCards(d, day).length, n = newCards(d, day).length, t = nextTest(d, day);
+    const live = d.cards.filter(x => !x.off), fresh = live.filter(x => !cardMem(x)).length;
+    const pct = Math.round(deckRecall(d, day) * 100), nx = nextReviewDay(d);
+    const chips = (du ? '<span class="chip w">' + du + ' to review</span>' : '') + (n ? '<span class="chip b">' + n + ' new</span>' : '') +
+      (!du && !n ? '<span class="chip g">' + (live.length ? (nx ? 'Next ' + whenLabel(nx) : 'All caught up') : 'No cards yet') + '</span>' : '');
     return '<div class="card deck spine" style="--tc:' + (c ? c.color : 'var(--ink3)') + '" data-act="openDeck" data-id="' + d.id + '">' +
       '<div class="eyebrow">' + esc(c ? c.name : 'General') + '</div><h3>' + esc(d.name) + '</h3>' +
-      '<div class="muted" style="font-size:12.5px;margin-bottom:10px">' + d.cards.length + ' cards · ' + learned + ' learned</div>' +
-      '<div class="bar"><i style="width:' + pct + '%;background:' + (c ? c.color : 'var(--ultra)') + '"></i></div>' +
-      '<div class="row" style="margin-top:11px"><span class="chip ' + (due ? 'w' : 'g') + '">' + (due ? due + ' due now' : nextDueLabel(d)) + '</span>' +
-      '<span class="spacer"></span><span class="dim mono" style="font-size:11px">' + pct + '%</span></div></div>';
+      '<div class="muted" style="font-size:12.5px;margin-bottom:10px">' + live.length + ' cards' + (fresh ? ' · ' + fresh + ' not started' : '') + '</div>' +
+      '<div class="bar" title="How much of this deck you remember right now"><i style="width:' + pct + '%;background:' + (c ? c.color : 'var(--ultra)') + '"></i></div>' +
+      '<div class="row" style="margin-top:11px;gap:6px;flex-wrap:wrap">' + chips + '<span class="spacer"></span><span class="dim mono" style="font-size:11px">' + pct + '% known</span></div>' +
+      (t ? '<div class="deck-test' + (daysBetween(day, t.date) <= 3 ? ' soon' : '') + '">' + ic('flag') + '<span>' + esc(t.title) + ' · ' + testWhen(t.date) + '</span></div>' : '') +
+      '</div>';
   }).join('');
   return '<div class="wrap">' + head + '<div class="deckgrid">' + grid + '</div></div>';
 }
-const R = { queue: [], i: 0, flipped: false, right: 0, wrong: 0, deckId: null };
-function startReview(ids, deckId) {
-  R.queue = ids.slice(); R.i = 0; R.flipped = false; R.right = 0; R.wrong = 0; R.deckId = deckId || null;
+const R = { queue: [], i: 0, flipped: false, right: 0, wrong: 0, deckId: null, practice: false, started: 0, hist: [], fresh: 0, missed: {}, first: {} };
+function startReview(ids, deckId, practice) {
+  Object.assign(R, { queue: ids.slice(), i: 0, flipped: false, right: 0, wrong: 0, deckId: deckId || null, practice: !!practice, started: Date.now(), hist: [], fresh: 0, missed: {}, first: {} });
   go('review');
 }
 function findCard(cid) {
   for (const d of S.decks) { const c = d.cards.find(x => x.id === cid); if (c) return { deck: d, card: c }; }
   return null;
 }
-function viewReview() {
-  if (R.i >= R.queue.length) {
-    const total = R.right + R.wrong;
-    return '<div class="wrap"><div class="card" style="max-width:520px;margin:6vh auto"><div class="empty">' +
-      '<div style="font-family:var(--display);font-size:52px;letter-spacing:-.04em">' + (total ? Math.round(R.right / total * 100) : 100) + '%</div>' +
-      '<h3>Session done</h3><p>' + R.right + ' right · ' + R.wrong + ' to revisit. Cards you missed come back today; the rest are scheduled further out.</p>' +
-      '<div class="row" style="justify-content:center;gap:8px"><button class="btn p" data-go="cards">Back to decks</button>' +
-      (R.deckId ? '<button class="btn" data-act="openDeck" data-id="' + R.deckId + '">Open deck</button>' : '') + '</div></div></div></div>';
+function reviewDone() {
+  const ids = Object.keys(R.first), firstTry = ids.filter(k => R.first[k]).length;
+  const mins = Math.max(1, Math.round((Date.now() - R.started) / 60000));
+  const deck = R.deckId ? S.decks.find(d => d.id === R.deckId) : null;
+  const t = deck && nextTest(deck), next = nextReviewDay(deck);
+  const left = deck ? deck.cards.filter(c => !c.off && !cardMem(c)).length : 0;
+  const pct = ids.length ? Math.round(firstTry / ids.length * 100) : 100;
+  const lines = [];
+  lines.push(ids.length ? firstTry + ' of ' + ids.length + ' right the first time, in ' + mins + ' min.' : 'Nothing to study here.');
+  if (R.practice) lines.push('This was practice, so your review schedule did not change.');
+  else {
+    if (R.fresh) lines.push(R.fresh + ' new ' + (R.fresh === 1 ? 'card' : 'cards') + ' started.');
+    if (R.wrong) lines.push('Cards you missed came back until you got them.');
+    if (next) lines.push('Next review ' + whenLabel(next) + '.');
   }
+  if (t) lines.push('Ready is how much of the deck you\'d remember on ' + esc(t.title) + ' day if you stopped now.');
+  const tile = (b, s) => '<div><b>' + b + '</b><span>' + s + '</span></div>';
+  return '<div class="wrap"><div class="card rv-done"><div class="pad">' +
+    '<div class="rv-pct">' + pct + '%</div><h3>' + (R.practice ? 'Practice done' : 'Session done') + '</h3>' +
+    '<div class="rv-stats">' + tile(ids.length, ids.length === 1 ? 'card' : 'cards') + tile(firstTry, 'right first time') + tile(mins + ' min', 'spent') +
+    (t ? tile(Math.round(deckRecall(deck, t.date) * 100) + '%', 'ready for the test') : !R.practice && R.fresh ? tile(R.fresh, 'new started') : '') + '</div>' +
+    '<p class="rv-lines">' + lines.slice(1).join(' ') + '</p>' +
+    '<div class="row" style="justify-content:center;gap:8px;flex-wrap:wrap">' +
+    (deck && left && !R.practice ? '<button class="btn p" data-act="studyMore" data-id="' + deck.id + '">Learn ' + Math.min(10, left) + ' more new</button>' : '') +
+    (deck && t && !R.practice ? '<button class="btn' + (left ? '' : ' p') + '" data-act="practiceDeck" data-id="' + deck.id + '">Practice all</button>' : '') +
+    (deck ? '<button class="btn" data-act="openDeck" data-id="' + deck.id + '">Open deck</button>' : '') +
+    '<button class="btn' + (deck ? '' : ' p') + '" data-go="cards">All decks</button>' +
+    '</div></div></div></div>';
+}
+function viewReview() {
+  if (R.i >= R.queue.length) return reviewDone();
   const f = findCard(R.queue[R.i]);
-  if (!f) { R.i++; return viewReview(); }
+  if (!f) { R.queue.splice(R.i, 1); return viewReview(); }
   const { deck, card } = f;
-  const c = cls(deck.classId);
+  const c = cls(deck.classId), day = today();
+  const isNew = !cardMem(card), again = !!R.missed[card.id];
+  const tag = R.practice ? '' : again ? '<span class="chip r tag">Again</span>' : isNew ? '<span class="chip b tag">New</span>' : '';
+  const t = nextTest(deck, day), outs = R.practice ? null : cardOutcomes(card, day);
+  const when = g => g === 1 ? 'this session' : ivlLabel(daysBetween(day, testCap(addDays(day, outs[g - 1].days), t && t.date, day)));
+  const long = s => (s || '').length > 140 ? ' class="long"' : '';
+  const btn = (g, cl, name) => '<button class="' + cl + '" data-act="grade" data-q="' + g + '"><span class="k">' + g + '</span>' + name + '<small>' + when(g) + '</small></button>';
   return '<div class="wrap">' +
-    '<div class="row" style="max-width:620px;margin:0 auto 14px"><span class="chip" style="' + (c ? 'background:' + c.color + '18;color:' + c.color : '') + '">' + esc(deck.name) + '</span>' +
-    '<span class="spacer"></span><span class="dim mono" style="font-size:12px">' + (R.i + 1) + ' / ' + R.queue.length + '</span></div>' +
-    '<div class="bar" style="max-width:620px;margin:0 auto 16px"><i style="width:' + (R.i / R.queue.length * 100) + '%"></i></div>' +
+    '<div class="row rv-top"><span class="chip" style="' + (c ? 'background:' + c.color + '18;color:' + c.color : '') + '">' + esc(deck.name) + '</span>' +
+    (R.practice ? '<span class="chip">Practice</span>' : '') + '<span class="spacer"></span>' +
+    (R.hist.length ? '<button class="btn g sm" data-act="undoGrade" title="Undo your last answer (Z)">Undo</button>' : '') +
+    '<span class="dim mono" style="font-size:12px">' + (R.queue.length - R.i) + ' left</span></div>' +
+    '<div class="bar rv-bar"><i style="width:' + (R.i / R.queue.length * 100) + '%"></i></div>' +
     '<div class="flipwrap"><div class="flip' + (R.flipped ? ' f' : '') + '" data-act="flip">' +
-    '<div class="face"><span class="eyebrow">Prompt</span><p>' + esc(card.front) + '</p></div>' +
-    '<div class="face back"><span class="eyebrow">Answer</span><p>' + esc(card.back) + '</p></div>' +
+    '<div class="face"><span class="eyebrow">Question</span>' + tag + '<p' + long(card.front) + '>' + esc(card.front) + '</p></div>' +
+    '<div class="face back"><span class="eyebrow">Answer</span><div class="faceq">' + esc(card.front) + '</div><p' + long(card.back) + '>' + esc(card.back) + '</p></div>' +
     '</div></div>' +
-    (R.flipped ? '<div class="grade">' +
-      '<button class="q0" data-act="grade" data-q="0">Again<small>&lt; 1 day</small></button>' +
-      '<button class="q1" data-act="grade" data-q="2">Hard<small>soon</small></button>' +
-      '<button class="q3" data-act="grade" data-q="4">Good<small>' + nextIn(card, 4) + '</small></button>' +
-      '<button class="q5" data-act="grade" data-q="5">Easy<small>' + nextIn(card, 5) + '</small></button></div>'
-      : '<div style="text-align:center;margin-top:18px"><button class="btn p" data-act="flip">Show answer <span class="mono dim" style="font-size:10px;color:inherit;opacity:.7">space</span></button></div>') +
-    (aiReady() ? '<div style="text-align:center;margin-top:14px"><button class="btn g sm" data-act="aiCard">' + ic('wand') + 'Explain this card</button></div>' : '') +
+    (R.flipped
+      ? (R.practice
+        ? '<div class="grade two"><button class="q0" data-act="grade" data-q="1"><span class="k">1</span>Missed it<small>see it again</small></button><button class="q5" data-act="grade" data-q="3"><span class="k">2</span>Got it<small>next card</small></button></div>'
+        : '<div class="grade">' + btn(1, 'q0', 'Again') + btn(2, 'q1', 'Hard') + btn(3, 'q3', 'Good') + btn(4, 'q5', 'Easy') + '</div>')
+      : '<div style="text-align:center;margin-top:18px"><button class="btn p" data-act="flip">Show answer</button></div>') +
+    '<div class="revtools"><button class="btn g sm" data-act="editRevCard">' + ic('pencil') + 'Edit card</button>' +
+    (aiReady() ? '<button class="btn g sm" data-act="aiCard">' + ic('wand') + 'Explain this card</button>' : '') + '</div>' +
+    '<div class="revhint">Space shows the answer · ' + (R.practice ? '1 or 2' : '1 to 4') + ' to answer · Z undoes · E edits</div>' +
     '</div>';
 }
-function nextIn(card, q) { const c = schedule(card, q); return c.interval <= 1 ? '1 day' : c.interval + ' days'; }
 
 /* --- Grades --- */
 function viewGrades() {
@@ -2801,42 +3057,81 @@ function viewGrades() {
 }
 
 /* --- Settings --- */
+const SET_SECS = [
+  ['general', 'General', 'gear', 'Your name, your term and the words ATLAS uses'],
+  ['tools', 'Tools', 'grid', 'Choose which tools show up'],
+  ['look', 'Look', 'eye', 'Theme, colors and dark mode'],
+  ['study', 'Study', 'timer', 'Planning, the focus timer, flashcards and AI'],
+  ['account', 'Account and devices', 'key', 'Sign-in, reminders and device lock'],
+  ['data', 'Calendars and data', 'calendar', 'Import, export, backups and erasing']
+];
+function setRow(label, hint, control, id) {
+  const plain = x => String(x || '').replace(/<[^>]+>/g, ' ');
+  const tight = /type="(checkbox|number)"/.test(control || '') && !/<select|type="text"|type="time"|<button|<a /.test(control || '');
+  return '<div class="srow' + (tight ? ' tight' : '') + '"' + (id ? ' id="' + id + '"' : '') + ' data-q="' + esc((plain(label) + ' ' + plain(hint)).toLowerCase()) + '"><div class="sl"><b>' + label + '</b>' +
+    (hint ? '<span>' + hint + '</span>' : '') + '</div>' + (control ? '<div class="sc">' + control + '</div>' : '') + '</div>';
+}
 function viewSettings() {
-  const s = S.settings, w = W();
-  const row = (label, hint, control) => '<div class="srow"><div class="sl"><b>' + label + '</b>' + (hint ? '<span>' + hint + '</span>' : '') + '</div>' + (control ? '<div class="sc">' + control + '</div>' : '') + '</div>';
-  const secs = [];
-  const add = (id, title, body) => secs.push([id, title, body]);
-  add('setup', 'Your setup', setupSettings());
+  const s = S.settings, w = W(), row = setRow;
+  const p = persona(), homes = Object.keys(HOMES).filter(k => on(HOMES[k].need));
+  const body = {};
+  body.general =
+    row('Your name', 'What ATLAS calls you on Today.', '<input type="text" id="setName" value="' + esc(S.profile.name) + '" placeholder="Your first name">') +
+    row('Term', 'Shown under ATLAS at the top of the sidebar.', '<input type="text" id="setTerm" value="' + esc(S.profile.term) + '" placeholder="Fall 2026">') +
+    row('Words ATLAS uses', 'Match your school: classes or courses, assignments or coursework.', '<select data-act="setLevel" aria-label="Words ATLAS uses">' +
+      Object.keys(LEVELS).map(k => '<option value="' + k + '"' + ((LEVELS[s.level] ? s.level : 'high') === k ? ' selected' : '') + '>' + LEVELS[k].clsP + ' and ' + LEVELS[k].taskP.toLowerCase() + ' (' + LEVELS[k].name.toLowerCase() + ')</option>').join('') + '</select>') +
+    (homes.length > 1 ? row('Today starts with', 'The first thing on the Today page.', '<select data-act="setHome" aria-label="Today starts with">' + homes.map(k => '<option value="' + k + '"' + (homeView() === k ? ' selected' : '') + '>' + esc(HOMES[k].name) + '</option>').join('') + '</select>') : '') +
+    (on('grades') ? row('Show grades as', '', '<select data-act="setGrading" aria-label="Show grades as">' + Object.keys(GRADINGS).map(k => '<option value="' + k + '"' + (grading() === k ? ' selected' : '') + '>' + GRADINGS[k].name + ' (' + GRADINGS[k].sample + ')</option>').join('') + '</select>') : '') +
+    row('Week starts on', '', '<select id="setWeek" aria-label="Week starts on"><option value="0"' + (s.weekStart === 0 ? ' selected' : '') + '>Sunday</option><option value="1"' + (s.weekStart === 1 ? ' selected' : '') + '>Monday</option><option value="6"' + (s.weekStart === 6 ? ' selected' : '') + '>Saturday</option></select>') +
+    row('Celebrate wins', 'Badges, a streak and a little confetti.', '<input type="checkbox" data-act="setCelebrate"' + (s.celebrate !== false ? ' checked' : '') + ' aria-label="Celebrate wins">') +
+    row('Setup questions', p ? 'Your answers made you a <b>' + esc(p.title) + '</b>. ' + esc(p.line) : 'A one-minute set of questions picks your tools, the words ATLAS uses, your focus rhythm and the look.',
+      '<button class="btn' + (p ? '' : ' p') + '" data-act="survey">' + ic('spark') + (p ? 'Answer again' : 'Personalize') + '</button>');
+  body.tools = '<div class="toolgrid">' + MODULES.map(m => '<label class="toolcard" data-q="' + esc((m.name + ' ' + (m.id === 'tasks' ? w.taskP : '') + ' ' + m.blurb).toLowerCase()) + '">' +
+    '<input type="checkbox" data-act="modToggle" data-m="' + m.id + '"' + (on(m.id) ? ' checked' : '') + '>' +
+    '<span class="ti">' + ic(m.icon) + '</span><span class="tt"><b>' + esc(m.id === 'tasks' ? w.taskP : m.name) + '</b><span>' + esc(m.blurb) + '</span></span></label>').join('') + '</div>' +
+    '<p class="dim setnote">Switching a tool off hides it everywhere. Nothing in it is deleted, and switching it back on brings everything back.</p>';
   const t = themeById(s.theme);
-  add('look', 'Look', row('Theme', esc(t.name) + '. ' + esc(t.mood) + ' Fonts, accent, density and evening mode are in here too.', '<button class="btn" data-act="themes">Change</button>'));
-  add('week', 'Your week',
-    row('Study hours', 'Study blocks only ever land inside these hours, around your ' + w.clsP.toLowerCase() + '.',
+  body.look = '<div class="srow" data-q="theme colors colours fonts accent"><span class="swatch" style="background:' + t.bg + ';--sw:' + t.ultra + ';--sp:' + t.panel + '"><i></i><i></i></span>' +
+    '<div class="sl"><b>' + esc(t.name) + '</b><span>' + esc(t.mood) + ' Fonts, accent color, spacing and corners are in the theme gallery too.</span></div>' +
+    '<div class="sc"><button class="btn p" data-act="themes">Change theme</button></div></div>' +
+    row('Dark theme in the evening', 'Switches to a dark theme after sunset, or whenever your device is in dark mode.', '<input type="checkbox" data-act="setNight"' + (s.autoNight ? ' checked' : '') + ' aria-label="Dark theme in the evening">') +
+    row('Artwork on Today', 'The theme\'s picture across the top of the Today page.', '<input type="checkbox" data-act="toggleArt"' + (s.art === false ? '' : ' checked') + ' aria-label="Artwork on Today">');
+  body.study =
+    '<h3 class="subhead">Planning</h3>' +
+    row('Study hours', 'ATLAS only plans study time inside these hours, around your ' + w.clsP.toLowerCase() + '.',
       '<input type="time" id="setStart" value="' + s.dayStart + '" aria-label="Day starts"><span class="dim">to</span><input type="time" id="setEnd" value="' + s.dayEnd + '" aria-label="Day ends">') +
     row('Study block length', 'How long each block is when ATLAS plans your week.', '<input type="number" id="setChunk" value="' + s.chunk + '" min="25" max="120" aria-label="Minutes"><span class="dim">min</span>') +
-    row('Finish early', 'Days before each due date that work should be done.', '<input type="number" id="setBuf" value="' + s.buffer + '" min="0" max="7" aria-label="Days"><span class="dim">days</span>') +
-    row('Week starts on', '', '<select id="setWeek"><option value="0"' + (s.weekStart === 0 ? ' selected' : '') + '>Sunday</option><option value="1"' + (s.weekStart === 1 ? ' selected' : '') + '>Monday</option><option value="6"' + (s.weekStart === 6 ? ' selected' : '') + '>Saturday</option></select>'));
-  if (on('focus')) add('focus', 'Focus timer',
-    row('Focus length', '', '<input type="number" id="setFocus" value="' + s.pomodoro.focus + '" min="5" max="120" aria-label="Focus minutes"><span class="dim">min</span>') +
-    row('Break length', '', '<input type="number" id="setShort" value="' + s.pomodoro.short + '" min="1" max="30" aria-label="Break minutes"><span class="dim">min</span>') +
-    row('Background sound', 'Made in the browser, so it works offline.', '<select id="setAmb">' + Object.keys(AMBIENCE).map(k => '<option value="' + k + '"' + ((s.ambience || 'off') === k ? ' selected' : '') + '>' + AMBIENCE[k] + '</option>').join('') + '</select>' +
-      '<button class="btn sm" data-act="tryAmb">Play</button><button class="btn sm" data-act="stopAmb">Stop</button>'));
-  add('account', 'Account and devices',
+    row('Finish work early', 'How many days before the due date work should be done.', '<input type="number" id="setBuf" value="' + s.buffer + '" min="0" max="7" aria-label="Days"><span class="dim">days</span>') +
+    (on('focus') ? '<h3 class="subhead">Focus timer</h3>' +
+      row('Focus length', '', '<input type="number" id="setFocus" value="' + s.pomodoro.focus + '" min="5" max="120" aria-label="Focus minutes"><span class="dim">min</span>') +
+      row('Break length', '', '<input type="number" id="setShort" value="' + s.pomodoro.short + '" min="1" max="30" aria-label="Break minutes"><span class="dim">min</span>') +
+      row('Background sound', 'Made right in the browser, so it works offline.', '<select id="setAmb" aria-label="Background sound">' + Object.keys(AMBIENCE).map(k => '<option value="' + k + '"' + ((s.ambience || 'off') === k ? ' selected' : '') + '>' + AMBIENCE[k] + '</option>').join('') + '</select>' +
+        '<button class="btn sm" data-act="tryAmb">Play</button><button class="btn sm" data-act="stopAmb">Stop</button>') : '') +
+    (on('cards') ? '<h3 class="subhead">Flashcards</h3>' +
+      row('New cards a day', 'How many new cards each deck starts per day. A deck with a test date speeds up on its own so you finish in time.', '<input type="number" id="setNewDay" value="' + cardsPerDay() + '" min="1" max="500" aria-label="New cards a day"><span class="dim">per deck</span>') : '') +
+    '<h3 class="subhead">AI study tools</h3>' +
+    row(aiReady() ? 'On: ' + esc(aiLabel()) : 'Off', 'Flashcards and quizzes from your notes, plain-language explanations, the tutor, and big assignments broken into steps. Free, through Google.',
+      '<button class="btn" data-act="aiSetup">' + (aiReady() ? 'Change' : 'Turn on') + '</button>', 'set-ai');
+  body.account =
     row('Account', acctKnown() ? 'Signed in as ' + esc(Local.acct.email) + '. Your desk syncs to every device you sign in on.' : 'Not signed in. Your work is saved in this browser only.',
-      acctKnown() ? '<button class="btn" data-act="acctMenu">Open</button>' : '<button class="btn p" data-act="acctOpen">Sign in</button>') +
-    row('Reminders', esc(noteLabel()) + '. What\'s due, tests coming up, cards to review and the end of a focus session.', '<button class="btn" data-act="noteSheet">' + (noteHere() ? 'Change' : 'Set up') + '</button>') +
-    (acctKnown() ? row('Device lock', esc(lockLabel()) + '. A passkey or a pattern keeps ATLAS closed on this device until you unlock it.', '<button class="btn" data-act="lockSheet">' + (lockSet() ? 'Change' : 'Set up') + '</button>') : ''));
-  add('ai', 'AI study tools', row(aiReady() ? 'On: ' + esc(aiLabel()) : 'Off',
-    'Flashcards and quizzes from your notes, plain-language explanations, and big assignments broken into steps. Free, through Google.' + (aiMode() === 'cloud' || aiMode() === 'chrome' ? ' Nothing to set up.' : ''),
-    '<button class="btn" data-act="aiSetup">' + (aiReady() ? 'Change' : 'Turn on') + '</button>'));
-  add('calendars', 'Calendars',
+      acctKnown() ? '<button class="btn" data-act="acctMenu">Manage</button>' : '<button class="btn p" data-act="acctOpen">Sign in</button>') +
+    row('Reminders', esc(noteLabel()) + '. What\'s due, tests coming up, cards to study and the end of a focus session.', '<button class="btn" data-act="noteSheet">' + (noteHere() ? 'Change' : 'Set up') + '</button>') +
+    (acctKnown() ? row('Device lock', esc(lockLabel()) + '. A passkey or a pattern keeps ATLAS closed on this device until you unlock it.', '<button class="btn" data-act="lockSheet">' + (lockSet() ? 'Change' : 'Set up') + '</button>') : '') +
+    row('Privacy', 'What ATLAS stores, where, and how to delete it.', '<a class="btn" href="privacy.html" target="_blank" rel="noopener">Read</a>');
+  body.data =
+    '<h3 class="subhead">Calendars</h3>' +
     row('Google Calendar', 'In Google Calendar, open Settings, then Import &amp; export, and export. Bring the file it downloads in here, zip and all.',
       '<a class="btn" href="https://calendar.google.com/calendar/r/settings/export" target="_blank" rel="noopener">Open Google Calendar</a><button class="btn" data-act="importICS">Import</button>') +
     row('School calendar feed', 'Canvas, Blackboard, Moodle and Classroom all publish an .ics feed. <button class="linkbtn" data-act="syncHelp">Where is mine?</button>', '<button class="btn" data-act="importICS">Import</button>') +
-    row('Export', 'Everything as an .ics file for any calendar app.', '<button class="btn" data-act="exportICS">Download</button>'));
-  add('data', 'Your data', dataSettings(row));
-  return '<div class="wrap setwrap"><nav class="setnav" aria-label="Settings sections">' +
-    secs.map(x => '<button data-act="setJump" data-id="' + x[0] + '">' + x[1] + '</button>').join('') + '</nav>' +
-    '<div class="setmain">' + secs.map(x => '<section class="set" id="set-' + x[0] + '"><h2>' + x[1] + '</h2>' + x[2] + '</section>').join('') +
+    row('Export to a calendar app', 'Everything as an .ics file for Google Calendar, Apple Calendar or Outlook.', '<button class="btn" data-act="exportICS">Download</button>') +
+    '<h3 class="subhead">Your data</h3>' + dataSettings(row);
+  const cur = SET_SECS.some(x => x[0] === V.param) ? V.param : null, shown = cur || 'general';
+  return '<div class="wrap setwrap' + (cur ? ' open' : '') + '">' +
+    '<nav class="setnav" aria-label="Settings sections"><input type="search" id="setFind" placeholder="Search settings" aria-label="Search settings" autocomplete="off">' +
+    SET_SECS.map(x => '<button data-act="setJump" data-id="' + x[0] + '"' + (shown === x[0] ? ' class="on"' : '') + '>' + ic(x[2]) + '<span><b>' + x[1] + '</b><small>' + x[3] + '</small></span><i class="go">›</i></button>').join('') +
+    '</nav><div class="setmain"><button class="btn sm setback" data-act="setBack">‹ Settings</button>' +
+    SET_SECS.map(x => '<section class="set' + (shown === x[0] ? ' on' : '') + '" id="set-' + x[0] + '"><h2>' + x[1] + '</h2><p class="setlead">' + x[3] + '.</p>' + body[x[0]] + '</section>').join('') +
+    '<p class="setnone">No settings match that. Try another word.</p>' +
     '<p class="dim setfoot">Changes save as you make them. <button class="linkbtn" data-act="keys">Keyboard shortcuts</button></p></div></div>';
 }
 function dataSettings(row) {
@@ -2850,7 +3145,7 @@ function dataSettings(row) {
     (Drv.name === 'memory' ? '<p style="color:var(--crimson);font-size:13px;margin:0 0 10px">This browser is blocking storage, so nothing survives a reload. Download a backup before you close the tab.</p>' : '') +
     row('Backup', 'A file with everything in it, for safekeeping or moving to another account.', '<button class="btn" data-act="backup">' + ic('up') + 'Download</button>') +
     row('Restore', 'Replace what is here with a backup file.', '<button class="btn" data-act="restore">' + ic('down') + 'Choose file</button>') +
-    '<div class="srow col"><details class="adv"><summary>Restore points, profiles and devices</summary><div class="advb">' +
+    '<div class="srow col" data-q="restore points profiles devices roll back"><details class="adv"><summary>Restore points, profiles and devices</summary><div class="advb">' +
     '<div class="eyebrow" style="margin-bottom:6px">Restore points</div>' +
     (snaps.length ? snaps.map(x => '<div class="arow"><div style="flex:1"><b>' + ago(x.at) + '</b><span>' + esc(x.counts || '') + '</span></div><button class="btn sm" data-act="rollback" data-at="' + x.at + '">Roll back</button></div>').join('')
       : '<p class="dim" style="font-size:13px;margin:0 0 12px">ATLAS keeps one automatically every few hours. None yet.</p>') +
@@ -2862,7 +3157,6 @@ function dataSettings(row) {
     (ids.length ? ids.map(id => '<div class="arow"><div style="flex:1"><b>' + esc(devs[id].name || 'Unknown') + '</b><span>' + (id === DEV.id ? 'This one' : 'Last seen ' + ago(devs[id].at)) + '</span></div>' +
       (id === DEV.id ? '' : '<button class="btn g sm dg" data-act="forgetDev" data-id="' + id + '">Forget</button>') + '</div>').join('') : '<p class="dim" style="font-size:13px;margin:0">Only this one so far.</p>') +
     '</div></details></div>' +
-    row('Privacy', 'What ATLAS stores, where, and how to delete it.', '<a class="btn" href="privacy.html" target="_blank" rel="noopener">Read</a>') +
     row('Erase everything', 'Deletes every ' + W().cls.toLowerCase() + ', page, card and ' + W().task.toLowerCase() + ' on this desk.', '<button class="btn dg" data-act="wipe">Erase</button>');
 }
 
@@ -2881,13 +3175,29 @@ function readSettingsForm() {
   if (v('setFocus') != null) S.settings.pomodoro.focus = clamp(+v('setFocus') || 25, 5, 120);
   if (v('setShort') != null) S.settings.pomodoro.short = clamp(+v('setShort') || 5, 1, 30);
   if (v('setAmb') != null) S.settings.ambience = v('setAmb');
+  if (v('setNewDay') != null) S.settings.newPerDay = clamp(Math.round(+v('setNewDay')) || 20, 1, 500);
   if (!T.running) { T.left = (T.mode === 'focus' ? S.settings.pomodoro.focus : S.settings.pomodoro.short) * 60; paintTimer(); }
 }
 function mountSettings() {
   $$('#view input, #view select').forEach(el => {
-    if (el.dataset.act) return;
+    if (el.dataset.act || el.id === 'setFind') return;
     el.addEventListener('change', () => { readSettingsForm(); save(); renderNav(); toast('Saved'); });
   });
+  const f = $('#setFind'); if (!f) return;
+  f.addEventListener('input', () => setFind(f.value));
+  f.addEventListener('keydown', e => { if (e.key === 'Escape' && f.value) { e.stopPropagation(); f.value = ''; setFind(''); } });
+}
+function setFind(text) {
+  const q = String(text || '').trim().toLowerCase(), w = $('.setwrap'); if (!w) return;
+  let any = false;
+  $$('.set').forEach(sec => {
+    let hit = false;
+    $$('[data-q]', sec).forEach(r => { const m = !q || r.dataset.q.indexOf(q) >= 0 || (sec.querySelector('h2').textContent.toLowerCase().indexOf(q) >= 0); r.style.display = m ? '' : 'none'; if (m) hit = true; });
+    sec.classList.toggle('hit', !!q && hit);
+    if (hit) any = true;
+  });
+  w.classList.toggle('finding', !!q);
+  w.classList.toggle('nohit', !!q && !any);
 }
 
 /* ============================================================
@@ -3160,24 +3470,10 @@ function themeGallery(q) {
 /* Makes the page installable, so a phone keeps it on the home screen and the
    browser stops treating its storage as disposable. Built at runtime — one
    file on the server, still. */
-function appIcon(size, color) {
-  try {
-    const c = document.createElement('canvas'); c.width = c.height = size;
-    const x = c.getContext('2d'); if (!x) return null;
-    const r = size * .22;
-    x.fillStyle = color; x.beginPath();
-    x.moveTo(r, 0); x.arcTo(size, 0, size, size, r); x.arcTo(size, size, 0, size, r); x.arcTo(0, size, 0, 0, r); x.arcTo(0, 0, size, 0, r);
-    x.closePath(); x.fill();
-    x.fillStyle = '#fff'; x.font = '800 ' + Math.round(size * .58) + 'px Arial, Helvetica, sans-serif';
-    x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText('A', size / 2, size * .54);
-    return c.toDataURL('image/png');
-  } catch (e) { return null; }
-}
 function installManifest() {
   try {
     if (!/^https?:/.test(location.protocol)) return;
     const t = themeById(activeThemeId());
-    const color = S.settings.accent || t.ultra;
     /* A data: manifest has no base URL, so relative start_url/scope were thrown
        away and the app could not be installed. Spell them out in full. */
     const page = location.href.split('#')[0].split('?')[0];
@@ -3185,16 +3481,11 @@ function installManifest() {
     /* iPhone and iPad only treat ATLAS as an app (and only then allow notifications)
        with the manifest and icon files next to it, so those stay as they are there. */
     if (typeof isIOS === 'function' && isIOS()) return;
-    const icons = [192, 512].map(n => ({ src: appIcon(n, color), sizes: n + 'x' + n, type: 'image/png', purpose: 'any' })).filter(i => i.src);
+    const icons = [192, 512].map(n => ({ src: scope + 'icon-' + n + '.png', sizes: n + 'x' + n, type: 'image/png', purpose: 'any' }));
     const man = {
       name: 'ATLAS — school desk', short_name: 'ATLAS', start_url: page, scope: scope, display: 'standalone',
       background_color: t.bg, theme_color: t.bg, icons: icons
     };
-    if (icons.length) {
-      let tl = document.querySelector('link[rel="apple-touch-icon"]');
-      if (!tl) { tl = document.createElement('link'); tl.rel = 'apple-touch-icon'; document.head.appendChild(tl); }
-      tl.href = appIcon(180, color) || icons[0].src;
-    }
     let link = document.querySelector('link[rel="manifest"]');
     if (!link) { link = document.createElement('link'); link.rel = 'manifest'; document.head.appendChild(link); }
     link.href = 'data:application/manifest+json,' + encodeURIComponent(JSON.stringify(man));
@@ -3355,8 +3646,10 @@ const KEYS = [
   ['T', 'Jump to Today'],
   ['C', 'Jump to the calendar'],
   ['F', 'Start or pause the focus timer'],
-  ['Space', 'Flip the flashcard you are reviewing'],
-  ['1 – 4', 'Grade a card: again, hard, good, easy'],
+  ['Space', 'Show the answer to the flashcard you are studying'],
+  ['1 – 4', 'Answer a card: again, hard, good, easy'],
+  ['Z', 'Undo your last answer'],
+  ['E', 'Edit the card you are studying'],
   ['Esc', 'Close whatever is open'],
   ['?', 'This list']
 ];
@@ -4546,7 +4839,7 @@ function paintGate() {
       break;
     default:
       body = '<div class="gate-strip" aria-hidden="true">' + PALETTE.slice(0, 6).map(c => '<i style="--tc:' + c + '"></i>').join('') + '</div>' +
-        '<div class="gate-mark"><div class="mark">A</div><b>ATLAS</b></div>' +
+        '<div class="gate-mark"><div class="mark" aria-hidden="true"></div><b>ATLAS</b></div>' +
         '<h1 id="gateTitle">Every class, deadline and note on one desk.</h1>' +
         '<p class="gate-lead">Sign in and ATLAS keeps your desk in sync on your phone, your laptop and anywhere else you open it.</p>' +
         (acctConfigured() ? '<div class="gate-ways"><div class="gsi" id="gsiBox"><button class="gbtn" type="button" data-gate="google"><svg viewBox="0 0 48 48" aria-hidden="true">' + GLOGO + '</svg><span>Continue with Google</span></button></div>' +
@@ -5112,7 +5405,7 @@ function lockShow() {
   closePop();
   const el = document.createElement('div');
   el.id = 'lockscr'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-label', 'ATLAS is locked');
-  el.innerHTML = '<div class="lock-in"><div class="gate-mark"><div class="mark">A</div><b>ATLAS</b></div><h2>Unlock ATLAS</h2><p class="lock-who">' + esc(Local.acct.email) + '</p>' +
+  el.innerHTML = '<div class="lock-in"><div class="gate-mark"><div class="mark" aria-hidden="true"></div><b>ATLAS</b></div><h2>Unlock ATLAS</h2><p class="lock-who">' + esc(Local.acct.email) + '</p>' +
     '<div id="lockBody"></div><div class="lock-msg" id="lockMsg" role="alert"></div>' +
     '<button class="linkbtn" type="button" id="lockForgot">Forgot it? Sign in again instead</button></div>';
   document.body.appendChild(el);
@@ -5255,8 +5548,8 @@ function swReg() {
   return NOTE.regP;
 }
 async function noteShow(title, body, tag) {
-  try { const r = await swReg(); await r.showNotification(title, { body, tag: tag || undefined, data: { url: appUrl() }, badge: undefined }); return true; }
-  catch (e) { try { new Notification(title, { body, tag }); return true; } catch (x) { return false; } }
+  try { const r = await swReg(); await r.showNotification(title, { body, tag: tag || undefined, icon: 'icon-192.png', data: { url: appUrl() } }); return true; }
+  catch (e) { try { new Notification(title, { body, tag, icon: 'icon-192.png' }); return true; } catch (x) { return false; } }
 }
 
 /* --- turning it on, on this device --- */
@@ -5341,8 +5634,8 @@ function noteItems(from) {
   if (c.cards && on('cards') && S.decks.length) {
     for (let i = 0; i < 8; i++) {
       const day = addDays(today(), i);
-      const n = S.decks.reduce((a, d) => a + d.cards.filter(x => !x.due || x.due <= day).length, 0);
-      if (n) out.push({ at: atTime(day, c.cardsAt), title: 'Flashcards to review', body: n + (n === 1 ? ' card is' : ' cards are') + ' ready. A few minutes keeps them fresh.', tag: 'cards-' + day });
+      const n = S.decks.reduce((a, d) => a + studyCount(d, day), 0);
+      if (n) out.push({ at: atTime(day, c.cardsAt), title: 'Flashcards to study', body: n + (n === 1 ? ' card is' : ' cards are') + ' ready. A few minutes keeps them fresh.', tag: 'cards-' + day });
     }
   }
   return out.filter(x => x.at > start && x.at <= until).sort((a, b) => a.at - b.at).slice(0, 80);
@@ -5410,25 +5703,64 @@ function noteSheet() {
 function viewDeck(id) {
   const d = S.decks.find(x => x.id === id);
   if (!d) { V.param = null; return viewDecks(); }
-  const c = cls(d.classId), due = dueCards(d).length;
-  const rows = d.cards.length ? d.cards.map((card, i) =>
-    '<div class="item"><div style="flex:1;min-width:0"><div class="ttl">' + esc(card.front) + '</div><div class="meta">' + esc(card.back) + '</div></div>' +
-    (card.due && card.due > today() ? '<span class="chip" title="Next review ' + esc(card.due) + '">Due ' + (daysBetween(today(), card.due) === 1 ? 'tomorrow' : 'in ' + daysBetween(today(), card.due) + ' days') + '</span>' : '<span class="chip w" title="Ready to review">Due now</span>') +
-    '<button class="btn g sm" data-act="editCard" data-id="' + d.id + '" data-i="' + i + '">Edit</button>' +
-    '<button class="btn g sm dg" data-act="delCard" data-id="' + d.id + '" data-i="' + i + '">✕</button></div>').join('')
-    : '<div class="empty"><h3>Empty deck</h3><p>Add cards one at a time with the + button, or paste a whole term list.</p><button class="btn" data-act="pasteCards" data-id="' + d.id + '">Paste a list</button></div>';
-  return '<div class="wrap">' +
-    '<div class="row" style="margin-bottom:14px;flex-wrap:wrap;gap:8px"><button class="btn sm" data-go="cards">‹ All decks</button>' +
+  const day = today(), c = cls(d.classId);
+  const due = dueCards(d, day).length, nw = newCards(d, day).length, todo = due + nw;
+  const live = d.cards.filter(x => !x.off), fresh = live.filter(x => !cardMem(x)).length;
+  const t = nextTest(d, day), known = Math.round(deckRecall(d, day) * 100);
+  const head = '<div class="row deckhead"><button class="btn sm" data-go="cards">‹ All decks</button>' +
     '<h2 style="font-size:19px">' + esc(d.name) + '</h2>' + (c ? '<span class="chip" style="background:' + c.color + '18;color:' + c.color + '">' + esc(c.name) + '</span>' : '') +
     '<span class="spacer"></span>' +
-    (d.cards.length ? '<button class="btn p sm" data-act="reviewDeck" data-id="' + d.id + '">Review ' + (due ? due + ' due' : 'all') + '</button>' : '') +
-    '<button class="btn sm" data-act="deckMenu" data-id="' + d.id + '" aria-label="More deck actions" aria-haspopup="menu">' + ic('dots') + '</button></div>' +
+    (todo ? '<button class="btn p sm" data-act="reviewDeck" data-id="' + d.id + '">Study ' + todo + '</button>' : '') +
+    (live.length ? '<button class="btn sm' + (todo ? '' : ' p') + '" data-act="practiceDeck" data-id="' + d.id + '" title="Go through every card. Your schedule does not change.">Practice all</button>' : '') +
+    '<button class="btn sm" data-act="deckMenu" data-id="' + d.id + '" aria-label="More deck actions" aria-haspopup="menu">' + ic('dots') + '</button></div>';
+  const nx = nextReviewDay(d);
+  const stats = d.cards.length ? '<div class="card dstats">' +
+    '<div class="dstat"><b>' + live.length + '</b><span>' + (fresh ? fresh + ' not started yet' : 'cards, all started') + '</span></div>' +
+    '<div class="dstat"><b>' + due + '</b><span>to review today</span></div>' +
+    '<div class="dstat"><b>' + nw + '</b><span>new today</span></div>' +
+    '<div class="dstat"><b>' + known + '%</b><span>remembered now' + (!todo && nx ? ' · next review ' + esc(whenLabel(nx)) : '') + '</span></div></div>' : '';
+  let test = '';
+  if (t) {
+    const days = daysBetween(day, t.date), ready = Math.round(deckRecall(d, t.date) * 100);
+    const pace = Math.max(cardsPerDay(), Math.ceil(fresh / Math.max(1, days)));
+    test = '<div class="card testcard' + (days <= 3 ? ' soon' : '') + '"><div class="pad"><div class="row" style="gap:10px;flex-wrap:wrap">' +
+      '<div style="flex:1;min-width:200px"><div class="eyebrow">Studying for</div><b class="testname">' + esc(t.title) + '</b>' +
+      '<div class="muted" style="font-size:13px">' + esc(fmtDate(t.date, true)) + ' · ' + testWhen(t.date) + '</div></div>' +
+      '<div class="ready"><div class="row" style="gap:8px"><b>' + ready + '%</b><span>ready</span></div><div class="bar"><i style="width:' + ready + '%"></i></div></div>' +
+      '<button class="btn g sm" data-act="editDeck" data-id="' + d.id + '">Change</button></div>' +
+      '<p class="dim testnote">' + (days > 1 ? 'Every card you\'ve studied comes back at least once before the test. ' : '') +
+      (fresh > nw && days > 0 ? fresh + ' cards haven\'t been started, so ATLAS adds about ' + pace + ' new a day to get through all of them in time. ' : '') +
+      '<b>Ready</b> is how much of the deck you\'d remember on test day if you stopped studying now.</p></div></div>';
+  } else {
+    const sug = S.tasks.filter(x => !x.done && x.due && x.due >= day && isTestTitle(x.title) && (!d.classId || x.classId === d.classId)).sort((a, b) => a.due < b.due ? -1 : 1)[0];
+    if (sug && d.cards.length) test = '<div class="testhint">' + ic('flag') + '<span style="flex:1;min-width:180px">Studying for <b>' + esc(sug.title) + '</b> (' + esc(fmtDate(sug.due)) + ')? Link it and every card comes back before the test.</span>' +
+      '<button class="btn sm" data-act="linkTest" data-id="' + d.id + '" data-task="' + sug.id + '">Link test</button></div>';
+  }
+  const chip = card => card.off ? '<span class="chip">Left out</span>'
+    : !cardMem(card) ? '<span class="chip b">New</span>'
+      : !card.due || card.due <= day ? '<span class="chip w">Due today</span>'
+        : '<span class="chip" title="Next review ' + esc(fmtDate(card.due, true)) + '">' + esc(whenLabel(card.due).replace(/^\w/, x => x.toUpperCase())) + '</span>';
+  const rows = d.cards.length ? d.cards.map((card, i) =>
+    '<div class="item" data-q="' + esc((card.front + ' ' + card.back).toLowerCase()) + '"><div style="flex:1;min-width:0"><div class="ttl">' + esc(card.front) + '</div><div class="meta cardback">' + esc(card.back) + '</div></div>' +
+    chip(card) +
+    '<button class="btn g sm" data-act="editCard" data-id="' + d.id + '" data-i="' + i + '">Edit</button>' +
+    '<button class="btn g sm dg" data-act="delCard" data-id="' + d.id + '" data-i="' + i + '" aria-label="Delete card">✕</button></div>').join('') +
+    '<button class="item addrow" data-act="addCard" data-id="' + d.id + '">' + ic('plus') + 'Add a card</button>'
+    : '<div class="empty"><h3>Empty deck</h3><p>Add cards one at a time, paste a whole term list, or have the AI write them.</p><div class="row" style="justify-content:center;gap:8px;flex-wrap:wrap">' +
+      '<button class="btn p" data-act="addCard" data-id="' + d.id + '">Add a card</button><button class="btn" data-act="pasteCards" data-id="' + d.id + '">Paste a list</button></div></div>';
+  return '<div class="wrap">' + head + stats + test +
     (aiReady() ? '<form class="adjust" id="adjForm" data-id="' + d.id + '">' + ic('wand') + '<input type="text" id="adjIn" autocomplete="off" aria-label="Tell the AI how to change this deck" placeholder="' +
       (d.cards.length ? 'Tell the AI what to change: “shorter answers”, “add 5 cards on mitosis”, “make it harder”…' : 'Tell the AI what cards to make: “15 cards on the French Revolution”…') + '">' +
       '<button class="btn p sm" type="submit">' + (d.cards.length ? 'Change' : 'Make') + '</button></form>' : '') +
-    '<div class="card"><div class="list">' + rows + '</div></div></div>';
+    (d.cards.length > 8 ? '<input type="search" id="cardFind" class="cardfind" placeholder="Find a card" aria-label="Find a card">' : '') +
+    '<div class="card"><div class="list" id="cardList">' + rows + '</div></div></div>';
 }
 function mountDeck() {
+  const q = $('#cardFind');
+  if (q) q.addEventListener('input', () => {
+    const v = q.value.trim().toLowerCase();
+    $$('#cardList [data-q]').forEach(r => { r.style.display = !v || r.dataset.q.indexOf(v) >= 0 ? '' : 'none'; });
+  });
   const f = $('#adjForm'); if (!f) return;
   f.addEventListener('submit', e => { e.preventDefault(); const i = $('#adjIn'); deckAdjust(f.dataset.id, i.value, $('[type="submit"]', f)); });
 }
@@ -5486,40 +5818,96 @@ const ACT = {
 
   /* decks + cards */
   newDeck: el => deckModal(null, el && el.dataset.class),
+  editDeck: el => { const d = S.decks.find(x => x.id === el.dataset.id); if (d) deckModal(d); },
   openDeck: el => go('cards', el.dataset.id),
   delDeck: el => confirmAsk('Delete this deck?', 'All of its cards and review history go too.', () => { S.decks = S.decks.filter(d => d.id !== el.dataset.id); save(); go('cards'); }, true),
   addCard: el => cardModal(el.dataset.id, null),
   editCard: el => cardModal(el.dataset.id, +el.dataset.i),
-  delCard: el => { const d = S.decks.find(x => x.id === el.dataset.id); d.cards.splice(+el.dataset.i, 1); save(); render(); },
+  delCard: el => {
+    const d = S.decks.find(x => x.id === el.dataset.id); if (!d) return;
+    const i = +el.dataset.i, gone = d.cards.splice(i, 1)[0]; if (!gone) return;
+    save(); render();
+    toastAct('Card deleted', 'Undo', () => { if (!d.cards.some(x => x.id === gone.id)) d.cards.splice(Math.min(i, d.cards.length), 0, gone); save(); render(); });
+  },
   reviewDeck: el => {
     const d = S.decks.find(x => x.id === el.dataset.id); if (!d || !d.cards.length) return toast('This deck has no cards yet.', true);
-    const due = dueCards(d); startReview(shuffle((due.length ? due : d.cards).map(c => c.id)), d.id);
+    const ids = studyQueue([d]);
+    if (!ids.length) return ACT.practiceDeck(el);
+    startReview(ids, d.id);
+  },
+  practiceDeck: el => {
+    const d = S.decks.find(x => x.id === el.dataset.id); if (!d) return;
+    const ids = d.cards.filter(c => !c.off).map(c => c.id);
+    if (!ids.length) return toast('This deck has no cards to practice.', true);
+    startReview(shuffle(ids), d.id, true);
+  },
+  studyMore: el => {
+    const d = S.decks.find(x => x.id === el.dataset.id); if (!d) return;
+    const ids = d.cards.filter(c => !c.off && !cardMem(c)).slice(0, 10).map(c => c.id);
+    if (!ids.length) return toast('Every card in this deck has been started.');
+    startReview(ids, d.id);
   },
   reviewAll: () => {
-    const ids = [];
-    S.decks.forEach(d => dueCards(d).forEach(c => ids.push(c.id)));
-    if (!ids.length) return toast('Nothing due right now.');
-    startReview(shuffle(ids));
+    const ids = studyQueue(S.decks);
+    if (!ids.length) return toast('Nothing to study right now. You\'re caught up.');
+    const decks = new Set(ids.map(id => (findCard(id) || {}).deck).filter(Boolean));
+    startReview(ids, decks.size === 1 ? Array.from(decks)[0].id : null);
   },
-  flip: () => { R.flipped = !R.flipped; render(); },
+  flip: () => { if (R.i < R.queue.length) { R.flipped = !R.flipped; render(); } },
   grade: el => {
-    const q = +el.dataset.q, f = findCard(R.queue[R.i]); if (!f) return;
-    Object.assign(f.card, schedule(f.card, q));
-    if (q >= 3) R.right++; else { R.wrong++; R.queue.push(f.card.id); }
+    const g = +el.dataset.q, f = findCard(R.queue[R.i]); if (!f || !R.flipped) return;
+    const { deck, card } = f, id = card.id;
+    R.hist.push({ id, before: JSON.parse(JSON.stringify(card)), queue: R.queue.slice(), i: R.i, right: R.right, wrong: R.wrong, fresh: R.fresh, missed: Object.assign({}, R.missed), first: Object.assign({}, R.first) });
+    if (R.hist.length > 40) R.hist.shift();
+    if (!(id in R.first)) R.first[id] = g > 1;
+    if (!R.practice) {
+      if (!cardMem(card)) R.fresh++;
+      const t = nextTest(deck);
+      Object.assign(card, schedule(card, g, { test: t && t.date }));
+    }
+    if (g === 1) { R.wrong++; R.missed[id] = 1; R.queue.splice(Math.min(R.queue.length, R.i + 4), 0, id); }
+    else R.right++;
     R.i++; R.flipped = false; save(); render();
+  },
+  undoGrade: () => {
+    const h = R.hist.pop(); if (!h) return;
+    const f = findCard(h.id);
+    if (f) { Object.keys(f.card).forEach(k => { delete f.card[k]; }); Object.assign(f.card, h.before); }
+    Object.assign(R, { queue: h.queue, i: h.i, right: h.right, wrong: h.wrong, fresh: h.fresh, missed: h.missed, first: h.first, flipped: true });
+    save(); render();
+  },
+  editRevCard: () => { const f = findCard(R.queue[R.i]); if (f) cardModal(f.deck.id, f.deck.cards.indexOf(f.card)); },
+  linkTest: el => {
+    const d = S.decks.find(x => x.id === el.dataset.id), t = S.tasks.find(x => x.id === el.dataset.task); if (!d || !t) return;
+    d.testId = t.id; delete d.testDate; delete d.testName;
+    capForTest(d); save(true); render();
+    toast('Linked. Every card comes back before ' + fmtDate(t.due) + '.');
+  },
+  resetDeck: el => {
+    const d = S.decks.find(x => x.id === el.dataset.id); if (!d) return;
+    confirmAsk('Start this deck over?', 'Every card goes back to new and its review history is cleared. The cards themselves stay.', () => {
+      d.cards.forEach(c => { ['s', 'd', 'last', 'first', 'seen', 'due', 'ease'].forEach(k => { delete c[k]; }); c.reps = 0; c.lapses = 0; c.interval = 0; });
+      save(true); render(); toast('Deck reset. Every card is new again.');
+    }, true);
+  },
+  exportDeck: el => {
+    const d = S.decks.find(x => x.id === el.dataset.id); if (!d) return;
+    const flat = s => String(s || '').replace(/[\t\r\n]+/g, ' ').trim();
+    download((d.name || 'deck').replace(/[\\/:*?"<>|]+/g, ' ').trim() + '.txt', d.cards.map(c => flat(c.front) + '\t' + flat(c.back)).join('\n'));
+    toast('Saved ' + d.cards.length + ' cards as a text file. Paste it into any deck, here or in another app.');
   },
   pasteCards: el => {
     const id = el.dataset.id;
     modal({
       title: 'Paste a term list', body:
-        '<p class="muted" style="margin:0 0 10px;font-size:13px">One card per line. Separate the two sides with a dash, a colon, or a tab.</p>' +
+        '<p class="muted" style="margin:0 0 10px;font-size:13px">One card per line. Separate the two sides with a tab, a dash, a colon or an equals sign. Copying two columns from a spreadsheet or Quizlet works too.</p>' +
         '<textarea id="pasteBox" rows="10" placeholder="mitochondria - the powerhouse of the cell\nosmosis: movement of water across a membrane"></textarea>',
+      foot: '<button class="btn" data-close>Cancel</button><button class="btn p" data-ok>Add cards</button>',
       onOk: () => {
         const d = S.decks.find(x => x.id === id);
-        const added = parseCardList($('#pasteBox').value);
-        if (!added.length) { toast('No cards found — check the separators.', true); return false; }
-        added.forEach(c => d.cards.push(newCard(c.front, c.back)));
-        save(); render(); toast('Added ' + added.length + ' cards');
+        const r = addCardsTo(d, parseCardList($('#pasteBox').value));
+        if (!r.added && !r.skipped) { toast('No cards found. Check that each line has a separator.', true); return false; }
+        save(); render(); toast(cardsAddedMsg(r));
       }
     });
   },
@@ -5788,9 +6176,8 @@ const ACT = {
             'You write flashcards for a student.', 2600);
           const cards = arr.filter(c => c.front && c.back).map(c => newCard(c.front, c.back));
           if (!cards.length) throw new Error('No usable cards came back.');
-          if (deckId) { const d = S.decks.find(x => x.id === deckId); d.cards.push.apply(d.cards, cards); save(true); render(); }
-          else { const d = { id: uid(), classId, name: topic.slice(0, 40), cards, created: Date.now() }; S.decks.push(d); save(true); go('cards', d.id); }
-          toast('Added ' + cards.length + ' cards');
+          if (deckId) { const d = S.decks.find(x => x.id === deckId); const r = addCardsTo(d, cards); save(true); render(); toast(cardsAddedMsg(r)); }
+          else { const d = { id: uid(), classId, name: topic.slice(0, 40), cards: [], created: Date.now() }; addCardsTo(d, cards); S.decks.push(d); save(true); go('cards', d.id); toast('Added ' + d.cards.length + ' cards'); }
         });
         return false;
       }
@@ -5946,9 +6333,13 @@ const ACT = {
     { act: 'exportICS', icon: 'up', label: 'Export as an .ics file' }
   ]),
   deckMenu: el => togglePop(el, [
+    { act: 'editDeck', icon: 'pencil', label: 'Name, class and test date', data: { id: el.dataset.id } },
+    { act: 'addCard', icon: 'plus', label: 'Add a card', data: { id: el.dataset.id } },
     { act: 'pasteCards', icon: 'tasks', label: 'Paste a term list', data: { id: el.dataset.id } },
     aiReady() && { act: 'aiDeck', icon: 'wand', label: 'Generate cards', data: { id: el.dataset.id } },
+    { act: 'exportDeck', icon: 'down', label: 'Save as a text file', data: { id: el.dataset.id } },
     '-',
+    { act: 'resetDeck', icon: 'clock', label: 'Start the deck over', data: { id: el.dataset.id } },
     { act: 'delDeck', icon: 'trash', label: 'Delete deck', data: { id: el.dataset.id }, danger: true }
   ]),
   studyMenu: el => {
@@ -5964,9 +6355,16 @@ const ACT = {
   },
   addMenu: el => togglePop(el, addItems()),
   setJump: el => {
-    const t = $('#set-' + el.dataset.id), v = $('#view');
-    if (t && v) v.scrollTo({ top: v.scrollTop + t.getBoundingClientRect().top - v.getBoundingClientRect().top - 12, behavior: 'smooth' });
+    V.param = el.dataset.id; save();
+    const w = $('.setwrap'); if (!w) return go('settings', el.dataset.id);
+    const f = $('#setFind'); if (f && f.value) { f.value = ''; setFind(''); }
+    w.classList.add('open');
+    $$('.setnav [data-act="setJump"]').forEach(b => b.classList.toggle('on', b.dataset.id === V.param));
+    $$('.set').forEach(s => s.classList.toggle('on', s.id === 'set-' + V.param));
+    $('#view').scrollTop = 0;
   },
+  setBack: () => { V.param = null; save(); const w = $('.setwrap'); if (w) w.classList.remove('open'); $('#view').scrollTop = 0; },
+  setNight: el => { S.settings.autoNight = !!el.checked; if (el.checked && !S.settings.nightTheme) S.settings.nightTheme = 'midnight'; applyTheme(); save(true); render(); },
   rollback: el => {
     const snap = (Sync.snaps || []).find(x => String(x.at) === el.dataset.at);
     if (!snap) return toast('That restore point is gone.', true);
@@ -6031,10 +6429,23 @@ const ACT = {
 };
 function monthStep(anchor, n) { const d = parseYMD(anchor); d.setDate(1); d.setMonth(d.getMonth() + n); return ymd(d); }
 function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
-function newCard(front, back) { return { id: uid(), front: String(front).trim(), back: String(back).trim(), ease: 2.5, interval: 0, reps: 0, lapses: 0, due: today() }; }
+function newCard(front, back) { return { id: uid(), front: String(front).trim(), back: String(back).trim(), reps: 0, lapses: 0 }; }
+/* Adds cards to a deck, skipping any whose front the deck already has. */
+function addCardsTo(d, list) {
+  const have = new Set(d.cards.map(c => String(c.front).trim().toLowerCase()));
+  let added = 0, skipped = 0;
+  (list || []).forEach(x => {
+    const k = String(x.front || '').trim().toLowerCase();
+    if (!k || !String(x.back || '').trim()) return;
+    if (have.has(k)) { skipped++; return; }
+    have.add(k); d.cards.push(x.id ? x : newCard(x.front, x.back)); added++;
+  });
+  return { added, skipped };
+}
+function cardsAddedMsg(r) { return 'Added ' + r.added + (r.added === 1 ? ' card' : ' cards') + (r.skipped ? ' · skipped ' + r.skipped + ' already in the deck' : ''); }
 function parseCardList(text) {
   return String(text).split('\n').map(l => l.trim()).filter(Boolean).map(l => {
-    const m = l.split('\t').length > 1 ? l.split('\t') : l.split(/\s+[-–—]\s+|\s*::\s*|\s*:\s(?=\S)/);
+    const m = l.split('\t').length > 1 ? l.split('\t') : l.split(/\s+[-–—=]\s+|\s*::\s*|\s*:\s(?=\S)/);
     return m.length >= 2 ? { front: m[0].trim(), back: m.slice(1).join(' ').trim() } : null;
   }).filter(Boolean);
 }
@@ -6168,31 +6579,73 @@ function eventModal(e) {
   });
 }
 function deckModal(d, classId) {
+  const isNew = !d, day = today();
+  const ups = S.tasks.filter(t => !t.done && t.due && t.due >= day).sort((a, b) => a.due < b.due ? -1 : a.due > b.due ? 1 : 0);
+  const opt = t => '<option value="task:' + t.id + '"' + (d && d.testId === t.id ? ' selected' : '') + '>' + esc(t.title) + ' · ' + esc(fmtDate(t.due)) + (t.classId ? ' · ' + esc(clsName(t.classId)) : '') + '</option>';
+  const tests = ups.filter(t => isTestTitle(t.title)), others = ups.filter(t => !isTestTitle(t.title));
+  const linked = d && d.testId && !ups.some(t => t.id === d.testId) ? S.tasks.find(t => t.id === d.testId) : null;   /* a test already past */
+  const custom = !!(d && !d.testId && d.testDate);
   modal({
-    title: 'New deck', body:
-      '<label class="f"><span>Deck name</span><input type="text" id="dName" placeholder="Unit 3 — cell biology"></label>' +
+    title: isNew ? 'New deck' : 'Deck settings', body:
+      '<label class="f"><span>Deck name</span><input type="text" id="dName" placeholder="Unit 3 — cell biology" value="' + esc(d ? d.name : '') + '"></label>' +
       '<label class="f"><span>' + esc(W().cls) + '</span><select id="dClass"><option value="">General</option>' +
-      S.classes.map(c => '<option value="' + c.id + '"' + (classId === c.id ? ' selected' : '') + '>' + esc(c.name) + '</option>').join('') + '</select></label>',
+      S.classes.map(c => '<option value="' + c.id + '"' + (((d && d.classId) || classId) === c.id ? ' selected' : '') + '>' + esc(c.name) + '</option>').join('') + '</select></label>' +
+      '<label class="f"><span>Studying for a test?</span><select id="dTest"><option value="">No test</option>' +
+      (linked ? '<option value="task:' + linked.id + '" selected>' + esc(linked.title) + ' · ' + esc(fmtDate(linked.due)) + '</option>' : '') +
+      (tests.length ? '<optgroup label="Tests and quizzes">' + tests.map(opt).join('') + '</optgroup>' : '') +
+      (others.length ? '<optgroup label="Other ' + esc(W().taskP.toLowerCase()) + '">' + others.map(opt).join('') + '</optgroup>' : '') +
+      '<option value="date"' + (custom ? ' selected' : '') + '>Another date…</option></select></label>' +
+      '<div class="f2" id="dDateRow"' + (custom ? '' : ' style="display:none"') + '><label class="f"><span>Test name</span><input type="text" id="dTestName" placeholder="Unit 3 quiz" value="' + esc(custom ? d.testName || '' : '') + '"></label>' +
+      '<label class="f"><span>Date</span><input type="date" id="dTestDate" value="' + esc(custom ? d.testDate : '') + '"></label></div>' +
+      '<p class="dim" style="font-size:12.5px;margin:2px 0 0">With a test date, every card comes back at least once before the test, and new cards are paced so you get through all of them.</p>',
+    foot: '<button class="btn" data-close>Cancel</button><button class="btn p" data-ok>' + (isNew ? 'Create deck' : 'Save') + '</button>',
     onOk: () => {
-      const n = $('#dName').value.trim(); if (!n) return false;
-      const deck = { id: uid(), name: n, classId: $('#dClass').value || null, cards: [], created: Date.now() };
-      S.decks.push(deck); save(true); go('cards', deck.id);
+      const n = $('#dName').value.trim(); if (!n) { toast('Give the deck a name.', true); return false; }
+      const v = $('#dTest').value;
+      if (v === 'date' && !$('#dTestDate').value) { toast('Pick the test date.', true); return false; }
+      const deck = d || { id: uid(), cards: [], created: Date.now() };
+      deck.name = n; deck.classId = $('#dClass').value || null;
+      delete deck.testId; delete deck.testDate; delete deck.testName;
+      if (v.indexOf('task:') === 0) deck.testId = v.slice(5);
+      else if (v === 'date') { deck.testDate = $('#dTestDate').value; deck.testName = $('#dTestName').value.trim() || 'Test'; }
+      capForTest(deck);
+      if (isNew) { S.decks.push(deck); save(true); go('cards', deck.id); }
+      else { save(true); render(); }
     }
   });
+  const sel = $('#dTest');
+  if (sel) sel.addEventListener('change', () => { $('#dDateRow').style.display = sel.value === 'date' ? '' : 'none'; if (sel.value === 'date') $('#dTestDate').focus(); });
 }
 function cardModal(deckId, i) {
-  const d = S.decks.find(x => x.id === deckId);
-  const c = i == null ? null : d.cards[i];
+  const d = S.decks.find(x => x.id === deckId); if (!d) return;
+  const c = i == null || i < 0 ? null : d.cards[i];
+  let added = 0;
+  const has = f => { const k = f.trim().toLowerCase(); return !!k && d.cards.some(x => x !== c && String(x.front).trim().toLowerCase() === k); };
+  const keep = () => {
+    const f = $('#cFront').value.trim(), b = $('#cBack').value.trim();
+    if (!f || !b) { toast('Fill in both sides of the card.', true); return false; }
+    if (c) { c.front = f; c.back = b; c.off = !!($('#cOff') && $('#cOff').checked) || undefined; if (!c.off) delete c.off; }
+    else { d.cards.push(newCard(f, b)); added++; }
+    save(true); render();
+    return true;
+  };
   modal({
-    title: c ? 'Edit card' : 'New card', body:
-      '<label class="f"><span>Front</span><textarea id="cFront" rows="2">' + esc(c ? c.front : '') + '</textarea></label>' +
-      '<label class="f"><span>Back</span><textarea id="cBack" rows="3">' + esc(c ? c.back : '') + '</textarea></label>',
-    onOk: () => {
-      const f = $('#cFront').value.trim(), b = $('#cBack').value.trim();
-      if (!f || !b) return false;
-      if (c) { c.front = f; c.back = b; } else d.cards.push(newCard(f, b));
-      save(true); render();
-    }
+    title: c ? 'Edit card' : 'Add cards to ' + d.name, body:
+      '<label class="f"><span>Front</span><textarea id="cFront" rows="2" placeholder="Term or question">' + esc(c ? c.front : '') + '</textarea></label>' +
+      '<label class="f"><span>Back</span><textarea id="cBack" rows="3" placeholder="Definition or answer">' + esc(c ? c.back : '') + '</textarea></label>' +
+      '<p class="dim" id="cNote" style="font-size:12.5px;margin:0;min-height:18px"></p>' +
+      (c ? '<label class="check" style="margin-top:8px"><input type="checkbox" id="cOff"' + (c.off ? ' checked' : '') + '><span>Leave this card out of reviews</span></label>' : ''),
+    foot: c ? '<button class="btn" data-close>Cancel</button><button class="btn p" data-ok>Save</button>'
+      : '<button class="btn" data-close>Done</button><button class="btn p" id="cNext">Add card<span class="kbhint">' + (/Mac|iPhone|iPad/.test(UA()) ? '⌘↵' : 'Ctrl ↵') + '</span></button>',
+    onOk: () => keep() ? undefined : false
+  });
+  const note = $('#cNote'), front = $('#cFront');
+  const check = () => { if (note) note.textContent = has(front.value) ? 'This deck already has a card with this front.' : added ? added + (added === 1 ? ' card' : ' cards') + ' added. Keep going, or press Done.' : ''; };
+  front.addEventListener('input', check);
+  const next = $('#cNext');
+  if (next) next.addEventListener('click', () => { if (!keep()) return; front.value = ''; $('#cBack').value = ''; check(); front.focus(); });
+  MODAL_EL.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) { e.preventDefault(); (next || $('[data-ok]', MODAL_EL)).click(); }
   });
 }
 function quizModal(items) {
@@ -6603,7 +7056,7 @@ function openSurvey(opts) {
   MODAL_EL = null;
   const ov = $('#overlay');
   ov.innerHTML = '<div class="sv" role="dialog" aria-modal="true" aria-label="Set up ATLAS">' +
-    '<div class="sv-top"><div class="mark">A</div><b class="sv-brand">Set up ATLAS</b>' +
+    '<div class="sv-top"><div class="mark" role="img" aria-label="ATLAS"></div><b class="sv-brand">Set up ATLAS</b>' +
     '<div class="sv-prog" role="progressbar" aria-label="Setup progress"><i id="svBar"></i></div><span class="mono dim" id="svCount" style="font-size:11px;min-width:34px"></span>' +
     '<span class="spacer"></span><button class="btn g sm" data-sv-nav="close">' + (SVY.first ? 'Skip setup' : 'Close') + '</button></div>' +
     '<div class="sv-body"><div class="sv-q" id="svQ"></div><div class="sv-prev" id="svP" aria-hidden="true"></div></div>' +
@@ -6772,11 +7225,11 @@ function svPreview(a) {
     due: '<div class="pv-card">' + [64, 48, 56].map((x, i) => '<div class="pv-row"><i class="cb"></i><i class="pv-line" style="width:' + x + '%;background:' + (i ? 'var(--panel3)' : 'var(--ink3)') + '"></i><i class="pv-chip"></i></div>').join('') + '</div>',
     focus: '<div class="pv-card pv-focus"><b>' + r.focus + ':00</b><span class="pv-btn">Start focusing</span></div>',
     notes: '<div class="pv-card"><div class="pv-tiles">' + [0, 1, 2].map(i => '<i style="--tc:' + cols[i % cols.length] + '"></i>').join('') + '</div></div>',
-    cards: '<div class="pv-card pv-focus"><b>' + Math.max(S.decks.reduce((x, d) => x + dueCards(d).length, 0), 12) + '</b><span style="color:var(--ink3)">cards due</span><span class="pv-btn" style="margin-left:auto">Review</span></div>'
+    cards: '<div class="pv-card pv-focus"><b>' + Math.max(allStudyCount(), 12) + '</b><span style="color:var(--ink3)">cards due</span><span class="pv-btn" style="margin-left:auto">Review</span></div>'
   };
   const stats = [];
   if (m.tasks) stats.push([dueWithin(7).length, 'due this week']);
-  if (m.cards) stats.push([S.decks.reduce((x, d) => x + dueCards(d).length, 0), 'to review']);
+  if (m.cards) stats.push([allStudyCount(), 'to study']);
   if (m.focus) stats.push([streak(), 'day streak']);
   if (m.grades && stats.length < 3) stats.push(['—', (a.grading || defaultGrading(a.level, a.tz)) === 'gpa4' ? 'GPA' : 'average']);
   const p = showP ? personaFor(a) : null;
@@ -6865,25 +7318,6 @@ function svFinish() {
   toast('Your desk is ready' + (S.profile.name ? ', ' + S.profile.name : ''));
   celebrate();
 }
-function setupSettings() {
-  const p = persona(), s = S.settings, w = W();
-  const homes = Object.keys(HOMES).filter(k => on(HOMES[k].need));
-  const row = (label, hint, control) => '<div class="srow"><div class="sl"><b>' + label + '</b>' + (hint ? '<span>' + hint + '</span>' : '') + '</div><div class="sc">' + control + '</div></div>';
-  return '<div class="persona"><div style="flex:1;min-width:220px">' +
-    (p ? '<b>' + esc(p.title) + '</b><span>' + esc(p.line) + '</span>'
-      : '<b>Not personalized yet</b><span>A one-minute setup picks your tabs, the words ATLAS uses, your focus rhythm and the look.</span>') +
-    '</div><button class="btn' + (p ? '' : ' p') + '" data-act="survey">' + ic('spark') + (p ? 'Retake setup' : 'Personalize') + '</button></div>' +
-    row('Your name', '', '<input type="text" id="setName" value="' + esc(S.profile.name) + '" placeholder="What should ATLAS call you?">') +
-    row('Term', 'Shown under ATLAS in the sidebar.', '<input type="text" id="setTerm" value="' + esc(S.profile.term) + '" placeholder="Fall 2026">') +
-    '<div class="srow col"><div class="sl"><b>Tabs</b><span>Anything you switch off disappears from the app.</span></div><div class="modgrid">' +
-    MODULES.map(m => '<label class="check modchk"><input type="checkbox" data-act="modToggle" data-m="' + m.id + '"' + (on(m.id) ? ' checked' : '') + '>' + ic(m.icon) +
-      '<span>' + esc(m.id === 'tasks' ? w.taskP : m.name) + '</span></label>').join('') + '</div></div>' +
-    row('Words', 'How ATLAS names your ' + w.clsP.toLowerCase() + ' and your work.', '<select data-act="setLevel">' +
-      Object.keys(LEVELS).map(k => '<option value="' + k + '"' + ((LEVELS[s.level] ? s.level : 'high') === k ? ' selected' : '') + '>' + LEVELS[k].clsP + ' and ' + LEVELS[k].taskP.toLowerCase() + ' (' + LEVELS[k].name.toLowerCase() + ')</option>').join('') + '</select>') +
-    (homes.length > 1 ? row('Today opens with', '', '<select data-act="setHome">' + homes.map(k => '<option value="' + k + '"' + (homeView() === k ? ' selected' : '') + '>' + esc(HOMES[k].name) + '</option>').join('') + '</select>') : '') +
-    (on('grades') ? row('Grades read as', '', '<select data-act="setGrading">' + Object.keys(GRADINGS).map(k => '<option value="' + k + '"' + (grading() === k ? ' selected' : '') + '>' + GRADINGS[k].name + ' (' + GRADINGS[k].sample + ')</option>').join('') + '</select>') : '') +
-    row('Celebrate wins', 'Badges, a streak and a little confetti.', '<input type="checkbox" data-act="setCelebrate"' + (s.celebrate !== false ? ' checked' : '') + ' aria-label="Celebrate wins">');
-}
 
 /* ---------- seed ---------- */
 function seedTerm() {
@@ -6901,11 +7335,12 @@ function seedTerm() {
   T2('Problem set 6 (related rates)', c3.id, 2, 90);
   T2('Presentación oral — mi barrio', c4.id, 6, 120, '3 minutes, past tense required.');
   T2('Unit 2 exam — cell division', c1.id, 9, 240);
+  const examId = S.tasks[S.tasks.length - 1].id;
   S.notes.push({
     id: uid(), classId: c1.id, title: 'Mitosis vs meiosis', pinned: true, created: Date.now(), updated: Date.now(),
     body: '# Mitosis\n- One division, two identical diploid cells\n- Body cells, growth and repair\n- Phases: prophase, metaphase, anaphase, telophase\n\n# Meiosis\n- Two divisions, four haploid gametes\n- Crossing over in prophase I creates variation\n- Independent assortment in metaphase I\n\n**Test hint:** know *when* variation happens, not just that it does.'
   });
-  const deck = { id: uid(), classId: c1.id, name: 'Cell division terms', created: Date.now(), cards: [] };
+  const deck = { id: uid(), classId: c1.id, name: 'Cell division terms', created: Date.now(), cards: [], testId: examId };
   [['Mitosis', 'One division producing two genetically identical diploid cells.'],
   ['Meiosis', 'Two divisions producing four genetically distinct haploid gametes.'],
   ['Crossing over', 'Exchange of segments between homologous chromosomes during prophase I.'],
@@ -6955,8 +7390,10 @@ document.addEventListener('keydown', e => {
     if (map[e.key] !== undefined) { e.preventDefault(); doTiles(map[e.key]); return; }
   }
   if (V.name === 'review') {
-    if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); R.flipped = true; render(); return; }
-    if (R.flipped && ['1', '2', '3', '4'].includes(e.key)) { ACT.grade({ dataset: { q: [0, 2, 4, 5][+e.key - 1] } }); return; }
+    if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); if (!R.flipped && R.i < R.queue.length) { R.flipped = true; render(); } return; }
+    if (R.flipped && ['1', '2', '3', '4'].includes(e.key)) { ACT.grade({ dataset: { q: R.practice ? (e.key === '1' ? 1 : 3) : +e.key } }); return; }
+    if (e.key === 'z' || e.key === 'u') { ACT.undoGrade(); return; }
+    if (e.key === 'e') { ACT.editRevCard(); return; }
   }
   if (e.key === '/') { e.preventDefault(); openPalette(); }
   if (e.key === '?') { e.preventDefault(); keysSheet(); }
