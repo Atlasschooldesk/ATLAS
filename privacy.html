@@ -61,7 +61,7 @@ a{color:var(--ultra);text-underline-offset:2px}
 
   <section id="classroom">
     <h2>Google Classroom</h2>
-    <p>ATLAS never signs in to Google Classroom and never asks for permission to see it. When you use "Send to ATLAS" or paste your Classroom page, ATLAS reads the text and links of that one page, in your browser, to find your classes and what's due. What it reads goes from the Classroom tab straight to ATLAS in your browser, inside the web address after a # sign, which browsers never send to any server. Only the classes and assignments you choose to add are kept, with the rest of your desk.</p>
+    <p>ATLAS never signs in to Google Classroom and never asks for permission to see it. When you use "Send to ATLAS" or paste your Classroom page, ATLAS reads the text and links of that one page, in your browser, to find your classes and what's due. What it reads goes from the Classroom tab straight to ATLAS in your browser, inside the web address after a # sign, which browsers never send to any server. Only the classes and assignments you choose to add are kept, with the rest of your desk. If you press "Send to ATLAS" on one assignment's page, or paste that page into the assignment, its instructions, points and the names and links of its attached files are kept with that assignment too.</p>
   </section>
 
   <section id="move">
@@ -81,8 +81,20 @@ a{color:var(--ultra);text-underline-offset:2px}
       <li>If your computer has Chrome's on-device AI, some of it can run on the computer itself, and nothing leaves it.</li>
       <li>Otherwise it goes to Google's Gemini service through ATLAS's Firebase project. Google's free tier is used, and Google may use what you send to improve its products. Please leave anything private out.</li>
     </ul>
-    <p id="agent"><b>Agent mode</b> lets the AI make changes on your desk for you. When you send it a request, ATLAS also sends a summary of your desk so it knows what's there: your classes and their times, what's due and the start of its notes, your deck and page titles, your grades, your upcoming calendar and your reminders. It doesn't send the text of your pages or cards unless it needs one for what you asked. The changes happen in your browser, and every one is listed with an Undo.</p>
+    <p id="agent"><b>Agent mode</b> lets the AI make changes on your desk for you. When you send it a request, ATLAS also sends a summary of your desk so it knows what's there: your classes and their times, what's due and the start of its notes, your deck and page titles, your grades, your upcoming calendar and your reminders. It doesn't send the text of your pages or cards unless it needs one for what you asked. The changes happen in your browser, and every one is listed with an Undo. When new work arrives, Agent mode also sends its titles and the start of their notes to sort them into sections.</p>
+    <p id="looks">Agent mode can also change how ATLAS looks for you: colors, sizes, spacing, which small things show, and what the tabs are called. These are style rules only. ATLAS checks each one before using it, they can't load anything from other websites or run code, and they never apply to Settings, the sign-in screen or any sheet. Settings, under Look, removes them, and adding <code>?safe=1</code> to the end of ATLAS's address opens it without them.</p>
     <p>Your tutor chats are saved with your desk, like everything else. To stop other sites from using ATLAS's free AI, it's protected by reCAPTCHA; Google's <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply. You can switch the AI tools off in Settings.</p>
+  </section>
+
+  <section id="fair-use">
+    <h2>Using ATLAS fairly</h2>
+    <ul>
+      <li>Agent mode has a daily allowance, 60 requests a day for now, so ATLAS's shared free AI stays available for everyone. Questions to the tutor don't count toward it.</li>
+      <li>The agent only works on your own desk. It can't run code, reach other websites, or change anything about accounts, sign-in, privacy, security or payments, and ATLAS checks every change it makes.</li>
+      <li>Please don't automate requests, try to get around the limits, or try to make the agent do something other than organize your desk. Don't use the AI for anything Google's <a href="https://policies.google.com/terms/generative-ai/use-policy">Generative AI Prohibited Use Policy</a> forbids.</li>
+      <li>ATLAS may limit or switch off Agent mode for anyone who misuses it.</li>
+      <li>Agent mode may become part of a paid plan later. Nothing is ever charged unless you choose to sign up, and this page will say so before that happens.</li>
+    </ul>
   </section>
 
   <section>

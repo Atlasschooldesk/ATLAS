@@ -1,10 +1,10 @@
 {
-  "version": "2026.10.22.3",
+  "version": "2026.10.22.4",
   "notes": [
-    "Agent mode: switch it on in a chat and your AI makes the changes for you. It adds classes and their times, books study time, makes flashcards exactly how you ask, logs grades and sets reminders, and one tap undoes it all.",
-    "A rainbow glow runs around ATLAS while the agent is working on your desk.",
-    "Link Google Classroom: one click on a computer, or copy and paste on a phone, brings in your classes and everything due. Run it again and it updates due dates and checks off what you turned in.",
-    "Move your desk to another account: in Settings under Account and devices. You sign in to both, and nothing passes through anyone else.",
-    "A nudge to start big work two days before it's due, and reminders the agent sets for you."
+    "Sections: every class's work is sorted into sections like Homework, Tests & quizzes, Labs and Projects the moment it arrives, using your grade categories when a class has them. Agent mode sorts the ones the names don't give away.",
+    "Google Classroom assignments have an Open in Google Classroom button, and pressing Send to ATLAS on an assignment's page brings in its instructions, points and files.",
+    "Agent mode can read an assignment's details, sort your work, restyle ATLAS, rename tabs and change fonts and colors for you. Settings always keeps the usual look so you can undo it.",
+    "Agent mode has a fair daily allowance, so the free AI stays available for everyone.",
+    "Earlier today: Agent mode with the rainbow glow, Link Google Classroom, and moving your desk to another account."
   ]
 }
