@@ -1,12 +1,10 @@
 {
-  "version": "2026.10.22.2",
+  "version": "2026.10.22.3",
   "notes": [
-    "Drag classes onto Today's Schedule to set their times, then drag or stretch them to change them.",
-    "Today and the calendar now show your study time and deadlines. Classes stay on Today's Schedule.",
-    "The class list in the sidebar is two across and folds away.",
-    "New accounts confirm their email on a screen that moves on by itself.",
-    "Reminders are simpler: one switch for each kind.",
-    "More room on phones, with nothing hidden behind the notch or the home bar.",
-    "Work side: Keep awake stops your laptop from sleeping while ATLAS is open."
+    "Agent mode: switch it on in a chat and your AI makes the changes for you. It adds classes and their times, books study time, makes flashcards exactly how you ask, logs grades and sets reminders, and one tap undoes it all.",
+    "A rainbow glow runs around ATLAS while the agent is working on your desk.",
+    "Link Google Classroom: one click on a computer, or copy and paste on a phone, brings in your classes and everything due. Run it again and it updates due dates and checks off what you turned in.",
+    "Move your desk to another account: in Settings under Account and devices. You sign in to both, and nothing passes through anyone else.",
+    "A nudge to start big work two days before it's due, and reminders the agent sets for you."
   ]
 }

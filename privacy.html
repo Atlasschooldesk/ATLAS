@@ -28,7 +28,7 @@ a{color:var(--ultra);text-underline-offset:2px}
 <main>
   <a href="./" aria-label="Back to ATLAS" style="text-decoration:none;color:inherit"><span class="mark">A</span><span class="brand">ATLAS</span></a>
   <h1>Privacy</h1>
-  <p class="updated">Last updated October 19, 2026</p>
+  <p class="updated">Last updated October 22, 2026</p>
   <p class="lead">ATLAS is a free school organizer made by one person. Your work is saved in the browser you use it in. If you make an account, a copy is kept under that account so it follows you to your other devices.</p>
 
   <section>
@@ -59,6 +59,16 @@ a{color:var(--ultra);text-underline-offset:2px}
     </ul>
   </section>
 
+  <section id="classroom">
+    <h2>Google Classroom</h2>
+    <p>ATLAS never signs in to Google Classroom and never asks for permission to see it. When you use "Send to ATLAS" or paste your Classroom page, ATLAS reads the text and links of that one page, in your browser, to find your classes and what's due. What it reads goes from the Classroom tab straight to ATLAS in your browser, inside the web address after a # sign, which browsers never send to any server. Only the classes and assignments you choose to add are kept, with the rest of your desk.</p>
+  </section>
+
+  <section id="move">
+    <h2>Moving your desk to another account</h2>
+    <p>To move your desk to an account with a different email, you sign in to both. ATLAS saves your desk to the old account, signs out, and once you've signed in to the new one, copies the desk from your device straight into it. Nobody else is involved. The old account keeps its copy until you delete it.</p>
+  </section>
+
   <section>
     <h2>Device lock</h2>
     <p>If you set a passkey or a pattern to lock ATLAS on a device, it stays on that device. A passkey is checked by your device itself (Face ID, a fingerprint, Windows Hello or the device PIN). ATLAS stores only a scrambled form of a pattern, never the pattern itself. Neither is sent anywhere.</p>
@@ -71,6 +81,7 @@ a{color:var(--ultra);text-underline-offset:2px}
       <li>If your computer has Chrome's on-device AI, some of it can run on the computer itself, and nothing leaves it.</li>
       <li>Otherwise it goes to Google's Gemini service through ATLAS's Firebase project. Google's free tier is used, and Google may use what you send to improve its products. Please leave anything private out.</li>
     </ul>
+    <p id="agent"><b>Agent mode</b> lets the AI make changes on your desk for you. When you send it a request, ATLAS also sends a summary of your desk so it knows what's there: your classes and their times, what's due and the start of its notes, your deck and page titles, your grades, your upcoming calendar and your reminders. It doesn't send the text of your pages or cards unless it needs one for what you asked. The changes happen in your browser, and every one is listed with an Undo.</p>
     <p>Your tutor chats are saved with your desk, like everything else. To stop other sites from using ATLAS's free AI, it's protected by reCAPTCHA; Google's <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply. You can switch the AI tools off in Settings.</p>
   </section>
 
