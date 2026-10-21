@@ -34,6 +34,7 @@ self.addEventListener('push', e => {
   e.waitUntil(self.registration.showNotification(title, {
     body: d.body || '',
     icon: new URL('icon-192.png', self.registration.scope).href,
+    badge: new URL('icon-badge-96.png', self.registration.scope).href,
     tag: d.tag || undefined,
     renotify: false,
     data: { url: d.url || self.registration.scope }

@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ATLAS — your school desk</title>
 <meta name="theme-color" content="#E9ECF2" id="themeColor">
+<meta name="color-scheme" content="light dark" id="colorScheme">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="ATLAS">
@@ -99,6 +100,7 @@ a{color:var(--ultra)}
   min-height:0; z-index:40;
 }
 .brand{display:flex;align-items:center;gap:10px;padding:16px 16px 12px}
+@media (prefers-color-scheme: dark){:root{--os-dark:1}}
 :root{--logo:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%2232 32 960 960%22%3E%3Cdefs%3E %3ClinearGradient id=%22bg%22 x1=%2296%22 y1=%2270%22 x2=%22928%22 y2=%22954%22 gradientUnits=%22userSpaceOnUse%22%3E %3Cstop stop-color=%22%23163B6A%22/%3E %3Cstop offset=%221%22 stop-color=%22%2307192F%22/%3E %3C/linearGradient%3E %3ClinearGradient id=%22accent%22 x1=%22390%22 y1=%22250%22 x2=%22640%22 y2=%22780%22 gradientUnits=%22userSpaceOnUse%22%3E %3Cstop stop-color=%22%2362D9FF%22/%3E %3Cstop offset=%221%22 stop-color=%22%23159BE0%22/%3E %3C/linearGradient%3E %3C/defs%3E %3Crect x=%2232%22 y=%2232%22 width=%22960%22 height=%22960%22 rx=%22216%22 fill=%22url(%23bg)%22/%3E %3Cpath d=%22M512 174 276 786h132l50-132h108l50 132h132L512 174Zm0 180 55 166H457Z%22 fill=%22%23fff%22/%3E %3Cpath d=%22M512 184 587 359 512 326 437 359Z%22 fill=%22url(%23accent)%22/%3E %3Cpath d=%22M400 525h224M429 604h166%22 fill=%22none%22 stroke=%22%230D3158%22 stroke-width=%2232%22 stroke-linecap=%22round%22/%3E %3Ccircle cx=%22512%22 cy=%22417%22 r=%2220%22 fill=%22%2362D9FF%22/%3E%3C/svg%3E")}
 .mark{
   width:30px;height:30px;border-radius:7px;flex:none;display:block;
@@ -374,6 +376,43 @@ hr.rule{border:none;border-top:1px solid var(--rule);margin:16px 0}
 .schtimes input{width:auto}
 .schrow.bad{background:var(--crimsonSoft);border-radius:var(--r2);padding-left:8px;padding-right:8px}
 .schempty{font-size:13.5px;margin:0}
+.blkpills{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.blkpills::-webkit-scrollbar{display:none}
+.schedit .blkpills{padding:10px;border-bottom:1px solid var(--rule)}
+.schedit .blkbody{padding:16px 18px 18px}
+.sv-sched .blkpills{margin-bottom:14px}
+.blklist{display:flex;flex-direction:column;gap:6px}
+.blkrow{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:10px 12px 10px 14px;border:1px solid var(--rule);border-left:4px solid var(--bc);border-radius:var(--r2);background:var(--panel)}
+.blkrow:hover{background:var(--panel2)}
+.blkt{display:flex;flex-direction:column;font-family:var(--mono);font-size:12.5px;font-weight:600;min-width:62px;color:var(--ink)}
+.blkt span{font-weight:400;color:var(--ink3)}
+.blkn{flex:1;min-width:0;display:flex;flex-direction:column}
+.blkn b{font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.blkn small{font-size:12px;color:var(--ink3);margin-top:1px}
+.blkgo{font-size:12.5px;font-weight:600;color:var(--ultra)}
+.blkempty{font-size:13.5px;margin:0 0 4px}
+.blkfoot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:12px}
+.blkfoot .linkbtn{font-size:13px}
+.blkfoot .linkbtn.dg{color:var(--crimson)}
+.blked{border:1.5px solid var(--ultra);border-radius:var(--r2);background:var(--panel);padding:14px;margin:6px 0;display:flex;flex-direction:column;gap:14px;box-shadow:0 6px 24px rgba(20,30,60,.08)}
+.blkf{display:flex;flex-direction:column;gap:7px}
+.blkl{font-size:12px;font-weight:700;letter-spacing:.02em;color:var(--ink2)}
+.blkl .dim{font-weight:400}
+.blkchips{display:flex;flex-wrap:wrap;gap:6px}
+.blkchip{display:inline-flex;align-items:center;gap:7px;padding:7px 12px;border-radius:18px;border:1px solid var(--rule2);background:var(--panel);font-size:13px;font-weight:600;color:var(--ink2)}
+.blkchip i{width:9px;height:9px;border-radius:50%;background:var(--bc)}
+.blkchip.on{background:var(--ultra);border-color:var(--ultra);color:#fff}
+.blkchip.on i{box-shadow:0 0 0 2px #fff}
+.blkdchip{min-width:46px;padding:7px 10px;border-radius:18px;border:1px solid var(--rule2);background:var(--panel);font-size:13px;font-weight:600;color:var(--ink2)}
+.blkdchip.on{background:var(--ultra);border-color:var(--ultra);color:#fff}
+.blktimes{display:flex;align-items:center;gap:8px}
+.blktimes input{width:auto;min-width:0;flex:0 1 140px}
+.blked input[type=text]{max-width:340px}
+.blkacts{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.blkcopy{margin-top:12px;padding:14px;border:1px solid var(--rule2);border-radius:var(--r2);display:flex;flex-direction:column;gap:10px;font-size:13.5px}
+.blkcopy p{margin:0;font-size:12.5px}
+@media (max-width:560px){ .blked{padding:12px;margin:6px -4px} .blkrow{gap:10px} }
+
 @media (max-width:900px){.schgrid{grid-template-columns:1fr}}
 @media (max-width:640px){
   .schrow,.schrow:has(.rL:not([hidden])){grid-template-columns:1fr 34px;gap:6px;padding:12px 0}
@@ -641,6 +680,9 @@ details.adv .advb{padding-top:10px}
 .sv-rh i{display:block;border-radius:4px;background:var(--ultra)}
 .sv-rh i.off{background:var(--moss);opacity:.55}
 .sv-name{max-width:360px;margin-bottom:24px}
+.sv-hours{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+.sv-hours label{display:flex;flex-direction:column;gap:5px;font-size:12.5px;font-weight:600;color:var(--ink2)}
+.sv-hours input{width:auto;min-width:150px}
 .sv-name input{font-size:17px;padding:11px 13px}
 .sv-points{display:grid;gap:10px;max-width:520px}
 .sv-point{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:var(--r2);background:var(--panel);border:1px solid var(--rule)}
@@ -837,6 +879,16 @@ details.adv .advb{padding-top:10px}
 .aiopt > span{flex:1;min-width:0}
 .aiopt b{display:block;font-size:14px}
 .aiopt .t{display:block;font-size:12.5px;color:var(--ink2);margin-top:2px}
+.instip{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:12px 16px;margin:0 0 16px;border:1px solid var(--rule2);border-radius:var(--r);background:var(--panel)}
+.instip > svg{width:20px;height:20px;color:var(--ultra);flex:none}
+.instip .it{flex:1;min-width:200px;display:flex;flex-direction:column;gap:2px}
+.instip .it b{font-size:14.5px}
+.instip .it span{font-size:13px;color:var(--ink2)}
+.instip .ib{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.instip .linkbtn{font-size:12.5px;color:var(--ink3)}
+.isteps{margin:0;padding-left:22px;color:var(--ink2);line-height:1.6;font-size:14px}
+.isteps li{margin-bottom:6px}
+.tstart p.tpersona{font-size:12.5px;color:var(--ink3);margin:18px 0 0}
 .toast.busy{display:flex;align-items:center;gap:9px}
 .spin{width:13px;height:13px;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:spin .8s linear infinite;flex:none}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -2638,7 +2690,7 @@ function renderNav() {
   const lbl = $('#navClsLabel'); if (lbl) lbl.textContent = w.clsP;
   const acb = $('#addClassBtn'); if (acb) acb.title = 'Add a ' + w.cls.toLowerCase();
   /* the phone bar holds six tabs plus Settings; the rest stay one tap away in the menu */
-  const SHORT = { today: 'Today', schedule: 'Schedule', calendar: 'Cal', tasks: w.short, notes: 'Notes', cards: 'Cards', tutor: wk('Tutor', 'AI'), grades: wk('Grades', 'Scores'), break: 'Break', settings: 'Settings' };
+  const SHORT = { today: 'Today', schedule: 'Schedule', calendar: 'Cal', tasks: w.short, notes: 'Notes', cards: 'Cards', tutor: aiNamed() ? aiName().slice(0, 9) : wk('Tutor', 'AI'), grades: wk('Grades', 'Scores'), break: 'Break', settings: 'Settings' };
   const mob = ['today'].concat(['schedule', 'calendar', 'tasks', 'notes', 'cards', 'tutor', 'grades', 'break'].filter(viewOn));
   ['break', 'grades', 'tutor', 'calendar', 'cards', 'notes'].forEach(n => { if (mob.length > 6 && mob.indexOf(n) >= 0) mob.splice(mob.indexOf(n), 1); });
   mob.push('settings');
@@ -2680,9 +2732,10 @@ function viewToday() {
   if (on('notes') && home !== 'notes') pool.push(notesCard(false));
   if (on('cards') && home !== 'cards' && pool.length < 2) pool.push(reviewCard(false));
   if (pool.length < 2) pool.push(classesCard());
+  const nudge = setupNudge();
   return '<div class="wrap">' + artBand() +
     '<div class="hello"><div><h2>' + greeting() + '</h2>' + glance() + '</div></div>' +
-    setupNudge() + hero + (home !== 'schedule' ? ribbon : '') +
+    (nudge || installTip()) + hero + (home !== 'schedule' ? ribbon : '') +
     '<div class="cols2' + (pool.length > 1 ? '' : ' one') + '">' + pool.slice(0, 2).map(x => '<div>' + x + '</div>').join('') + '</div></div>';
 }
 function homeView() {
@@ -2726,7 +2779,8 @@ function dueCard(hero) {
   const w = W();
   const upcoming = openTasks().filter(t => t.due).sort((a, b) => a.due < b.due ? -1 : 1).slice(0, hero ? 6 : 7);
   const list = upcoming.length ? upcoming.map(taskRow).join('') :
-    '<div class="empty"><h3>Nothing due</h3><p>Add ' + w.taskAn + ' with the + button, or bring in your school calendar.</p><button class="btn" data-act="importICS">Import a school calendar</button></div>';
+    (isWork() ? '<div class="empty"><h3>Nothing due</h3><p>Add ' + w.taskAn + ' with the + button.</p></div>'
+      : '<div class="empty"><h3>Nothing due</h3><p>Add ' + w.taskAn + ' with the + button, or bring in your school calendar.</p><button class="btn" data-act="importICS">Import a school calendar</button></div>');
   return '<div class="card' + (hero ? ' hero' : '') + '"><div class="cardhead">' + ic('tasks', 'width:15px;height:15px') + '<h3>' + (hero ? 'Due next' : 'Coming up') + '</h3><span class="spacer"></span>' +
     '<button class="btn g sm" data-go="tasks">See all</button></div><div class="list">' + list + '</div></div>';
 }
@@ -2843,8 +2897,8 @@ function viewClass(c) {
     '<div style="flex:1;min-width:200px"><div class="eyebrow">' + esc(c.code || w.cls) + (c.room ? ' · ' + esc(c.room) : '') + '</div>' +
     '<h2 style="font-size:26px;margin:2px 0 4px">' + esc(c.name) + '</h2>' +
     '<div class="muted" style="font-size:13px">' + (meets || 'No meeting times set') + (c.teacher ? ' · ' + esc(c.teacher) : '') + '</div>' +
-    '<div class="sres clsres"><span class="dim">' + wk('Bring', 'Need') + '</span>' + (classResources(c).length ? classResources(c).map(r => '<span class="chip">' + esc(r) + '</span>').join('') + '<button class="linkbtn" data-act="resEdit" data-id="' + c.id + '">Edit</button>'
-      : '<button class="linkbtn" data-act="resEdit" data-id="' + c.id + '">+ Add ' + bringWord().toLowerCase() + '</button>') + '</div></div>' +
+    (on('schedule') ? '<div class="sres clsres"><span class="dim">' + wk('Bring', 'Need') + '</span>' + (classResources(c).length ? classResources(c).map(r => '<span class="chip">' + esc(r) + '</span>').join('') + '<button class="linkbtn" data-act="resEdit" data-id="' + c.id + '">Edit</button>'
+      : '<button class="linkbtn" data-act="resEdit" data-id="' + c.id + '">+ Add ' + bringWord().toLowerCase() + '</button>') + '</div>' : '') + '</div>' +
     (figs.length ? '<div class="row" style="gap:20px">' + figs.join('') + '</div>' : '') +
     '<div class="row"><button class="btn sm" data-act="editClass" data-id="' + c.id + '">Edit ' + esc(w.cls.toLowerCase()) + '</button></div>' +
     '</div></div>' +
@@ -3010,8 +3064,8 @@ function viewTasks() {
     '<span class="dim mono" style="font-size:11px">' + dur(groups[k].reduce((a, t) => a + (t.est || 0), 0)) + '</span></div>' +
     '<div class="list">' + groups[k].map(taskRow).join('') + '</div></div>').join('');
   return '<div class="wrap">' + head + (list.length ? body :
-    '<div class="card"><div class="empty"><h3>Clear</h3><p>Nothing here. Add work by hand, or pull it in automatically from Canvas, Blackboard, or Google Classroom.</p>' +
-    '<div class="row" style="justify-content:center;gap:8px"><button class="btn p" data-act="newTask">Add ' + esc(W().taskA) + '</button><button class="btn" data-act="importICS">Import from school</button></div></div></div>') + '</div>';
+    '<div class="card"><div class="empty"><h3>Clear</h3><p>' + wk('Nothing here. Add work by hand, or pull it in automatically from Canvas, Blackboard, or Google Classroom.', 'Nothing here. Add a task and it shows up in this list.') + '</p>' +
+    '<div class="row" style="justify-content:center;gap:8px"><button class="btn p" data-act="newTask">Add ' + esc(W().taskA) + '</button>' + (isWork() ? '' : '<button class="btn" data-act="importICS">Import from school</button>') + '</div></div></div>') + '</div>';
 }
 
 /* --- Flashcards --- */
@@ -3021,6 +3075,188 @@ function viewTasks() {
 function schOther() { return wk(['Lunch', 'Break', 'Free period', 'Homeroom', 'Study hall'], ['Lunch', 'Break', 'Focus time', 'Commute', 'Admin time']); }
 function bringWord() { return wk('What to bring', 'What you need'); }
 const SCH = { editDay: null };
+/* ============================================================
+   Blocks. One editor for the week, used by Today's Schedule and by
+   setup. A day is a short list; a block opens one small editor: what
+   it is, when, every day it happens, and a room if you want one.
+   ============================================================ */
+const BLK = { ed: null, copy: null, inSetup: false };
+if (typeof document !== 'undefined') document.addEventListener('input', e => {
+  const i = e.target.closest && e.target.closest('[data-sv-hour]'); if (!i || !SVY.a) return;
+  const a = SVY.a; a[i.dataset.svHour] = i.value;
+  const b = $('[data-sv-pick="clock"][data-v="custom"] .s'); if (b) b.textContent = svHoursOk(a) ? fmt12(a.dayStart) + ' – ' + fmt12(a.dayEnd) : 'Pick a start and an end';
+  const f = $('#svF'); if (f) f.innerHTML = svFoot(svSteps(a)[SVY.step], a);
+});
+function weekOrder(ws) { return [0, 1, 2, 3, 4, 5, 6].map(i => ((+ws || 0) + i) % 7); }
+function blkKey(r) { return r.what + '|' + (r.what === 'o:*' ? String(r.label || '').trim().toLowerCase() : '') + '|' + r.start + '|' + r.end; }
+function blkSort(rows) { return rows.sort((a, b) => toMin(a.start) - toMin(b.start) || toMin(a.end) - toMin(b.end)); }
+/* Writes one weekday back: class times into each class, everything else into the day's extras. */
+function schWrite(dw, rows) {
+  MY('classes').forEach(c => { c.meets = (c.meets || []).filter(m => m.day !== dw); });
+  const periods = (ms().periods || []).filter(p => p.day !== dw);
+  rows.forEach(r => {
+    if (!r.what || !r.start || !r.end || toMin(r.end) <= toMin(r.start)) return;
+    if (r.what.indexOf('c:') === 0) {
+      const c = cls(r.what.slice(2)); if (!c) return;
+      const m = { day: dw, start: r.start, end: r.end };
+      if (r.room && r.room !== c.room) m.room = r.room;
+      (c.meets = c.meets || []).push(m);
+    } else {
+      const label = r.what === 'o:*' ? String(r.label || '').trim() : r.what.slice(2); if (!label) return;
+      const p = { id: uid(), day: dw, start: r.start, end: r.end, label };
+      if (r.room) p.room = r.room;
+      periods.push(p);
+    }
+  });
+  ms().periods = periods;
+  save();
+}
+/* Where the blocks live: the real schedule, or setup's draft of it. */
+function blkSrc(inSetup) {
+  if (inSetup && SVY.a) {
+    const a = SVY.a; svSchedInit(a);
+    const ch = svSchedChoices(a), n0 = MY('classes').length;
+    let k = 0;
+    return {
+      setup: true, day: a.schedDay, order: weekOrder(a.weekStart), words: ch.words, others: ch.others,
+      classes: ch.classes.map(c => { const real = c[0].indexOf('c:') === 0 && cls(c[0].slice(2)); return [c[0], c[1], real ? real.color : PALETTE[(n0 + k++) % PALETTE.length], real ? real.room || '' : '']; }),
+      get: d => (a.sched[d] || []).map(r => Object.assign({}, r)),
+      set: (d, rows) => { a.sched[d] = blkSort(rows); a.schedDirty[d] = true; },
+      setDay: d => { a.schedDay = d; },
+      start: svClock(a).dayStart || '08:00',
+      paint: () => svPaint()
+    };
+  }
+  return {
+    setup: false, day: SCH.editDay == null ? dowOf(today()) : SCH.editDay, order: weekOrder(S.settings.weekStart), words: W(), others: schOther(),
+    classes: MY('classes').map(c => ['c:' + c.id, c.name, c.color, c.room || '']),
+    get: d => schRows(d).map(r => Object.assign({}, r)),
+    set: (d, rows) => schWrite(d, rows),
+    setDay: d => { SCH.editDay = d; },
+    start: ms().dayStart || '08:00',
+    paint: () => render()
+  };
+}
+function blkName(src, r) { const c = src.classes.find(x => x[0] === r.what); return c ? c[1] : r.what === 'o:*' ? (r.label || '') : r.what.slice(2); }
+function blkHTML(src) {
+  const dw = src.day, rows = src.get(dw), w = src.words, e = BLK.ed && BLK.ed.day === dw ? BLK.ed : null;
+  const pills = '<div class="blkpills" role="tablist" aria-label="Day of the week">' + src.order.map(d => { const n = src.get(d).length;
+    return '<button class="schpill' + (d === dw ? ' on' : '') + '" data-blk="day" data-d="' + d + '" role="tab" aria-selected="' + (d === dw) + '">' + DAYS[d] + (n ? '<i>' + n + '</i>' : '') + '</button>'; }).join('') + '</div>';
+  const list = rows.map((r, i) => e && e.at === i ? blkEditor(src) : blkRow(src, r, i)).join('');
+  const adding = e && e.at == null;
+  const empty = !rows.length && !adding ? '<p class="dim blkempty">Nothing on ' + DAY_NAMES[dw] + 's yet. Add each part of the day, one block at a time.' +
+    (src.classes.length ? '' : ' Add your ' + esc(w.clsP.toLowerCase()) + (src.setup ? ' a step back' : ' first') + ' to pick them here.') + '</p>' : '';
+  let foot = '';
+  if (adding) foot = blkEditor(src);
+  else if (BLK.copy && BLK.copy.from === dw) foot = '<div class="blkcopy"><span>Copy ' + DAY_NAMES[dw] + ' to</span><div class="blkchips">' +
+    src.order.filter(d => d !== dw).map(d => '<button class="blkdchip' + (BLK.copy.to.indexOf(d) >= 0 ? ' on' : '') + '" data-blk="copyday" data-d="' + d + '" aria-pressed="' + (BLK.copy.to.indexOf(d) >= 0) + '">' + DAYS[d] + '</button>').join('') + '</div>' +
+    '<p class="dim">Those days get exactly ' + DAY_NAMES[dw] + '\'s blocks, replacing what\'s on them.</p>' +
+    '<div class="blkacts"><span class="spacer"></span><button class="btn sm" data-blk="copyx">Cancel</button><button class="btn p sm" data-blk="copygo"' + (BLK.copy.to.length ? '' : ' disabled') + '>Copy</button></div></div>';
+  else if (!e) foot = '<div class="blkfoot"><button class="btn sm p" data-blk="add">' + ic('plus') + 'Add a block</button><span class="spacer"></span>' +
+    (rows.length ? '<button class="linkbtn" data-blk="copy">Copy to other days</button>' + (src.setup ? '' : '<button class="linkbtn dg" data-blk="clear">Clear day</button>') : '') + '</div>';
+  return pills + '<div class="blkbody"><h3 class="schedh">' + DAY_NAMES[dw] + '</h3>' + (list ? '<div class="blklist">' + list + '</div>' : '') + empty + foot + '</div>';
+}
+function blkRow(src, r, i) {
+  const c = src.classes.find(x => x[0] === r.what), room = r.room || (c && c[3]) || '';
+  const also = src.order.filter(d => d !== src.day && src.get(d).some(x => blkKey(x) === blkKey(r)));
+  const sub = [room, also.length ? 'Also ' + also.map(d => DAYS[d]).join(', ') : ''].filter(Boolean);
+  return '<button class="blkrow" data-blk="edit" data-i="' + i + '" style="--bc:' + (c ? c[2] : 'var(--rule2)') + '">' +
+    '<span class="blkt">' + fmt12(r.start) + '<span>' + fmt12(r.end) + '</span></span>' +
+    '<span class="blkn"><b>' + esc(blkName(src, r) || 'Untitled') + '</b>' + (sub.length ? '<small>' + esc(sub.join(' · ')) + '</small>' : '') + '</span>' +
+    '<span class="blkgo">Edit</span></button>';
+}
+function blkEditor(src) {
+  const e = BLK.ed, c = src.classes.find(x => x[0] === e.what);
+  const chip = (v, label, col) => '<button class="blkchip' + (e.what === v ? ' on' : '') + '" data-blk="what" data-v="' + esc(v) + '" aria-pressed="' + (e.what === v) + '"' + (col ? ' style="--bc:' + col + '"' : '') + '>' + (col ? '<i></i>' : '') + esc(label) + '</button>';
+  return '<div class="blked" data-blk-ed>' +
+    '<div class="blkf"><span class="blkl">What is it?</span><div class="blkchips">' +
+      src.classes.map(x => chip(x[0], x[1], x[2])).join('') + src.others.map(o => chip('o:' + o, o)).join('') + chip('o:*', 'Something else') + '</div>' +
+      (e.what === 'o:*' ? '<input type="text" class="blkname" data-blk-in="label" placeholder="Name it, like Gym or Tutoring" maxlength="40" value="' + esc(e.label) + '" aria-label="Name">' : '') + '</div>' +
+    '<div class="blkf"><span class="blkl">When?</span><div class="blktimes"><input type="time" data-blk-in="start" value="' + esc(e.start) + '" aria-label="Starts"><span class="dim">to</span>' +
+      '<input type="time" data-blk-in="end" value="' + esc(e.end) + '" aria-label="Ends"></div></div>' +
+    '<div class="blkf"><span class="blkl">Which days?</span><div class="blkchips">' + src.order.map(d => '<button class="blkdchip' + (e.days.indexOf(d) >= 0 ? ' on' : '') + '" data-blk="dayon" data-d="' + d + '" aria-pressed="' + (e.days.indexOf(d) >= 0) + '">' + DAYS[d] + '</button>').join('') + '</div></div>' +
+    '<div class="blkf"><span class="blkl">Room <span class="dim">optional</span></span><input type="text" data-blk-in="room" maxlength="30" value="' + esc(e.room) + '" placeholder="' + esc((c && c[3]) || 'Room') + '" aria-label="Room"></div>' +
+    '<div class="blkacts">' + (e.at != null ? '<button class="btn g sm dg" data-blk="del">' + (e.origDays.length > 1 ? 'Delete from ' + e.origDays.length + ' days' : 'Delete') + '</button>' : '') +
+      '<span class="spacer"></span><button class="btn sm" data-blk="cancel">Cancel</button><button class="btn p sm" data-blk="save">' + (e.at != null ? 'Save' : 'Add block') + '</button></div></div>';
+}
+function blkRead() {
+  const box = $('[data-blk-ed]'), e = BLK.ed; if (!box || !e) return;
+  $$('[data-blk-in]', box).forEach(i => { e[i.dataset.blkIn] = i.value; });
+}
+function blkOpen(src, at) {
+  const dw = src.day, rows = src.get(dw);
+  if (at != null && rows[at]) {
+    const r = rows[at], key = blkKey(r), days = src.order.filter(d => d === dw || src.get(d).some(x => blkKey(x) === key));
+    BLK.ed = { at, day: dw, what: r.what, label: r.label || '', start: r.start, end: r.end, room: r.room || '', days: days.slice(), origKey: key, origDays: days.slice() };
+  } else {
+    const lens = []; src.order.forEach(d => src.get(d).forEach(x => lens.push(toMin(x.end) - toMin(x.start))));
+    const len = lens.length ? lens.sort((a, b) => lens.filter(x => x === b).length - lens.filter(x => x === a).length)[0] : 45;
+    const last = rows[rows.length - 1], start = last ? toMin(last.end) + 5 : toMin(src.start);
+    BLK.ed = { at: null, day: dw, what: '', label: '', start: toHHMM(start), end: toHHMM(Math.min(start + len, 1439)), room: '', days: [dw], origKey: null, origDays: [] };
+  }
+  BLK.copy = null;
+}
+function blkCheck(e) {
+  if (!e.what) return 'Pick what this block is.';
+  if (e.what === 'o:*' && !String(e.label).trim()) return 'Give it a name.';
+  if (!e.start || !e.end || toMin(e.end) <= toMin(e.start)) return 'The end needs to be after the start.';
+  if (!e.days.length) return 'Pick at least one day.';
+  return '';
+}
+function blkApply(src, del) {
+  const e = BLK.ed;
+  const row = { start: e.start, end: e.end, what: e.what, label: e.what === 'o:*' ? String(e.label).trim() : '', room: String(e.room || '').trim(), ph: '' };
+  const days = del ? [] : e.days, touched = src.order.filter(d => days.indexOf(d) >= 0 || e.origDays.indexOf(d) >= 0);
+  touched.forEach(d => {
+    const rows = src.get(d);
+    if (e.origKey && e.origDays.indexOf(d) >= 0) { const k = rows.findIndex(x => blkKey(x) === e.origKey); if (k >= 0) rows.splice(k, 1); }
+    if (days.indexOf(d) >= 0) rows.push(Object.assign({}, row));
+    src.set(d, blkSort(rows));
+  });
+  BLK.ed = null;
+}
+/* Leaving with the editor open keeps a finished block and drops an unfinished one. */
+function blkFlush(src) { if (BLK.ed) { blkRead(); if (!blkCheck(BLK.ed)) blkApply(src); } BLK.ed = null; BLK.copy = null; }
+function blkAct(t) {
+  const inSetup = !!t.closest('.sv'), src = blkSrc(inSetup), k = t.dataset.blk;
+  blkRead();
+  if (k === 'day') { if (BLK.ed) blkFlush(src); src.setDay(+t.dataset.d); BLK.copy = null; return src.paint(); }
+  if (k === 'add') { blkOpen(src, null); src.paint(); const f = $('[data-blk-ed]'); if (f && f.scrollIntoView) f.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); return; }
+  if (k === 'edit') { if (BLK.ed) blkFlush(src); blkOpen(src, +t.dataset.i); return src.paint(); }
+  if (k === 'what') { BLK.ed.what = t.dataset.v; src.paint(); if (t.dataset.v === 'o:*') { const n = $('[data-blk-ed] .blkname'); if (n) n.focus(); } return; }
+  if (k === 'dayon') { const d = +t.dataset.d, i = BLK.ed.days.indexOf(d); if (i >= 0) BLK.ed.days.splice(i, 1); else BLK.ed.days.push(d); return src.paint(); }
+  if (k === 'cancel') { BLK.ed = null; return src.paint(); }
+  if (k === 'save') { const err = blkCheck(BLK.ed); if (err) { toast(err, true); return; } blkApply(src); return src.paint(); }
+  if (k === 'del') { blkApply(src, true); return src.paint(); }
+  if (k === 'copy') { BLK.copy = { from: src.day, to: [] }; return src.paint(); }
+  if (k === 'copyday') { const d = +t.dataset.d, i = BLK.copy.to.indexOf(d); if (i >= 0) BLK.copy.to.splice(i, 1); else BLK.copy.to.push(d); return src.paint(); }
+  if (k === 'copyx') { BLK.copy = null; return src.paint(); }
+  if (k === 'copygo') {
+    const from = src.get(src.day), to = BLK.copy.to.slice();
+    to.forEach(d => src.set(d, from.map(r => Object.assign({}, r))));
+    BLK.copy = null; src.paint();
+    return toast('Copied ' + DAY_NAMES[src.day] + ' to ' + to.map(d => DAY_NAMES[d]).join(', '));
+  }
+  if (k === 'clear') {
+    const dw = src.day;
+    return confirmAsk('Clear ' + DAY_NAMES[dw] + '?', 'Every block on ' + DAY_NAMES[dw] + 's comes off your schedule. Your ' + W().clsP.toLowerCase() + ' themselves stay.', () => { src.set(dw, []); src.paint(); }, true);
+  }
+}
+if (typeof document !== 'undefined') {
+  document.addEventListener('click', e => { const t = e.target.closest && e.target.closest('[data-blk]'); if (t && !t.disabled) { e.preventDefault(); blkAct(t); } });
+  document.addEventListener('change', e => {
+    const i = e.target.closest && e.target.closest('[data-blk-in="start"]'); if (!i || !BLK.ed) return;
+    const was = toMin(BLK.ed.end) - toMin(BLK.ed.start);               /* moving the start keeps the length */
+    if (was > 0 && i.value) { const end = $('[data-blk-ed] [data-blk-in="end"]'); if (end) end.value = toHHMM(Math.min(toMin(i.value) + was, 1439)); }
+    blkRead();
+  });
+  document.addEventListener('keydown', e => {
+    if (!BLK.ed || !e.target.closest || !e.target.closest('[data-blk-ed]')) return;
+    if (e.key === 'Enter' && e.target.tagName === 'INPUT') { e.preventDefault(); const s = $('[data-blk-ed] [data-blk="save"]'); if (s) s.click(); }
+    if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); const c = $('[data-blk-ed] [data-blk="cancel"]'); if (c) c.click(); }
+  }, true);
+}
+
 const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 function dayBlocks(day) {
   const dw = dowOf(day), out = [];
@@ -3159,20 +3395,11 @@ function schRowHTML(r, ch) {
     '<button class="btn g sm dg" data-act="schRm" aria-label="Remove this block">✕</button></div>';
 }
 function viewScheduleEdit() {
-  const ws = +S.settings.weekStart || 0, order = [0, 1, 2, 3, 4, 5, 6].map(i => (ws + i) % 7);
-  const dw = SCH.editDay == null ? dowOf(today()) : SCH.editDay, rows = schRows(dw), w = W();
-  const count = d => schRows(d).length;
+  const w = W();
   return '<div class="wrap"><div class="row schhead"><div class="schday"><b>Your schedule</b><span>The same every week. Changes save as you go.</span></div><span class="spacer"></span>' +
     '<button class="btn p sm" data-act="schDone">Done</button></div>' +
     (!MY('classes').length ? '<div class="testhint">' + ic('book') + '<span style="flex:1">Add your ' + esc(w.clsP.toLowerCase()) + ' first, then put them on your schedule.</span><button class="btn sm" data-act="newClass">Add a ' + esc(w.cls.toLowerCase()) + '</button></div>' : '') +
-    '<div class="card schedit"><div class="schpills" role="tablist">' + order.map(d => '<button class="schpill' + (d === dw ? ' on' : '') + '" data-act="schPick" data-dw="' + d + '" role="tab" aria-selected="' + (d === dw) + '">' +
-      DAYS[d] + (count(d) ? '<i>' + count(d) + '</i>' : '') + '</button>').join('') + '</div>' +
-    '<div class="pad"><h3 class="schedh">' + DAY_NAMES[dw] + '</h3>' +
-    '<div id="schRows" data-dw="' + dw + '">' + rows.map(schRowHTML).join('') + '</div>' +
-    (rows.length ? '' : '<p class="dim schempty">Nothing on ' + DAY_NAMES[dw] + 's yet. Add each block of the day: your ' + esc(w.clsP.toLowerCase()) + ', lunch, free periods.</p>') +
-    '<div class="row" style="gap:8px;flex-wrap:wrap;margin-top:12px"><button class="btn sm" data-act="schAdd">' + ic('plus') + 'Add a block</button>' +
-    '<button class="btn g sm" data-act="schCopy">Copy ' + DAY_NAMES[dw] + ' to other days</button>' +
-    (rows.length ? '<button class="btn g sm dg" data-act="schClear">Clear ' + DAY_NAMES[dw] + '</button>' : '') + '</div></div></div>' +
+    '<div class="card schedit">' + blkHTML(blkSrc(false)) + '</div>' +
     '<p class="dim setfoot">' + esc(w.cls) + ' times here are the same ones the calendar uses, so you only enter them once.</p></div>';
 }
 /* Writes the day being edited back: its class times into each class, everything else into periods. */
@@ -3203,6 +3430,7 @@ function schCommit() {
   return bad;
 }
 function mountScheduleEdit() {
+  return;                      /* the block editor wires itself (blkAct) */
   const box = $('#schRows'); if (!box) return;
   box.addEventListener('change', e => {
     const r = e.target.closest('[data-row]');
@@ -3372,13 +3600,16 @@ function viewGrades() {
 /* --- Settings --- */
 function setSecs() {
   return [
-    ['general', 'General', 'gear', isWork() ? 'Your name, what ATLAS is for, and how it reads' : 'Your name, your term and the words ATLAS uses'],
+    ['general', 'Basics', 'gear', 'Your name, what ATLAS is for, and the setup questions'],
+    ['side', wk('School', 'Work'), wk('school', 'briefcase'), wk('Your term, the words ATLAS uses, grades and how Today opens', 'The label at the top and how Today opens')],
     ['tools', 'Tools', 'grid', 'Choose which tools show up'],
-    ['look', 'Look', 'eye', 'Theme, colors and dark mode'],
-    ['study', wk('Study', 'Work'), 'timer', 'Planning, the focus timer, flashcards and AI'],
-    ['account', 'Account and devices', 'key', 'Sign-in, reminders and device lock'],
+    ['plan', 'Planning', 'clock', wk('Study hours, block length, deadlines and your week', 'Work hours, focus blocks, deadlines and your week')],
+    (on('focus') || on('cards')) && ['focus', on('focus') && on('cards') ? 'Focus and flashcards' : on('focus') ? 'Focus timer' : 'Flashcards', 'timer', on('focus') ? 'Timer lengths and background sound' + (on('cards') ? ', and new cards a day' : '') : 'How many new cards a day'],
+    ['ai', 'AI', 'spark', wk('AI study tools', 'AI tools') + (on('tutor') ? wk(' and your tutor', ' and your assistant') : '')],
+    ['look', 'Look', 'eye', 'Theme, colors, dark mode and celebrations'],
+    ['account', 'Account and devices', 'key', 'Sign-in, reminders, installing and device lock'],
     ['data', 'Calendars and data', 'calendar', 'Import, export, backups and erasing']
-  ];
+  ].filter(Boolean);
 }
 function setRow(label, hint, control, id) {
   const plain = x => String(x || '').replace(/<[^>]+>/g, ' ');
@@ -3394,16 +3625,15 @@ function viewSettings() {
     row('Your name', 'What ATLAS calls you on Today.', '<input type="text" id="setName" value="' + esc(S.profile.name) + '" placeholder="Your first name">') +
     row('Use ATLAS for', uses() === 'both' ? 'Switch sides with the button next to your name. Each side keeps its own things.' : 'Pick both and a switch next to your name flips between school and work.',
       '<select data-act="setUses" aria-label="Use ATLAS for">' + [['school', 'School'], ['work', 'Work'], ['both', 'School and work']].map(x => '<option value="' + x[0] + '"' + (uses() === x[0] ? ' selected' : '') + '>' + x[1] + '</option>').join('') + '</select>') +
+    row('Setup questions', isWork() ? 'A one-minute set of questions picks your work side\'s tools, hours, projects and week.' : p ? 'Your answers made you a <b>' + esc(p.title) + '</b>. ' + esc(p.line) : 'A one-minute set of questions picks your tools, the words ATLAS uses, your focus rhythm and the look.',
+      '<button class="btn' + (p || isWork() ? '' : ' p') + '" data-act="survey">' + ic('spark') + (p || ps.setupDone ? 'Answer again' : 'Personalize') + '</button>');
+  body.side =
     row(wk('Term', 'Label'), 'Shown under ATLAS at the top of the sidebar.', '<input type="text" id="setTerm" value="' + esc(isWork() ? ms().term || '' : S.profile.term) + '" placeholder="' + wk('Fall 2026', 'Q4 2026') + '">') +
     (isWork() ? '' : row('Words ATLAS uses', 'Match your school: classes or courses, assignments or coursework.', '<select data-act="setLevel" aria-label="Words ATLAS uses">' +
       Object.keys(LEVELS).map(k => '<option value="' + k + '"' + ((LEVELS[s.level] ? s.level : 'high') === k ? ' selected' : '') + '>' + LEVELS[k].clsP + ' and ' + LEVELS[k].taskP.toLowerCase() + ' (' + LEVELS[k].name.toLowerCase() + ')</option>').join('') + '</select>')) +
     (homes.length > 1 ? row('Today starts with', 'The first thing on the Today page.', '<select data-act="setHome" aria-label="Today starts with">' + homes.map(k => '<option value="' + k + '"' + (homeView() === k ? ' selected' : '') + '>' + esc(homeInfo(k).name) + '</option>').join('') + '</select>') : '') +
-    (on('grades') ? row('Show grades as', '', '<select data-act="setGrading" aria-label="Show grades as">' + Object.keys(GRADINGS).map(k => '<option value="' + k + '"' + (grading() === k ? ' selected' : '') + '>' + GRADINGS[k].name + ' (' + GRADINGS[k].sample + ')</option>').join('') + '</select>') : '') +
-    row('Week starts on', '', '<select id="setWeek" aria-label="Week starts on"><option value="0"' + (s.weekStart === 0 ? ' selected' : '') + '>Sunday</option><option value="1"' + (s.weekStart === 1 ? ' selected' : '') + '>Monday</option><option value="6"' + (s.weekStart === 6 ? ' selected' : '') + '>Saturday</option></select>') +
-    row('Celebrate wins', 'Badges, a streak and a little confetti.', '<input type="checkbox" data-act="setCelebrate"' + (s.celebrate !== false ? ' checked' : '') + ' aria-label="Celebrate wins">') +
-    row('Setup questions', isWork() ? 'A one-minute set of questions picks your work side\'s tools, hours, projects and week.' : p ? 'Your answers made you a <b>' + esc(p.title) + '</b>. ' + esc(p.line) : 'A one-minute set of questions picks your tools, the words ATLAS uses, your focus rhythm and the look.',
-      '<button class="btn' + (p || isWork() ? '' : ' p') + '" data-act="survey">' + ic('spark') + (p || ps.setupDone ? 'Answer again' : 'Personalize') + '</button>');
-  body.tools = '<div class="toolgrid">' + MODULES.map(m => { const mi = modInfo(m); return '<label class="toolcard" data-q="' + esc((mi.name + ' ' + (m.id === 'tasks' ? w.taskP : '') + ' ' + mi.blurb).toLowerCase()) + '">' +
+    (on('grades') && !isWork() ? row('Show grades as', '', '<select data-act="setGrading" aria-label="Show grades as">' + Object.keys(GRADINGS).map(k => '<option value="' + k + '"' + (grading() === k ? ' selected' : '') + '>' + GRADINGS[k].name + ' (' + GRADINGS[k].sample + ')</option>').join('') + '</select>') : '');
+  body.tools = '<div class="toolgrid">' + modList(isWork()).map(m => { const mi = modInfo(m); return '<label class="toolcard" data-q="' + esc((mi.name + ' ' + (m.id === 'tasks' ? w.taskP : '') + ' ' + mi.blurb).toLowerCase()) + '">' +
     '<input type="checkbox" data-act="modToggle" data-m="' + m.id + '"' + (on(m.id) ? ' checked' : '') + '>' +
     '<span class="ti">' + ic(m.icon) + '</span><span class="tt"><b>' + esc(m.id === 'tasks' ? w.taskP : mi.name) + '</b><span>' + esc(mi.blurb) + '</span></span></label>'; }).join('') + '</div>' +
     '<p class="dim setnote">Switching a tool off hides it everywhere. Nothing in it is deleted, and switching it back on brings everything back.</p>';
@@ -3412,27 +3642,33 @@ function viewSettings() {
     '<div class="sl"><b>' + esc(t.name) + '</b><span>' + esc(t.mood) + ' Fonts, accent color, spacing and corners are in the theme gallery too.</span></div>' +
     '<div class="sc"><button class="btn p" data-act="themes">Change theme</button></div></div>' +
     row('Dark theme in the evening', 'Switches to a dark theme after sunset, or whenever your device is in dark mode.', '<input type="checkbox" data-act="setNight"' + (s.autoNight ? ' checked' : '') + ' aria-label="Dark theme in the evening">') +
-    row('Artwork on Today', 'The theme\'s picture across the top of the Today page.', '<input type="checkbox" data-act="toggleArt"' + (s.art === false ? '' : ' checked') + ' aria-label="Artwork on Today">');
-  body.study =
-    '<h3 class="subhead">Planning</h3>' +
+    row('Artwork on Today', 'The theme\'s picture across the top of the Today page.', '<input type="checkbox" data-act="toggleArt"' + (s.art === false ? '' : ' checked') + ' aria-label="Artwork on Today">') +
+    row('Celebrate wins', 'Badges, a streak and a little confetti.', '<input type="checkbox" data-act="setCelebrate"' + (s.celebrate !== false ? ' checked' : '') + ' aria-label="Celebrate wins">');
+  body.plan =
     row(wk('Study hours', 'Work hours'), 'ATLAS only plans ' + wk('study', 'focus') + ' time inside these hours, around your ' + w.clsP.toLowerCase() + wk('.', ' and meetings.'),
       '<input type="time" id="setStart" value="' + ps.dayStart + '" aria-label="Day starts"><span class="dim">to</span><input type="time" id="setEnd" value="' + ps.dayEnd + '" aria-label="Day ends">') +
     row(wk('Study block length', 'Focus block length'), 'How long each block is when ATLAS plans your week.', '<input type="number" id="setChunk" value="' + ps.chunk + '" min="25" max="120" aria-label="Minutes"><span class="dim">min</span>') +
     row('Finish work early', 'How many days before the due date work should be done.', '<input type="number" id="setBuf" value="' + ps.buffer + '" min="0" max="7" aria-label="Days"><span class="dim">days</span>') +
-    (on('focus') ? '<h3 class="subhead">Focus timer</h3>' +
+    row('Week starts on', 'The first day of the week on the calendar and in your schedule.', '<select id="setWeek" aria-label="Week starts on"><option value="0"' + (s.weekStart === 0 ? ' selected' : '') + '>Sunday</option><option value="1"' + (s.weekStart === 1 ? ' selected' : '') + '>Monday</option><option value="6"' + (s.weekStart === 6 ? ' selected' : '') + '>Saturday</option></select>');
+  body.focus =
+    (on('focus') ? (on('cards') ? '<h3 class="subhead">Focus timer</h3>' : '') +
       row('Focus length', '', '<input type="number" id="setFocus" value="' + s.pomodoro.focus + '" min="5" max="120" aria-label="Focus minutes"><span class="dim">min</span>') +
       row('Break length', '', '<input type="number" id="setShort" value="' + s.pomodoro.short + '" min="1" max="30" aria-label="Break minutes"><span class="dim">min</span>') +
       row('Background sound', 'Made right in the browser, so it works offline.', '<select id="setAmb" aria-label="Background sound">' + Object.keys(AMBIENCE).map(k => '<option value="' + k + '"' + ((s.ambience || 'off') === k ? ' selected' : '') + '>' + AMBIENCE[k] + '</option>').join('') + '</select>' +
         '<button class="btn sm" data-act="tryAmb">Play</button><button class="btn sm" data-act="stopAmb">Stop</button>') : '') +
-    (on('cards') ? '<h3 class="subhead">Flashcards</h3>' +
-      row('New cards a day', 'How many new cards each deck starts per day. A deck with a test date speeds up on its own so you finish in time.', '<input type="number" id="setNewDay" value="' + cardsPerDay() + '" min="1" max="500" aria-label="New cards a day"><span class="dim">per deck</span>') : '') +
-    '<h3 class="subhead">' + wk('AI study tools', 'AI tools') + '</h3>' +
-    row(aiReady() ? 'On: ' + esc(aiLabel()) : 'Off', wk('Flashcards and quizzes from your notes, plain-language explanations, the tutor, and big assignments broken into steps. Free, through Google.', 'Summaries and flashcards from your notes, plain-language explanations, the assistant, and big tasks broken into steps. Free, through Google.'),
-      '<button class="btn" data-act="aiSetup">' + (aiReady() ? 'Change' : 'Turn on') + '</button>', 'set-ai');
+    (on('cards') ? (on('focus') ? '<h3 class="subhead">Flashcards</h3>' : '') +
+      row('New cards a day', 'How many new cards each deck starts per day. A deck with a test date speeds up on its own so you finish in time.', '<input type="number" id="setNewDay" value="' + cardsPerDay() + '" min="1" max="500" aria-label="New cards a day"><span class="dim">per deck</span>') : '');
+  body.ai =
+    row(aiReady() ? 'On: ' + esc(aiLabel()) : 'Off', wk('Flashcards and quizzes from your notes, plain-language explanations, the tutor, and big assignments broken into steps. Free, through Google.', 'Summaries of your notes, plain-language explanations, the assistant, and big tasks broken into steps. Free, through Google.'),
+      '<button class="btn" data-act="aiSetup">' + (aiReady() ? 'Change' : 'Turn on') + '</button>', 'set-ai') +
+    (on('tutor') ? row(wk('Your tutor', 'Your assistant'), 'Called ' + esc(aiName()) + ', ' + esc(AI_PERSONAS[aiPersona()][0].toLowerCase()) + '. Give it a name and pick how it talks to you.',
+      '<button class="btn" data-act="aiStyle">Change</button>', 'set-aistyle') : '');
   body.account =
     row('Account', acctKnown() ? 'Signed in as ' + esc(Local.acct.email) + '. Your desk syncs to every device you sign in on.' : 'Not signed in. Your work is saved in this browser only.',
       acctKnown() ? '<button class="btn" data-act="acctMenu">Manage</button>' : '<button class="btn p" data-act="acctOpen">Sign in</button>') +
-    row('Reminders', esc(noteLabel()) + '. What\'s due, ' + wk('tests', 'big deadlines') + ' coming up, cards to study and the end of a focus session.', '<button class="btn" data-act="noteSheet">' + (noteHere() ? 'Change' : 'Set up') + '</button>') +
+    row('Reminders', esc(noteLabel()) + '. What\'s due, ' + wk('tests', 'big deadlines') + ' coming up' + (on('cards') ? ', cards to study' : '') + ' and the end of a focus session.', '<button class="btn" data-act="noteSheet">' + (noteHere() ? 'Change' : 'Set up') + '</button>') +
+    row('Install ATLAS', installed() ? 'Installed. You\'re using ATLAS as an app on this device.' : 'Put ATLAS on your ' + installWhere() + '. It opens like an app, full screen, and works offline.',
+      installed() ? '' : '<button class="btn' + (INST.evt ? ' p' : '') + '" data-act="install">Install</button>', 'set-install') +
     (acctKnown() ? row('Device lock', esc(lockLabel()) + '. A passkey or a pattern keeps ATLAS closed on this device until you unlock it.', '<button class="btn" data-act="lockSheet">' + (lockSet() ? 'Change' : 'Set up') + '</button>') : '') +
     row('Privacy', 'What ATLAS stores, where, and how to delete it.', '<a class="btn" href="privacy.html" target="_blank" rel="noopener">Read</a>');
   body.data =
@@ -3725,6 +3961,8 @@ function applyTheme(src) {
   r.setAttribute('data-mode', t.dark ? 'dark' : 'light');
   r.setAttribute('data-theme-id', t.id);
   const tc = $('#themeColor'); if (tc) tc.setAttribute('content', t.bg);
+  st.colorScheme = t.dark ? 'dark' : 'light';
+  const cs = $('#colorScheme'); if (cs) cs.setAttribute('content', t.dark ? 'dark' : 'only light');   /* ATLAS darkens itself; no browser should do it on top */
 }
 function setTheme(id) {
   const t = themeById(id);
@@ -3791,6 +4029,17 @@ function themeGallery(q) {
 function installManifest() {
   try {
     if (!/^https?:/.test(location.protocol)) return;
+    /* Android, Samsung Internet and desktop browsers install from manifest.webmanifest next to
+       this page. Only a copy of the page on its own, with no manifest file beside it, gets one written in. */
+    if (installManifest.state === 'file') return;
+    if (!installManifest.state) {
+      installManifest.state = 'checking';
+      fetch(new URL('manifest.webmanifest', location.href).href, { cache: 'no-store' })
+        .then(r => { if (!r.ok) throw new Error('no manifest'); installManifest.state = 'file'; })
+        .catch(() => { installManifest.state = 'inline'; installManifest(); });
+      return;
+    }
+    if (installManifest.state !== 'inline') return;
     const t = themeById(activeThemeId());
     /* A data: manifest has no base URL, so relative start_url/scope were thrown
        away and the app could not be installed. Spell them out in full. */
@@ -3801,7 +4050,7 @@ function installManifest() {
     if (typeof isIOS === 'function' && isIOS()) return;
     const icons = [192, 512].map(n => ({ src: scope + 'icon-' + n + '.png', sizes: n + 'x' + n, type: 'image/png', purpose: 'any' }));
     const man = {
-      name: 'ATLAS — school desk', short_name: 'ATLAS', start_url: page, scope: scope, display: 'standalone',
+      name: 'ATLAS', short_name: 'ATLAS', start_url: page, scope: scope, display: 'standalone',
       background_color: t.bg, theme_color: t.bg, icons: icons
     };
     let link = document.querySelector('link[rel="manifest"]');
@@ -4350,12 +4599,26 @@ function schoolContext(classId) {
   return bits.join('\n');
 }
 /* ============================================================
-   Tutor. A study partner that walks you to the answer one step at
-   a time instead of handing it over. Every chat is saved with your
+   Tutor. A study partner that answers when asked and explains how to
+   get there, with the name and personality you give it. Every chat is saved with your
    desk, so it follows you to your other devices. Point it at a
    class or one of your notebook pages and it works from those.
    ============================================================ */
 const TUT = { busy: {}, open: false };
+/* Each side's AI has its own name and personality (school: S.settings, work: S.settings.work). */
+const AI_PERSONAS = {
+  friendly: ['Friendly', 'Warm and encouraging.', 'Be warm, encouraging and easy to talk to.'],
+  direct: ['Straight to the point', 'Short answers, no small talk.', 'Be direct and efficient: lead with the answer and skip small talk and filler.'],
+  coach: ['Coach', 'Upbeat and keeps you going.', 'Be an upbeat coach: motivate them, push them to keep going and briefly celebrate progress.'],
+  playful: ['Playful', 'Lighthearted, with a bit of humor.', 'Be playful and lighthearted with a little humor, while staying accurate and useful.'],
+  calm: ['Calm', 'Patient and unhurried.', 'Be calm, patient and gentle, never rushed.']
+};
+function aiSide(work) { const s = (work == null ? isWork() : work) ? S.settings.work : S.settings; return s && typeof s === 'object' ? s : {}; }
+function aiNamed(work) { return !!String(aiSide(work).aiName || '').trim(); }
+function aiName(work) { return aiNamed(work) ? String(aiSide(work).aiName).trim().slice(0, 24) : ((work == null ? isWork() : work) ? 'Assistant' : 'Tutor'); }
+function aiPersona(work) { const p = aiSide(work).aiPersona; return AI_PERSONAS[p] ? p : 'friendly'; }
+function aiRef() { return aiNamed() ? aiName() : wk('the tutor', 'the assistant'); }
+function aiVoice() { return 'Your name is ' + aiName() + '. ' + AI_PERSONAS[aiPersona()][2]; }
 function tutSugs() { return wk(['Explain this like I\'m seeing it for the first time', 'Quiz me before my test', 'Help me get started on my essay', 'Check my answer and tell me where I went wrong'],
   ['Help me plan my week', 'Draft a polite follow-up email', 'Break this project into steps', 'Explain this simply']); }
 function tutorChat(id) { return S.chats.find(c => c.id === id) || null; }
@@ -4367,8 +4630,8 @@ function tutorNew(classId, noteId) {
 }
 function tutorNotesFor(classId) { return MY('notes').filter(n => !classId || n.classId === classId).slice().sort((a, b) => (b.updated || 0) - (a.updated || 0)).slice(0, 60); }
 function viewTutor() {
-  if (!aiReady()) return '<div class="wrap"><div class="card"><div class="empty"><h3>' + wk('Your AI tutor', 'Your AI assistant') + '</h3>' +
-    '<p>' + wk('Ask about homework, get a concept explained another way, or have it quiz you before a test. It walks you to the answer instead of just giving it.', 'Plan your week, draft an email, summarize your notes or get something explained. It works from your own projects and notes.') + '</p>' +
+  if (!aiReady()) return '<div class="wrap"><div class="card"><div class="empty"><h3>' + (aiNamed() ? esc(aiName()) : wk('Your AI tutor', 'Your AI assistant')) + '</h3>' +
+    '<p>' + wk('Ask about homework, get a concept explained another way, or have it quiz you before a test. Ask for the answer and it gives it, with the steps to get there.', 'Plan your week, draft an email, summarize your notes or get something explained. It works from your own projects and notes.') + '</p>' +
     '<button class="btn p" data-act="aiSetup">' + wk('Turn on AI study tools', 'Turn on AI tools') + '</button></div></div></div>';
   const chats = MY('chats').slice().sort((a, b) => (b.updated || 0) - (a.updated || 0));
   const c = tutorChat(V.param);
@@ -4384,16 +4647,17 @@ function viewTutor() {
   const msgs = c && c.messages.length
     ? c.messages.map(m => '<div class="tmsg ' + (m.role === 'user' ? 'me' : 'ai') + '">' + (m.role === 'user' ? esc(m.content).replace(/\n/g, '<br>') : md(m.content)) + '</div>').join('') +
       (busy ? '<div class="tmsg ai wait"><span class="spin" style="width:15px;height:15px;border-width:2px"></span>Thinking…</div>' : '')
-    : '<div class="tstart"><h3>What are you working on?</h3><p>' + wk('Ask a question, paste a problem you\'re stuck on, or pick a page above so the tutor works from your own notes.', 'Ask for a plan, a draft or an explanation, or pick a note above so the assistant works from it.') + '</p>' +
-      '<div class="tsugs">' + tutSugs().map(s => '<button class="tsug" data-act="tutorSug" data-t="' + esc(s) + '">' + esc(s) + '</button>').join('') + '</div></div>';
+    : '<div class="tstart"><h3>What are you working on?</h3><p>' + wk('Ask a question, paste a problem you\'re stuck on, or pick a page above so ' + esc(aiRef()) + ' works from your own notes.', 'Ask for a plan, a draft or an explanation, or pick a note above so ' + esc(aiRef()) + ' works from it.') + '</p>' +
+      '<div class="tsugs">' + tutSugs().map(s => '<button class="tsug" data-act="tutorSug" data-t="' + esc(s) + '">' + esc(s) + '</button>').join('') + '</div>' +
+      '<p class="tpersona">' + esc(aiName()) + ' · ' + esc(AI_PERSONAS[aiPersona()][0]) + ' <button class="linkbtn" data-act="aiStyle">Change name or personality</button></p></div>';
   return '<div class="wrap" style="padding-bottom:0"><div class="tutor">' + list +
     '<section class="tmain"><div class="thead"><button class="btn sm tchats" data-act="tutorList" aria-haspopup="menu">' + ic('chat') + 'Chats</button>' +
     '<span class="ttl">' + esc((c && c.title) || 'New chat') + '</span>' + classSel + noteSel +
     (c ? '<button class="btn g sm" data-act="tutorMenu" data-id="' + c.id + '" aria-label="Chat options" aria-haspopup="menu">' + ic('dots') + '</button>' : '') + '</div>' +
     '<div class="tlog" id="tutLog" aria-live="polite">' + msgs + '</div>' +
-    '<div class="tcomp"><textarea id="chatIn" rows="1" placeholder="' + wk('Ask your tutor…', 'Ask your assistant…') + '" aria-label="Message">' + esc((c && c.draft) || '') + '</textarea>' +
+    '<div class="tcomp"><textarea id="chatIn" rows="1" placeholder="' + esc(aiNamed() ? 'Ask ' + aiName() + '…' : wk('Ask your tutor…', 'Ask your assistant…')) + '" aria-label="Message">' + esc((c && c.draft) || '') + '</textarea>' +
     '<button class="btn p" data-act="tutorSend"' + (busy ? ' disabled' : '') + '>' + ic('send') + 'Send</button></div>' +
-    '<div class="tfoot">Uses ATLAS\'s free AI. Leave out anything private. The ' + wk('tutor', 'assistant') + ' can make mistakes, so check what matters.</div></section></div></div>';
+    '<div class="tfoot">Uses ATLAS\'s free AI. Leave out anything private. ' + esc(aiNamed() ? aiName() : wk('The tutor', 'The assistant')) + ' can make mistakes, so check what matters.</div></section></div></div>';
 }
 function mountTutor() {
   const log = $('#tutLog'); if (log) log.scrollTop = log.scrollHeight;
@@ -4419,13 +4683,14 @@ async function tutorSend() {
   TUT.busy[c.id] = true;
   save(); render();
   const page = c.noteId && S.notes.find(n => n.id === c.noteId);
-  const who = wk('Student: ', 'User: '), bot = wk('Tutor: ', 'Assistant: ');
+  const who = wk('Student: ', 'User: '), bot = aiName() + ': ';
   const convo = c.messages.slice(-14).map(m => (m.role === 'user' ? who : bot) + m.content).join('\n\n');
-  const sys = isWork() ? assistSystem(c.classId) + '\n\nYou are a capable, practical assistant for someone\'s work. Give direct, useful answers: drafts, plans, summaries, checklists, clear explanations. ' +
+  const sys = isWork() ? assistSystem(c.classId) + '\n\nYou are a capable, practical assistant for someone\'s work. ' + aiVoice() + ' Give direct, useful answers: drafts, plans, summaries, checklists, clear explanations. ' +
     'Ask a clarifying question only when you truly need one. Keep replies under 220 words unless they ask for more. Use short paragraphs or a short list.'
-    : assistSystem(c.classId) + '\n\nYou are a patient one-on-one tutor. Teach; do not just hand over answers. Work out what the student already knows, ' +
-    'give one step or one hint at a time, and end with a short question so they do the thinking. If they are checking a finished answer, say whether it is right and exactly why. ' +
-    'If they ask to be quizzed, ask one question at a time and wait for their answer. Keep replies under 150 words unless they ask for more. Use short paragraphs or a short list.';
+    : assistSystem(c.classId) + '\n\nYou are a helpful one-on-one study partner. ' + aiVoice() + ' Help the way the student asks. ' +
+    'When they ask for the answer, give it clearly and completely, then briefly show how to get there so it makes sense. Do not hold an answer back or turn a direct question into a guessing game. ' +
+    'When they want to work it out themselves or ask for a hint, go one step at a time. If they are checking an answer, say whether it is right and exactly why. ' +
+    'If they ask to be quizzed, ask one question at a time and wait for their answer. Keep replies under 220 words unless they ask for more or the problem needs it. Use short paragraphs or a short list.';
   try {
     const out = await askAI([{ role: 'user', content: (page ? wk('The student\'s notebook page "', 'Their note "') + (page.title || 'Untitled') + '":\n' + String(page.body || '').slice(0, 7000) + '\n\n' : '') + convo + '\n\n' + bot.trim() }], sys, 1200);
     c.messages.push({ role: 'assistant', content: String(out || '').trim() || 'I didn\'t catch that. Try asking another way.', at: Date.now() });
@@ -4541,8 +4806,8 @@ function aiSetupSheet() {
     '<div class="row" style="gap:8px;margin-top:9px;flex-wrap:wrap"><input type="password" id="aiKey" value="' + esc(Local.aiKey) + '" placeholder="Paste your key" autocomplete="off" style="flex:1;min-width:200px">' +
     '<a class="btn" href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">Get a free key</a></div>');
   modal({
-    title: 'AI study tools', wide: true,
-    body: '<p class="muted" style="margin:0 0 14px;font-size:13.5px">Turn a page into flashcards or a quiz, summarise it, explain a topic, or break an assignment into steps. Nothing runs until you press a button.</p>' +
+    title: wk('AI study tools', 'AI tools'), wide: true,
+    body: '<p class="muted" style="margin:0 0 14px;font-size:13.5px">' + wk('Turn a page into flashcards or a quiz, summarise it, explain a topic, or break an assignment into steps.', 'Summarise a note, explain a topic, draft something, or break a task into steps.') + ' Nothing runs until you press a button.</p>' +
       ((cloud || has) ? opt('auto', 'On', cloud
         ? 'Free, with nothing to set up. Uses Chrome\'s on-device AI when this computer has it, and Google\'s Gemini otherwise.'
         : 'Uses Chrome\'s on-device AI on this computer.') : '') +
@@ -4569,8 +4834,8 @@ function aiSetupSheet() {
           .catch(() => toast('Chrome could not get its AI model ready on this computer.', true));
       }
       if (pick === 'gemini') askGemini('Reply with the single word: ready', 'You are a connection check.').then(() => toast('Your Gemini key works')).catch(e => toast(e.message, true));
-      if (pick === 'auto') toast('AI study tools are on');
-      if (pick === 'off') toast('AI study tools are off');
+      if (pick === 'auto') toast(wk('AI study tools are on', 'AI tools are on'));
+      if (pick === 'off') toast(wk('AI study tools are off', 'AI tools are off'));
       render();
     }
   });
@@ -5872,8 +6137,95 @@ function swReg() {
   return NOTE.regP;
 }
 async function noteShow(title, body, tag) {
-  try { const r = await swReg(); await r.showNotification(title, { body, tag: tag || undefined, icon: 'icon-192.png', data: { url: appUrl() } }); return true; }
+  try { const r = await swReg(); await r.showNotification(title, { body, tag: tag || undefined, icon: 'icon-192.png', badge: 'icon-badge-96.png', data: { url: appUrl() } }); return true; }
   catch (e) { try { new Notification(title, { body, tag, icon: 'icon-192.png' }); return true; } catch (x) { return false; } }
+}
+
+
+/* ============================================================
+   Installing. ATLAS opens like an app from the home screen, dock or
+   desktop: Chrome, Edge and Samsung Internet on Android, Chrome and
+   Edge on computers, Safari on iPhone, iPad and Mac. Where the browser
+   offers its own install prompt, the Install button uses it; elsewhere
+   it shows the two or three taps that browser needs.
+   ============================================================ */
+const INST = { evt: null, hide: false };
+if (typeof window !== 'undefined' && window.addEventListener) {
+  window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); INST.evt = e; if (typeof V !== 'undefined' && V && (V.name === 'today' || V.name === 'settings') && !$('.modal')) render(); });
+  window.addEventListener('appinstalled', () => { INST.evt = null; Local.inst = Object.assign({}, Local.inst, { done: Date.now() }); saveLocal(); toast('ATLAS is installed. Open it from its icon.'); if (V) render(); });
+}
+function isAndroid() { return /Android/i.test(UA()); }
+function browserKind() {
+  const ua = UA();
+  if (isIOS()) return /CriOS|FxiOS|EdgiOS/.test(ua) ? 'ios-other' : 'ios';
+  if (/SamsungBrowser/i.test(ua)) return 'samsung';
+  if (isAndroid()) return /Firefox/i.test(ua) ? 'android-firefox' : /EdgA/i.test(ua) ? 'android-edge' : 'android-chrome';
+  if (/Edg\//.test(ua)) return 'edge';
+  if (/Firefox/i.test(ua)) return 'firefox';
+  if (/Chrome|Chromium/.test(ua)) return 'chrome';
+  if (/Safari/.test(ua) && /Macintosh/.test(ua)) return 'mac-safari';
+  return 'other';
+}
+function installed() { return isStandalone(); }
+function installWhere() { return isIOS() || isAndroid() ? 'home screen' : browserKind() === 'mac-safari' ? 'Dock' : 'computer'; }
+const INSTALL_STEPS = {
+  ios: ['Tap the <b>Share</b> button at the bottom of Safari (the square with an arrow).', 'Scroll down and tap <b>Add to Home Screen</b>.', 'Tap <b>Add</b>, then open ATLAS from its new icon.'],
+  'ios-other': ['Tap the <b>Share</b> button (in Chrome it\'s next to the address bar).', 'Tap <b>Add to Home Screen</b>, then <b>Add</b>.', 'Don\'t see it? Open this page in <b>Safari</b> and do the same there.'],
+  samsung: ['Tap the <b>menu</b> button (three lines) at the bottom right of Samsung Internet.', 'Tap <b>Add page to</b>, then <b>Home screen</b>.', 'Tap <b>Add</b>, then open ATLAS from its new icon.'],
+  'android-chrome': ['Tap the <b>⋮</b> menu at the top right of Chrome.', 'Tap <b>Add to Home screen</b> or <b>Install app</b>.', 'Tap <b>Install</b>, then open ATLAS from its new icon.'],
+  'android-edge': ['Tap the <b>⋯</b> menu at the bottom of Edge.', 'Tap <b>Add to phone</b> or <b>Install app</b>.', 'Tap <b>Install</b>, then open ATLAS from its new icon.'],
+  'android-firefox': ['Tap the <b>⋮</b> menu.', 'Tap <b>Add app to Home screen</b> (or <b>Install</b>).', 'Tap <b>Add</b>, then open ATLAS from its new icon.'],
+  chrome: ['Click the <b>install</b> icon at the right end of the address bar (a screen with a down arrow).', 'No icon? Open the <b>⋮</b> menu and choose <b>Install ATLAS</b> (in newer Chrome it\'s under <b>Cast, save and share</b>).', 'ATLAS opens in its own window, with a shortcut on your computer.'],
+  edge: ['Click the <b>App available</b> icon in the address bar.', 'No icon? Open the <b>⋯</b> menu, then <b>Apps</b>, then <b>Install this site as an app</b>.', 'ATLAS opens in its own window, with a shortcut on your computer.'],
+  'mac-safari': ['In Safari, open the <b>File</b> menu.', 'Choose <b>Add to Dock</b>, then <b>Add</b>.', 'Needs macOS Sonoma or newer.'],
+  firefox: ['Firefox on a computer can\'t install web apps.', 'Open ATLAS in <b>Chrome</b>, <b>Edge</b> or <b>Safari</b> and install it from there.'],
+  other: ['Open your browser\'s menu.', 'Look for <b>Install</b>, <b>Add to Home screen</b> or <b>Add to Dock</b>.']
+};
+function installSheet() {
+  if (installed()) { toast('You\'re already using ATLAS as an app'); return; }
+  if (INST.evt) {
+    const e = INST.evt;
+    try {
+      e.prompt();
+      (e.userChoice || Promise.resolve({})).then(c => { INST.evt = null; if (c && c.outcome === 'accepted') { Local.inst = Object.assign({}, Local.inst, { done: Date.now() }); saveLocal(); } render(); }).catch(() => { });
+      return;
+    } catch (x) { INST.evt = null; }
+  }
+  const k = browserKind(), steps = INSTALL_STEPS[k] || INSTALL_STEPS.other;
+  const why = 'ATLAS opens from its own icon like any app: full screen, without the browser around it, and it works offline.' +
+    (isIOS() ? ' On iPhone and iPad it\'s also the only way to get reminders.' : isAndroid() ? ' Reminders work either way, and open straight into the app.' : '');
+  modal({
+    title: 'Install ATLAS', body:
+      '<p class="muted" style="margin:0 0 14px;font-size:13.5px">' + why + '</p>' +
+      '<ol class="isteps">' + steps.map(x => '<li>' + x + '</li>').join('') + '</ol>' +
+      (k === 'samsung' ? '<p class="dim" style="font-size:12.5px;margin:12px 0 0">If there\'s a <b>+</b> or download icon in the address bar, tapping it does the same thing.</p>' : '') +
+      (isIOS() ? '<p class="dim" style="font-size:12.5px;margin:12px 0 0">The Home Screen app keeps its own sign-in, so sign in once when you first open it. Your desk is waiting there.</p>' : ''),
+    foot: '<button class="btn p" data-close>Got it</button>'
+  });
+}
+/* A tip now and then, for people who keep coming back: never more than once a week,
+   never during setup, and gone for good after "Don't show again". */
+function installSeen() {
+  if (typeof location === 'undefined' || !/^https?:/.test(location.protocol)) return;
+  const L = Local.inst = Object.assign({ days: [] }, Local.inst), d = today();
+  if (L.days.indexOf(d) < 0) { L.days = L.days.concat(d).slice(-12); saveLocal(); }
+}
+function installTipDue() {
+  if (INST.hide || installed() || typeof location === 'undefined' || !/^https?:/.test(location.protocol)) return false;
+  const L = Local.inst || {};
+  if (L.never || L.done || (L.days || []).length < 3) return false;
+  if (browserKind() === 'firefox') return false;
+  if (L.last && L.last !== INST.shownAt && Date.now() - L.last < 7 * 864e5) return false;
+  return true;
+}
+function installTip() {
+  if (!installTipDue()) return '';
+  if (!INST.shownAt) { INST.shownAt = Date.now(); Local.inst = Object.assign({}, Local.inst, { last: INST.shownAt }); saveLocal(); }
+  return '<div class="instip" role="note">' + ic('down') + '<div class="it"><b>Put ATLAS on your ' + installWhere() + '</b><span>It opens like an app, full screen' +
+    (isIOS() ? ', and it\'s how reminders reach your iPhone' : '') + '.</span></div>' +
+    '<div class="ib"><button class="btn p sm" data-act="instTip" data-k="go">' + (INST.evt ? 'Install' : 'Show me how') + '</button>' +
+    '<button class="btn g sm" data-act="instTip" data-k="later">Not now</button>' +
+    '<button class="linkbtn" data-act="instTip" data-k="never">Don\'t show again</button></div></div>';
 }
 
 /* --- turning it on, on this device --- */
@@ -6011,7 +6363,7 @@ function noteSheet() {
     (push ? 'They reach you even when ATLAS is closed.' : !ACC.user ? 'While ATLAS is open. Sign in to get them when it\'s closed too.' : !ATLAS_CONFIG.vapidKey ? 'While ATLAS is open.' : 'While ATLAS is open. Connecting push for when it\'s closed…') +
     '</span></div><button class="btn sm" data-act="noteOff">Turn off</button></div>';
   else state = '<div class="nstate off"><span class="sdot"></span><div style="flex:1"><b>Off on this device</b><span class="t">' +
-    (perm === 'denied' ? 'Notifications are blocked for ATLAS in this browser\'s site settings.' : isIOS() && !isStandalone() ? 'On iPhone and iPad, add ATLAS to your Home Screen first.' : noteWanted() ? 'Reminders are on for your account. Turn them on here too.' : 'Your browser will ask once.') +
+    (perm === 'denied' ? 'Notifications are blocked for ATLAS in this browser\'s site settings.' + (isAndroid() ? ' Tap the icon at the left of the address bar, then Permissions, and allow Notifications.' : '') : isIOS() && !isStandalone() ? 'On iPhone and iPad, add ATLAS to your Home Screen first.' : noteWanted() ? 'Reminders are on for your account. Turn them on here too.' : 'Your browser will ask once.') +
     '</span></div><button class="btn p sm" data-act="noteOn">Turn on</button></div>';
   modal({
     title: 'Reminders', wide: true,
@@ -6021,6 +6373,9 @@ function noteSheet() {
       (on('cards') ? tick('cards', 'Flashcards ready to review, each day at', 'cardsAt') : '') +
       (on('focus') ? tick('timer', 'The end of a focus session or break, when ATLAS is in the background') : '') +
       tick('names', 'Show what\'s due in the notification (turn off to keep it private on your lock screen)') +
+      (isAndroid() ? '<p class="dim" style="font-size:12px;margin:12px 0 0">' + (browserKind() === 'samsung' ? 'On a Samsung phone' : 'On Android') +
+        ', reminders arrive even when ATLAS isn\'t installed or open. If they come late, open your phone\'s <b>Settings</b>, then <b>Battery</b>, then <b>Background usage limits</b>, and make sure ' +
+        (browserKind() === 'samsung' ? 'Samsung Internet' : 'your browser') + ' isn\'t in <b>Sleeping apps</b> or <b>Deep sleeping apps</b>.</p>' : '') +
       '<p class="dim" style="font-size:12px;margin:12px 0 0">The times follow your account to every device. Each device asks for its own permission. ' +
       '<a href="privacy.html#reminders" target="_blank" rel="noopener">How reminders work</a></p>',
     foot: (here ? '<button class="btn" data-act="noteTest">Send a test</button>' : '') + '<span class="spacer"></span><button class="btn p" data-close>Done</button>'
@@ -6159,12 +6514,11 @@ const ACT = {
   },
   /* today's schedule */
   schDay: el => go('schedule', el.dataset.d === today() ? null : el.dataset.d),
-  schEdit: el => { SCH.editDay = el && el.dataset.dw != null ? +el.dataset.dw : dowOf(today()); V.sub = 'edit'; render(); $('#view').scrollTop = 0; },
+  schEdit: el => { SCH.editDay = el && el.dataset.dw != null ? +el.dataset.dw : dowOf(today()); BLK.ed = null; BLK.copy = null; V.sub = 'edit'; render(); $('#view').scrollTop = 0; },
   schPick: el => { schCommit(); SCH.editDay = +el.dataset.dw; render(); },
   schDone: () => {
-    const bad = schCommit();
-    if (bad) toast(bad + (bad === 1 ? ' block wasn\'t' : ' blocks weren\'t') + ' saved: each needs a start before its end, and a name.', true);
-    V.sub = null; save(); render(); $('#view').scrollTop = 0;
+    if (BLK.ed) { blkRead(); const err = blkCheck(BLK.ed); if (err) { toast('Finish this block or press Cancel: ' + err.charAt(0).toLowerCase() + err.slice(1), true); return; } blkApply(blkSrc(false)); }
+    BLK.copy = null; V.sub = null; save(); render(); $('#view').scrollTop = 0;
   },
   schAdd: () => {
     const box = $('#schRows'); if (!box) return;
@@ -6395,15 +6749,15 @@ const ACT = {
   },
   importICS: () => {
     modal({
-      title: 'Import your school calendar', wide: true, body:
-        '<p class="muted" style="margin:0 0 14px;font-size:13.5px">Canvas, Blackboard, Moodle, Google Classroom and Google Calendar all publish a feed ending in <span class="mono">.ics</span>. Due dates become assignments; everything else becomes calendar events. Anything already imported is skipped, so you can re-run this whenever your schedule changes.</p>' +
-        '<label class="f"><span>Put everything into</span><select id="impClass"><option value="">Match the class by name, else leave unfiled</option>' +
+      title: wk('Import your school calendar', 'Import a calendar'), wide: true, body:
+        '<p class="muted" style="margin:0 0 14px;font-size:13.5px">' + wk('Canvas, Blackboard, Moodle, Google Classroom and Google Calendar all publish a feed ending in <span class="mono">.ics</span>. Due dates become assignments; everything else becomes calendar events.', 'Outlook, Google Calendar and Apple Calendar can all export a file ending in <span class="mono">.ics</span>. Deadlines become tasks; everything else becomes calendar events.') + ' Anything already imported is skipped, so you can re-run this whenever your schedule changes.</p>' +
+        '<label class="f"><span>Put everything into</span><select id="impClass"><option value="">Match the ' + esc(W().cls.toLowerCase()) + ' by name, else leave unfiled</option>' +
         MY('classes').map(c => '<option value="' + c.id + '">' + esc(c.name) + '</option>').join('') + '</select></label>' +
         '<div class="row" style="gap:8px;margin-bottom:12px"><button class="btn" data-act="impFile">' + ic('down') + 'Choose a file</button>' +
         '<span class="dim" style="font-size:12.5px">.ics, or the .zip from Google Calendar</span></div>' +
-        '<div class="row" style="gap:8px;margin-bottom:10px"><input type="text" id="impUrl" placeholder="https://canvas.school.edu/feeds/calendars/user_xxx.ics"><button class="btn" data-act="impUrl">Fetch</button></div>' +
+        '<div class="row" style="gap:8px;margin-bottom:10px"><input type="text" id="impUrl" placeholder="' + wk('https://canvas.school.edu/feeds/calendars/user_xxx.ics', 'https://outlook.office365.com/owa/calendar/…/calendar.ics') + '"><button class="btn" data-act="impUrl">Fetch</button></div>' +
         '<textarea id="impText" rows="6" placeholder="…or paste the contents of the .ics file here (BEGIN:VCALENDAR …)"></textarea>' +
-        '<p class="dim" style="font-size:12px;margin:8px 0 0">Fetching a URL only works if your school allows cross-site requests — most do not. If it fails, download the file and use the button above.</p>',
+        '<p class="dim" style="font-size:12px;margin:8px 0 0">Fetching a URL only works if ' + wk('your school allows', 'the calendar allows') + ' cross-site requests — most do not. If it fails, download the file and use the button above.</p>',
       foot: '<button class="btn" data-close>Cancel</button><button class="btn p" data-ok>Import</button>',
       onOk: () => {
         const txt = $('#impText').value.trim();
@@ -6734,7 +7088,7 @@ const ACT = {
   studyMenu: el => {
     if (!aiReady()) return aiSetupSheet();
     togglePop(el, [
-      on('tutor') && { act: 'tutor', icon: 'chat', label: 'Ask the tutor about this page' },
+      on('tutor') && { act: 'tutor', icon: 'chat', label: 'Ask ' + aiRef() + ' about this page' },
       { act: 'aiNote', icon: 'wand', label: 'Summarize', data: { mode: 'summary' } },
       on('cards') && { act: 'aiNote', icon: 'cards', label: 'Make flashcards', data: { mode: 'cards' } },
       { act: 'aiNote', icon: 'tasks', label: 'Quiz me', data: { mode: 'quiz' } },
@@ -6743,6 +7097,31 @@ const ACT = {
     ]);
   },
   addMenu: el => togglePop(el, addItems()),
+  install: () => installSheet(),
+  instTip: el => {
+    const k = el.dataset.k;
+    if (k === 'go') return installSheet();
+    if (k === 'later') { INST.hide = true; return render(); }
+    if (k === 'never') { Local.inst = Object.assign({}, Local.inst, { never: true }); saveLocal(); INST.hide = true; render(); toast('Got it. Install any time from Settings, under Account and devices.'); }
+  },
+  aiStyle: () => {
+    const cur = aiPersona();
+    modal({
+      title: wk('Your tutor', 'Your assistant'), wide: true,
+      body: '<label class="f"><span>Name</span><input type="text" id="aiNameIn" maxlength="24" autocomplete="off" value="' + esc(String(ms().aiName || '')) + '" placeholder="' + wk('Tutor', 'Assistant') + '"></label>' +
+        '<div class="f"><span>Personality</span></div>' +
+        Object.keys(AI_PERSONAS).map(k => '<label class="aiopt"><input type="radio" name="aiPer" value="' + k + '"' + (k === cur ? ' checked' : '') + '>' +
+          '<span><b>' + AI_PERSONAS[k][0] + '</b><span class="t">' + AI_PERSONAS[k][1] + '</span></span></label>').join(''),
+      foot: '<button class="btn" data-close>Cancel</button><button class="btn p" data-ok>Save</button>',
+      onOk: () => {
+        const nm = $('#aiNameIn').value.replace(/\s+/g, ' ').trim().slice(0, 24), p = ($('input[name="aiPer"]:checked') || {}).value || 'friendly', t = ms();
+        if (nm) t.aiName = nm; else delete t.aiName;
+        t.aiPersona = AI_PERSONAS[p] ? p : 'friendly';
+        save(true); renderNav(); render();
+        toast(aiName() + ' is ready');
+      }
+    });
+  },
   setJump: el => {
     V.param = el.dataset.id; save();
     const w = $('.setwrap'); if (!w) return go('settings', el.dataset.id);
@@ -6863,7 +7242,7 @@ function classModal(c) {
       '<label class="f"><span>Code</span><input type="text" id="cCode" value="' + esc(c.code) + '" placeholder="BIO-201"></label></div>' +
       '<div class="f2"><label class="f"><span>' + wk('Teacher', 'Lead or client') + '</span><input type="text" id="cTeacher" value="' + esc(c.teacher) + '" placeholder="' + wk('Ms. Ortiz', 'Dana Levi') + '"></label>' +
       '<label class="f"><span>Room</span><input type="text" id="cRoom" value="' + esc(c.room) + '" placeholder="B-214"></label></div>' +
-      '<label class="f"><span>' + bringWord() + '</span><textarea id="cRes" rows="2" placeholder="' + wk('Laptop, textbook, calculator', 'Laptop, charger, slides') + '">' + esc(classResources(c).join(', ')) + '</textarea></label>' +
+      (on('schedule') ? '<label class="f"><span>' + bringWord() + '</span><textarea id="cRes" rows="2" placeholder="' + wk('Laptop, textbook, calculator', 'Laptop, charger, slides') + '">' + esc(classResources(c).join(', ')) + '</textarea></label>' : '') +
       '<div class="f"><span>Color</span><div class="row" style="gap:6px;flex-wrap:wrap" id="cColors">' +
       PALETTE.map(p => '<button class="ccol" data-color="' + p + '" aria-label="Colour ' + p + '" style="width:26px;height:26px;border-radius:8px;background:' + p + ';border:3px solid ' + (c.color === p ? 'var(--ink)' : 'transparent') + '"></button>').join('') + '</div></div>' +
       '<div class="f"><span>' + wk('When it meets', 'Regular meetings') + '</span><div id="meetList">' + (c.meets || []).map(meetRow).join('') + '</div>' +
@@ -6877,7 +7256,7 @@ function classModal(c) {
       const name = $('#cName').value.trim();
       if (!name) { toast('Give the class a name.', true); return false; }
       c.name = name; c.code = $('#cCode').value.trim(); c.teacher = $('#cTeacher').value.trim(); c.room = $('#cRoom').value.trim();
-      c.resources = parseList($('#cRes').value);
+      if ($('#cRes')) c.resources = parseList($('#cRes').value);
       c.startDate = $('#cStart').value || null; c.endDate = $('#cEnd').value || null;
       if ($('#cCredits')) c.credits = clamp(+$('#cCredits').value || 1, 0.5, 12);
       c.meets = $$('#meetList [data-meet]').map(r => Object.assign({ day: +$('.mDay', r).value, start: $('.mStart', r).value || '09:00', end: $('.mEnd', r).value || '10:00' }, r.dataset.room ? { room: r.dataset.room } : {}))
@@ -7199,17 +7578,19 @@ function openPalette() {
   if (on('cards')) MY('decks').forEach(d => items.push({ t: d.name, s: 'Deck · ' + d.cards.length + ' cards', act: () => go('cards', d.id) }));
   items.push({ t: 'Add a ' + w.cls.toLowerCase(), s: 'Command', act: () => classModal() });
   if (on('tasks')) items.push({ t: 'New ' + w.task.toLowerCase(), s: 'Command', act: () => taskModal() });
-  if (on('tasks')) items.push({ t: 'Auto-schedule study time', s: 'Command', act: () => ACT.planWeek() });
-  if (on('tasks') || on('calendar')) items.push({ t: 'Import school calendar', s: 'Command', act: () => ACT.importICS() });
+  if (on('tasks')) items.push({ t: wk('Auto-schedule study time', 'Auto-schedule focus time'), s: 'Command', act: () => ACT.planWeek() });
+  if (on('tasks') || on('calendar')) items.push({ t: wk('Import school calendar', 'Import a calendar'), s: 'Command', act: () => ACT.importICS() });
   if (on('calendar')) items.push({ t: 'Export to Google Calendar', s: 'Command', act: () => ACT.exportICS() });
   if (on('focus')) items.push({ t: 'Start a focus session', s: 'Command', act: () => openZen() });
   items.push({ t: 'Change the theme', s: 'Command', act: () => themeGallery() });
-  if (on('tutor')) items.push({ t: 'Ask the AI tutor', s: 'Command', act: () => go('tutor') });
+  if (on('tutor')) items.push({ t: 'Ask ' + (aiNamed() ? aiName() : wk('the AI tutor', 'the AI assistant')), s: 'Command', act: () => go('tutor') });
+  if (on('tutor')) items.push({ t: 'Name your AI and pick its personality', s: 'Command', act: () => ACT.aiStyle() });
   items.push({ t: 'Reminders', s: 'Command', act: () => noteSheet() });
+  if (!installed()) items.push({ t: 'Install ATLAS on this device', s: 'Command', act: () => installSheet() });
   items.push({ t: 'Device lock', s: 'Command', act: () => lockSheet() });
-  items.push({ t: 'Personalize ATLAS', s: 'Command, retake the setup', act: () => openSurvey({}) });
+  items.push({ t: 'Personalize ATLAS', s: 'Command, retake the setup', act: () => openSurvey({ side: isWork() }) });
   items.push({ t: 'Your account and progress', s: 'Command', act: () => accountSheet() });
-  if (aiReady() && (on('notes') || on('cards'))) items.push({ t: 'Explain a topic', s: 'AI study tool', act: () => ACT.aiExplain() });
+  if (aiReady() && (on('notes') || on('cards'))) items.push({ t: 'Explain a topic', s: wk('AI study tool', 'AI tool'), act: () => ACT.aiExplain() });
   if (S.settings.celebrate !== false) items.push({ t: 'Badges', s: 'Command', act: () => badgeSheet() });
   if (on('break')) items.push({ t: 'Take a break', s: 'Command', act: () => go('break') });
   items.push({ t: 'Keyboard shortcuts', s: 'Command', act: () => keysSheet() });
@@ -7269,7 +7650,7 @@ const MODULES = [
   { id: 'tasks', icon: 'tasks', name: 'Deadlines', blurb: 'Everything due in one list, most urgent first.' },
   { id: 'notes', icon: 'book', name: 'Notebooks', blurb: 'A notebook for every class that saves as you type.' },
   { id: 'cards', icon: 'cards', name: 'Flashcards', blurb: 'Cards that come back right before you would forget them.' },
-  { id: 'tutor', icon: 'chat', name: 'AI tutor', blurb: 'A study partner that walks you to the answer instead of handing it over.' },
+  { id: 'tutor', icon: 'chat', name: 'AI tutor', blurb: 'Answers questions, explains how to get there and quizzes you before a test.' },
   { id: 'grades', icon: 'chart', name: 'Grades', blurb: 'Log scores, see where you stand, know what you need on the final.' },
   { id: 'focus', icon: 'timer', name: 'Focus timer', blurb: 'A timer, background sound and a streak to keep you going.' },
   { id: 'break', icon: 'play', name: 'Break room', blurb: 'Two quiet, turn-based games for a breather.' }
@@ -7332,18 +7713,20 @@ function isMine(r) { return !!r && (r.mode === 'work') === isWork(); }
 function MY(k) { return (S[k] || []).filter(isMine); }
 function mk(r) { if (r && typeof r === 'object') { if (isWork()) r.mode = 'work'; else if (r.mode) delete r.mode; } return r; }
 function mkAll(...rs) { return rs.map(mk); }
-const WORK_DEF = () => ({ modules: null, home: null, dayStart: '09:00', dayEnd: '18:00', chunk: 50, buffer: 1, periods: [], packed: null, setupDone: false, setupNudge: true, term: 'This quarter' });
+const WORK_DEF = () => ({ modules: null, home: null, dayStart: '09:00', dayEnd: '17:00', chunk: 50, buffer: 1, periods: [], packed: null, setupDone: false, setupNudge: true, term: 'This quarter' });
 /* this side's own settings */
 function ms() { if (!isWork()) return S.settings; if (!S.settings.work || typeof S.settings.work !== 'object') S.settings.work = WORK_DEF(); return S.settings.work; }
 function termLabel() { return isWork() ? (ms().term || 'This quarter') : (S.profile.term || 'your school desk'); }
 const WORK_WORDS = { name: 'Work', blurb: 'Projects, tasks and meetings.', icon: 'briefcase', cls: 'Project', clsP: 'Projects', task: 'Task', taskP: 'Tasks', taskA: 'task', taskAn: 'a task', short: 'Tasks', term: 'This quarter' };
 const WORK_OFF = { grades: true };          /* off by default on the work side */
+/* never on the work side: Calendar already covers the day, and flashcards are for studying */
+const WORK_NEVER = { schedule: true, cards: true };
+function modList(work) { return MODULES.filter(m => !(work && WORK_NEVER[m.id])); }
+function noNever(m, work) { if (work && m) Object.keys(WORK_NEVER).forEach(k => { m[k] = false; }); return m; }
 const WORK_MODS = {
-  schedule: ['Today\'s Schedule', 'Your day, meeting by meeting, with what you need for each one.'],
   calendar: ['Calendar', 'Your week on a grid, with time blocked for focused work.'],
   tasks: ['Tasks', 'Every task and deadline in one list, most urgent first.'],
   notes: ['Notes', 'Notes for every project that save as you type.'],
-  cards: ['Flashcards', 'For a language, a certification or anything else you\'re learning.'],
   tutor: ['AI assistant', 'Helps you plan, write, summarize and think things through.'],
   grades: ['Scores', 'Track scores for a course or certification you\'re taking.'],
   focus: ['Focus timer', 'A timer, background sound and a streak to keep you going.'],
@@ -7352,12 +7735,16 @@ const WORK_MODS = {
 function modInfo(m, work) { const x = (work == null ? isWork() : work) && WORK_MODS[m.id]; return x ? { name: x[0], blurb: x[1] } : { name: m.name, blurb: m.blurb }; }
 const WORK_HOMES = { schedule: ['My day', 'Meetings and focus blocks on a timeline.'], due: ['What\'s due', 'The next deadlines, most urgent first.'], notes: ['My notes', 'The last notes you were working on.'] };
 function homeInfo(k, work) { const x = (work == null ? isWork() : work) && WORK_HOMES[k]; return x ? { name: x[0], blurb: x[1] } : { name: HOMES[k].name, blurb: HOMES[k].blurb }; }
-function on(id) { const m = ms().modules; if (!m) return !(isWork() && WORK_OFF[id]); return m[id] !== false; }
+function on(id) {
+  if (isWork() && WORK_NEVER[id]) return false;
+  const m = ms().modules; if (!m) return !(isWork() && WORK_OFF[id]); return m[id] !== false;
+}
 function viewOn(n) { const m = VIEW_MOD[n]; return !m || on(m); }
 function W(level) { if (level === 'work' || (!level && isWork())) return WORK_WORDS; return LEVELS[level || S.settings.level] || LEVELS.high; }
 function viewTitle(n, work) {
   const wkk = work == null ? isWork() : work;
   if (n === 'tasks') return wkk ? WORK_WORDS.taskP : W().taskP;
+  if (n === 'tutor' && aiNamed(wkk)) return aiName(wkk);
   if (wkk) { const t = { notes: 'Notes', tutor: 'Assistant', grades: 'Scores' }[n]; if (t) return t; }
   return (VIEWS[n] || VIEWS.today).title;
 }
@@ -7387,7 +7774,8 @@ function termSummary() {
 function rhythmFromPomodoro(p) { const f = (p && p.focus) || 25; return f <= 18 ? 'sprint' : f <= 35 ? 'classic' : f <= 65 ? 'long' : 'deep'; }
 function clockFromDay(ds, de) { const a = toMin(ds || '08:00'), b = toMin(de || '22:00'); return a <= 420 ? 'early' : (b >= 1380 || a >= 630) ? 'night' : 'day'; }
 function personaFor(a) {
-  const r = RHYTHMS[a.rhythm] || RHYTHMS.classic, c = CLOCKS[a.clock] || CLOCKS.day, b = +a.buffer || 0;
+  const r = RHYTHMS[a.rhythm] || RHYTHMS.classic, b = +a.buffer || 0;
+  const c = CLOCKS[a.clock] || (a.dayStart && a.dayEnd ? CLOCKS[clockFromDay(a.dayStart, a.dayEnd)] : null) || (WORK_CLOCKS[a.clock] ? CLOCKS[clockFromDay(WORK_CLOCKS[a.clock].dayStart, WORK_CLOCKS[a.clock].dayEnd)] : CLOCKS.day);
   const tail = b >= 3 ? 'and you like things finished with days to spare.' : b >= 1 ? 'and you like a day of slack before anything is due.' : 'and a deadline is just a deadline.';
   const line = r.line + ', ' + c.line + ', ' + tail;
   return { title: c.word + ' ' + r.word, line: line[0].toUpperCase() + line.slice(1) };
@@ -7416,11 +7804,20 @@ function guessWeekStart(tz) {
 
 /* --- answers in, settings out --- */
 const WORK_CLOCKS = {
-  early: { name: 'Early start', icon: 'sunrise', dayStart: '07:00', dayEnd: '16:00' },
-  day: { name: 'Nine to six', icon: 'today', dayStart: '09:00', dayEnd: '18:00' },
-  night: { name: 'Late start', icon: 'moon', dayStart: '11:00', dayEnd: '20:00' }
+  early: { name: 'Early start', icon: 'sunrise', dayStart: '07:00', dayEnd: '15:30' },
+  day: { name: 'Nine to five', icon: 'today', dayStart: '09:00', dayEnd: '17:00' },
+  night: { name: 'Late start', icon: 'clock', dayStart: '11:00', dayEnd: '19:00' },
+  eve: { name: 'Evenings', icon: 'moon', dayStart: '16:00', dayEnd: '23:30' }
 };
-const WORK_MODULES = () => ({ schedule: true, calendar: true, tasks: true, notes: true, cards: true, tutor: true, grades: false, focus: true, break: true });
+/* The hours setup will use: one of the presets, or the ones you typed in. */
+function svClock(a) {
+  const set = svClocks(a);
+  if (a.clock === 'custom') return { name: 'Your own hours', icon: 'pencil', dayStart: a.dayStart || set.day.dayStart, dayEnd: a.dayEnd || set.day.dayEnd, custom: true };
+  return set[a.clock] || set.day;
+}
+function svHoursOk(a) { return a.clock !== 'custom' || (!!a.dayStart && !!a.dayEnd && toMin(a.dayEnd) - toMin(a.dayStart) >= 60); }
+const WORK_MODULES = () => ({ schedule: false, calendar: true, tasks: true, notes: true, cards: false, tutor: true, grades: false, focus: true, break: true });
+const SCHOOL_MODULES = () => ({ schedule: true, calendar: true, tasks: true, notes: true, cards: true, tutor: true, grades: true, focus: true, break: true });
 function svWork(a) { return SVY.side ? isWork() : !!a && a.uses === 'work'; }
 function svLvl(a) { return svWork(a) ? 'work' : a.level; }
 function svClocks(a) { return svWork(a) ? WORK_CLOCKS : CLOCKS; }
@@ -7431,10 +7828,12 @@ function svDefaults() {
     name: S.profile.name || (Local.acct && Local.acct.name) || '',
     uses: uses(),
     level: LEVELS[s.level] ? s.level : null,
-    modules: Object.assign(isWork() ? WORK_MODULES() : { schedule: true, calendar: true, tasks: true, notes: true, cards: true, tutor: true, grades: true, focus: true, break: true }, ps.modules || {}),
+    modules: noNever(Object.assign(isWork() ? WORK_MODULES() : SCHOOL_MODULES(), ps.modules || {}), isWork()),
     home: ps.home || 'schedule',
     rhythm: rhythmFromPomodoro(s.pomodoro),
-    clock: clockFromDay(ps.dayStart, ps.dayEnd),
+    clock: (() => { const set = isWork() ? WORK_CLOCKS : CLOCKS, k = Object.keys(set).find(x => set[x].dayStart === ps.dayStart && set[x].dayEnd === ps.dayEnd);
+      return k || (ps.setupDone && ps.dayStart && ps.dayEnd ? 'custom' : clockFromDay(ps.dayStart, ps.dayEnd)); })(),
+    dayStart: ps.dayStart || '', dayEnd: ps.dayEnd || '',
     buffer: b <= 0 ? 0 : b <= 1 ? 1 : 3,
     weekStart: s.setupDone ? (+s.weekStart || 0) : guessWeekStart(tz),
     grading: GRADINGS[s.grading] ? s.grading : null,
@@ -7461,7 +7860,7 @@ function applySurvey(a) {
   const r = RHYTHMS[a.rhythm] || RHYTHMS.classic;
   st.pomodoro = { focus: r.focus, short: r.short, long: r.long };
   ps.chunk = r.chunk;
-  const c = svClocks(a)[a.clock] || svClocks(a).day;
+  const c = svHoursOk(a) ? svClock(a) : svClocks(a).day;
   ps.dayStart = c.dayStart; ps.dayEnd = c.dayEnd;
   ps.buffer = clamp(+a.buffer || 0, 0, 7);
   st.weekStart = [0, 1, 6].indexOf(+a.weekStart) >= 0 ? +a.weekStart : 0;
@@ -7521,6 +7920,7 @@ function svSchedChoices(a) {
   return { words: W(svLvl(a)), classes: MY('classes').map(c => ['c:' + c.id, c.name]).concat(a.classes.map(n => ['n:' + n, n])), others };
 }
 function svSchedRead() {
+  if (SVY.a && SVY.a.sched && (BLK.ed || BLK.copy)) blkFlush(blkSrc(true));
   const a = SVY.a, box = $('#svRows'); if (!a || !box || !a.sched) return;
   const dw = +box.dataset.dw;
   a.sched[dw] = $$('[data-row]', box).map(r => ({ start: $('.rS', r).value, end: $('.rE', r).value, what: $('.rW', r).value, label: $('.rL', r).value.trim(), room: $('.rR', r).value.trim(), ph: '' }));
@@ -7537,7 +7937,7 @@ function svSteps(a) {
   st.push('clock');
   if (a.modules.grades && !svWork(a)) st.push('grading');
   st.push('classes');
-  if (a.modules.schedule) st.push('sched');
+  if (a.modules.schedule && !svWork(a)) st.push('sched');
   if (!SVY.side) st.push('look');
   st.push('done');
   return st;
@@ -7546,12 +7946,13 @@ function svMin() { return SVY.first || SVY.side ? 0 : 1; }
 function svValid(step, a) {
   if (step === 'you') return a.uses === 'work' || !!a.level;
   if (step === 'modules') return MODULES.some(m => a.modules[m.id]);
+  if (step === 'clock') return svHoursOk(a);
   return true;
 }
 function openSurvey(opts) {
   const o = opts || {};
   closeModal();
-  SVY.open = true; SVY.first = !!o.first; SVY.side = !!o.side && !o.first; SVY.a = svDefaults(); SVY.shown = null;
+  SVY.open = true; SVY.first = !!o.first; SVY.side = !!o.side && !o.first; SVY.a = svDefaults(); SVY.shown = null; BLK.ed = null; BLK.copy = null;
   SVY.step = svMin();
   if (!S.settings.setupSeen) { S.settings.setupSeen = true; save(); }
   MODAL_EL = null;
@@ -7643,10 +8044,10 @@ function svStepHtml(step, a) {
         (a.uses === 'work' ? '' : '<div class="sv-group"><span class="eyebrow">Where are you studying?</span><div class="sv-opts">' +
         Object.keys(LEVELS).map(k => svOpt('level', k, a.level === k, ic(LEVELS[k].icon), LEVELS[k].name, LEVELS[k].blurb)).join('') + '</div></div>');
     case 'modules': {
-      const n = MODULES.filter(m => a.modules[m.id]).length;
+      const mods = modList(work), n = mods.filter(m => a.modules[m.id]).length;
       return head('Your tabs', 'What should ATLAS do for you?', 'Pick everything you want. Whatever you leave out disappears from the app, so all that is left is what you use. Tabs can be switched back on in Settings.') +
-        '<div class="sv-opts">' + MODULES.map(m => { const mi = modInfo(m, work); return svOpt('modules', m.id, !!a.modules[m.id], ic(m.icon), m.id === 'tasks' && work ? w.taskP : mi.name, mi.blurb); }).join('') + '</div>' +
-        '<p class="sv-count">' + (n ? n + ' of ' + MODULES.length + ' picked' : 'Pick at least one') + '</p>';
+        '<div class="sv-opts">' + mods.map(m => { const mi = modInfo(m, work); return svOpt('modules', m.id, !!a.modules[m.id], ic(m.icon), m.id === 'tasks' && work ? w.taskP : mi.name, mi.blurb); }).join('') + '</div>' +
+        '<p class="sv-count">' + (n ? n + ' of ' + mods.length + ' picked' : 'Pick at least one') + '</p>';
     }
     case 'home':
       return head('Today', 'When you open ATLAS, what comes first?', 'This sits at the top of Today, the screen you land on every time.') +
@@ -7660,7 +8061,10 @@ function svStepHtml(step, a) {
     case 'clock':
       return head('Your clock', work ? 'What are your working hours?' : 'When do you get work done?', (a.modules.tasks || a.modules.calendar) ? (work ? 'Focus blocks only ever land inside these hours, around your meetings.' : 'Study blocks only ever land inside these hours, around your classes.') : 'ATLAS plans around these hours.') +
         '<div class="sv-group"><span class="eyebrow">' + (work ? 'Your working day' : 'Your best hours') + '</span><div class="sv-opts three">' +
-        Object.keys(svClocks(a)).map(k => { const c = svClocks(a)[k]; return svOpt('clock', k, a.clock === k, ic(c.icon), c.name, fmt12(c.dayStart) + ' – ' + fmt12(c.dayEnd)); }).join('') + '</div></div>' +
+        Object.keys(svClocks(a)).map(k => { const c = svClocks(a)[k]; return svOpt('clock', k, a.clock === k, ic(c.icon), c.name, fmt12(c.dayStart) + ' – ' + fmt12(c.dayEnd)); }).join('') +
+        svOpt('clock', 'custom', a.clock === 'custom', ic('pencil'), 'Set my own', a.clock === 'custom' && svHoursOk(a) ? fmt12(a.dayStart) + ' – ' + fmt12(a.dayEnd) : 'Pick a start and an end') + '</div>' +
+        (a.clock === 'custom' ? '<div class="sv-hours"><label><span>' + (work ? 'Start work' : 'Start') + '</span><input type="time" data-sv-hour="dayStart" value="' + esc(svClock(a).dayStart) + '"></label>' +
+          '<label><span>' + (work ? 'Stop work' : 'Stop') + '</span><input type="time" data-sv-hour="dayEnd" value="' + esc(svClock(a).dayEnd) + '"></label></div>' : '') + '</div>' +
         (a.modules.tasks ? '<div class="sv-group"><span class="eyebrow">Finish things</span><div class="sv-opts three">' +
           BUFFERS.map(b => svOpt('buffer', b[0], +a.buffer === b[0], null, b[1], b[2])).join('') + '</div></div>' : '') +
         '<div class="sv-group"><span class="eyebrow">Your week starts on</span><div class="seg">' +
@@ -7686,16 +8090,9 @@ function svStepHtml(step, a) {
     }
     case 'sched': {
       svSchedInit(a);
-      const dw = a.schedDay, ws = +a.weekStart || 0, order = [0, 1, 2, 3, 4, 5, 6].map(i => (ws + i) % 7), ch = svSchedChoices(a), rows = a.sched[dw] || [];
       return head(work ? 'Your week' : 'Your schedule', work ? 'What does a normal week look like?' : 'When does each ' + w.cls.toLowerCase() + ' meet?',
-        'Put in a normal week once, and Today\'s Schedule shows the right day by itself. You can skip this and do it later from Today\'s Schedule.') +
-        '<div class="sv-sched"><div class="sv-pills">' + order.map(d => '<button class="schpill' + (d === dw ? ' on' : '') + '" data-sv-sday="' + d + '">' + DAYS[d] +
-          ((a.sched[d] || []).length ? '<i>' + a.sched[d].length + '</i>' : '') + '</button>').join('') + '</div>' +
-        '<div id="svRows" data-dw="' + dw + '">' + rows.map(r => schRowHTML(r, ch)).join('') + '</div>' +
-        (rows.length ? '' : '<p class="dim" style="font-size:13.5px;margin:6px 0">Nothing on ' + DAY_NAMES[dw] + 's yet. Add each block of the day' + (ch.classes.length ? '' : ' (add your ' + w.clsP.toLowerCase() + ' a step back to pick them here)') + '.</p>') +
-        '<div class="row" style="gap:8px;flex-wrap:wrap;margin-top:10px"><button class="btn sm" data-sv-sadd>' + ic('plus') + 'Add a block</button></div>' +
-        (rows.length ? '<div class="sv-copy"><span class="dim">Copy ' + DAY_NAMES[dw] + ' to</span>' + order.filter(d => d !== dw).map(d => '<button class="sv-dchip' + (a.schedCopy.indexOf(d) >= 0 ? ' on' : '') + '" data-sv-scopy="' + d + '">' + DAYS[d] + '</button>').join('') +
-          '<button class="btn sm" data-sv-scopygo' + (a.schedCopy.length ? '' : ' disabled') + '>Copy</button></div>' : '') + '</div>';
+        'Add each block once and pick every day it happens. Today\'s Schedule then shows the right day by itself. You can skip this and do it later.') +
+        '<div class="sv-sched" id="svBlocks">' + blkHTML(blkSrc(true)) + '</div>';
     }
     case 'look': {
       const list = SV_THEMES.concat(THEMES.map(t => t.id).filter(id => SV_THEMES.indexOf(id) < 0));
@@ -7707,7 +8104,7 @@ function svStepHtml(step, a) {
         '<label class="check sv-tog"><input type="checkbox" data-sv-tog="celebrate"' + (a.celebrate ? ' checked' : '') + '><span>Celebrate wins — badges, a streak and a little confetti</span></label>';
     }
     case 'done': {
-      const p = personaFor(a), r = RHYTHMS[a.rhythm], c = svClocks(a)[a.clock] || svClocks(a).day;
+      const p = personaFor(a), r = RHYTHMS[a.rhythm], c = svClock(a);
       const tabs = ['today'].concat(['schedule', 'calendar', 'tasks', 'notes', 'cards', 'tutor', 'grades', 'break'].filter(v => a.modules[VIEW_MOD[v]])).concat(['settings']);
       const nCls = MY('classes').length + a.classes.length;
       const rows = [['Tabs', tabs.map(n => '<span class="chip">' + esc(viewTitle(n, work)) + '</span>').join('')]];
@@ -7731,7 +8128,7 @@ function svFoot(step, a) {
   if (step === 'hello') return '<span class="spacer"></span>' + (SVY.first ? '<button class="btn g" data-sv-nav="close">Not now</button>' : '') + '<button class="btn p" data-sv-nav="next">Let\'s go</button>';
   if (step === 'done') return back + '<span class="spacer"></span><button class="btn p" data-sv-nav="next">Open my desk</button>';
   const ok = svValid(step, a);
-  const hint = ok ? '' : '<span class="hint">' + (step === 'you' ? 'Pick where you\'re studying to continue' : 'Pick at least one') + '</span>';
+  const hint = ok ? '' : '<span class="hint">' + (step === 'you' ? 'Pick where you\'re studying to continue' : step === 'clock' ? 'The end needs to be at least an hour after the start' : 'Pick at least one') + '</span>';
   return back + hint + '<span class="spacer"></span><button class="btn p" data-sv-nav="next"' + (ok ? '' : ' disabled') + '>Next</button>';
 }
 /* A small, honest picture of the desk being built — real theme tokens, real labels. */
@@ -7813,9 +8210,11 @@ function svClick(e) {
     if (k === 'modules') a.modules[v] = !a.modules[v];
     else if (k === 'buffer') a.buffer = +v;
     else a[k] = v;
-    if (k === 'uses' && !a.modulesSet) { a.modules = v === 'work' ? WORK_MODULES() : Object.assign(WORK_MODULES(), { grades: a.level !== 'self' }); }
+    if (k === 'uses' && !a.modulesSet) { a.modules = v === 'work' ? WORK_MODULES() : Object.assign(SCHOOL_MODULES(), { grades: a.level !== 'self' }); }
+    if (k === 'uses') noNever(a.modules, v === 'work');
     if (k === 'uses') a.sched = null;
     /* sensible follow-ons, unless you already chose otherwise */
+    if (k === 'clock' && v === 'custom') { const c = svClock(a); a.dayStart = c.dayStart; a.dayEnd = c.dayEnd; }
     if (k === 'level' && !a.gradingSet) a.grading = defaultGrading(v, a.tz);
     if (k === 'level' && !a.modulesSet) a.modules.grades = v !== 'self';
     if (k === 'grading') a.gradingSet = true;
@@ -7990,7 +8389,9 @@ async function boot() {
   });
   window.addEventListener('online', () => { if (ACC.user) cQueue(500); });
   setInterval(() => { if (ACC.user && document.visibilityState === 'visible' && !ACC.unsub) cSync({ silent: true }); }, 120000);
+  installSeen();
   if (noteHere()) { swReg().catch(() => { }); noteLocalStart(); }
+  else if (typeof location !== 'undefined' && /^https?:/.test(location.protocol) && 'serviceWorker' in navigator) swReg().catch(() => { });
   renderNav(); setStatus(Sync.status);
   aiProbe().then(() => { if (!isTyping() && !$('#overlay').innerHTML) render(); });
   $('#view').addEventListener('scroll', closePop, { passive: true });
