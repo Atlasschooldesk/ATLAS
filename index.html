@@ -1139,6 +1139,9 @@ button.acc-row:hover{background:var(--panel2)}
 .acc-row .go{margin-left:auto;color:var(--ink3);font-size:18px}
 .acc-row.dg b{color:var(--crimson)}
 .acc-row.dg .ai{background:var(--crimsonSoft);color:var(--crimson)}
+.gdone.mail{background:var(--ultraSoft);color:var(--ultra)}
+.gwait{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink2);margin:0 0 22px}
+.gwait .spin{width:16px;height:16px;border-width:2px}
 .vnote{display:flex;gap:10px;align-items:flex-start;padding:11px 13px;border-radius:var(--r2);background:var(--marigoldSoft);font-size:13px;margin:0 0 14px;line-height:1.45}
 .vnote .linkbtn{font-size:13px}
 
@@ -1175,6 +1178,22 @@ button.acc-row:hover{background:var(--panel2)}
 
 /* ---------- reminders ---------- */
 .nrow{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--rule);flex-wrap:wrap}
+.nlist{display:flex;flex-direction:column}
+.nsw{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--rule);min-height:48px}
+.nlist .nsw:last-child{border-bottom:none}
+.nsw label{display:flex;align-items:center;gap:12px;flex:1;min-width:0;cursor:pointer;margin:0}
+.nsw input[type=checkbox]{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.nsw .sw{width:40px;height:24px;border-radius:12px;background:var(--rule2);position:relative;flex:none;transition:background .2s}
+.nsw .sw::after{content:'';position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .2s}
+.nsw input:checked + .sw{background:var(--ultra)}
+.nsw input:checked + .sw::after{transform:translateX(16px)}
+.nsw input:focus-visible + .sw{outline:2px solid var(--ultra);outline-offset:2px}
+.nsw .nl{font-size:14.5px}
+.nsw input[type=time]{width:auto;flex:none}
+.nsw input[type=time][hidden]{display:none}
+.nmore{margin-top:6px;border-top:1px solid var(--rule);padding-top:8px}
+.nmore summary{cursor:pointer;font-size:13px;font-weight:600;color:var(--ink2);padding:4px 0}
+.nmore .nsw{border-bottom:none}
 .nrow:last-child{border-bottom:none}
 .nrow label.check{flex:1;min-width:200px;margin:0}
 .nrow input[type=time]{width:auto}
@@ -3733,7 +3752,7 @@ function viewSettings() {
   body.account =
     row('Account', acctKnown() ? 'Signed in as ' + esc(Local.acct.email) + '. Your desk syncs to every device you sign in on.' : 'Not signed in. Your work is saved in this browser only.',
       acctKnown() ? '<button class="btn" data-act="acctMenu">Manage</button>' : '<button class="btn p" data-act="acctOpen">Sign in</button>') +
-    row('Reminders', esc(noteLabel()) + '. What\'s due, ' + wk('tests', 'big deadlines') + ' coming up' + (on('cards') ? ', cards to study' : '') + ' and the end of a focus session.', '<button class="btn" data-act="noteSheet">' + (noteHere() ? 'Change' : 'Set up') + '</button>') +
+    row('Reminders', esc(noteLabel()) + '. A nudge the night before and the morning something\'s due.', '<button class="btn" data-act="noteSheet">' + (noteHere() ? 'Change' : 'Set up') + '</button>') +
     row('Install ATLAS', installed() ? 'Installed. You\'re using ATLAS as an app on this device.' : 'Put ATLAS on your ' + installWhere() + '. It opens like an app, full screen, and works offline.',
       installed() ? '' : '<button class="btn' + (INST.evt ? ' p' : '') + '" data-act="install">Install</button>', 'set-install') +
     (typeof navigator !== 'undefined' && navigator.setAppBadge && on('tasks') ? row('Count on the app icon', 'The installed ATLAS icon shows how many things are due today or late.' + (isIOS() ? ' On iPhone and iPad it needs reminders turned on.' : ''),
@@ -5532,6 +5551,14 @@ function paintGate() {
     case 'work':
       body = '<div class="gwork"><span class="spin"></span>' + esc(GATE.work || 'One moment…') + '</div>' + slot;
       break;
+    case 'confirm':
+      body = '<div class="gdone mail">' + ic('mail') + '</div><h2 class="gh" id="gateTitle">Confirm your email</h2>' +
+        '<p class="gate-lead sm">We sent a link to <b>' + em + '</b>. Open it on this computer or on your phone, and this screen moves on by itself.</p>' +
+        '<p class="gwait"><span class="spin"></span>Waiting for you to confirm…</p>' +
+        '<div class="gacts" style="max-width:400px"><button class="btn big" type="button" id="gResend" data-gate="resendVerify">Send it again</button>' +
+        (Local.mustConfirm ? '<button class="btn g big" type="button" data-gate="redoEmail">Wrong email? Start over</button>' : '') + '</div>' + slot +
+        '<p class="gate-fine">Nothing after a minute or two? Check your Spam or Promotions folder.</p>';
+      break;
     case 'merge':
       body = '<h2 class="gh" id="gateTitle">Your account already has a desk</h2>' +
         '<p class="gate-lead sm">This device also has work that isn\'t in any account yet: ' + esc((GATE.merge && GATE.merge.what) || '') + '.</p>' +
@@ -5558,6 +5585,7 @@ function paintGate() {
   if (v === 'start') gsiRender($('#gsiBox'));
   if (v === 'signup' || v === 'reset') pwPaint();
   if (v === 'sent') { GATE.tick = setInterval(sentTick, 1000); sentTick(); }
+  if (v === 'confirm') { let n = 0; GATE.tick = setInterval(() => { sentTick(); if (++n % 3 === 0) confirmCheck(); }, 1000); sentTick(); }
   const f = v === 'email' ? $('#gEmail') : v === 'signin' ? $('#gPw') : v === 'signup' ? ($('#gName').value ? $('#gPw1') : $('#gName')) : v === 'reset' ? $('#gPw1') : null;
   /* never pull focus away from a box someone has already started typing in */
   if (f) setTimeout(() => { const a = document.activeElement; if (a && a !== f && a.matches && a.matches('#gate input')) return; try { f.focus(); } catch (e) { } }, 40);
@@ -5577,8 +5605,85 @@ function afterGate() {
   const empty = !S.classes.length && !S.tasks.length && !S.notes.length;
   if (!S.settings.setupDone && !S.settings.setupSeen && empty) openSurvey({ first: true });
 }
+/* After making an account: wait on "Confirm your email" until the link is opened,
+   here or on another device, then "You're all set". A reset ends the same way. */
+const GATE_BC = (() => { try { return typeof BroadcastChannel !== 'undefined' ? new BroadcastChannel('atlas-auth') : null; } catch (e) { return null; } })();
+function gateTell(msg) { try { if (GATE_BC) GATE_BC.postMessage(msg); } catch (e) { } }
+if (GATE_BC) GATE_BC.onmessage = e => {
+  const m = e.data || {};
+  if (m.t === 'verified' && GATE.open && GATE.view === 'confirm') confirmCheck();
+  if (m.t === 'reset' && GATE.open && GATE.view === 'sent') {
+    /* the other tab signed in with the new password; this one shares its sign-in */
+    const t0 = Date.now();
+    const iv = setInterval(() => {
+      if (!GATE.open || GATE.view !== 'sent') return clearInterval(iv);
+      if (ACC.user && (!m.email || ACC.user.email === m.email)) { clearInterval(iv); gateAllSet('reset'); }
+      else if (Date.now() - t0 > 3000) { clearInterval(iv); GATE.email = m.email || GATE.email; GATE.view = 'signin'; GATE.note = 'Your new password is saved. Type it here to sign in.'; paintGate(); }
+    }, 250);
+  }
+};
+function gateAllSet(kind) {
+  GATE.busy = false;
+  GATE.title = 'You\'re all set';
+  GATE.text = kind === 'reset' ? 'Your new password is saved and you\'re signed in.'
+    : kind === 'verified-link' ? 'Your email is confirmed. If ATLAS is open where you signed up, it has already moved on, so you can close this tab or keep going here.'
+    : 'Your email is confirmed and your ATLAS account is ready.';
+  GATE.extra = ''; GATE.doneMsg = kind === 'reset' ? 'Signed in with your new password' : 'Email confirmed';
+  GATE.view = 'done'; GATE.note = ''; paintGate();
+}
+function confirmPending() { return !!(Local.mustConfirm && Local.acct && Local.acct.uid === Local.mustConfirm && Local.acct.provider === 'password' && !Local.acct.verified); }
+async function confirmCheck() {
+  if (!GATE.open || GATE.view !== 'confirm' || GATE.checking) return;
+  GATE.checking = true;
+  try {
+    const fb = await fbAuth(), u = fb.auth.currentUser;
+    if (u) {
+      await fb.A.reload(u).catch(() => { });
+      const now = fb.auth.currentUser;
+      if (now && now.emailVerified && GATE.open && GATE.view === 'confirm') {
+        if (Local.acct) Local.acct.verified = true;
+        delete Local.mustConfirm; saveLocal();
+        gateAllSet('verified');
+      }
+    }
+  } catch (e) { } finally { GATE.checking = false; }
+}
+async function confirmResend(btn) {
+  gateBusy(btn, 'Sending…');
+  try {
+    const fb = await fbAuth(), u = fb.auth.currentUser;
+    if (!u) throw new Error('Sign in again to get a new link.');
+    await sendLink('verify', o => o ? fb.A.sendEmailVerification(u, o) : fb.A.sendEmailVerification(u));
+    GATE.sentAt = Date.now(); gateBusy(btn); gateNote('Sent again. It can take a minute, and it may land in Spam.'); sentTick();
+  } catch (e) { gateBusy(btn); gateNote(esc(authErr(e))); }
+}
+/* A typo in the address: the account was made a moment ago, so take it back and start over. */
+async function confirmRedo(btn) {
+  gateBusy(btn, 'One moment…');
+  try {
+    const fb = await fbAuth(), u = fb.auth.currentUser, uid = u && u.uid;
+    if (u) {
+      cStopListen();
+      try {
+        const st = await fbStore(), batch = st.F.writeBatch(st.db);
+        batch.delete(deskDoc(st, uid, 'p0')); batch.delete(deskDoc(st, uid, 'meta')); batch.delete(st.F.doc(st.db, 'reminders', uid));
+        await batch.commit();
+      } catch (e) { }
+      await fb.A.deleteUser(u);
+      await acctLeave(uid, false, true).catch(() => { });
+    }
+    delete Local.mustConfirm; saveLocal();
+    gateBusy(btn);
+    GATE.intent = 'create'; GATE.email = ''; GATE.view = 'email'; GATE.note = ''; paintGate();
+  } catch (e) { gateBusy(btn); gateNote(esc(authErr(e))); }
+}
+if (typeof window !== 'undefined' && window.addEventListener) {
+  window.addEventListener('focus', () => { if (GATE.open && GATE.view === 'confirm') confirmCheck(); });
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && GATE.open && GATE.view === 'confirm') confirmCheck(); });
+}
 function gateDone(msg) {
   GATE.busy = false;
+  if (needGate()) { GATE.view = 'start'; GATE.note = ''; paintGate(); return; }   /* confirmed on a device that isn't signed in */
   closeGate();
   if (S.settings.setupDone) { render(); toast(msg || ('Welcome' + (acctName() ? ', ' + acctName() : ''))); }
   else afterGate();
@@ -5651,6 +5756,8 @@ async function gateClick(e) {
     }
     case 'forgot': return gateForgot(b);
     case 'resend': return gateForgot(b, true);
+    case 'resendVerify': return confirmResend(b);
+    case 'redoEmail': return confirmRedo(b);
     case 'google': return gatePopup(b);
     case 'mergeYes': if (GATE.merge) GATE.merge.res('combine'); return;
     case 'mergeNo': if (GATE.merge) GATE.merge.res('separate'); return;
@@ -5709,7 +5816,8 @@ async function gateSignUp(btn) {
     gateBusy(btn, 'Setting up your desk…');
     await settle(acctOnline(r.user));
     if (Local.acct && name.trim()) { Local.acct.name = name.trim(); saveLocal(); }
-    gateDone('Your account is ready. Check your email to confirm it.');
+    Local.mustConfirm = r.user.uid; saveLocal();
+    GATE.sentAt = Date.now(); GATE.busy = false; GATE.view = 'confirm'; GATE.note = ''; paintGate();
   } catch (e) {
     gateBusy(btn); pwPaint();
     const used = String((e && e.code) || '') === 'auth/email-already-in-use';
@@ -5737,7 +5845,8 @@ async function gateReset(btn) {
     gateBusy(btn, 'Signing in…');
     const r = await fb.A.signInWithEmailAndPassword(fb.auth, GATE.email, p1);
     await settle(acctOnline(r.user));
-    gateDone('Password changed. Welcome back');
+    gateTell({ t: 'reset', email: GATE.email });
+    gateAllSet('reset');
   } catch (e) {
     gateBusy(btn); pwPaint();
     gateNote(esc(authErr(e)) + (/action-code/.test(String(e && e.code)) ? ' <button class="linkbtn" type="button" data-gate="forgot">Send a new link</button>' : ''));
@@ -5819,9 +5928,9 @@ async function handleAction(a) {
       GATE.code = a.code; GATE.view = 'reset'; GATE.note = ''; paintGate();
     } else if (a.mode === 'verifyEmail') {
       await fb.A.applyActionCode(fb.auth, a.code);
-      if (fb.auth.currentUser) { await fb.A.reload(fb.auth.currentUser).catch(() => { }); if (Local.acct) { Local.acct.verified = true; saveLocal(); } }
-      GATE.title = 'Your email is confirmed'; GATE.text = 'Thanks. Your ATLAS account is all set.'; GATE.extra = ''; GATE.doneMsg = 'Email confirmed';
-      GATE.view = 'done'; GATE.note = ''; paintGate();
+      if (fb.auth.currentUser) { await fb.A.reload(fb.auth.currentUser).catch(() => { }); if (Local.acct) { Local.acct.verified = true; delete Local.mustConfirm; saveLocal(); } }
+      gateTell({ t: 'verified' });
+      gateAllSet('verified-link');
     } else if (a.mode === 'recoverEmail') {
       const info = await fb.A.checkActionCode(fb.auth, a.code);
       await fb.A.applyActionCode(fb.auth, a.code);
@@ -6518,32 +6627,35 @@ function noteTimer(wasFocus) {
 function noteSheet() {
   const c = noteCfg(), here = noteHere(), perm = notePerm();
   const push = !!(here && Local.push.token && ACC.user);
-  const tick = (k, label, time) => '<div class="nrow"><label class="check"><input type="checkbox" data-nk="' + k + '"' + (c[k] ? ' checked' : '') + '><span>' + label + '</span></label>' +
-    (time ? '<input type="time" data-nt="' + time + '" value="' + esc(c[time]) + '" aria-label="Time">' : '') + '</div>';
+  const tick = (k, label, time) => '<div class="nsw"><label><input type="checkbox" role="switch" data-nk="' + k + '"' + (c[k] ? ' checked' : '') + '><span class="sw" aria-hidden="true"></span><span class="nl">' + label + '</span></label>' +
+    (time ? '<input type="time" data-nt="' + time + '" value="' + esc(c[time]) + '" aria-label="Time"' + (c[k] ? '' : ' hidden') + '>' : '') + '</div>';
   let state;
   if (here) state = '<div class="nstate on"><span class="sdot"></span><div style="flex:1"><b>On for this device</b><span class="t">' +
     (push ? 'They reach you even when ATLAS is closed.' : !ACC.user ? 'While ATLAS is open. Sign in to get them when it\'s closed too.' : !ATLAS_CONFIG.vapidKey ? 'While ATLAS is open.' : 'While ATLAS is open. Connecting push for when it\'s closed…') +
-    '</span></div><button class="btn sm" data-act="noteOff">Turn off</button></div>';
+    '</span></div><button class="btn sm" data-act="noteTest">Send a test</button><button class="btn g sm" data-act="noteOff">Turn off</button></div>';
   else state = '<div class="nstate off"><span class="sdot"></span><div style="flex:1"><b>Off on this device</b><span class="t">' +
     (perm === 'denied' ? 'Notifications are blocked for ATLAS in this browser\'s site settings.' + (isAndroid() ? ' Tap the icon at the left of the address bar, then Permissions, and allow Notifications.' : '') : isIOS() && !isStandalone() ? 'On iPhone and iPad, add ATLAS to your Home Screen first.' : noteWanted() ? 'Reminders are on for your account. Turn them on here too.' : 'Your browser will ask once.') +
     '</span></div><button class="btn p sm" data-act="noteOn">Turn on</button></div>';
   modal({
     title: 'Reminders', wide: true,
     body: state +
-      '<div class="eyebrow" style="margin:4px 0 2px">Remind me about</div>' +
-      (on('tasks') ? tick('eve', 'Anything due tomorrow, the evening before at', 'eveAt') + tick('morn', 'Anything due today, in the morning at', 'mornAt') + tick('big', 'Tests and big projects, 3 days ahead') : '') +
-      (on('cards') ? tick('cards', 'Flashcards ready to review, each day at', 'cardsAt') : '') +
-      (on('focus') ? tick('timer', 'The end of a focus session or break, when ATLAS is in the background') : '') +
-      tick('names', 'Show what\'s due in the notification (turn off to keep it private on your lock screen)') +
+      '<div class="eyebrow" style="margin:4px 0 0">Remind me</div><div class="nlist">' +
+      (on('tasks') ? tick('eve', 'The night before something\'s due', 'eveAt') + tick('morn', 'The morning it\'s due', 'mornAt') + tick('big', wk('Tests and big projects, 3 days ahead', 'Big deadlines, 3 days ahead')) : '') +
+      (on('cards') ? tick('cards', 'Flashcards to review', 'cardsAt') : '') +
+      (on('focus') ? tick('timer', 'When a focus session or break ends') : '') + '</div>' +
+      '<details class="nmore"><summary>Privacy</summary>' + tick('names', 'Show what\'s due on the lock screen') + '</details>' +
       (isAndroid() ? '<p class="dim" style="font-size:12px;margin:12px 0 0">' + (browserKind() === 'samsung' ? 'On a Samsung phone' : 'On Android') +
         ', reminders arrive even when ATLAS isn\'t installed or open. If they come late, open your phone\'s <b>Settings</b>, then <b>Battery</b>, then <b>Background usage limits</b>, and make sure ' +
         (browserKind() === 'samsung' ? 'Samsung Internet' : 'your browser') + ' isn\'t in <b>Sleeping apps</b> or <b>Deep sleeping apps</b>.</p>' : '') +
-      '<p class="dim" style="font-size:12px;margin:12px 0 0">The times follow your account to every device. Each device asks for its own permission. ' +
-      '<a href="privacy.html#reminders" target="_blank" rel="noopener">How reminders work</a></p>',
-    foot: (here ? '<button class="btn" data-act="noteTest">Send a test</button>' : '') + '<span class="spacer"></span><button class="btn p" data-close>Done</button>'
+      '<p class="dim" style="font-size:12px;margin:12px 0 0">Your choices follow you to every device. <a href="privacy.html#reminders" target="_blank" rel="noopener">How reminders work</a></p>',
+    foot: '<span class="spacer"></span><button class="btn p" data-close>Done</button>'
   });
   onModal(e => {
-    const k = e.target.closest('[data-nk]'); if (k && k.tagName === 'INPUT') setTimeout(() => noteSet(k.dataset.nk, k.checked), 0);
+    const k = e.target.closest('[data-nk]');
+    if (k && k.tagName === 'INPUT') setTimeout(() => {
+      noteSet(k.dataset.nk, k.checked);
+      const t = k.closest('.nsw') && k.closest('.nsw').querySelector('input[type=time]'); if (t) t.hidden = !k.checked;
+    }, 0);
   });
   $$('[data-nt]').forEach(i => i.addEventListener('change', () => { if (i.value) noteSet(i.dataset.nt, i.value); }));
 }
@@ -8583,7 +8695,8 @@ async function boot() {
   /* The first thing anyone sees is the sign-in screen; setup for a new desk comes after it.
      A link from one of ATLAS's emails (reset a password, confirm an address) opens on top. */
   const link = actionLink();
-  if (needGate() && !link) openGate(); else afterGate();
+  if (confirmPending() && !link) { GATE.email = Local.acct.email; openGate({ view: 'confirm', back: false }); }
+  else if (needGate() && !link) openGate(); else afterGate();
   if (link) handleAction(link);
   else if (!GATE.open) launchShortcut();
   if (lockSet() && !link) lockShow();
