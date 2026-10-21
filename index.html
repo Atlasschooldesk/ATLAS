@@ -99,9 +99,10 @@ a{color:var(--ultra)}
   min-height:0; z-index:40;
 }
 .brand{display:flex;align-items:center;gap:10px;padding:16px 16px 12px}
+:root{--logo:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%2232 32 960 960%22%3E%3Cdefs%3E %3ClinearGradient id=%22bg%22 x1=%2296%22 y1=%2270%22 x2=%22928%22 y2=%22954%22 gradientUnits=%22userSpaceOnUse%22%3E %3Cstop stop-color=%22%23163B6A%22/%3E %3Cstop offset=%221%22 stop-color=%22%2307192F%22/%3E %3C/linearGradient%3E %3ClinearGradient id=%22accent%22 x1=%22390%22 y1=%22250%22 x2=%22640%22 y2=%22780%22 gradientUnits=%22userSpaceOnUse%22%3E %3Cstop stop-color=%22%2362D9FF%22/%3E %3Cstop offset=%221%22 stop-color=%22%23159BE0%22/%3E %3C/linearGradient%3E %3C/defs%3E %3Crect x=%2232%22 y=%2232%22 width=%22960%22 height=%22960%22 rx=%22216%22 fill=%22url(%23bg)%22/%3E %3Cpath d=%22M512 174 276 786h132l50-132h108l50 132h132L512 174Zm0 180 55 166H457Z%22 fill=%22%23fff%22/%3E %3Cpath d=%22M512 184 587 359 512 326 437 359Z%22 fill=%22url(%23accent)%22/%3E %3Cpath d=%22M400 525h224M429 604h166%22 fill=%22none%22 stroke=%22%230D3158%22 stroke-width=%2232%22 stroke-linecap=%22round%22/%3E %3Ccircle cx=%22512%22 cy=%22417%22 r=%2220%22 fill=%22%2362D9FF%22/%3E%3C/svg%3E")}
 .mark{
   width:30px;height:30px;border-radius:7px;flex:none;display:block;
-  background:#0B2340 url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%2232 32 960 960%22%3E%3Cdefs%3E %3ClinearGradient id=%22bg%22 x1=%2296%22 y1=%2270%22 x2=%22928%22 y2=%22954%22 gradientUnits=%22userSpaceOnUse%22%3E %3Cstop stop-color=%22%23163B6A%22/%3E %3Cstop offset=%221%22 stop-color=%22%2307192F%22/%3E %3C/linearGradient%3E %3ClinearGradient id=%22accent%22 x1=%22390%22 y1=%22250%22 x2=%22640%22 y2=%22780%22 gradientUnits=%22userSpaceOnUse%22%3E %3Cstop stop-color=%22%2362D9FF%22/%3E %3Cstop offset=%221%22 stop-color=%22%23159BE0%22/%3E %3C/linearGradient%3E %3C/defs%3E %3Crect x=%2232%22 y=%2232%22 width=%22960%22 height=%22960%22 rx=%22216%22 fill=%22url(%23bg)%22/%3E %3Cpath d=%22M512 174 276 786h132l50-132h108l50 132h132L512 174Zm0 180 55 166H457Z%22 fill=%22%23fff%22/%3E %3Cpath d=%22M512 184 587 359 512 326 437 359Z%22 fill=%22url(%23accent)%22/%3E %3Cpath d=%22M400 525h224M429 604h166%22 fill=%22none%22 stroke=%22%230D3158%22 stroke-width=%2232%22 stroke-linecap=%22round%22/%3E %3Ccircle cx=%22512%22 cy=%22417%22 r=%2220%22 fill=%22%2362D9FF%22/%3E%3C/svg%3E") center/100% 100% no-repeat;
+  background:#0B2340 var(--logo) center/100% 100% no-repeat;
   box-shadow:0 1px 2px rgba(7,25,47,.25);
 }
 .brand b{font-family:var(--display);font-size:19px;letter-spacing:-.03em}
@@ -130,6 +131,13 @@ a{color:var(--ultra)}
 .sidefoot{border-top:1px solid var(--rule);padding:8px 10px;display:flex;gap:6px;align-items:center}
 .acct{display:flex;align-items:center;gap:9px;flex:1;min-width:0;padding:5px 7px;border-radius:var(--r2);transition:background .12s;text-align:left}
 .acct:hover{background:var(--panel3)}
+.sidefoot{flex-wrap:wrap}
+.modesw{order:-1;display:flex;width:100%;gap:2px;padding:2px;border-radius:10px;background:var(--panel3);border:1px solid var(--rule)}
+.modesw[hidden]{display:none}
+.modesw button{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;height:30px;padding:0 8px;border-radius:8px;color:var(--ink3);font-size:12.5px;font-weight:600}
+.modesw button svg{width:15px;height:15px;flex:none}
+.modesw button.on{background:var(--panel);color:var(--ultra);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.modesw button:not(.on):hover{color:var(--ink)}
 .ava{width:27px;height:27px;border-radius:9px;flex:none;display:grid;place-items:center;background:var(--ultra);color:#fff;font-family:var(--display);font-weight:800;font-size:12.5px}
 .an{min-width:0;line-height:1.25}
 .an b{display:block;font-size:12.5px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -308,6 +316,72 @@ hr.rule{border:none;border-top:1px solid var(--rule);margin:16px 0}
 .rv-lines{color:var(--ink2);font-size:13.5px;line-height:1.55;margin:0 auto 16px;max-width:440px}
 .rv-big small{display:block;font-size:12.5px;color:var(--ink3);margin-top:2px}
 .deckhead{margin-bottom:14px;flex-wrap:wrap;gap:8px}
+.sv-sched{margin-top:8px}
+.sv-pills{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:10px}
+.sv-copy{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:14px;padding-top:12px;border-top:1px solid var(--rule);font-size:13px}
+.sv-dchip{padding:5px 10px;border-radius:16px;border:1px solid var(--rule2);font-size:12.5px;font-weight:600;color:var(--ink2)}
+.sv-dchip.on{background:var(--ultra);border-color:var(--ultra);color:#fff}
+.schhead{margin-bottom:14px;flex-wrap:wrap;gap:8px}
+.schday{display:flex;flex-direction:column;min-width:0;padding:0 4px}
+.schday b{font-family:var(--display);font-size:20px;letter-spacing:-.03em;line-height:1.1}
+.schday span{font-size:12.5px;color:var(--ink3)}
+.schgrid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:16px;align-items:start}
+.schside{display:flex;flex-direction:column;gap:14px}
+.schnow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:11px 14px;margin-bottom:12px;border-radius:var(--r2);background:var(--panel);border:1px solid var(--rule);font-size:14px}
+.schnow.done{background:var(--panel2)}
+.sched .list{padding:4px 0}
+.sblock{display:flex;gap:14px;padding:12px 16px;border-bottom:1px solid var(--rule);position:relative}
+.sblock:last-child{border-bottom:none}
+.sblock::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:4px;border-radius:0 4px 4px 0;background:var(--tc,var(--rule2))}
+.sblock.other::before{background:var(--rule2)}
+.sblock.other .sname{color:var(--ink2);font-weight:600}
+.sblock.past{opacity:.55}
+.sblock.now{background:color-mix(in srgb,var(--tc,var(--ultra)) 7%,var(--panel))}
+.stime{width:74px;flex:none;display:flex;flex-direction:column;font-variant-numeric:tabular-nums}
+.stime b{font-size:14px}
+.stime span{font-size:12px;color:var(--ink3)}
+.sbody{flex:1;min-width:0}
+.sname{display:flex;align-items:center;gap:8px;font-weight:700;font-size:15px}
+.linkish{font:inherit;color:inherit;padding:0;text-align:left}
+.linkish:hover{text-decoration:underline}
+.smeta{font-size:12.5px;color:var(--ink3);margin-top:1px}
+.sres{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:8px;font-size:12.5px}
+.sres .chip{font-weight:500}
+.sadd{font-size:12.5px;margin-top:6px}
+.sdue{display:flex;align-items:center;gap:6px;margin-top:8px;font-size:12.5px;color:var(--crimson);font-weight:600}
+.sdue svg{width:14px;height:14px}
+.sprog{margin-top:10px;height:4px}
+.sprog i{background:var(--tc,var(--ultra))}
+.sgap{padding:6px 16px 6px 104px;font-size:12px;color:var(--ink3);border-bottom:1px dashed var(--rule)}
+.item.bring{cursor:pointer;align-items:center}
+.item.bring input{flex:none}
+.item.bring.done .ttl{text-decoration:line-through;color:var(--ink3)}
+.bringadd{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12.5px;border-top:1px solid var(--rule)}
+.bringadd .chip{cursor:pointer;background:color-mix(in srgb,var(--tc) 12%,var(--panel));color:var(--tc)}
+.clsres{margin-top:10px}
+.schedit .schpills{display:flex;gap:4px;padding:10px;border-bottom:1px solid var(--rule);overflow-x:auto}
+.schpill{display:flex;align-items:center;gap:6px;padding:7px 12px;border-radius:20px;font-weight:600;font-size:13px;color:var(--ink2);white-space:nowrap}
+.schpill:hover{background:var(--panel3)}
+.schpill.on{background:var(--ultra);color:#fff}
+.schpill i{font-style:normal;font-size:11px;min-width:18px;height:18px;border-radius:9px;display:grid;place-items:center;background:var(--panel3);color:var(--ink2)}
+.schpill.on i{background:rgba(255,255,255,.25);color:#fff}
+.schedh{font-size:16px;margin:0 0 10px}
+.schrow{display:grid;grid-template-columns:auto minmax(150px,1.2fr) minmax(110px,1fr) 34px;gap:8px;align-items:center;padding:8px 0;border-top:1px solid var(--rule)}
+.schrow:first-child{border-top:none}
+.schrow [hidden]{display:none !important}
+.schrow:has(.rL:not([hidden])){grid-template-columns:auto minmax(130px,1fr) minmax(120px,1fr) minmax(90px,.8fr) 34px}
+.schtimes{display:flex;align-items:center;gap:6px}
+.schtimes input{width:auto}
+.schrow.bad{background:var(--crimsonSoft);border-radius:var(--r2);padding-left:8px;padding-right:8px}
+.schempty{font-size:13.5px;margin:0}
+@media (max-width:900px){.schgrid{grid-template-columns:1fr}}
+@media (max-width:640px){
+  .schrow,.schrow:has(.rL:not([hidden])){grid-template-columns:1fr 34px;gap:6px;padding:12px 0}
+  .schrow .schtimes{grid-column:1;grid-row:1}
+  .schrow .dg{grid-column:2;grid-row:1}
+  .schrow .rW,.schrow .rL,.schrow .rR{grid-column:1 / -1}
+  .sgap{padding-left:16px}
+}
 .deck-test{display:flex;align-items:center;gap:6px;margin-top:10px;padding-top:9px;border-top:1px solid var(--rule);font-size:12px;color:var(--ink2);font-weight:600}
 .deck-test svg{width:14px;height:14px;color:var(--ink2);flex:none}
 .kbhint{font-family:var(--mono);font-size:10px;opacity:.7;margin-left:6px}
@@ -602,6 +676,7 @@ details.adv .advb{padding-top:10px}
 .pv-brand{display:flex;align-items:center;gap:6px;margin:0 0 9px 3px}
 .pv-brand i{width:16px;height:16px;border-radius:5px;background:var(--ultra);color:#fff;display:grid;place-items:center;font-style:normal;font-family:var(--display);font-weight:800;font-size:9.5px}
 .pv-brand b{font-family:var(--display);font-size:11.5px;letter-spacing:-.02em}
+.pv-brand i.mark{background:#0B2340 var(--logo) center/100% 100% no-repeat;border-radius:4px}
 .pv-n{display:flex;align-items:center;gap:6px;padding:4px 6px;border-radius:6px;color:var(--ink2);white-space:nowrap;overflow:hidden;animation:pvIn .3s both}
 .pv-n svg{width:11px;height:11px;flex:none;stroke-width:2}
 .pv-n.on{background:var(--ultraSoft);color:var(--ultra);font-weight:600}
@@ -1067,6 +1142,7 @@ button.acc-row:hover{background:var(--panel2)}
         <span class="ava" id="acctAva">A</span>
         <span class="an"><b id="acctName">My school</b><span class="syncstate saved" id="saveState">Saved</span></span>
       </button>
+      <div class="modesw" id="modeSw" role="group" aria-label="School or work" hidden></div>
     </div>
   </aside>
 
@@ -1867,7 +1943,7 @@ function newCards(deck, day) {
   return fresh.slice(0, Math.max(0, per - started));
 }
 function studyCount(deck, day) { return dueCards(deck, day).length + newCards(deck, day).length; }
-function allStudyCount(day) { return S.decks.reduce((a, d) => a + studyCount(d, day), 0); }
+function allStudyCount(day) { return MY('decks').reduce((a, d) => a + studyCount(d, day), 0); }
 function splitLabel(due, nw) { return [due ? due + ' to review' : '', nw ? nw + ' new' : ''].filter(Boolean).join(' · '); }
 function nextReviewDay(deck) {
   const t = today(); let n = null;
@@ -1935,8 +2011,8 @@ function meetingsOn(cls, day) {
 }
 function dayAgenda(day, skipAuto) {
   const out = [];
-  S.classes.forEach(c => out.push(...meetingsOn(c, day)));
-  S.events.filter(e => e.date === day && !(skipAuto && e.auto)).forEach(e => out.push(e));
+  MY('classes').forEach(c => out.push(...meetingsOn(c, day)));
+  MY('events').filter(e => e.date === day && !(skipAuto && e.auto)).forEach(e => out.push(e));
   return out.sort((a, b) => toMin(a.start) - toMin(b.start));
 }
 
@@ -1945,7 +2021,7 @@ function busyOn(day, skipAuto) {
   return dayAgenda(day, skipAuto).map(e => [toMin(e.start), toMin(e.end)]).sort((a, b) => a[0] - b[0]);
 }
 function freeSlots(day, minLen, skipAuto) {
-  const s = toMin(S.settings.dayStart), e = toMin(S.settings.dayEnd);
+  const s = toMin(ms().dayStart), e = toMin(ms().dayEnd);
   const busy = busyOn(day, skipAuto), free = [];
   let cur = s;
   if (day === today()) cur = Math.max(cur, Math.ceil(nowMin() / 15) * 15);
@@ -2013,7 +2089,7 @@ function planStudy(tasks, opts) {
   return proposed;
 }
 function doneMinutes(t) {
-  return S.sessions.filter(s => s.taskId === t.id).reduce((a, s) => a + s.minutes, 0);
+  return MY('sessions').filter(s => s.taskId === t.id).reduce((a, s) => a + s.minutes, 0);
 }
 
 /* 4d. grades */
@@ -2039,7 +2115,7 @@ const LETTERS = [[93, 'A', 4], [90, 'A-', 3.7], [87, 'B+', 3.3], [83, 'B', 3], [
 function letterFor(p) { return (LETTERS.find(l => p >= l[0]) || LETTERS[LETTERS.length - 1])[1]; }
 function pointsFor(p) { return (LETTERS.find(l => p >= l[0]) || LETTERS[LETTERS.length - 1])[2]; }
 function gpa() {
-  const g = S.classes.map(c => ({ p: classGrade(c), cr: +c.credits || 1 })).filter(x => x.p != null);
+  const g = MY('classes').map(c => ({ p: classGrade(c), cr: +c.credits || 1 })).filter(x => x.p != null);
   if (!g.length) return null;
   const tot = g.reduce((a, x) => a + x.cr, 0);
   return g.reduce((a, x) => a + pointsFor(x.p) * x.cr, 0) / tot;
@@ -2153,17 +2229,17 @@ function ingest(evs, opts) {
       if (hit) classId = hit.id;
     }
     if (classifyICS(ev) === 'task') {
-      S.tasks.push({
+      S.tasks.push(...mkAll({
         id: uid(), uid: ev.uid, classId, title: sp.title, due: ev.start, dueTime: ev.startTime,
         est: guessEst(sp.title), done: false, priority: 1, notes: (ev.desc || '').slice(0, 400), source: 'ics'
-      });
+      }));
       addedT++;
     } else {
-      S.events.push({
+      S.events.push(...mkAll({
         id: uid(), uid: ev.uid, classId, kind: 'event', title: sp.title, date: ev.start,
         start: ev.startTime || '09:00', end: ev.endTime || toHHMM(toMin(ev.startTime || '09:00') + 60),
         notes: (ev.desc || '').slice(0, 400), source: 'ics'
-      });
+      }));
       addedE++;
     }
     if (ev.uid) known.add(ev.uid);
@@ -2228,7 +2304,7 @@ function gcalLink(it) {
 }
 function exportAllICS() {
   const items = [];
-  S.classes.forEach(c => (c.meets || []).forEach(m => {
+  MY('classes').forEach(c => (c.meets || []).forEach(m => {
     const first = nextDow(c.startDate || today(), m.day);
     items.push({
       id: c.id + m.day + m.start, title: c.name, date: first, start: m.start, end: m.end,
@@ -2236,8 +2312,8 @@ function exportAllICS() {
       rrule: 'FREQ=WEEKLY;BYDAY=' + ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'][m.day] + (c.endDate ? ';UNTIL=' + c.endDate.replace(/-/g, '') + 'T235900Z' : ';COUNT=18')
     });
   }));
-  S.events.forEach(e => items.push({ id: e.id, title: (e.kind === 'block' ? 'Study: ' : '') + e.title, date: e.date, start: e.start, end: e.end, notes: e.notes || '' }));
-  S.tasks.filter(t => !t.done && t.due).forEach(t => items.push({
+  MY('events').forEach(e => items.push({ id: e.id, title: (e.kind === 'block' ? wk('Study: ', 'Focus: ') : '') + e.title, date: e.date, start: e.start, end: e.end, notes: e.notes || '' }));
+  MY('tasks').filter(t => !t.done && t.due).forEach(t => items.push({
     id: t.id, title: 'Due: ' + t.title, date: t.due, start: t.dueTime || '', end: t.dueTime ? toHHMM(toMin(t.dueTime) + 30) : '',
     allDay: !t.dueTime, notes: t.notes || ''
   }));
@@ -2253,17 +2329,17 @@ function nextDow(from, dw) {
 const cls = id => S.classes.find(c => c.id === id) || null;
 const clsColor = id => { const c = cls(id); return c ? c.color : 'var(--ink3)'; };
 const clsName = id => { const c = cls(id); return c ? c.name : 'Unfiled'; };
-function openTasks() { return S.tasks.filter(t => !t.done); }
+function openTasks() { return MY('tasks').filter(t => !t.done); }
 function overdue() { return openTasks().filter(t => t.due && t.due < today()); }
 function dueWithin(n) { const lim = addDays(today(), n); return openTasks().filter(t => t.due && t.due >= today() && t.due <= lim); }
 function streak() {
-  const days = new Set(S.sessions.map(s => s.date));
+  const days = new Set(MY('sessions').map(s => s.date));
   let n = 0, d = today();
   if (!days.has(d)) d = addDays(d, -1);
   while (days.has(d)) { n++; d = addDays(d, -1); }
   return n;
 }
-function minutesOn(day) { return S.sessions.filter(s => s.date === day).reduce((a, s) => a + s.minutes, 0); }
+function minutesOn(day) { return MY('sessions').filter(s => s.date === day).reduce((a, s) => a + s.minutes, 0); }
 
 /* ---------- 5. ui primitives ---------- */
 const ICONS = {
@@ -2300,6 +2376,7 @@ const ICONS = {
   key: '<circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 7l3 3M14 9l2 2"/>',
   lock: '<rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 018 0v3"/>',
   bell: '<path d="M6 16.5V11a6 6 0 0112 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 004 0"/>',
+  briefcase: '<rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7M3 12.5h18"/>',
   flag: '<path d="M5 21V4"/><path d="M5 4.5h11.5l-2.2 4 2.2 4H5"/>',
   chat: '<path d="M4.5 5.5h15a1.5 1.5 0 011.5 1.5v9a1.5 1.5 0 01-1.5 1.5H10l-4.5 3.5V17.5h-1A1.5 1.5 0 013 16V7a1.5 1.5 0 011.5-1.5z"/><path d="M8 10h8M8 13.5h5"/>',
   send: '<path d="M4 12l16-7.5L13.5 20l-2.5-6.5z"/><path d="M11 13.5l9-9"/>',
@@ -2414,6 +2491,7 @@ function pickCalendar(cb) {
 /* ---------- router ---------- */
 const VIEWS = {
   today: { title: 'Today', icon: 'today' },
+  schedule: { title: 'Today\'s Schedule', icon: 'clock' },
   calendar: { title: 'Calendar', icon: 'calendar' },
   tasks: { title: 'Assignments', icon: 'tasks' },
   notes: { title: 'Notebooks', icon: 'book' },
@@ -2451,6 +2529,7 @@ function render() {
   const body = (() => {
     switch (V.name) {
       case 'today': return viewToday();
+      case 'schedule': return viewSchedule();
       case 'calendar': return viewCalendar();
       case 'tasks': return viewTasks();
       case 'notes': return viewNotes();
@@ -2466,6 +2545,7 @@ function render() {
   })();
   if (V.name === 'today') sub = new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' });
   if (V.name === 'notes' && V.param) sub = clsName(V.param);
+  if (V.name === 'schedule' && typeof matchMedia === 'function' && matchMedia('(max-width: 640px)').matches) title = 'Schedule';
   $('#vTitle').textContent = title;
   $('#vSub').textContent = sub;
   $('#view').innerHTML = body;
@@ -2476,6 +2556,7 @@ function render() {
   if (V.name === 'settings') mountSettings();
   if (V.name === 'tutor') mountTutor();
   if (V.name === 'cards' && V.param) mountDeck();
+  if (V.name === 'schedule' && V.sub === 'edit') mountScheduleEdit();
   paintAdd();
 }
 /* The + button does the obvious thing for the page you are on; the arrow beside
@@ -2485,7 +2566,7 @@ function addPrimary() {
   if (V.name === 'calendar' && on('calendar')) return { label: 'Block time', run: () => ACT.newEvent() };
   if (V.name === 'tasks' && on('tasks')) return { label: w.task, run: () => taskModal() };
   if (V.name === 'notes' && on('notes')) return { label: 'Page', run: () => ACT.newNote({ dataset: { class: V.param || '' } }) };
-  if (V.name === 'cards' && on('cards')) return V.param && S.decks.some(d => d.id === V.param) ? { label: 'Card', run: () => cardModal(V.param, null) } : { label: 'Deck', run: () => deckModal() };
+  if (V.name === 'cards' && on('cards')) return V.param && MY('decks').some(d => d.id === V.param) ? { label: 'Card', run: () => cardModal(V.param, null) } : { label: 'Deck', run: () => deckModal() };
   return null;
 }
 function addItems() {
@@ -2493,12 +2574,12 @@ function addItems() {
   const d = cid ? { class: cid } : {};
   return [
     on('tasks') && { act: 'newTask', icon: 'tasks', label: w.task, data: d },
-    on('notes') && { act: 'newNote', icon: 'book', label: 'Notebook page', data: d },
+    on('notes') && { act: 'newNote', icon: 'book', label: wk('Notebook page', 'Note'), data: d },
     on('cards') && { act: 'newDeck', icon: 'cards', label: 'Flashcard deck', data: d },
     on('calendar') && { act: 'newEvent', icon: 'calendar', label: 'Time block' },
-    { act: 'newClass', icon: 'school', label: w.cls },
+    { act: 'newClass', icon: wk('school', 'briefcase'), label: w.cls },
     (on('tasks') || on('calendar')) && '-',
-    (on('tasks') || on('calendar')) && { act: 'importICS', icon: 'down', label: 'Import a school calendar' }
+    (on('tasks') || on('calendar')) && { act: 'importICS', icon: 'down', label: wk('Import a school calendar', 'Import a calendar') }
   ];
 }
 function paintAdd() {
@@ -2544,28 +2625,35 @@ function closePop() {
 function togglePop(anchor, items) { if (POP.anchor === anchor) return closePop(); popMenu(anchor, items); }
 function renderNav() {
   const w = W();
-  const main = ['today'].concat(['calendar', 'tasks', 'notes'].filter(viewOn));
+  const main = ['today'].concat(['schedule', 'calendar', 'tasks', 'notes'].filter(viewOn));
   const tools = ['cards', 'tutor', 'grades', 'break'].filter(viewOn).concat(['settings']);
   const counts = { tasks: openTasks().filter(t => t.due && t.due <= addDays(today(), 2)).length, cards: allStudyCount() };
   const btn = n => '<button class="nav' + (V.name === n ? ' on' : '') + '" data-go="' + n + '">' + ic(VIEWS[n].icon) + '<span>' + esc(viewTitle(n)) + '</span>' +
     (counts[n] ? '<span class="cnt">' + counts[n] + '</span>' : '') + '</button>';
   $('#navMain').innerHTML = main.map(btn).join('');
   $('#navTools').innerHTML = tools.map(btn).join('');
-  $('#navClasses').innerHTML = S.classes.length
-    ? S.classes.map(c => '<button class="tab' + (V.name === 'class' && V.param === c.id ? ' on' : '') + '" style="--tc:' + c.color + '" data-class="' + c.id + '"><span class="tt">' + esc(c.name) + '</span><span class="tcode">' + esc(c.code || '') + '</span></button>').join('')
+  $('#navClasses').innerHTML = MY('classes').length
+    ? MY('classes').map(c => '<button class="tab' + (V.name === 'class' && V.param === c.id ? ' on' : '') + '" style="--tc:' + c.color + '" data-class="' + c.id + '"><span class="tt">' + esc(c.name) + '</span><span class="tcode">' + esc(c.code || '') + '</span></button>').join('')
     : '<div class="dim" style="padding:6px 10px;font-size:12px">No ' + w.clsP.toLowerCase() + ' yet.</div>';
   const lbl = $('#navClsLabel'); if (lbl) lbl.textContent = w.clsP;
   const acb = $('#addClassBtn'); if (acb) acb.title = 'Add a ' + w.cls.toLowerCase();
   /* the phone bar holds six tabs plus Settings; the rest stay one tap away in the menu */
-  const SHORT = { today: 'Today', calendar: 'Cal', tasks: w.short, notes: 'Notes', cards: 'Cards', tutor: 'Tutor', grades: 'Grades', break: 'Break', settings: 'Settings' };
-  const mob = ['today'].concat(['calendar', 'tasks', 'notes', 'cards', 'tutor', 'grades', 'break'].filter(viewOn));
-  ['break', 'grades', 'cards', 'tutor', 'notes'].forEach(n => { if (mob.length > 6 && mob.indexOf(n) >= 0) mob.splice(mob.indexOf(n), 1); });
+  const SHORT = { today: 'Today', schedule: 'Schedule', calendar: 'Cal', tasks: w.short, notes: 'Notes', cards: 'Cards', tutor: wk('Tutor', 'AI'), grades: wk('Grades', 'Scores'), break: 'Break', settings: 'Settings' };
+  const mob = ['today'].concat(['schedule', 'calendar', 'tasks', 'notes', 'cards', 'tutor', 'grades', 'break'].filter(viewOn));
+  ['break', 'grades', 'tutor', 'calendar', 'cards', 'notes'].forEach(n => { if (mob.length > 6 && mob.indexOf(n) >= 0) mob.splice(mob.indexOf(n), 1); });
   mob.push('settings');
   const mn = $('#mobnav');
   mn.style.gridTemplateColumns = 'repeat(' + mob.length + ',1fr)';
   mn.innerHTML = mob.map(n => '<button class="' + (V.name === n ? 'on' : '') + '" data-go="' + n + '">' + ic(VIEWS[n].icon) + '<span>' + esc(SHORT[n]) + '</span></button>').join('');
   const fb = $('#focusBar'); if (fb) fb.classList.toggle('hidden', !on('focus'));
-  $('#termLabel').textContent = S.profile.term || 'your school desk';
+  $('#termLabel').textContent = termLabel();
+  const sw = $('#modeSw');
+  if (sw) {
+    sw.hidden = uses() !== 'both';
+    sw.innerHTML = [['school', 'School', 'school'], ['work', 'Work', 'briefcase']].map(x => '<button type="button" data-act="setMode" data-m="' + x[0] + '"' + (M() === x[0] ? ' class="on" aria-pressed="true"' : ' aria-pressed="false"') +
+      ' title="' + (M() === x[0] ? 'You\'re on the ' + x[1].toLowerCase() + ' side' : 'Switch to ' + x[1].toLowerCase()) + '" aria-label="' + x[1] + '">' + ic(x[2]) + '<span>' + x[1] + '</span></button>').join('');
+  }
+  document.body.classList.toggle('work', isWork());
   const an = $('#acctName'), av = $('#acctAva');
   if (an && Sync.profile) an.textContent = acctName() || Sync.profile.name;
   if (av) av.innerHTML = avatarHTML();
@@ -2598,14 +2686,14 @@ function viewToday() {
     '<div class="cols2' + (pool.length > 1 ? '' : ' one') + '">' + pool.slice(0, 2).map(x => '<div>' + x + '</div>').join('') + '</div></div>';
 }
 function homeView() {
-  const h = S.settings.home;
+  const h = ms().home;
   if (HOMES[h] && on(HOMES[h].need)) return h;
   return Object.keys(HOMES).find(k => on(HOMES[k].need)) || 'none';
 }
 /* One quiet line instead of a wall of stat tiles: each part is a shortcut. */
 function glance() {
   const p = persona(), bits = [];
-  if (S.profile.term) bits.push('<span class="g-term">' + esc(S.profile.term) + '</span>');
+  if (isWork() ? ms().term : S.profile.term) bits.push('<span class="g-term">' + esc(termLabel()) + '</span>');
   if (p) bits.push('<button class="g-persona" data-act="acct" title="' + esc(p.line) + '">' + ic('spark') + esc(p.title) + '</button>');
   if (on('tasks')) {
     const od = overdue().length, wk = dueWithin(7).length;
@@ -2618,7 +2706,7 @@ function glance() {
   return bits.length ? '<div class="glance">' + bits.join('') + '</div>' : '';
 }
 function todayRibbon(agenda, nm) {
-  const ds = toMin(S.settings.dayStart), de = toMin(S.settings.dayEnd), span = Math.max(de - ds, 60);
+  const ds = toMin(ms().dayStart), de = toMin(ms().dayEnd), span = Math.max(de - ds, 60);
   const pos = m => clamp(((m - ds) / span) * 100, 0, 100);
   const hours = [];
   for (let h = Math.ceil(ds / 60); h * 60 < de; h += 2) hours.push(h);
@@ -2653,10 +2741,10 @@ function focusHero(agenda, nm) {
     '<button class="btn p" data-act="zen">' + ic('timer') + (T.running ? 'Open focus mode' : 'Start focusing') + '</button></div></div></div>';
 }
 function notesCard(hero) {
-  const ns = S.notes.slice().sort((a, b) => (b.updated || 0) - (a.updated || 0)).slice(0, hero ? 3 : 5);
-  const head = '<div class="cardhead">' + ic('book', 'width:15px;height:15px') + '<h3>' + (hero ? 'Pick up where you left off' : 'Recent pages') + '</h3><span class="spacer"></span>' +
-    (ns.length ? '<button class="btn g sm" data-go="notes">All pages</button>' : '') + '</div>';
-  if (!ns.length) return '<div class="card' + (hero ? ' hero' : '') + '">' + head + '<div class="empty"><p>No pages yet. Start one and it saves as you type.</p><button class="btn" data-act="newNote">Start a page</button></div></div>';
+  const ns = MY('notes').slice().sort((a, b) => (b.updated || 0) - (a.updated || 0)).slice(0, hero ? 3 : 5);
+  const head = '<div class="cardhead">' + ic('book', 'width:15px;height:15px') + '<h3>' + (hero ? 'Pick up where you left off' : wk('Recent pages', 'Recent notes')) + '</h3><span class="spacer"></span>' +
+    (ns.length ? '<button class="btn g sm" data-go="notes">' + wk('All pages', 'All notes') + '</button>' : '') + '</div>';
+  if (!ns.length) return '<div class="card' + (hero ? ' hero' : '') + '">' + head + '<div class="empty"><p>' + wk('No pages yet.', 'No notes yet.') + ' Start one and it saves as you type.</p><button class="btn" data-act="newNote">Start a page</button></div></div>';
   const col = n => n.classId ? clsColor(n.classId) : 'var(--rule2)';
   if (hero) return '<div class="card hero">' + head + '<div class="pad ntiles">' + ns.map(n =>
     '<button class="ntile" data-act="openNote" data-id="' + n.id + '" style="--tc:' + col(n) + '"><span class="eyebrow">' + esc(n.classId ? clsName(n.classId) : 'Unfiled') + '</span>' +
@@ -2668,12 +2756,12 @@ function notesCard(hero) {
 }
 function reviewCard(hero) {
   const day = today();
-  const decks = S.decks.map(dk => ({ dk, due: dueCards(dk, day).length, nw: newCards(dk, day).length, test: nextTest(dk, day) }))
+  const decks = MY('decks').map(dk => ({ dk, due: dueCards(dk, day).length, nw: newCards(dk, day).length, test: nextTest(dk, day) }))
     .sort((a, b) => (b.due + b.nw) - (a.due + a.nw));
   const due = decks.reduce((a, x) => a + x.due, 0), nw = decks.reduce((a, x) => a + x.nw, 0), total = due + nw;
   const head = '<div class="cardhead">' + ic('cards', 'width:15px;height:15px') + '<h3>' + (hero ? 'Flashcards' : 'Your decks') + '</h3><span class="spacer"></span>' +
     (!hero && total ? '<button class="btn p sm" data-act="reviewAll">Study ' + total + '</button>' : '') + '<button class="btn g sm" data-go="cards">All decks</button></div>';
-  if (!S.decks.length) return '<div class="card' + (hero ? ' hero' : '') + '">' + head + '<div class="empty"><p>No decks yet. Make one by hand, paste a term list, or turn a page of notes into cards.</p><button class="btn" data-act="newDeck">New deck</button></div></div>';
+  if (!MY('decks').length) return '<div class="card' + (hero ? ' hero' : '') + '">' + head + '<div class="empty"><p>No decks yet. Make one by hand, paste a term list, or turn a page of notes into cards.</p><button class="btn" data-act="newDeck">New deck</button></div></div>';
   const next = nextReviewDay();
   const lead = total
     ? '<div class="rv-big"><b>' + total + '</b><span>' + (total === 1 ? 'card' : 'cards') + ' to study today<small>' + splitLabel(due, nw) + '</small></span></div><button class="btn p" data-act="reviewAll">Study now</button>'
@@ -2690,7 +2778,7 @@ function classesCard() {
   const w = W();
   const meetsText = c => (c.meets || []).map(m => DAYS[m.day] + ' ' + fmt12(m.start)).join(', ');
   return '<div class="card"><div class="cardhead">' + ic('book', 'width:15px;height:15px') + '<h3>Your ' + w.clsP.toLowerCase() + '</h3></div>' +
-    (S.classes.length ? '<div class="list">' + S.classes.map(c => {
+    (MY('classes').length ? '<div class="list">' + MY('classes').map(c => {
       const g = on('grades') ? classGrade(c) : null;
       return '<button class="item" data-act="openClass" data-id="' + c.id + '" style="width:100%;text-align:left"><span class="dot" style="--tc:' + c.color + ';margin-top:6px"></span>' +
         '<div style="flex:1;min-width:0"><div class="ttl">' + esc(c.name) + '</div><div class="meta">' + esc(meetsText(c) || c.code || 'No meeting times yet') + '</div></div>' +
@@ -2699,7 +2787,11 @@ function classesCard() {
       : '<div class="empty"><p>No ' + w.clsP.toLowerCase() + ' yet.</p><button class="btn" data-act="newClass">Add a ' + w.cls.toLowerCase() + '</button></div>') + '</div>';
 }
 function setupNudge() {
-  if (S.settings.setupDone || S.settings.setupNudge === false) return '';
+  if (ms().setupDone || ms().setupNudge === false) return '';
+  if (isWork()) return '<div class="card hero nudge"><div class="pad row" style="gap:14px;flex-wrap:wrap"><span class="nudge-ic">' + ic('briefcase') + '</span>' +
+    '<div style="flex:1;min-width:220px"><b style="font-size:15px">Set up your work side</b><div class="muted" style="font-size:13px;margin-top:2px">' +
+    'A few quick questions pick your tools, your hours, your projects and your week. Your school side stays exactly as it is.</div></div>' +
+    '<button class="btn g sm" data-act="nudgeOff">Not now</button><button class="btn p sm" data-act="survey">Set it up</button></div></div>';
   return '<div class="card hero nudge"><div class="pad row" style="gap:14px;flex-wrap:wrap"><span class="nudge-ic">' + ic('spark') + '</span>' +
     '<div style="flex:1;min-width:220px"><b style="font-size:15px">Make ATLAS fit how you study</b><div class="muted" style="font-size:13px;margin-top:2px">' +
     'A few quick questions pick your tabs, the words it uses, your focus rhythm and the look. Nothing you have saved is touched.</div></div>' +
@@ -2729,19 +2821,19 @@ function taskRow(t) {
 /* --- Class detail --- */
 function viewClass(c) {
   const w = W();
-  const tasks = S.tasks.filter(t => t.classId === c.id).sort((a, b) => (a.done - b.done) || String(a.due).localeCompare(String(b.due)));
-  const notes = S.notes.filter(n => n.classId === c.id).sort((a, b) => b.updated - a.updated);
-  const decks = S.decks.filter(d => d.classId === c.id);
+  const tasks = MY('tasks').filter(t => t.classId === c.id).sort((a, b) => (a.done - b.done) || String(a.due).localeCompare(String(b.due)));
+  const notes = MY('notes').filter(n => n.classId === c.id).sort((a, b) => b.updated - a.updated);
+  const decks = MY('decks').filter(d => d.classId === c.id);
   const g = on('grades') ? classGrade(c) : null;
   const meets = (c.meets || []).map(m => DAYS[m.day] + ' ' + fmt12(m.start) + '–' + fmt12(m.end)).join(' · ');
-  const mins = S.sessions.filter(s => s.classId === c.id).reduce((a, s) => a + s.minutes, 0);
+  const mins = MY('sessions').filter(s => s.classId === c.id).reduce((a, s) => a + s.minutes, 0);
   const figs = [];
   if (on('grades')) figs.push('<div><div class="eyebrow">Grade</div><div class="bigfig">' + (g == null ? '—' : gradeBig(g, c.color)) + '</div></div>');
   if (on('focus')) figs.push('<div><div class="eyebrow">Time logged</div><div class="bigfig">' + dur(mins) + '</div></div>');
   const cards = [];
   if (on('tasks')) cards.push('<div class="card"><div class="cardhead">' + ic('tasks', 'width:15px;height:15px') + '<h3>' + esc(w.taskP) + '</h3></div>' +
     '<div class="list">' + (tasks.length ? tasks.map(taskRow).join('') : '<div class="empty"><p>Nothing for this ' + w.cls.toLowerCase() + ' yet.</p><button class="linkbtn" data-act="newTask" data-class="' + c.id + '">Add ' + w.taskAn + '</button></div>') + '</div></div>');
-  if (on('notes')) cards.push('<div class="card"><div class="cardhead">' + ic('book', 'width:15px;height:15px') + '<h3>Notebook</h3></div>' +
+  if (on('notes')) cards.push('<div class="card"><div class="cardhead">' + ic('book', 'width:15px;height:15px') + '<h3>' + wk('Notebook', 'Notes') + '</h3></div>' +
     '<div class="list">' + (notes.length ? notes.slice(0, 6).map(n => '<button class="item" data-act="openNote" data-id="' + n.id + '" style="width:100%;text-align:left"><div style="flex:1;min-width:0"><div class="ttl">' + esc(n.title || 'Untitled') + '</div><div class="meta">' + esc((n.body || '').slice(0, 60).replace(/\n/g, ' ')) + '</div></div></button>').join('') : '<div class="empty"><p>No pages yet.</p><button class="linkbtn" data-act="newNote" data-class="' + c.id + '">Start a page</button></div>') + '</div></div>');
   if (on('cards')) cards.push('<div class="card"><div class="cardhead">' + ic('cards', 'width:15px;height:15px') + '<h3>Decks</h3></div>' +
     '<div class="list">' + (decks.length ? decks.map(d => '<button class="item" data-act="openDeck" data-id="' + d.id + '" style="width:100%;text-align:left"><div style="flex:1"><div class="ttl">' + esc(d.name) + '</div><div class="meta">' + d.cards.length + ' cards' + (studyCount(d) ? ' · ' + splitLabel(dueCards(d).length, newCards(d).length) : '') + '</div></div></button>').join('') : '<div class="empty"><p>No decks yet.</p><button class="linkbtn" data-act="newDeck" data-class="' + c.id + '">Make a deck</button></div>') + '</div></div>');
@@ -2750,7 +2842,9 @@ function viewClass(c) {
     '<div class="card spine" style="margin-bottom:16px"><div class="pad row" style="flex-wrap:wrap;gap:14px">' +
     '<div style="flex:1;min-width:200px"><div class="eyebrow">' + esc(c.code || w.cls) + (c.room ? ' · ' + esc(c.room) : '') + '</div>' +
     '<h2 style="font-size:26px;margin:2px 0 4px">' + esc(c.name) + '</h2>' +
-    '<div class="muted" style="font-size:13px">' + (meets || 'No meeting times set') + (c.teacher ? ' · ' + esc(c.teacher) : '') + '</div></div>' +
+    '<div class="muted" style="font-size:13px">' + (meets || 'No meeting times set') + (c.teacher ? ' · ' + esc(c.teacher) : '') + '</div>' +
+    '<div class="sres clsres"><span class="dim">' + wk('Bring', 'Need') + '</span>' + (classResources(c).length ? classResources(c).map(r => '<span class="chip">' + esc(r) + '</span>').join('') + '<button class="linkbtn" data-act="resEdit" data-id="' + c.id + '">Edit</button>'
+      : '<button class="linkbtn" data-act="resEdit" data-id="' + c.id + '">+ Add ' + bringWord().toLowerCase() + '</button>') + '</div></div>' +
     (figs.length ? '<div class="row" style="gap:20px">' + figs.join('') + '</div>' : '') +
     '<div class="row"><button class="btn sm" data-act="editClass" data-id="' + c.id + '">Edit ' + esc(w.cls.toLowerCase()) + '</button></div>' +
     '</div></div>' +
@@ -2761,16 +2855,16 @@ function viewClass(c) {
 /* --- Notebooks --- */
 function viewNotes() {
   const filter = V.param;
-  let notes = S.notes.slice().sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0) || b.updated - a.updated);
+  let notes = MY('notes').slice().sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0) || b.updated - a.updated);
   if (filter) notes = notes.filter(n => n.classId === filter);
   const active = V.sub && notes.find(n => n.id === V.sub) ? V.sub : (notes[0] ? notes[0].id : null);
   V.sub = active;
   const n = S.notes.find(x => x.id === active);
-  const tabs = !S.classes.length ? '' : '<div class="row" style="gap:6px;margin-bottom:12px;flex-wrap:wrap">' +
+  const tabs = !MY('classes').length ? '' : '<div class="row" style="gap:6px;margin-bottom:12px;flex-wrap:wrap">' +
     '<button class="btn sm' + (!filter ? ' p' : '') + '" data-act="filterNotes" data-id="">All</button>' +
-    S.classes.map(c => '<button class="btn sm' + (filter === c.id ? ' p' : '') + '" data-act="filterNotes" data-id="' + c.id + '" style="' + (filter === c.id ? 'background:' + c.color + ';border-color:' + c.color : 'border-left:3px solid ' + c.color) + '">' + esc(c.code || c.name) + '</button>').join('') + '</div>';
+    MY('classes').map(c => '<button class="btn sm' + (filter === c.id ? ' p' : '') + '" data-act="filterNotes" data-id="' + c.id + '" style="' + (filter === c.id ? 'background:' + c.color + ';border-color:' + c.color : 'border-left:3px solid ' + c.color) + '">' + esc(c.code || c.name) + '</button>').join('') + '</div>';
 
-  if (!notes.length) return '<div class="wrap">' + tabs + '<div class="card"><div class="empty"><h3>An empty notebook</h3><p>Pages autosave as you type — every keystroke, on every device. When a page is finished you can turn it straight into flashcards or a practice quiz.</p><button class="btn p" data-act="newNote" data-class="' + (filter || '') + '">Start a page</button></div></div></div>';
+  if (!notes.length) return '<div class="wrap">' + tabs + '<div class="card"><div class="empty"><h3>' + wk('An empty notebook', 'No notes yet') + '</h3><p>' + wk('Pages autosave as you type — every keystroke, on every device. When a page is finished you can turn it straight into flashcards or a practice quiz.', 'Notes autosave as you type, on every device. The assistant can summarize any note or turn it into a checklist.') + '</p><button class="btn p" data-act="newNote" data-class="' + (filter || '') + '">' + wk('Start a page', 'Start a note') + '</button></div></div></div>';
 
   const list = notes.map(x => '<button class="nbitem' + (x.id === active ? ' on' : '') + '" data-act="selNote" data-id="' + x.id + '">' +
     '<b>' + (x.pinned ? '★ ' : '') + esc(x.title || 'Untitled') + '</b>' +
@@ -2779,13 +2873,13 @@ function viewNotes() {
   const editor = n ? '<div class="card" style="' + (n.classId ? '--tc:' + clsColor(n.classId) : '') + '">' +
     '<div class="cardhead"><span class="dot"></span>' +
     '<select id="noteClass" style="width:auto;padding:3px 8px;font-size:12.5px;border-radius:8px"><option value="">Unfiled</option>' +
-    S.classes.map(c => '<option value="' + c.id + '"' + (n.classId === c.id ? ' selected' : '') + '>' + esc(c.name) + '</option>').join('') + '</select>' +
+    MY('classes').map(c => '<option value="' + c.id + '"' + (n.classId === c.id ? ' selected' : '') + '>' + esc(c.name) + '</option>').join('') + '</select>' +
     '<span class="spacer"></span><span class="eyebrow" id="noteSaved">saved</span>' +
     '<button class="btn g sm" data-act="pinNote" data-id="' + n.id + '">' + (n.pinned ? '★' : '☆') + '</button>' +
     '<button class="btn g sm dg" data-act="delNote" data-id="' + n.id + '">' + ic('trash') + '</button></div>' +
-    '<div class="pad"><input type="text" id="noteTitle" value="' + esc(n.title) + '" placeholder="Page title"><hr class="rule" style="margin:10px 0">' +
+    '<div class="pad"><input type="text" id="noteTitle" value="' + esc(n.title) + '" placeholder="' + wk('Page title', 'Note title') + '"><hr class="rule" style="margin:10px 0">' +
     '<textarea id="noteBody" data-id="' + n.id + '" placeholder="Type your notes. **bold**, # headings, - lists all work.">' + esc(n.body) + '</textarea></div>' +
-    '<div class="nbtools"><button class="btn sm" data-act="studyMenu" aria-haspopup="menu">' + ic('spark') + 'Study tools</button>' +
+    '<div class="nbtools"><button class="btn sm" data-act="studyMenu" aria-haspopup="menu">' + ic('spark') + wk('Study tools', 'AI tools') + '</button>' +
     '<span class="spacer"></span><button class="btn g sm" data-act="previewNote">Preview</button></div></div>' : '';
 
   return '<div class="wrap">' + tabs + '<div class="nbwrap"><div class="card nblist">' + list + '</div><div>' + editor + '</div></div></div>';
@@ -2841,7 +2935,7 @@ function monthGrid(anchor) {
     const dd = parseYMD(day);
     const out = dd.getMonth() !== d.getMonth();
     const ag = dayAgenda(day);
-    const tks = S.tasks.filter(t => t.due === day);
+    const tks = MY('tasks').filter(t => t.due === day);
     const hidden = Math.max(0, ag.length - 3) + Math.max(0, tks.length - 2);
     cells.push('<div class="cd' + (out ? ' out' : '') + (day === today() ? ' today' : '') + '" data-act="dayClick" data-day="' + day + '">' +
       '<span class="dnum">' + dd.getDate() + '</span>' +
@@ -2859,7 +2953,7 @@ function weekGrid(anchor) {
   for (let i = 0; i < 7; i++) ags.push(dayAgenda(addDays(start, i)));
   /* The grid stretches to whatever is actually booked, so an early lab or a late
      review session is never drawn off the top or bottom of the week. */
-  let ds = Math.floor(toMin(S.settings.dayStart) / 60) * 60, de = toMin(S.settings.dayEnd);
+  let ds = Math.floor(toMin(ms().dayStart) / 60) * 60, de = toMin(ms().dayEnd);
   ags.forEach(ag => ag.forEach(e => {
     const a = toMin(e.start), b = toMin(e.end);
     if (b > a) { ds = Math.min(ds, Math.floor(a / 60) * 60); de = Math.max(de, Math.min(1440, Math.ceil(b / 60) * 60)); }
@@ -2871,7 +2965,7 @@ function weekGrid(anchor) {
     const day = addDays(start, i), dd = parseYMD(day);
     heads.push('<div class="wh' + (day === today() ? ' now' : '') + '">' + DAYS[dd.getDay()] + '<b>' + dd.getDate() + '</b></div>');
     const ag = ags[i];
-    const tks = S.tasks.filter(t => t.due === day && !t.done);
+    const tks = MY('tasks').filter(t => t.due === day && !t.done);
     let inner = '';
     for (let r = 0; r < rows; r++) inner += '<div class="slot" style="height:' + HOURPX + 'px" data-act="slotClick" data-day="' + day + '" data-min="' + (ds + r * 60) + '"></div>';
     inner += ag.map(e => {
@@ -2895,7 +2989,7 @@ function mountCalendar() { }
 /* --- Assignments --- */
 function viewTasks() {
   const mode = V.param || 'open';
-  let list = S.tasks.slice();
+  let list = MY('tasks').slice();
   if (mode === 'open') list = list.filter(t => !t.done);
   if (mode === 'done') list = list.filter(t => t.done);
   list.sort((a, b) => (a.done - b.done) || (String(a.due || '9999').localeCompare(String(b.due || '9999'))) || (b.priority || 1) - (a.priority || 1));
@@ -2909,7 +3003,7 @@ function viewTasks() {
   const head = '<div class="row" style="margin-bottom:14px;flex-wrap:wrap;gap:8px">' +
     '<div class="seg">' + ['open', 'all', 'done'].map(m => '<button class="' + (mode === m ? 'on' : '') + '" data-act="taskMode" data-m="' + m + '">' + m[0].toUpperCase() + m.slice(1) + '</button>').join('') + '</div>' +
     (totalMin ? '<span class="dim" style="font-size:13px">' + dur(totalMin) + ' of work left</span>' : '') + '<span class="spacer"></span>' +
-    (on('calendar') && S.tasks.some(t => !t.done && t.due && t.est) ? '<button class="btn sm" data-act="planWeek">' + ic('wand') + 'Plan my week</button>' : '') + '</div>';
+    (on('calendar') && MY('tasks').some(t => !t.done && t.due && t.est) ? '<button class="btn sm" data-act="planWeek">' + ic('wand') + 'Plan my week</button>' : '') + '</div>';
   const body = order.filter(k => groups[k]).map(k =>
     '<div class="card" style="margin-bottom:14px"><div class="cardhead"><h3 style="' + (k === 'Overdue' ? 'color:var(--crimson)' : '') + '">' + k + '</h3>' +
     '<span class="chip">' + groups[k].length + '</span><span class="spacer"></span>' +
@@ -2921,19 +3015,238 @@ function viewTasks() {
 }
 
 /* --- Flashcards --- */
+/* --- Today's Schedule ---
+   Class blocks are the classes' own meeting times (the calendar uses the same
+   ones); lunch, breaks and free periods live in settings.periods. */
+function schOther() { return wk(['Lunch', 'Break', 'Free period', 'Homeroom', 'Study hall'], ['Lunch', 'Break', 'Focus time', 'Commute', 'Admin time']); }
+function bringWord() { return wk('What to bring', 'What you need'); }
+const SCH = { editDay: null };
+const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+function dayBlocks(day) {
+  const dw = dowOf(day), out = [];
+  MY('classes').forEach(c => (c.meets || []).forEach(m => {
+    if (m.day !== dw || (c.startDate && day < c.startDate) || (c.endDate && day > c.endDate)) return;
+    out.push({ kind: 'class', cls: c, start: m.start, end: m.end, room: m.room || c.room || '' });
+  }));
+  (ms().periods || []).forEach(p => { if (p.day === dw) out.push({ kind: 'other', label: p.label || 'Free period', start: p.start, end: p.end, room: p.room || '' }); });
+  return out.sort((a, b) => toMin(a.start) - toMin(b.start) || toMin(a.end) - toMin(b.end));
+}
+function hasSchedule() { return MY('classes').some(c => (c.meets || []).length) || !!(ms().periods || []).length; }
+function classResources(c) { return ((c && c.resources) || []).map(x => String(x).trim()).filter(Boolean); }
+function parseList(text) {
+  const seen = new Set();
+  return String(text || '').split(/[\n,;]+/).map(x => x.trim()).filter(x => { const k = x.toLowerCase(); if (!x || seen.has(k)) return false; seen.add(k); return true; }).slice(0, 40);
+}
+/* Everything the day's classes need, once each, in the order you'll need it. */
+function bringList(day) {
+  const map = new Map();
+  dayBlocks(day).forEach(b => {
+    if (b.kind !== 'class') return;
+    classResources(b.cls).forEach(r => {
+      const k = r.toLowerCase(), e = map.get(k) || { item: r, key: k, classes: [] };
+      if (e.classes.indexOf(b.cls.name) < 0) e.classes.push(b.cls.name);
+      map.set(k, e);
+    });
+  });
+  return Array.from(map.values());
+}
+function packedFor(day) { const p = ms().packed; return p && p.day === day ? p.items || [] : []; }
+function nextSchoolDay(from) { for (let i = 1; i <= 7; i++) { const d = addDays(from, i); if (dayBlocks(d).length) return d; } return null; }
+function dayName(day) {
+  const t = today();
+  return day === t ? 'Today' : day === addDays(t, 1) ? 'Tomorrow' : day === addDays(t, -1) ? 'Yesterday' : DAY_NAMES[dowOf(day)];
+}
+function viewSchedule() {
+  if (V.sub === 'edit') return viewScheduleEdit();
+  const t = today(), day = /^\d{4}-\d{2}-\d{2}$/.test(V.param || '') ? V.param : t;
+  const isToday = day === t, nm = nowMin(), w = W(), blocks = dayBlocks(day);
+  const long = parseYMD(day).toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' });
+  const head = '<div class="row schhead"><button class="btn sm" data-act="schDay" data-d="' + addDays(day, -1) + '" aria-label="Previous day">‹</button>' +
+    '<div class="schday"><b>' + esc(dayName(day)) + '</b><span>' + esc(long) + '</span></div>' +
+    '<button class="btn sm" data-act="schDay" data-d="' + addDays(day, 1) + '" aria-label="Next day">›</button>' +
+    (isToday ? '' : '<button class="btn g sm" data-act="schDay" data-d="' + t + '">Back to today</button>') +
+    '<span class="spacer"></span><button class="btn sm" data-act="schEdit" data-dw="' + dowOf(day) + '">' + ic('pencil') + 'Edit schedule</button></div>';
+  if (!hasSchedule()) return '<div class="wrap">' + head + '<div class="card"><div class="empty"><h3>Put in your schedule once</h3>' +
+    '<p>Add your ' + esc(w.clsP.toLowerCase()) + wk(', lunch and free periods', ', meetings, lunch and focus time') + ' for each day of the week. From then on, this page shows the right day by itself, with ' + wk('what to bring to', 'what you need for') + ' each ' + esc(w.cls.toLowerCase()) + '.</p>' +
+    '<div class="row" style="justify-content:center;gap:8px;flex-wrap:wrap"><button class="btn p" data-act="schEdit" data-dw="' + dowOf(day) + '">Set up my schedule</button>' +
+    (MY('classes').length ? '' : '<button class="btn" data-act="newClass">Add a ' + esc(w.cls.toLowerCase()) + ' first</button>') + '</div></div></div></div>';
+  let main;
+  if (!blocks.length) {
+    const nx = nextSchoolDay(day);
+    main = '<div class="card"><div class="empty"><h3>' + wk('No school ', 'Nothing scheduled ') + (isToday ? 'today' : 'on ' + esc(DAY_NAMES[dowOf(day)])) + '</h3>' +
+      '<p>There\'s nothing on your schedule for ' + esc(DAY_NAMES[dowOf(day)]) + 's.</p><div class="row" style="justify-content:center;gap:8px;flex-wrap:wrap">' +
+      (nx ? '<button class="btn p" data-act="schDay" data-d="' + nx + '">See ' + esc(dayName(nx).toLowerCase() === 'tomorrow' ? 'tomorrow' : DAY_NAMES[dowOf(nx)]) + '</button>' : '') +
+      '<button class="btn" data-act="schEdit" data-dw="' + dowOf(day) + '">Add ' + esc(DAY_NAMES[dowOf(day)]) + ' blocks</button></div></div></div>';
+  } else {
+    let banner = '';
+    if (isToday) {
+      const name = b => b.kind === 'class' ? b.cls.name : b.label;
+      const cur = blocks.find(b => toMin(b.start) <= nm && nm < toMin(b.end)), nxt = blocks.find(b => toMin(b.start) > nm);
+      if (cur) banner = '<div class="schnow"><span class="chip b">Now</span><span><b>' + esc(name(cur)) + '</b> until ' + fmt12(cur.end) + (cur.room ? ' · ' + esc(cur.room) : '') +
+        (nxt ? '. Then ' + esc(name(nxt)) + ' at ' + fmt12(nxt.start) : '') + '</span></div>';
+      else if (nxt) banner = '<div class="schnow"><span class="chip">Next</span><span><b>' + esc(name(nxt)) + '</b> at ' + fmt12(nxt.start) + ', in ' + dur(toMin(nxt.start) - nm) + (nxt.room ? ' · ' + esc(nxt.room) : '') + '</span></div>';
+      else { const nx = nextSchoolDay(day); banner = '<div class="schnow done"><span class="chip g">Done</span><span>That\'s it for today.' + (nx ? ' <button class="linkbtn" data-act="schDay" data-d="' + nx + '">See ' + esc(nx === addDays(t, 1) ? 'tomorrow' : DAY_NAMES[dowOf(nx)]) + ' and what to pack</button>' : '') + '</span></div>'; }
+    }
+    const dueBy = {};
+    if (on('tasks')) openTasks().forEach(x => { if (x.classId && x.due === day) (dueBy[x.classId] = dueBy[x.classId] || []).push(x); });
+    let prevEnd = null;
+    const rows = blocks.map(b => {
+      const s = toMin(b.start), e = toMin(b.end);
+      const st = isToday ? (nm >= e ? ' past' : nm >= s ? ' now' : '') : '';
+      const gap = prevEnd != null && s - prevEnd >= 10 ? '<div class="sgap">' + dur(s - prevEnd) + ' free</div>' : '';
+      prevEnd = Math.max(prevEnd || 0, e);
+      const time = '<div class="stime"><b>' + fmt12(b.start) + '</b><span>' + fmt12(b.end) + '</span></div>';
+      const prog = st === ' now' ? '<div class="bar sprog"><i style="width:' + Math.round((nm - s) / Math.max(1, e - s) * 100) + '%"></i></div>' : '';
+      if (b.kind !== 'class') return gap + '<div class="sblock other' + st + '">' + time + '<div class="sbody"><div class="sname">' + esc(b.label) + '</div>' +
+        '<div class="smeta">' + [b.room, dur(e - s)].filter(Boolean).map(esc).join(' · ') + '</div>' + prog + '</div></div>';
+      const c = b.cls, res = classResources(c), due = dueBy[c.id] || [];
+      return gap + '<div class="sblock' + st + '" style="--tc:' + c.color + '">' + time + '<div class="sbody">' +
+        '<div class="sname"><button class="linkish" data-act="openClass" data-id="' + c.id + '">' + esc(c.name) + '</button>' + (st === ' now' ? '<span class="chip b">Now</span>' : '') + '</div>' +
+        '<div class="smeta">' + [b.room, c.teacher, dur(e - s)].filter(Boolean).map(esc).join(' · ') + '</div>' +
+        (res.length ? '<div class="sres"><span class="dim">' + wk('Bring', 'Need') + '</span>' + res.map(r => '<span class="chip">' + esc(r) + '</span>').join('') + '<button class="linkbtn" data-act="resEdit" data-id="' + c.id + '">Edit</button></div>'
+          : '<button class="linkbtn sadd" data-act="resEdit" data-id="' + c.id + '">+ ' + bringWord() + '</button>') +
+        (due.length ? '<div class="sdue">' + ic('tasks') + (isToday ? 'Due today' : day === addDays(t, 1) ? 'Due tomorrow' : 'Due that day') + ': ' + due.map(x => esc(x.title)).join(', ') + '</div>' : '') +
+        prog + '</div></div>';
+    }).join('');
+    main = banner + '<div class="card sched"><div class="list">' + rows + '</div></div>';
+  }
+  return '<div class="wrap">' + head + '<div class="schgrid"><div class="schmain">' + main + '</div><div class="schside">' + bringCard(day) + schDueCard(day) + '</div></div></div>';
+}
+function bringCard(day) {
+  const list = bringList(day), packed = packedFor(day), blocks = dayBlocks(day);
+  if (!blocks.some(b => b.kind === 'class')) return '';
+  const missing = [];
+  blocks.forEach(b => { if (b.kind === 'class' && !classResources(b.cls).length && missing.indexOf(b.cls) < 0) missing.push(b.cls); });
+  const n = list.filter(e => packed.indexOf(e.key) >= 0).length;
+  const when = day === today() ? ' today' : day === addDays(today(), 1) ? ' tomorrow' : '';
+  return '<div class="card bringcard"><div class="cardhead">' + ic('check', 'width:15px;height:15px') + '<h3>' + bringWord() + when + '</h3><span class="spacer"></span>' +
+    (list.length ? '<span class="chip' + (n === list.length ? ' g' : '') + '" title="' + n + ' of ' + list.length + ' packed">' + (n === list.length ? 'All packed' : n + '/' + list.length) + '</span>' : '') + '</div>' +
+    (list.length ? '<div class="list">' + list.map(e => { const done = packed.indexOf(e.key) >= 0;
+      return '<label class="item bring' + (done ? ' done' : '') + '"><input type="checkbox" data-act="packTick" data-d="' + day + '" data-k="' + esc(e.key) + '"' + (done ? ' checked' : '') + ' aria-label="Packed ' + esc(e.item) + '">' +
+        '<div style="flex:1;min-width:0"><div class="ttl">' + esc(e.item) + '</div><div class="meta">' + esc(e.classes.join(', ')) + '</div></div></label>'; }).join('') + '</div>'
+      : '<div class="pad dim" style="font-size:13px">List what each ' + esc(W().cls.toLowerCase()) + ' needs, like ' + wk('a laptop, a textbook or gym clothes', 'a laptop, your badge or a charger') + ', and ATLAS gathers it here for the day.</div>') +
+    (missing.length ? '<div class="pad bringadd"><span class="dim">Add for</span>' + missing.map(c => '<button class="chip" data-act="resEdit" data-id="' + c.id + '" style="--tc:' + c.color + '">+ ' + esc(c.name) + '</button>').join('') + '</div>' : '') +
+    '</div>';
+}
+function schDueCard(day) {
+  if (!on('tasks')) return '';
+  const ids = new Set(dayBlocks(day).filter(b => b.kind === 'class').map(b => b.cls.id));
+  const ts = openTasks().filter(t => t.classId && ids.has(t.classId) && t.due && t.due > day && t.due <= addDays(day, 7))
+    .sort((a, b) => a.due < b.due ? -1 : a.due > b.due ? 1 : 0).slice(0, 5);
+  if (!ts.length) return '';
+  return '<div class="card"><div class="cardhead">' + ic('tasks', 'width:15px;height:15px') + '<h3>Coming up for these ' + esc(W().clsP.toLowerCase()) + '</h3></div><div class="list">' + ts.map(taskRow).join('') + '</div></div>';
+}
+function schRows(dw) {
+  const out = [];
+  MY('classes').forEach(c => (c.meets || []).forEach(m => { if (m.day === dw) out.push({ start: m.start, end: m.end, what: 'c:' + c.id, label: '', room: m.room || '', ph: c.room || '' }); }));
+  (ms().periods || []).forEach(p => {
+    if (p.day !== dw) return;
+    const known = schOther().indexOf(p.label) >= 0;
+    out.push({ start: p.start, end: p.end, what: known ? 'o:' + p.label : 'o:*', label: known ? '' : p.label || '', room: p.room || '', ph: '' });
+  });
+  return out.sort((a, b) => toMin(a.start) - toMin(b.start) || toMin(a.end) - toMin(b.end));
+}
+function schRowHTML(r, ch) {
+  ch = ch && typeof ch === 'object' ? ch : null;
+  const w = ch ? ch.words : W(), classes = ch ? ch.classes : MY('classes').map(c => ['c:' + c.id, c.name]), others = ch ? ch.others : schOther();
+  return '<div class="schrow" data-row><div class="schtimes"><input type="time" class="rS" value="' + esc(r.start) + '" aria-label="Starts"><span class="dim">to</span><input type="time" class="rE" value="' + esc(r.end) + '" aria-label="Ends"></div>' +
+    '<select class="rW" aria-label="What"><option value="">Choose…</option>' +
+    (classes.length ? '<optgroup label="' + esc(w.clsP) + '">' + classes.map(c => '<option value="' + esc(c[0]) + '"' + (r.what === c[0] ? ' selected' : '') + '>' + esc(c[1]) + '</option>').join('') + '</optgroup>' : '') +
+    '<optgroup label="Not a ' + esc(w.cls.toLowerCase()) + '">' + others.map(o => '<option value="o:' + o + '"' + (r.what === 'o:' + o ? ' selected' : '') + '>' + o + '</option>').join('') +
+    '<option value="o:*"' + (r.what === 'o:*' ? ' selected' : '') + '>Something else…</option></optgroup></select>' +
+    '<input type="text" class="rL" placeholder="What is it?" value="' + esc(r.label) + '"' + (r.what === 'o:*' ? '' : ' hidden') + ' aria-label="Name">' +
+    '<input type="text" class="rR" placeholder="' + esc(r.ph || 'Room') + '" value="' + esc(r.room) + '" aria-label="Room">' +
+    '<button class="btn g sm dg" data-act="schRm" aria-label="Remove this block">✕</button></div>';
+}
+function viewScheduleEdit() {
+  const ws = +S.settings.weekStart || 0, order = [0, 1, 2, 3, 4, 5, 6].map(i => (ws + i) % 7);
+  const dw = SCH.editDay == null ? dowOf(today()) : SCH.editDay, rows = schRows(dw), w = W();
+  const count = d => schRows(d).length;
+  return '<div class="wrap"><div class="row schhead"><div class="schday"><b>Your schedule</b><span>The same every week. Changes save as you go.</span></div><span class="spacer"></span>' +
+    '<button class="btn p sm" data-act="schDone">Done</button></div>' +
+    (!MY('classes').length ? '<div class="testhint">' + ic('book') + '<span style="flex:1">Add your ' + esc(w.clsP.toLowerCase()) + ' first, then put them on your schedule.</span><button class="btn sm" data-act="newClass">Add a ' + esc(w.cls.toLowerCase()) + '</button></div>' : '') +
+    '<div class="card schedit"><div class="schpills" role="tablist">' + order.map(d => '<button class="schpill' + (d === dw ? ' on' : '') + '" data-act="schPick" data-dw="' + d + '" role="tab" aria-selected="' + (d === dw) + '">' +
+      DAYS[d] + (count(d) ? '<i>' + count(d) + '</i>' : '') + '</button>').join('') + '</div>' +
+    '<div class="pad"><h3 class="schedh">' + DAY_NAMES[dw] + '</h3>' +
+    '<div id="schRows" data-dw="' + dw + '">' + rows.map(schRowHTML).join('') + '</div>' +
+    (rows.length ? '' : '<p class="dim schempty">Nothing on ' + DAY_NAMES[dw] + 's yet. Add each block of the day: your ' + esc(w.clsP.toLowerCase()) + ', lunch, free periods.</p>') +
+    '<div class="row" style="gap:8px;flex-wrap:wrap;margin-top:12px"><button class="btn sm" data-act="schAdd">' + ic('plus') + 'Add a block</button>' +
+    '<button class="btn g sm" data-act="schCopy">Copy ' + DAY_NAMES[dw] + ' to other days</button>' +
+    (rows.length ? '<button class="btn g sm dg" data-act="schClear">Clear ' + DAY_NAMES[dw] + '</button>' : '') + '</div></div></div>' +
+    '<p class="dim setfoot">' + esc(w.cls) + ' times here are the same ones the calendar uses, so you only enter them once.</p></div>';
+}
+/* Writes the day being edited back: its class times into each class, everything else into periods. */
+function schCommit() {
+  const box = $('#schRows'); if (!box) return 0;
+  const dw = +box.dataset.dw;
+  const rows = $$('[data-row]', box).map(r => ({ el: r, start: $('.rS', r).value, end: $('.rE', r).value, what: $('.rW', r).value, label: $('.rL', r).value.trim(), room: $('.rR', r).value.trim() }));
+  MY('classes').forEach(c => { c.meets = (c.meets || []).filter(m => m.day !== dw); });
+  const periods = (ms().periods || []).filter(p => p.day !== dw);
+  let bad = 0;
+  rows.forEach(r => {
+    const ok = !!r.what && !!r.start && !!r.end && toMin(r.end) > toMin(r.start) && (r.what !== 'o:*' || !!r.label);
+    r.el.classList.toggle('bad', !ok && !!r.what);
+    if (!ok) { if (r.what) bad++; return; }
+    if (r.what.indexOf('c:') === 0) {
+      const c = cls(r.what.slice(2)); if (!c) return;
+      const m = { day: dw, start: r.start, end: r.end };
+      if (r.room && r.room !== c.room) m.room = r.room;
+      c.meets.push(m);
+    } else {
+      const p = { id: uid(), day: dw, start: r.start, end: r.end, label: r.what === 'o:*' ? r.label : r.what.slice(2) };
+      if (r.room) p.room = r.room;
+      periods.push(p);
+    }
+  });
+  ms().periods = periods;
+  save();
+  return bad;
+}
+function mountScheduleEdit() {
+  const box = $('#schRows'); if (!box) return;
+  box.addEventListener('change', e => {
+    const r = e.target.closest('[data-row]');
+    if (r && e.target.classList.contains('rW')) {
+      const v = e.target.value, l = $('.rL', r);
+      l.hidden = v !== 'o:*'; if (v === 'o:*') l.focus();
+      const c = v.indexOf('c:') === 0 ? cls(v.slice(2)) : null;
+      $('.rR', r).placeholder = (c && c.room) || 'Room';
+    }
+    if (r && (e.target.classList.contains('rS'))) {           /* moving the start keeps the length */
+      const was = +r.dataset.len || 0, end = $('.rE', r);
+      if (was > 0 && e.target.value) end.value = toHHMM(toMin(e.target.value) + was);
+    }
+    schCommit();
+    $$('.schpill.on i').forEach(i => { i.textContent = $$('[data-row]', box).length; });
+  });
+  box.addEventListener('focusin', e => {
+    const r = e.target.closest('[data-row]');
+    if (r && e.target.classList.contains('rS')) { const s = $('.rS', r).value, en = $('.rE', r).value; r.dataset.len = s && en ? Math.max(0, toMin(en) - toMin(s)) : 0; }
+  });
+}
+function resModal(classId) {
+  const c = cls(classId); if (!c) return;
+  modal({
+    title: wk('What to bring to ', 'What you need for ') + c.name, body:
+      '<p class="muted" style="margin:0 0 10px;font-size:13px">One thing per line. It shows on Today\'s Schedule every day you have ' + esc(c.name) + ', in a checklist for the day.</p>' +
+      '<textarea id="resBox" rows="6" placeholder="' + wk('Laptop\nTextbook\nLab goggles', 'Laptop\nCharger\nSlides') + '">' + esc(classResources(c).join('\n')) + '</textarea>',
+    onOk: () => { c.resources = parseList($('#resBox').value); save(true); render(); toast('Saved'); }
+  });
+}
+
 function viewDecks() {
   if (V.param) return viewDeck(V.param);
-  if (!S.decks.length) return '<div class="wrap"><div class="card"><div class="empty"><h3>No decks yet</h3>' +
-    '<p>Build a deck by hand, paste a term list, or generate one from a topic or a notebook page. Each card comes back right before you would forget it, and before your test if you link one.</p>' +
+  if (!MY('decks').length) return '<div class="wrap"><div class="card"><div class="empty"><h3>No decks yet</h3>' +
+    '<p>Build a deck by hand, paste a term list, or generate one from a topic or ' + wk('a notebook page', 'one of your notes') + '. Each card comes back right before you would forget it, and before your test if you link one.</p>' +
     '<div class="row" style="justify-content:center;gap:8px"><button class="btn p" data-act="newDeck">New deck</button>' + (aiReady() ? '<button class="btn" data-act="aiDeck">Generate from a topic</button>' : '') + '</div></div></div></div>';
   const day = today();
-  const due = S.decks.reduce((a, d) => a + dueCards(d, day).length, 0), nw = S.decks.reduce((a, d) => a + newCards(d, day).length, 0), next = nextReviewDay();
+  const due = MY('decks').reduce((a, d) => a + dueCards(d, day).length, 0), nw = MY('decks').reduce((a, d) => a + newCards(d, day).length, 0), next = nextReviewDay();
   const head = '<div class="row deckhead">' +
     (due + nw ? '<button class="btn p sm" data-act="reviewAll">Study ' + (due + nw) + ' ' + (due + nw === 1 ? 'card' : 'cards') + '</button><span class="dim" style="font-size:13px">' + splitLabel(due, nw) + '</span>'
       : '<span class="dim" style="font-size:13px">All caught up.' + (next ? ' Next review ' + whenLabel(next) + '.' : '') + '</span>') +
     '<span class="spacer"></span>' + (aiReady() ? '<button class="btn sm" data-act="aiDeck">' + ic('wand') + 'Generate cards</button>' : '') +
     '<button class="btn sm" data-act="newDeck">' + ic('plus') + 'New deck</button></div>';
-  const grid = S.decks.map(d => {
+  const grid = MY('decks').map(d => {
     const c = cls(d.classId), du = dueCards(d, day).length, n = newCards(d, day).length, t = nextTest(d, day);
     const live = d.cards.filter(x => !x.off), fresh = live.filter(x => !cardMem(x)).length;
     const pct = Math.round(deckRecall(d, day) * 100), nx = nextReviewDay(d);
@@ -3024,15 +3337,15 @@ function viewReview() {
 function viewGrades() {
   const g = gpa();
   const w = W(), ts = termSummary();
-  if (!S.classes.length) return '<div class="wrap"><div class="card"><div class="empty"><h3>No ' + w.clsP.toLowerCase() + ' yet</h3><p>Add a ' + w.cls.toLowerCase() + ' first, then log scores here to track where you stand.</p><button class="btn p" data-act="newClass">Add a ' + w.cls.toLowerCase() + '</button></div></div></div>';
+  if (!MY('classes').length) return '<div class="wrap"><div class="card"><div class="empty"><h3>No ' + w.clsP.toLowerCase() + ' yet</h3><p>Add a ' + w.cls.toLowerCase() + ' first, then log scores here to track where you stand.</p><button class="btn p" data-act="newClass">Add a ' + w.cls.toLowerCase() + '</button></div></div></div>';
   const head = '<div class="card" style="margin-bottom:16px"><div class="pad row" style="gap:24px;flex-wrap:wrap">' +
     '<div><div class="eyebrow">' + ts.label + '</div><div class="gpa">' + esc(ts.value) + '</div>' + (ts.sub ? '<div class="dim mono" style="font-size:11px;margin-top:4px">' + esc(ts.sub) + '</div>' : '') + '</div>' +
     '<div style="flex:1;min-width:200px"><div class="eyebrow" style="margin-bottom:6px">By ' + esc(w.cls.toLowerCase()) + '</div>' +
-    S.classes.map(c => { const p = classGrade(c); return '<div class="row" style="margin-bottom:5px"><span class="dot" style="--tc:' + c.color + '"></span><span style="font-size:13px">' + esc(c.name) + '</span><span class="spacer"></span><span class="mono" style="font-size:12.5px">' + (p == null ? '—' : esc(gradeLabel(p))) + '</span></div>'; }).join('') +
+    MY('classes').map(c => { const p = classGrade(c); return '<div class="row" style="margin-bottom:5px"><span class="dot" style="--tc:' + c.color + '"></span><span style="font-size:13px">' + esc(c.name) + '</span><span class="spacer"></span><span class="mono" style="font-size:12.5px">' + (p == null ? '—' : esc(gradeLabel(p))) + '</span></div>'; }).join('') +
     '</div>' +
     '<div><button class="btn sm" data-act="finalCalc">' + ic('chart') + 'What do I need on the final?</button></div>' +
     '</div></div>';
-  const body = S.classes.map(c => {
+  const body = MY('classes').map(c => {
     const cats = c.categories || [];
     const p = classGrade(c);
     return '<div class="card spine" style="--tc:' + c.color + ';margin-bottom:14px"><div class="cardhead">' +
@@ -3057,14 +3370,16 @@ function viewGrades() {
 }
 
 /* --- Settings --- */
-const SET_SECS = [
-  ['general', 'General', 'gear', 'Your name, your term and the words ATLAS uses'],
-  ['tools', 'Tools', 'grid', 'Choose which tools show up'],
-  ['look', 'Look', 'eye', 'Theme, colors and dark mode'],
-  ['study', 'Study', 'timer', 'Planning, the focus timer, flashcards and AI'],
-  ['account', 'Account and devices', 'key', 'Sign-in, reminders and device lock'],
-  ['data', 'Calendars and data', 'calendar', 'Import, export, backups and erasing']
-];
+function setSecs() {
+  return [
+    ['general', 'General', 'gear', isWork() ? 'Your name, what ATLAS is for, and how it reads' : 'Your name, your term and the words ATLAS uses'],
+    ['tools', 'Tools', 'grid', 'Choose which tools show up'],
+    ['look', 'Look', 'eye', 'Theme, colors and dark mode'],
+    ['study', wk('Study', 'Work'), 'timer', 'Planning, the focus timer, flashcards and AI'],
+    ['account', 'Account and devices', 'key', 'Sign-in, reminders and device lock'],
+    ['data', 'Calendars and data', 'calendar', 'Import, export, backups and erasing']
+  ];
+}
 function setRow(label, hint, control, id) {
   const plain = x => String(x || '').replace(/<[^>]+>/g, ' ');
   const tight = /type="(checkbox|number)"/.test(control || '') && !/<select|type="text"|type="time"|<button|<a /.test(control || '');
@@ -3073,22 +3388,24 @@ function setRow(label, hint, control, id) {
 }
 function viewSettings() {
   const s = S.settings, w = W(), row = setRow;
-  const p = persona(), homes = Object.keys(HOMES).filter(k => on(HOMES[k].need));
+  const p = persona(), homes = Object.keys(HOMES).filter(k => on(HOMES[k].need)), ps = ms();
   const body = {};
   body.general =
     row('Your name', 'What ATLAS calls you on Today.', '<input type="text" id="setName" value="' + esc(S.profile.name) + '" placeholder="Your first name">') +
-    row('Term', 'Shown under ATLAS at the top of the sidebar.', '<input type="text" id="setTerm" value="' + esc(S.profile.term) + '" placeholder="Fall 2026">') +
-    row('Words ATLAS uses', 'Match your school: classes or courses, assignments or coursework.', '<select data-act="setLevel" aria-label="Words ATLAS uses">' +
-      Object.keys(LEVELS).map(k => '<option value="' + k + '"' + ((LEVELS[s.level] ? s.level : 'high') === k ? ' selected' : '') + '>' + LEVELS[k].clsP + ' and ' + LEVELS[k].taskP.toLowerCase() + ' (' + LEVELS[k].name.toLowerCase() + ')</option>').join('') + '</select>') +
-    (homes.length > 1 ? row('Today starts with', 'The first thing on the Today page.', '<select data-act="setHome" aria-label="Today starts with">' + homes.map(k => '<option value="' + k + '"' + (homeView() === k ? ' selected' : '') + '>' + esc(HOMES[k].name) + '</option>').join('') + '</select>') : '') +
+    row('Use ATLAS for', uses() === 'both' ? 'Switch sides with the button next to your name. Each side keeps its own things.' : 'Pick both and a switch next to your name flips between school and work.',
+      '<select data-act="setUses" aria-label="Use ATLAS for">' + [['school', 'School'], ['work', 'Work'], ['both', 'School and work']].map(x => '<option value="' + x[0] + '"' + (uses() === x[0] ? ' selected' : '') + '>' + x[1] + '</option>').join('') + '</select>') +
+    row(wk('Term', 'Label'), 'Shown under ATLAS at the top of the sidebar.', '<input type="text" id="setTerm" value="' + esc(isWork() ? ms().term || '' : S.profile.term) + '" placeholder="' + wk('Fall 2026', 'Q4 2026') + '">') +
+    (isWork() ? '' : row('Words ATLAS uses', 'Match your school: classes or courses, assignments or coursework.', '<select data-act="setLevel" aria-label="Words ATLAS uses">' +
+      Object.keys(LEVELS).map(k => '<option value="' + k + '"' + ((LEVELS[s.level] ? s.level : 'high') === k ? ' selected' : '') + '>' + LEVELS[k].clsP + ' and ' + LEVELS[k].taskP.toLowerCase() + ' (' + LEVELS[k].name.toLowerCase() + ')</option>').join('') + '</select>')) +
+    (homes.length > 1 ? row('Today starts with', 'The first thing on the Today page.', '<select data-act="setHome" aria-label="Today starts with">' + homes.map(k => '<option value="' + k + '"' + (homeView() === k ? ' selected' : '') + '>' + esc(homeInfo(k).name) + '</option>').join('') + '</select>') : '') +
     (on('grades') ? row('Show grades as', '', '<select data-act="setGrading" aria-label="Show grades as">' + Object.keys(GRADINGS).map(k => '<option value="' + k + '"' + (grading() === k ? ' selected' : '') + '>' + GRADINGS[k].name + ' (' + GRADINGS[k].sample + ')</option>').join('') + '</select>') : '') +
     row('Week starts on', '', '<select id="setWeek" aria-label="Week starts on"><option value="0"' + (s.weekStart === 0 ? ' selected' : '') + '>Sunday</option><option value="1"' + (s.weekStart === 1 ? ' selected' : '') + '>Monday</option><option value="6"' + (s.weekStart === 6 ? ' selected' : '') + '>Saturday</option></select>') +
     row('Celebrate wins', 'Badges, a streak and a little confetti.', '<input type="checkbox" data-act="setCelebrate"' + (s.celebrate !== false ? ' checked' : '') + ' aria-label="Celebrate wins">') +
-    row('Setup questions', p ? 'Your answers made you a <b>' + esc(p.title) + '</b>. ' + esc(p.line) : 'A one-minute set of questions picks your tools, the words ATLAS uses, your focus rhythm and the look.',
-      '<button class="btn' + (p ? '' : ' p') + '" data-act="survey">' + ic('spark') + (p ? 'Answer again' : 'Personalize') + '</button>');
-  body.tools = '<div class="toolgrid">' + MODULES.map(m => '<label class="toolcard" data-q="' + esc((m.name + ' ' + (m.id === 'tasks' ? w.taskP : '') + ' ' + m.blurb).toLowerCase()) + '">' +
+    row('Setup questions', isWork() ? 'A one-minute set of questions picks your work side\'s tools, hours, projects and week.' : p ? 'Your answers made you a <b>' + esc(p.title) + '</b>. ' + esc(p.line) : 'A one-minute set of questions picks your tools, the words ATLAS uses, your focus rhythm and the look.',
+      '<button class="btn' + (p || isWork() ? '' : ' p') + '" data-act="survey">' + ic('spark') + (p || ps.setupDone ? 'Answer again' : 'Personalize') + '</button>');
+  body.tools = '<div class="toolgrid">' + MODULES.map(m => { const mi = modInfo(m); return '<label class="toolcard" data-q="' + esc((mi.name + ' ' + (m.id === 'tasks' ? w.taskP : '') + ' ' + mi.blurb).toLowerCase()) + '">' +
     '<input type="checkbox" data-act="modToggle" data-m="' + m.id + '"' + (on(m.id) ? ' checked' : '') + '>' +
-    '<span class="ti">' + ic(m.icon) + '</span><span class="tt"><b>' + esc(m.id === 'tasks' ? w.taskP : m.name) + '</b><span>' + esc(m.blurb) + '</span></span></label>').join('') + '</div>' +
+    '<span class="ti">' + ic(m.icon) + '</span><span class="tt"><b>' + esc(m.id === 'tasks' ? w.taskP : mi.name) + '</b><span>' + esc(mi.blurb) + '</span></span></label>'; }).join('') + '</div>' +
     '<p class="dim setnote">Switching a tool off hides it everywhere. Nothing in it is deleted, and switching it back on brings everything back.</p>';
   const t = themeById(s.theme);
   body.look = '<div class="srow" data-q="theme colors colours fonts accent"><span class="swatch" style="background:' + t.bg + ';--sw:' + t.ultra + ';--sp:' + t.panel + '"><i></i><i></i></span>' +
@@ -3098,10 +3415,10 @@ function viewSettings() {
     row('Artwork on Today', 'The theme\'s picture across the top of the Today page.', '<input type="checkbox" data-act="toggleArt"' + (s.art === false ? '' : ' checked') + ' aria-label="Artwork on Today">');
   body.study =
     '<h3 class="subhead">Planning</h3>' +
-    row('Study hours', 'ATLAS only plans study time inside these hours, around your ' + w.clsP.toLowerCase() + '.',
-      '<input type="time" id="setStart" value="' + s.dayStart + '" aria-label="Day starts"><span class="dim">to</span><input type="time" id="setEnd" value="' + s.dayEnd + '" aria-label="Day ends">') +
-    row('Study block length', 'How long each block is when ATLAS plans your week.', '<input type="number" id="setChunk" value="' + s.chunk + '" min="25" max="120" aria-label="Minutes"><span class="dim">min</span>') +
-    row('Finish work early', 'How many days before the due date work should be done.', '<input type="number" id="setBuf" value="' + s.buffer + '" min="0" max="7" aria-label="Days"><span class="dim">days</span>') +
+    row(wk('Study hours', 'Work hours'), 'ATLAS only plans ' + wk('study', 'focus') + ' time inside these hours, around your ' + w.clsP.toLowerCase() + wk('.', ' and meetings.'),
+      '<input type="time" id="setStart" value="' + ps.dayStart + '" aria-label="Day starts"><span class="dim">to</span><input type="time" id="setEnd" value="' + ps.dayEnd + '" aria-label="Day ends">') +
+    row(wk('Study block length', 'Focus block length'), 'How long each block is when ATLAS plans your week.', '<input type="number" id="setChunk" value="' + ps.chunk + '" min="25" max="120" aria-label="Minutes"><span class="dim">min</span>') +
+    row('Finish work early', 'How many days before the due date work should be done.', '<input type="number" id="setBuf" value="' + ps.buffer + '" min="0" max="7" aria-label="Days"><span class="dim">days</span>') +
     (on('focus') ? '<h3 class="subhead">Focus timer</h3>' +
       row('Focus length', '', '<input type="number" id="setFocus" value="' + s.pomodoro.focus + '" min="5" max="120" aria-label="Focus minutes"><span class="dim">min</span>') +
       row('Break length', '', '<input type="number" id="setShort" value="' + s.pomodoro.short + '" min="1" max="30" aria-label="Break minutes"><span class="dim">min</span>') +
@@ -3109,28 +3426,28 @@ function viewSettings() {
         '<button class="btn sm" data-act="tryAmb">Play</button><button class="btn sm" data-act="stopAmb">Stop</button>') : '') +
     (on('cards') ? '<h3 class="subhead">Flashcards</h3>' +
       row('New cards a day', 'How many new cards each deck starts per day. A deck with a test date speeds up on its own so you finish in time.', '<input type="number" id="setNewDay" value="' + cardsPerDay() + '" min="1" max="500" aria-label="New cards a day"><span class="dim">per deck</span>') : '') +
-    '<h3 class="subhead">AI study tools</h3>' +
-    row(aiReady() ? 'On: ' + esc(aiLabel()) : 'Off', 'Flashcards and quizzes from your notes, plain-language explanations, the tutor, and big assignments broken into steps. Free, through Google.',
+    '<h3 class="subhead">' + wk('AI study tools', 'AI tools') + '</h3>' +
+    row(aiReady() ? 'On: ' + esc(aiLabel()) : 'Off', wk('Flashcards and quizzes from your notes, plain-language explanations, the tutor, and big assignments broken into steps. Free, through Google.', 'Summaries and flashcards from your notes, plain-language explanations, the assistant, and big tasks broken into steps. Free, through Google.'),
       '<button class="btn" data-act="aiSetup">' + (aiReady() ? 'Change' : 'Turn on') + '</button>', 'set-ai');
   body.account =
     row('Account', acctKnown() ? 'Signed in as ' + esc(Local.acct.email) + '. Your desk syncs to every device you sign in on.' : 'Not signed in. Your work is saved in this browser only.',
       acctKnown() ? '<button class="btn" data-act="acctMenu">Manage</button>' : '<button class="btn p" data-act="acctOpen">Sign in</button>') +
-    row('Reminders', esc(noteLabel()) + '. What\'s due, tests coming up, cards to study and the end of a focus session.', '<button class="btn" data-act="noteSheet">' + (noteHere() ? 'Change' : 'Set up') + '</button>') +
+    row('Reminders', esc(noteLabel()) + '. What\'s due, ' + wk('tests', 'big deadlines') + ' coming up, cards to study and the end of a focus session.', '<button class="btn" data-act="noteSheet">' + (noteHere() ? 'Change' : 'Set up') + '</button>') +
     (acctKnown() ? row('Device lock', esc(lockLabel()) + '. A passkey or a pattern keeps ATLAS closed on this device until you unlock it.', '<button class="btn" data-act="lockSheet">' + (lockSet() ? 'Change' : 'Set up') + '</button>') : '') +
     row('Privacy', 'What ATLAS stores, where, and how to delete it.', '<a class="btn" href="privacy.html" target="_blank" rel="noopener">Read</a>');
   body.data =
     '<h3 class="subhead">Calendars</h3>' +
     row('Google Calendar', 'In Google Calendar, open Settings, then Import &amp; export, and export. Bring the file it downloads in here, zip and all.',
       '<a class="btn" href="https://calendar.google.com/calendar/r/settings/export" target="_blank" rel="noopener">Open Google Calendar</a><button class="btn" data-act="importICS">Import</button>') +
-    row('School calendar feed', 'Canvas, Blackboard, Moodle and Classroom all publish an .ics feed. <button class="linkbtn" data-act="syncHelp">Where is mine?</button>', '<button class="btn" data-act="importICS">Import</button>') +
+    row(wk('School calendar feed', 'Calendar feed'), wk('Canvas, Blackboard, Moodle and Classroom all publish an .ics feed. <button class="linkbtn" data-act="syncHelp">Where is mine?</button>', 'Outlook, Google Calendar and most work calendars can export or publish an .ics file.'), '<button class="btn" data-act="importICS">Import</button>') +
     row('Export to a calendar app', 'Everything as an .ics file for Google Calendar, Apple Calendar or Outlook.', '<button class="btn" data-act="exportICS">Download</button>') +
     '<h3 class="subhead">Your data</h3>' + dataSettings(row);
-  const cur = SET_SECS.some(x => x[0] === V.param) ? V.param : null, shown = cur || 'general';
+  const cur = setSecs().some(x => x[0] === V.param) ? V.param : null, shown = cur || 'general';
   return '<div class="wrap setwrap' + (cur ? ' open' : '') + '">' +
     '<nav class="setnav" aria-label="Settings sections"><input type="search" id="setFind" placeholder="Search settings" aria-label="Search settings" autocomplete="off">' +
-    SET_SECS.map(x => '<button data-act="setJump" data-id="' + x[0] + '"' + (shown === x[0] ? ' class="on"' : '') + '>' + ic(x[2]) + '<span><b>' + x[1] + '</b><small>' + x[3] + '</small></span><i class="go">›</i></button>').join('') +
+    setSecs().map(x => '<button data-act="setJump" data-id="' + x[0] + '"' + (shown === x[0] ? ' class="on"' : '') + '>' + ic(x[2]) + '<span><b>' + x[1] + '</b><small>' + x[3] + '</small></span><i class="go">›</i></button>').join('') +
     '</nav><div class="setmain"><button class="btn sm setback" data-act="setBack">‹ Settings</button>' +
-    SET_SECS.map(x => '<section class="set' + (shown === x[0] ? ' on' : '') + '" id="set-' + x[0] + '"><h2>' + x[1] + '</h2><p class="setlead">' + x[3] + '.</p>' + body[x[0]] + '</section>').join('') +
+    setSecs().map(x => '<section class="set' + (shown === x[0] ? ' on' : '') + '" id="set-' + x[0] + '"><h2>' + x[1] + '</h2><p class="setlead">' + x[3] + '.</p>' + body[x[0]] + '</section>').join('') +
     '<p class="setnone">No settings match that. Try another word.</p>' +
     '<p class="dim setfoot">Changes save as you make them. <button class="linkbtn" data-act="keys">Keyboard shortcuts</button></p></div></div>';
 }
@@ -3141,7 +3458,7 @@ function dataSettings(row) {
   const links = (Sync.index && Sync.index.links) || {};
   const acctOf = id => { const u = Object.keys(links).find(k => links[k] === id); const p = profs.find(x => x.id === id); return u ? (p && p.email) || 'an account' : ''; };
   return row('Saved', esc(Drv.label) + (Sync.persisted ? ', protected from browser cleanup' : '') + '. ' +
-      S.classes.length + ' ' + W().clsP.toLowerCase() + ', ' + S.tasks.length + ' ' + W().taskP.toLowerCase() + ', ' + S.notes.length + ' pages, ' + S.decks.reduce((a, d) => a + d.cards.length, 0) + ' cards.', '') +
+      MY('classes').length + ' ' + W().clsP.toLowerCase() + ', ' + MY('tasks').length + ' ' + W().taskP.toLowerCase() + ', ' + MY('notes').length + ' pages, ' + MY('decks').reduce((a, d) => a + d.cards.length, 0) + ' cards.', '') +
     (Drv.name === 'memory' ? '<p style="color:var(--crimson);font-size:13px;margin:0 0 10px">This browser is blocking storage, so nothing survives a reload. Download a backup before you close the tab.</p>' : '') +
     row('Backup', 'A file with everything in it, for safekeeping or moving to another account.', '<button class="btn" data-act="backup">' + ic('up') + 'Download</button>') +
     row('Restore', 'Replace what is here with a backup file.', '<button class="btn" data-act="restore">' + ic('down') + 'Choose file</button>') +
@@ -3165,12 +3482,13 @@ function dataSettings(row) {
 function readSettingsForm() {
   const v = id => { const el = $('#' + id); return el ? el.value : null; };
   if (v('setName') != null) S.profile.name = v('setName').trim();
-  if (v('setTerm') != null) S.profile.term = v('setTerm').trim();
-  if (v('setStart') != null) S.settings.dayStart = v('setStart') || '08:00';
-  if (v('setEnd') != null) S.settings.dayEnd = v('setEnd') || '22:00';
-  if (toMin(S.settings.dayEnd) <= toMin(S.settings.dayStart)) S.settings.dayEnd = toHHMM(Math.min(toMin(S.settings.dayStart) + 60, 1439));
-  if (v('setChunk') != null) S.settings.chunk = clamp(+v('setChunk') || 45, 25, 120);
-  if (v('setBuf') != null) S.settings.buffer = clamp(+v('setBuf') || 0, 0, 7);
+  if (v('setTerm') != null) { if (isWork()) ms().term = v('setTerm').trim(); else S.profile.term = v('setTerm').trim(); }
+  const ps = ms();
+  if (v('setStart') != null) ps.dayStart = v('setStart') || '08:00';
+  if (v('setEnd') != null) ps.dayEnd = v('setEnd') || '22:00';
+  if (toMin(ps.dayEnd) <= toMin(ps.dayStart)) ps.dayEnd = toHHMM(Math.min(toMin(ps.dayStart) + 60, 1439));
+  if (v('setChunk') != null) ps.chunk = clamp(+v('setChunk') || 45, 25, 120);
+  if (v('setBuf') != null) ps.buffer = clamp(+v('setBuf') || 0, 0, 7);
   if (v('setWeek') != null) S.settings.weekStart = +v('setWeek');
   if (v('setFocus') != null) S.settings.pomodoro.focus = clamp(+v('setFocus') || 25, 5, 120);
   if (v('setShort') != null) S.settings.pomodoro.short = clamp(+v('setShort') || 5, 1, 30);
@@ -3502,7 +3820,7 @@ function heatmap(bare) {
   const end = startOfWeek(today(), 0), weeks = 27;
   const start = addDays(end, -7 * (weeks - 1));
   const mins = {};
-  S.sessions.forEach(s => { mins[s.date] = (mins[s.date] || 0) + s.minutes; });
+  MY('sessions').forEach(s => { mins[s.date] = (mins[s.date] || 0) + s.minutes; });
   const max = Math.max(60, ...Object.values(mins));
   let cells = '', months = '', lastM = -1;
   for (let w = 0; w < weeks; w++) {
@@ -3516,7 +3834,7 @@ function heatmap(bare) {
       cells += '<i class="l' + lvl + '" title="' + fmtDate(date, true) + ' — ' + (v ? dur(v) : 'nothing') + '" data-act="heatDay" data-day="' + date + '"></i>';
     }
   }
-  const total = S.sessions.reduce((a, s) => a + s.minutes, 0);
+  const total = MY('sessions').reduce((a, s) => a + s.minutes, 0);
   const grid = '<div class="heat"><div class="heatm">' + months + '</div><div class="heatg">' + cells + '</div></div>' +
     '<div class="row dim" style="margin-top:10px;font-size:11.5px"><span>Focus over the last six months</span><span class="spacer"></span>' +
     '<span>less</span><span class="heatkey"><i class="l0"></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i></span><span>more</span></div>';
@@ -3525,7 +3843,7 @@ function heatmap(bare) {
     '<span class="chip">' + dur(total) + ' all time</span></div><div class="pad">' + grid + '</div></div>';
 }
 function bestStreak() {
-  const days = Array.from(new Set(S.sessions.map(s => s.date))).sort();
+  const days = Array.from(new Set(MY('sessions').map(s => s.date))).sort();
   let best = 0, run = 0, prev = null;
   days.forEach(d => { run = (prev && addDays(prev, 1) === d) ? run + 1 : 1; prev = d; if (run > best) best = run; });
   return best;
@@ -3808,7 +4126,7 @@ function tilesView(g) {
 function matchView(g) {
   if (!g.match) g.match = matchNew(null, 6);
   const m = g.match;
-  const decks = S.decks.filter(d => d.cards.length >= 3);
+  const decks = MY('decks').filter(d => d.cards.length >= 3);
   const face = c => {
     const up = m.up.indexOf(c.id) >= 0, done = m.done.indexOf(c.id) >= 0;
     return '<button class="mc' + (up ? ' up' : '') + (done ? ' done' : '') + '" data-act="matchFlip" data-id="' + esc(c.id) + '">' +
@@ -4020,14 +4338,14 @@ async function askJSON(prompt, system, maxTokens) {
 }
 function schoolContext(classId) {
   const bits = [];
-  if (S.profile.name) bits.push('Student: ' + S.profile.name + '.');
+  if (S.profile.name) bits.push(wk('Student: ', 'Name: ') + S.profile.name + '.');
   const c = cls(classId);
   if (c) {
-    bits.push('Class: ' + c.name + (c.code ? ' (' + c.code + ')' : '') + (c.teacher ? ', taught by ' + c.teacher : '') + '.');
-    const notes = S.notes.filter(n => n.classId === c.id).sort((a, b) => b.updated - a.updated).slice(0, 2);
+    bits.push(W().cls + ': ' + c.name + (c.code ? ' (' + c.code + ')' : '') + (c.teacher ? wk(', taught by ', ', led by ') + c.teacher : '') + '.');
+    const notes = MY('notes').filter(n => n.classId === c.id).sort((a, b) => b.updated - a.updated).slice(0, 2);
     if (notes.length) bits.push('Recent notes:\n' + notes.map(n => '### ' + n.title + '\n' + (n.body || '').slice(0, 900)).join('\n\n'));
-  } else if (S.classes.length) {
-    bits.push('Classes: ' + S.classes.map(x => x.name).join(', ') + '.');
+  } else if (MY('classes').length) {
+    bits.push(W().clsP + ': ' + MY('classes').map(x => x.name).join(', ') + '.');
   }
   return bits.join('\n');
 }
@@ -4038,43 +4356,44 @@ function schoolContext(classId) {
    class or one of your notebook pages and it works from those.
    ============================================================ */
 const TUT = { busy: {}, open: false };
-const TUT_SUGS = ['Explain this like I\'m seeing it for the first time', 'Quiz me before my test', 'Help me get started on my essay', 'Check my answer and tell me where I went wrong'];
+function tutSugs() { return wk(['Explain this like I\'m seeing it for the first time', 'Quiz me before my test', 'Help me get started on my essay', 'Check my answer and tell me where I went wrong'],
+  ['Help me plan my week', 'Draft a polite follow-up email', 'Break this project into steps', 'Explain this simply']); }
 function tutorChat(id) { return S.chats.find(c => c.id === id) || null; }
 function tutorNew(classId, noteId) {
   const c = { id: uid(), title: '', classId: classId || null, noteId: noteId || null, messages: [], created: Date.now(), updated: Date.now(), draft: '' };
-  S.chats.push(c);
+  S.chats.push(...mkAll(c));
   save();
   return c;
 }
-function tutorNotesFor(classId) { return S.notes.filter(n => !classId || n.classId === classId).slice().sort((a, b) => (b.updated || 0) - (a.updated || 0)).slice(0, 60); }
+function tutorNotesFor(classId) { return MY('notes').filter(n => !classId || n.classId === classId).slice().sort((a, b) => (b.updated || 0) - (a.updated || 0)).slice(0, 60); }
 function viewTutor() {
-  if (!aiReady()) return '<div class="wrap"><div class="card"><div class="empty"><h3>Your AI tutor</h3>' +
-    '<p>Ask about homework, get a concept explained another way, or have it quiz you before a test. It walks you to the answer instead of just giving it.</p>' +
-    '<button class="btn p" data-act="aiSetup">Turn on AI study tools</button></div></div></div>';
-  const chats = S.chats.slice().sort((a, b) => (b.updated || 0) - (a.updated || 0));
+  if (!aiReady()) return '<div class="wrap"><div class="card"><div class="empty"><h3>' + wk('Your AI tutor', 'Your AI assistant') + '</h3>' +
+    '<p>' + wk('Ask about homework, get a concept explained another way, or have it quiz you before a test. It walks you to the answer instead of just giving it.', 'Plan your week, draft an email, summarize your notes or get something explained. It works from your own projects and notes.') + '</p>' +
+    '<button class="btn p" data-act="aiSetup">' + wk('Turn on AI study tools', 'Turn on AI tools') + '</button></div></div></div>';
+  const chats = MY('chats').slice().sort((a, b) => (b.updated || 0) - (a.updated || 0));
   const c = tutorChat(V.param);
   const list = '<aside class="tlist" aria-label="Your chats"><button class="btn p sm" data-act="tutorNew">' + ic('plus') + 'New chat</button>' +
     (chats.length ? chats.map(x => '<button class="titem' + (c && x.id === c.id ? ' on' : '') + '" data-act="tutorOpen" data-id="' + x.id + '"><b>' + esc(x.title || 'New chat') + '</b><span>' +
       esc(ago(x.updated || x.created)) + (x.classId ? ' · ' + esc(clsName(x.classId)) : '') + '</span></button>').join('')
       : '<p class="dim" style="font-size:12.5px;margin:10px 4px;line-height:1.5">Your chats are saved here and follow you to your other devices.</p>') + '</aside>';
-  const classSel = '<select id="tutClass" aria-label="Which class"><option value="">Any subject</option>' + S.classes.map(k => '<option value="' + k.id + '"' + (c && c.classId === k.id ? ' selected' : '') + '>' + esc(k.name) + '</option>').join('') + '</select>';
+  const classSel = '<select id="tutClass" aria-label="Which ' + esc(W().cls.toLowerCase()) + '"><option value="">' + wk('Any subject', 'Any project') + '</option>' + MY('classes').map(k => '<option value="' + k.id + '"' + (c && c.classId === k.id ? ' selected' : '') + '>' + esc(k.name) + '</option>').join('') + '</select>';
   const notes = tutorNotesFor(c ? c.classId : null);
-  const noteSel = on('notes') && S.notes.length ? '<select id="tutNote" aria-label="Use one of your pages"><option value="">No page</option>' +
+  const noteSel = on('notes') && MY('notes').length ? '<select id="tutNote" aria-label="' + wk('Use one of your pages', 'Use one of your notes') + '"><option value="">' + wk('No page', 'No note') + '</option>' +
     notes.map(n => '<option value="' + n.id + '"' + (c && c.noteId === n.id ? ' selected' : '') + '>' + esc(n.title || 'Untitled page') + '</option>').join('') + '</select>' : '';
   const busy = c && TUT.busy[c.id];
   const msgs = c && c.messages.length
     ? c.messages.map(m => '<div class="tmsg ' + (m.role === 'user' ? 'me' : 'ai') + '">' + (m.role === 'user' ? esc(m.content).replace(/\n/g, '<br>') : md(m.content)) + '</div>').join('') +
       (busy ? '<div class="tmsg ai wait"><span class="spin" style="width:15px;height:15px;border-width:2px"></span>Thinking…</div>' : '')
-    : '<div class="tstart"><h3>What are you working on?</h3><p>Ask a question, paste a problem you\'re stuck on, or pick a page above so the tutor works from your own notes.</p>' +
-      '<div class="tsugs">' + TUT_SUGS.map(s => '<button class="tsug" data-act="tutorSug" data-t="' + esc(s) + '">' + esc(s) + '</button>').join('') + '</div></div>';
+    : '<div class="tstart"><h3>What are you working on?</h3><p>' + wk('Ask a question, paste a problem you\'re stuck on, or pick a page above so the tutor works from your own notes.', 'Ask for a plan, a draft or an explanation, or pick a note above so the assistant works from it.') + '</p>' +
+      '<div class="tsugs">' + tutSugs().map(s => '<button class="tsug" data-act="tutorSug" data-t="' + esc(s) + '">' + esc(s) + '</button>').join('') + '</div></div>';
   return '<div class="wrap" style="padding-bottom:0"><div class="tutor">' + list +
     '<section class="tmain"><div class="thead"><button class="btn sm tchats" data-act="tutorList" aria-haspopup="menu">' + ic('chat') + 'Chats</button>' +
     '<span class="ttl">' + esc((c && c.title) || 'New chat') + '</span>' + classSel + noteSel +
     (c ? '<button class="btn g sm" data-act="tutorMenu" data-id="' + c.id + '" aria-label="Chat options" aria-haspopup="menu">' + ic('dots') + '</button>' : '') + '</div>' +
     '<div class="tlog" id="tutLog" aria-live="polite">' + msgs + '</div>' +
-    '<div class="tcomp"><textarea id="chatIn" rows="1" placeholder="Ask your tutor…" aria-label="Message">' + esc((c && c.draft) || '') + '</textarea>' +
+    '<div class="tcomp"><textarea id="chatIn" rows="1" placeholder="' + wk('Ask your tutor…', 'Ask your assistant…') + '" aria-label="Message">' + esc((c && c.draft) || '') + '</textarea>' +
     '<button class="btn p" data-act="tutorSend"' + (busy ? ' disabled' : '') + '>' + ic('send') + 'Send</button></div>' +
-    '<div class="tfoot">Uses ATLAS\'s free AI. Leave out anything private. The tutor can make mistakes, so check what matters.</div></section></div></div>';
+    '<div class="tfoot">Uses ATLAS\'s free AI. Leave out anything private. The ' + wk('tutor', 'assistant') + ' can make mistakes, so check what matters.</div></section></div></div>';
 }
 function mountTutor() {
   const log = $('#tutLog'); if (log) log.scrollTop = log.scrollHeight;
@@ -4084,7 +4403,7 @@ function mountTutor() {
   ta.addEventListener('input', () => { fit(); const c = tutorChat(V.param); if (c) c.draft = ta.value; });
   ta.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); tutorSend(); } });
   const cs = $('#tutClass'), ns = $('#tutNote');
-  if (cs) cs.addEventListener('change', () => { const c = tutorChat(V.param) || tutorNew(); c.classId = cs.value || null; if (c.noteId && !S.notes.some(n => n.id === c.noteId && (!c.classId || n.classId === c.classId))) c.noteId = null; c.updated = Date.now(); save(); V.param = c.id; render(); });
+  if (cs) cs.addEventListener('change', () => { const c = tutorChat(V.param) || tutorNew(); c.classId = cs.value || null; if (c.noteId && !MY('notes').some(n => n.id === c.noteId && (!c.classId || n.classId === c.classId))) c.noteId = null; c.updated = Date.now(); save(); V.param = c.id; render(); });
   if (ns) ns.addEventListener('change', () => { const c = tutorChat(V.param) || tutorNew(); c.noteId = ns.value || null; const n = S.notes.find(x => x.id === c.noteId); if (n && !c.classId) c.classId = n.classId || null; c.updated = Date.now(); save(); V.param = c.id; render(); });
   if (window.innerWidth > 860 && !isTyping()) ta.focus();
 }
@@ -4100,12 +4419,15 @@ async function tutorSend() {
   TUT.busy[c.id] = true;
   save(); render();
   const page = c.noteId && S.notes.find(n => n.id === c.noteId);
-  const convo = c.messages.slice(-14).map(m => (m.role === 'user' ? 'Student: ' : 'Tutor: ') + m.content).join('\n\n');
-  const sys = assistSystem(c.classId) + '\n\nYou are a patient one-on-one tutor. Teach; do not just hand over answers. Work out what the student already knows, ' +
+  const who = wk('Student: ', 'User: '), bot = wk('Tutor: ', 'Assistant: ');
+  const convo = c.messages.slice(-14).map(m => (m.role === 'user' ? who : bot) + m.content).join('\n\n');
+  const sys = isWork() ? assistSystem(c.classId) + '\n\nYou are a capable, practical assistant for someone\'s work. Give direct, useful answers: drafts, plans, summaries, checklists, clear explanations. ' +
+    'Ask a clarifying question only when you truly need one. Keep replies under 220 words unless they ask for more. Use short paragraphs or a short list.'
+    : assistSystem(c.classId) + '\n\nYou are a patient one-on-one tutor. Teach; do not just hand over answers. Work out what the student already knows, ' +
     'give one step or one hint at a time, and end with a short question so they do the thinking. If they are checking a finished answer, say whether it is right and exactly why. ' +
     'If they ask to be quizzed, ask one question at a time and wait for their answer. Keep replies under 150 words unless they ask for more. Use short paragraphs or a short list.';
   try {
-    const out = await askAI([{ role: 'user', content: (page ? 'The student\'s notebook page "' + (page.title || 'Untitled') + '":\n' + String(page.body || '').slice(0, 7000) + '\n\n' : '') + convo + '\n\nTutor:' }], sys, 1200);
+    const out = await askAI([{ role: 'user', content: (page ? wk('The student\'s notebook page "', 'Their note "') + (page.title || 'Untitled') + '":\n' + String(page.body || '').slice(0, 7000) + '\n\n' : '') + convo + '\n\n' + bot.trim() }], sys, 1200);
     c.messages.push({ role: 'assistant', content: String(out || '').trim() || 'I didn\'t catch that. Try asking another way.', at: Date.now() });
   } catch (e) {
     c.messages.push({ role: 'assistant', content: 'I couldn\'t answer just now. ' + ((e && e.message) || ''), at: Date.now() });
@@ -4128,10 +4450,10 @@ async function deckAdjust(deckId, instruction, btn) {
   const ask = String(instruction || '').trim(); if (!ask) return toast('Say what to change, like "make the answers shorter".', true);
   await aiRun(btn, 'Working…', async () => {
     const cards = d.cards.slice(0, 200).map((c, i) => ({ n: i + 1, front: c.front, back: c.back }));
-    const arr = await askJSON('Flashcard deck "' + d.name + '" for the class "' + clsName(d.classId) + '", as JSON:\n' + JSON.stringify(cards) +
-      '\n\nThe student asks: "' + ask + '"\n\nReturn the whole deck after making exactly that change, as a JSON array of {"n": the original card number, or 0 for a new card, "front": "...", "back": "..."}. ' +
+    const arr = await askJSON('Flashcard deck "' + d.name + '" for the ' + W().cls.toLowerCase() + ' "' + clsName(d.classId) + '", as JSON:\n' + JSON.stringify(cards) +
+      '\n\n' + wk('The student asks', 'They ask') + ': "' + ask + '"\n\nReturn the whole deck after making exactly that change, as a JSON array of {"n": the original card number, or 0 for a new card, "front": "...", "back": "..."}. ' +
       'Keep every card the request doesn\'t touch exactly as it is, in the same order. Leave out cards the request removes.',
-      'You edit flashcard decks for a student. Follow the request precisely and change nothing else.', 4000);
+      'You edit flashcard decks for a learner. Follow the request precisely and change nothing else.', 4000);
     const used = {};
     const next = arr.filter(x => x && String(x.front || '').trim() && String(x.back || '').trim()).map(x => {
       const old = x.n > 0 && !used[x.n] ? d.cards[x.n - 1] : null;
@@ -4175,8 +4497,10 @@ function toastAct(msg, label, fn) {
 }
 function assistSystem(classId) {
   const ctx = schoolContext(classId);
-  return 'You are the study assistant inside ATLAS, a student\'s school organizer. Be concrete and brief. ' +
-    'Use markdown headings, lists and bold sparingly. Never invent facts about the student\'s courses — work only from what you are given.' +
+  return (isWork() ? 'You are the assistant inside ATLAS, a person\'s work organizer. Be concrete and brief. ' +
+    'Use markdown headings, lists and bold sparingly. Never invent facts about their projects, colleagues or clients — work only from what you are given.'
+    : 'You are the study assistant inside ATLAS, a student\'s school organizer. Be concrete and brief. ' +
+    'Use markdown headings, lists and bold sparingly. Never invent facts about the student\'s courses — work only from what you are given.') +
     (ctx ? '\n\nContext:\n' + ctx : '');
 }
 function busyToast(msg) {
@@ -5160,15 +5484,15 @@ function accountSheet() {
       '</div>';
   }
   if (!known) block += '<div class="acc-rows">' + accRow('bell', 'Reminders', esc(noteLabel()), 'noteSheet') + '</div>';
-  const k = streak(), best = bestStreak(), total = S.sessions.reduce((x, s) => x + s.minutes, 0);
-  const reviews = S.decks.reduce((x, d) => x + d.cards.reduce((y, c) => y + (c.reps || 0), 0), 0);
+  const k = streak(), best = bestStreak(), total = MY('sessions').reduce((x, s) => x + s.minutes, 0);
+  const reviews = MY('decks').reduce((x, d) => x + d.cards.reduce((y, c) => y + (c.reps || 0), 0), 0);
   const fig = (v, l) => '<div class="fig"><b>' + v + '</b><span>' + l + '</span></div>';
   const got = earned().map(b => b.id);
   modal({
     title: 'You',
     foot: (known ? '<button class="btn g" data-act="acctOut">Sign out</button>' : '') + '<span class="spacer"></span><button class="btn p" data-close>Done</button>',
     body: '<div class="you-head"><span class="ava big">' + avatarHTML() + '</span><div style="min-width:0"><b>' + esc(name) + '</b><span class="em">' + esc(known ? a.email : 'Not signed in') + '</span></div></div>' + block +
-      (on('focus') || S.sessions.length ? '<div class="figs">' + fig(k, 'day streak') + fig(best, 'best streak') + fig(dur(total), 'focused in total') + (on('cards') ? fig(reviews, 'cards reviewed') : '') + '</div>' + heatmap(true) : '') +
+      (on('focus') || MY('sessions').length ? '<div class="figs">' + fig(k, 'day streak') + fig(best, 'best streak') + fig(dur(total), 'focused in total') + (on('cards') ? fig(reviews, 'cards reviewed') : '') + '</div>' + heatmap(true) : '') +
       (S.settings.celebrate !== false ? '<div class="eyebrow" style="margin:16px 0 8px">Badges, ' + got.length + ' of ' + BADGES.length + ' earned</div><div class="bgrid sm">' +
         BADGES.slice().sort((x, y) => (got.indexOf(y.id) >= 0) - (got.indexOf(x.id) >= 0)).map(b => '<div class="badge' + (got.indexOf(b.id) >= 0 ? ' on' : '') + '" title="' + esc(b.hint) + '"><span class="bi">' + b.icon + '</span><b>' + esc(b.name) + '</b></div>').join('') + '</div>' : '')
   });
@@ -5618,7 +5942,15 @@ function noteSignedIn() { if (noteHere()) notePushToken().catch(() => { }); note
 
 /* --- what to remind you about, for the next two weeks --- */
 function atTime(day, hhmm) { const d = parseYMD(day); const m = toMin(hhmm || '00:00'); d.setHours(Math.floor(m / 60), m % 60, 0, 0); return d.getTime(); }
+/* Reminders cover both sides, whichever one this device is showing. */
 function noteItems(from) {
+  if (uses() !== 'both') return noteItemsSide(from);
+  const was = Local.mode; let out = [];
+  try { ['school', 'work'].forEach(m => { Local.mode = m; out = out.concat(noteItemsSide(from).map(x => m === 'work' ? Object.assign(x, { tag: 'w-' + x.tag }) : x)); }); }
+  finally { Local.mode = was; }
+  return out.sort((a, b) => a.at - b.at).slice(0, 80);
+}
+function noteItemsSide(from) {
   const c = noteCfg(), start = from == null ? Date.now() : from, until = Date.now() + 14 * 86400000, out = [];
   const w = W();
   if (on('tasks')) openTasks().forEach(t => {
@@ -5631,10 +5963,10 @@ function noteItems(from) {
     if (c.morn) out.push({ at: atTime(t.due, c.mornAt), title: 'Due today' + when, body: c.names ? what : what + ' due today.', tag: 'd0-' + t.id + '-' + t.due });
     if (c.big && big) out.push({ at: atTime(addDays(t.due, -3), c.eveAt), title: 'Coming up in 3 days', body: c.names ? what : 'A test or big project is 3 days away.', tag: 'd3-' + t.id + '-' + t.due });
   });
-  if (c.cards && on('cards') && S.decks.length) {
+  if (c.cards && on('cards') && MY('decks').length) {
     for (let i = 0; i < 8; i++) {
       const day = addDays(today(), i);
-      const n = S.decks.reduce((a, d) => a + studyCount(d, day), 0);
+      const n = MY('decks').reduce((a, d) => a + studyCount(d, day), 0);
       if (n) out.push({ at: atTime(day, c.cardsAt), title: 'Flashcards to study', body: n + (n === 1 ? ' card is' : ' cards are') + ' ready. A few minutes keeps them fresh.', tag: 'cards-' + day });
     }
   }
@@ -5732,7 +6064,7 @@ function viewDeck(id) {
       (fresh > nw && days > 0 ? fresh + ' cards haven\'t been started, so ATLAS adds about ' + pace + ' new a day to get through all of them in time. ' : '') +
       '<b>Ready</b> is how much of the deck you\'d remember on test day if you stopped studying now.</p></div></div>';
   } else {
-    const sug = S.tasks.filter(x => !x.done && x.due && x.due >= day && isTestTitle(x.title) && (!d.classId || x.classId === d.classId)).sort((a, b) => a.due < b.due ? -1 : 1)[0];
+    const sug = MY('tasks').filter(x => !x.done && x.due && x.due >= day && isTestTitle(x.title) && (!d.classId || x.classId === d.classId)).sort((a, b) => a.due < b.due ? -1 : 1)[0];
     if (sug && d.cards.length) test = '<div class="testhint">' + ic('flag') + '<span style="flex:1;min-width:180px">Studying for <b>' + esc(sug.title) + '</b> (' + esc(fmtDate(sug.due)) + ')? Link it and every card comes back before the test.</span>' +
       '<button class="btn sm" data-act="linkTest" data-id="' + d.id + '" data-task="' + sug.id + '">Link test</button></div>';
   }
@@ -5792,7 +6124,7 @@ const ACT = {
     t.done = el.checked; t.doneAt = t.done ? Date.now() : null;
     if (t.done) {
       S.events = S.events.filter(e => e.taskId !== t.id);
-      const dueToday = S.tasks.filter(x => x.due && x.due <= today());
+      const dueToday = MY('tasks').filter(x => x.due && x.due <= today());
       const clear = dueToday.length && dueToday.every(x => x.done);
       toast(clear ? 'Everything due is done. Go outside.' : 'Nice — ' + t.title + ' is done');
       if (clear) celebrate();
@@ -5804,7 +6136,7 @@ const ACT = {
   /* notes */
   newNote: el => {
     const n = { id: uid(), classId: (el && el.dataset.class) || (V.name === 'notes' ? V.param : null) || null, title: '', body: '', tags: [], created: Date.now(), updated: Date.now() };
-    S.notes.push(n); save(); go('notes', n.classId, n.id);
+    S.notes.push(...mkAll(n)); save(); go('notes', n.classId, n.id);
     setTimeout(() => { const t = $('#noteTitle'); t && t.focus(); }, 60);
   },
   pinNote: el => { const n = S.notes.find(x => x.id === el.dataset.id); if (n) { n.pinned = !n.pinned; save(); render(); } },
@@ -5814,6 +6146,63 @@ const ACT = {
   previewNote: () => {
     const n = S.notes.find(x => x.id === V.sub); if (!n) return;
     modal({ title: n.title || 'Untitled', wide: true, body: '<div class="bub" style="border:none;box-shadow:none;padding:0">' + md($('#noteBody').value) + '</div>', foot: '<button class="btn" data-close>Close</button>' });
+  },
+
+  setMode: el => switchMode(el.dataset.m),
+  setUses: el => {
+    const v = ['school', 'work', 'both'].indexOf(el.value) >= 0 ? el.value : 'school';
+    S.settings.uses = v;
+    if (v !== 'both') Local.mode = v; else if (!Local.mode) Local.mode = 'school';
+    saveLocal(); save(true); renderNav(); render();
+    toast(v === 'both' ? 'Switch sides with the button next to your name.' : 'ATLAS is set up for ' + v + '.');
+    if (!ms().setupDone && isWork()) setTimeout(() => openSurvey({ side: true }), 300);
+  },
+  /* today's schedule */
+  schDay: el => go('schedule', el.dataset.d === today() ? null : el.dataset.d),
+  schEdit: el => { SCH.editDay = el && el.dataset.dw != null ? +el.dataset.dw : dowOf(today()); V.sub = 'edit'; render(); $('#view').scrollTop = 0; },
+  schPick: el => { schCommit(); SCH.editDay = +el.dataset.dw; render(); },
+  schDone: () => {
+    const bad = schCommit();
+    if (bad) toast(bad + (bad === 1 ? ' block wasn\'t' : ' blocks weren\'t') + ' saved: each needs a start before its end, and a name.', true);
+    V.sub = null; save(); render(); $('#view').scrollTop = 0;
+  },
+  schAdd: () => {
+    const box = $('#schRows'); if (!box) return;
+    const rows = $$('[data-row]', box), last = rows[rows.length - 1];
+    const lens = []; MY('classes').forEach(c => (c.meets || []).forEach(m => lens.push(toMin(m.end) - toMin(m.start))));
+    const len = lens.length ? lens.sort((a, b) => lens.filter(x => x === b).length - lens.filter(x => x === a).length)[0] : 45;
+    const start = last && $('.rE', last).value ? toMin($('.rE', last).value) + 5 : toMin(ms().dayStart || '08:00');
+    box.insertAdjacentHTML('beforeend', schRowHTML({ start: toHHMM(start), end: toHHMM(Math.min(start + len, 1439)), what: '', label: '', room: '', ph: '' }));
+    const e = $('.schempty'); if (e) e.remove();
+    const n = box.lastElementChild; $('.rW', n).focus();
+  },
+  schRm: el => { el.closest('[data-row]').remove(); schCommit(); },
+  schClear: () => confirmAsk('Clear ' + DAY_NAMES[SCH.editDay] + '?', 'Every block on ' + DAY_NAMES[SCH.editDay] + 's comes off your schedule. Your ' + W().clsP.toLowerCase() + ' themselves stay.', () => {
+    $$('#schRows [data-row]').forEach(r => r.remove()); schCommit(); render();
+  }, true),
+  schCopy: () => {
+    schCommit();
+    const from = SCH.editDay, ws = +S.settings.weekStart || 0, order = [0, 1, 2, 3, 4, 5, 6].map(i => (ws + i) % 7).filter(d => d !== from);
+    modal({
+      title: 'Copy ' + DAY_NAMES[from] + ' to', body: '<p class="muted" style="margin:0 0 10px;font-size:13px">The days you pick get exactly ' + DAY_NAMES[from] + '\'s blocks. Anything already on them is replaced.</p>' +
+        order.map(d => '<label class="check" style="margin-bottom:8px"><input type="checkbox" class="cpDay" value="' + d + '"><span>' + DAY_NAMES[d] + (schRows(d).length ? ' <span class="dim">(has ' + schRows(d).length + ' blocks)</span>' : '') + '</span></label>').join(''),
+      foot: '<button class="btn" data-close>Cancel</button><button class="btn p" data-ok>Copy</button>',
+      onOk: () => {
+        const days = $$('.cpDay').filter(x => x.checked).map(x => +x.value);
+        if (!days.length) { toast('Pick at least one day.', true); return false; }
+        days.forEach(d => {
+          MY('classes').forEach(c => { const src = (c.meets || []).filter(m => m.day === from); c.meets = (c.meets || []).filter(m => m.day !== d).concat(src.map(m => Object.assign({}, m, { day: d }))); });
+          ms().periods = (ms().periods || []).filter(p => p.day !== d).concat((ms().periods || []).filter(p => p.day === from).map(p => Object.assign({}, p, { id: uid(), day: d })));
+        });
+        save(true); render(); toast('Copied to ' + days.map(d => DAY_NAMES[d]).join(', '));
+      }
+    });
+  },
+  resEdit: el => resModal(el.dataset.id),
+  packTick: el => {
+    const day = el.dataset.d, k = el.dataset.k, items = packedFor(day).slice(), i = items.indexOf(k);
+    if (el.checked && i < 0) items.push(k); else if (!el.checked && i >= 0) items.splice(i, 1);
+    ms().packed = { day, items }; save(); render();
   },
 
   /* decks + cards */
@@ -5848,7 +6237,7 @@ const ACT = {
     startReview(ids, d.id);
   },
   reviewAll: () => {
-    const ids = studyQueue(S.decks);
+    const ids = studyQueue(MY('decks'));
     if (!ids.length) return toast('Nothing to study right now. You\'re caught up.');
     const decks = new Set(ids.map(id => (findCard(id) || {}).deck).filter(Boolean));
     startReview(ids, decks.size === 1 ? Array.from(decks)[0].id : null);
@@ -5955,7 +6344,7 @@ const ACT = {
     ACT._gt = setTimeout(() => { if (V.name === 'grades' && !isTyping()) render(); }, 450);
   },
   finalCalc: () => {
-    const opts = S.classes.filter(c => classGrade(c) != null);
+    const opts = MY('classes').filter(c => classGrade(c) != null);
     if (!opts.length) return toast('Log a few scores first.', true);
     modal({
       title: 'What do I need on the final?', body:
@@ -5984,22 +6373,22 @@ const ACT = {
   planWeek: () => {
     const open = openTasks().filter(t => t.due && t.est);
     if (!open.length) return toast('Add a due date and a time estimate to an assignment first.', true);
-    const props = planStudy(S.tasks, { chunk: S.settings.chunk, buffer: S.settings.buffer });
+    const props = planStudy(MY('tasks'), { chunk: ms().chunk, buffer: ms().buffer });
     if (!props.length) return toast('No free time found inside your day window. Try widening it in Settings.', true);
     const byDay = {};
     props.forEach(p => (byDay[p.date] = byDay[p.date] || []).push(p));
     modal({
-      title: 'Proposed study blocks', wide: true, body:
+      title: wk('Proposed study blocks', 'Proposed focus blocks'), wide: true, body:
         '<p class="muted" style="margin:0 0 12px;font-size:13px">' + props.length + ' blocks · ' + dur(props.reduce((a, p) => a + (toMin(p.end) - toMin(p.start)), 0)) +
-        ' total, placed around your classes and finishing ' + S.settings.buffer + ' day(s) before each due date.</p>' +
+        ' total, placed around your ' + esc(W().clsP.toLowerCase()) + ' and finishing ' + ms().buffer + ' day(s) before each due date.</p>' +
         Object.keys(byDay).sort().map(d => '<div style="margin-bottom:10px"><div class="eyebrow" style="margin-bottom:4px">' + fmtDate(d, true) + '</div>' +
           byDay[d].map(p => '<div class="row" style="gap:8px;padding:3px 0"><span class="dot" style="--tc:' + (p.classId ? clsColor(p.classId) : 'var(--ultra)') + '"></span>' +
             '<span class="mono" style="font-size:12px">' + fmt12(p.start) + '–' + fmt12(p.end) + '</span><span style="font-size:13px">' + esc(p.title) + '</span></div>').join('') + '</div>').join(''),
       foot: '<button class="btn" data-close>Not now</button><button class="btn p" data-ok>Add to my calendar</button>',
       onOk: () => {
         S.events = S.events.filter(e => !e.auto);
-        props.forEach(p => S.events.push(p));
-        save(); toast('Added ' + props.length + ' study blocks');
+        props.forEach(p => S.events.push(...mkAll(p)));
+        save(); toast('Added ' + props.length + wk(' study blocks', ' focus blocks'));
         if (on('calendar')) go('calendar', 'week', today()); else render();
       }
     });
@@ -6009,7 +6398,7 @@ const ACT = {
       title: 'Import your school calendar', wide: true, body:
         '<p class="muted" style="margin:0 0 14px;font-size:13.5px">Canvas, Blackboard, Moodle, Google Classroom and Google Calendar all publish a feed ending in <span class="mono">.ics</span>. Due dates become assignments; everything else becomes calendar events. Anything already imported is skipped, so you can re-run this whenever your schedule changes.</p>' +
         '<label class="f"><span>Put everything into</span><select id="impClass"><option value="">Match the class by name, else leave unfiled</option>' +
-        S.classes.map(c => '<option value="' + c.id + '">' + esc(c.name) + '</option>').join('') + '</select></label>' +
+        MY('classes').map(c => '<option value="' + c.id + '">' + esc(c.name) + '</option>').join('') + '</select></label>' +
         '<div class="row" style="gap:8px;margin-bottom:12px"><button class="btn" data-act="impFile">' + ic('down') + 'Choose a file</button>' +
         '<span class="dim" style="font-size:12.5px">.ics, or the .zip from Google Calendar</span></div>' +
         '<div class="row" style="gap:8px;margin-bottom:10px"><input type="text" id="impUrl" placeholder="https://canvas.school.edu/feeds/calendars/user_xxx.ics"><button class="btn" data-act="impUrl">Fetch</button></div>' +
@@ -6041,11 +6430,11 @@ const ACT = {
     }
   },
   exportICS: () => {
-    if (!S.classes.length && !S.events.length && !S.tasks.length) return toast('Nothing to export yet.', true);
+    if (!MY('classes').length && !MY('events').length && !MY('tasks').length) return toast('Nothing to export yet.', true);
     download('atlas-schedule.ics', exportAllICS(), 'text/calendar;charset=utf-8');
     modal({
       title: 'Added to your downloads', body:
-        '<p style="margin:0 0 10px">Your classes (as weekly repeats), study blocks and due dates are in <span class="mono">atlas-schedule.ics</span>.</p>' +
+        '<p style="margin:0 0 10px">Your ' + esc(W().clsP.toLowerCase()) + ' (as weekly repeats), ' + wk('study', 'focus') + ' blocks and due dates are in <span class="mono">atlas-schedule.ics</span>.</p>' +
         '<p class="muted" style="margin:0 0 10px;font-size:13.5px">To put them in Google Calendar: open <a href="https://calendar.google.com/calendar/r/settings/export" target="_blank" rel="noopener">Settings → Import &amp; export</a>, choose the file, pick which calendar to add it to, and import.</p>' +
         '<p class="dim" style="font-size:12.5px;margin:0">Use Google Calendar? Settings, under Calendars, can also pull it straight in.</p>',
       foot: '<button class="btn p" data-close>Got it</button>'
@@ -6076,7 +6465,7 @@ const ACT = {
   tutorOpen: el => go('tutor', el.dataset.id),
   tutorSend: () => tutorSend(),
   tutorSug: el => { const t = $('#chatIn'); if (t) { t.value = el.dataset.t + ' '; t.focus(); t.dispatchEvent(new Event('input')); } },
-  tutorList: el => togglePop(el, [{ act: 'tutorNew', icon: 'plus', label: 'New chat' }, '-'].concat(S.chats.slice().sort((a, b) => (b.updated || 0) - (a.updated || 0)).slice(0, 12)
+  tutorList: el => togglePop(el, [{ act: 'tutorNew', icon: 'plus', label: 'New chat' }, '-'].concat(MY('chats').slice().sort((a, b) => (b.updated || 0) - (a.updated || 0)).slice(0, 12)
     .map(c => ({ act: 'tutorOpen', icon: 'chat', label: c.title || 'New chat', data: { id: c.id } })))),
   tutorMenu: el => togglePop(el, [
     { act: 'tutorRename', icon: 'pencil', label: 'Rename', data: { id: el.dataset.id } },
@@ -6127,16 +6516,16 @@ const ACT = {
       if (mode === 'cards') {
         const arr = await askJSON('Make 8-14 flashcards from these notes for the class "' + clsName(n.classId) +
           '". Each: {"front":"question or term","back":"answer, one or two sentences"}. Test understanding, not trivia.\n\nNotes:\n\n' + body,
-          'You write flashcards for a student.', 2600);
+          'You write flashcards for a learner.', 2600);
         const cards = arr.filter(c => c.front && c.back).map(c => newCard(c.front, c.back));
         if (!cards.length) throw new Error('No usable cards came back. Try again.');
         const deck = { id: uid(), classId: n.classId, name: (n.title || 'Notes') + ' — cards', cards, created: Date.now() };
-        S.decks.push(deck); save(true);
+        S.decks.push(...mkAll(deck)); save(true);
         toast('Made ' + cards.length + ' cards');
         go('cards', deck.id);
       } else if (mode === 'quiz') {
         const arr = await askJSON('Write 6 multiple-choice questions from these notes. Each: {"q":"...","choices":["a","b","c","d"],"answer":0,"why":"one sentence"}.\n\nNotes:\n\n' + body,
-          'You write practice quizzes for a student.', 2600);
+          'You write practice quizzes for a learner.', 2600);
         const clean = arr.filter(q => q && q.q && Array.isArray(q.choices) && q.choices.length >= 2);
         if (!clean.length) throw new Error('No usable questions came back. Try again.');
         quizModal(clean);
@@ -6164,7 +6553,7 @@ const ACT = {
         '<label class="f"><span>Topic or terms</span><textarea id="genTopic" rows="3" placeholder="The causes of World War I / Spanish preterite vs imperfect / cell respiration"></textarea></label>' +
         '<div class="f2"><label class="f"><span>How many</span><input type="number" id="genN" value="12" min="4" max="30"></label>' +
         '<label class="f"><span>' + esc(W().cls) + '</span><select id="genClass"><option value="">General</option>' +
-        S.classes.map(c => '<option value="' + c.id + '">' + esc(c.name) + '</option>').join('') + '</select></label></div>',
+        MY('classes').map(c => '<option value="' + c.id + '">' + esc(c.name) + '</option>').join('') + '</select></label></div>',
       foot: '<button class="btn" data-close>Cancel</button><button class="btn p" data-ok>Generate</button>',
       onOk: () => {
         const topic = $('#genTopic').value.trim(); if (!topic) return false;
@@ -6173,11 +6562,11 @@ const ACT = {
         aiRun(null, 'Writing cards…', async () => {
           const arr = await askJSON('Make ' + n + ' flashcards on: ' + topic +
             '. Each: {"front":"question or term","back":"answer in one or two sentences"}. Vary between recall, definition and application.',
-            'You write flashcards for a student.', 2600);
+            'You write flashcards for a learner.', 2600);
           const cards = arr.filter(c => c.front && c.back).map(c => newCard(c.front, c.back));
           if (!cards.length) throw new Error('No usable cards came back.');
           if (deckId) { const d = S.decks.find(x => x.id === deckId); const r = addCardsTo(d, cards); save(true); render(); toast(cardsAddedMsg(r)); }
-          else { const d = { id: uid(), classId, name: topic.slice(0, 40), cards: [], created: Date.now() }; addCardsTo(d, cards); S.decks.push(d); save(true); go('cards', d.id); toast('Added ' + d.cards.length + ' cards'); }
+          else { const d = { id: uid(), classId, name: topic.slice(0, 40), cards: [], created: Date.now() }; addCardsTo(d, cards); S.decks.push(...mkAll(d)); save(true); go('cards', d.id); toast('Added ' + d.cards.length + ' cards'); }
         });
         return false;
       }
@@ -6189,7 +6578,7 @@ const ACT = {
       title: 'Explain a topic', body:
         '<label class="f"><span>What do you need explained?</span><textarea id="exTopic" rows="3" placeholder="Why does the derivative of e^x equal itself?"></textarea></label>' +
         '<label class="f"><span>For which class</span><select id="exClass"><option value="">General</option>' +
-        S.classes.map(c => '<option value="' + c.id + '">' + esc(c.name) + '</option>').join('') + '</select></label>',
+        MY('classes').map(c => '<option value="' + c.id + '">' + esc(c.name) + '</option>').join('') + '</select></label>',
       foot: '<button class="btn" data-close>Cancel</button><button class="btn p" data-ok>Write it</button>',
       onOk: () => {
         const t = $('#exTopic').value.trim(); if (!t) return false;
@@ -6204,7 +6593,7 @@ const ACT = {
             foot: '<button class="btn" data-close>Close</button><button class="btn p" data-ok>Save as a page</button>',
             onOk: () => {
               const n = { id: uid(), classId, title: t.slice(0, 60), body: out, tags: [], created: Date.now(), updated: Date.now() };
-              S.notes.push(n); save(true); go('notes', classId, n.id); toast('Saved to your notebook');
+              S.notes.push(...mkAll(n)); save(true); go('notes', classId, n.id); toast('Saved to your notebook');
             }
           });
         });
@@ -6226,7 +6615,7 @@ const ACT = {
     aiRun(el, 'Planning…', async () => {
       const arr = await askJSON('Break this assignment into 3-6 concrete steps: "' + t.title + '"' + (t.notes ? '\nDetails: ' + t.notes : '') +
         '\nClass: ' + clsName(t.classId) + '\nEach step: {"title":"...","minutes":30}. The first step must be small enough to start in the next 10 minutes.',
-        'You help a student plan schoolwork.', 900);
+        wk('You help a student plan schoolwork.', 'You help someone plan their work.'), 900);
       const steps = arr.filter(x => x && x.title);
       if (!steps.length) throw new Error('No usable plan came back.');
       t.steps = steps;
@@ -6328,7 +6717,7 @@ const ACT = {
   gSyncNow: el => ACT.acctSyncNow(el),
   gOut: () => acctOutSheet(),
   calMenu: el => togglePop(el, [
-    on('tasks') && { act: 'planWeek', icon: 'wand', label: 'Plan study time' },
+    on('tasks') && { act: 'planWeek', icon: 'wand', label: wk('Plan study time', 'Plan focus time') },
     { act: 'importICS', icon: 'down', label: 'Import a calendar' },
     { act: 'exportICS', icon: 'up', label: 'Export as an .ics file' }
   ]),
@@ -6413,17 +6802,17 @@ const ACT = {
   },
   seed: () => { seedTerm(); checkBadges(true); save(true); go('today'); toast('Loaded a sample term — erase it any time in Settings'); },
   openClass: el => go('class', el.dataset.id),
-  survey: () => openSurvey({}),
-  nudgeOff: () => { S.settings.setupNudge = false; save(); render(); toast('You can personalize any time from Settings'); },
+  survey: () => openSurvey({ side: isWork() }),
+  nudgeOff: () => { ms().setupNudge = false; save(); render(); toast('You can personalize any time from Settings'); },
   modToggle: el => {
-    const m = Object.assign({ calendar: true, tasks: true, notes: true, cards: true, grades: true, focus: true, break: true }, S.settings.modules || {});
+    const m = Object.assign({ schedule: true, calendar: true, tasks: true, notes: true, cards: true, tutor: true, grades: !isWork(), focus: true, break: true }, ms().modules || {});
     m[el.dataset.m] = !!el.checked;
-    S.settings.modules = m;
+    ms().modules = m;
     if (!on('focus') && T.running) toggleTimer();
     save(true); render();
   },
   setLevel: el => { S.settings.level = LEVELS[el.value] ? el.value : null; save(true); render(); },
-  setHome: el => { S.settings.home = el.value; save(true); },
+  setHome: el => { ms().home = el.value; save(true); },
   setGrading: el => { S.settings.grading = el.value; save(true); render(); },
   setCelebrate: el => { S.settings.celebrate = !!el.checked; save(true); }
 };
@@ -6462,8 +6851,8 @@ function doImport(txt) {
 /* ---------- modals ---------- */
 function classModal(c) {
   const isNew = !c;
-  c = c || { id: uid(), name: '', code: '', color: PALETTE[S.classes.length % PALETTE.length], teacher: '', room: '', credits: 1, meets: [], categories: [] };
-  const meetRow = (m, i) => '<div class="row" style="gap:6px;margin-bottom:6px" data-meet="' + i + '">' +
+  c = c || { id: uid(), name: '', code: '', color: PALETTE[MY('classes').length % PALETTE.length], teacher: '', room: '', credits: 1, meets: [], categories: [] };
+  const meetRow = (m, i) => '<div class="row" style="gap:6px;margin-bottom:6px" data-meet="' + i + '" data-room="' + esc(m.room || '') + '">' +
     '<select class="mDay" style="width:auto">' + DAYS.map((d, k) => '<option value="' + k + '"' + (m.day === k ? ' selected' : '') + '>' + d + '</option>').join('') + '</select>' +
     '<input type="time" class="mStart" value="' + m.start + '" style="width:auto"><span class="dim">to</span>' +
     '<input type="time" class="mEnd" value="' + m.end + '" style="width:auto">' +
@@ -6472,14 +6861,15 @@ function classModal(c) {
     title: isNew ? 'Add a ' + W().cls.toLowerCase() : 'Edit ' + W().cls.toLowerCase(), wide: true, body:
       '<div class="f2"><label class="f"><span>' + esc(W().cls) + ' name</span><input type="text" id="cName" value="' + esc(c.name) + '" placeholder="AP Biology"></label>' +
       '<label class="f"><span>Code</span><input type="text" id="cCode" value="' + esc(c.code) + '" placeholder="BIO-201"></label></div>' +
-      '<div class="f2"><label class="f"><span>Teacher</span><input type="text" id="cTeacher" value="' + esc(c.teacher) + '" placeholder="Ms. Ortiz"></label>' +
+      '<div class="f2"><label class="f"><span>' + wk('Teacher', 'Lead or client') + '</span><input type="text" id="cTeacher" value="' + esc(c.teacher) + '" placeholder="' + wk('Ms. Ortiz', 'Dana Levi') + '"></label>' +
       '<label class="f"><span>Room</span><input type="text" id="cRoom" value="' + esc(c.room) + '" placeholder="B-214"></label></div>' +
+      '<label class="f"><span>' + bringWord() + '</span><textarea id="cRes" rows="2" placeholder="' + wk('Laptop, textbook, calculator', 'Laptop, charger, slides') + '">' + esc(classResources(c).join(', ')) + '</textarea></label>' +
       '<div class="f"><span>Color</span><div class="row" style="gap:6px;flex-wrap:wrap" id="cColors">' +
       PALETTE.map(p => '<button class="ccol" data-color="' + p + '" aria-label="Colour ' + p + '" style="width:26px;height:26px;border-radius:8px;background:' + p + ';border:3px solid ' + (c.color === p ? 'var(--ink)' : 'transparent') + '"></button>').join('') + '</div></div>' +
-      '<div class="f"><span>When it meets</span><div id="meetList">' + (c.meets || []).map(meetRow).join('') + '</div>' +
+      '<div class="f"><span>' + wk('When it meets', 'Regular meetings') + '</span><div id="meetList">' + (c.meets || []).map(meetRow).join('') + '</div>' +
       '<button class="btn sm" data-act="addMeet">+ Add a meeting time</button></div>' +
-      '<div class="f2"><label class="f"><span>Term starts</span><input type="date" id="cStart" value="' + (c.startDate || '') + '"></label>' +
-      '<label class="f"><span>Term ends</span><input type="date" id="cEnd" value="' + (c.endDate || '') + '"></label></div>' +
+      '<div class="f2"><label class="f"><span>' + wk('Term starts', 'Starts') + '</span><input type="date" id="cStart" value="' + (c.startDate || '') + '"></label>' +
+      '<label class="f"><span>' + wk('Term ends', 'Ends') + '</span><input type="date" id="cEnd" value="' + (c.endDate || '') + '"></label></div>' +
       (on('grades') && grading() === 'gpa4' ? '<label class="f" style="max-width:220px"><span>Credits (weights the GPA)</span><input type="number" id="cCredits" value="' + (c.credits == null ? 1 : c.credits) + '" min="0.5" max="12" step="0.5"></label>' : ''),
     foot: (isNew ? '' : '<button class="btn dg" data-act="delClass" data-id="' + c.id + '">Delete</button>') +
       '<span class="spacer"></span><button class="btn" data-close>Cancel</button><button class="btn p" data-ok>' + (isNew ? 'Add ' + W().cls.toLowerCase() : 'Save') + '</button>',
@@ -6487,11 +6877,12 @@ function classModal(c) {
       const name = $('#cName').value.trim();
       if (!name) { toast('Give the class a name.', true); return false; }
       c.name = name; c.code = $('#cCode').value.trim(); c.teacher = $('#cTeacher').value.trim(); c.room = $('#cRoom').value.trim();
+      c.resources = parseList($('#cRes').value);
       c.startDate = $('#cStart').value || null; c.endDate = $('#cEnd').value || null;
       if ($('#cCredits')) c.credits = clamp(+$('#cCredits').value || 1, 0.5, 12);
-      c.meets = $$('#meetList [data-meet]').map(r => ({ day: +$('.mDay', r).value, start: $('.mStart', r).value || '09:00', end: $('.mEnd', r).value || '10:00' }))
+      c.meets = $$('#meetList [data-meet]').map(r => Object.assign({ day: +$('.mDay', r).value, start: $('.mStart', r).value || '09:00', end: $('.mEnd', r).value || '10:00' }, r.dataset.room ? { room: r.dataset.room } : {}))
         .filter(m => toMin(m.end) > toMin(m.start));
-      if (isNew) S.classes.push(c);
+      if (isNew) S.classes.push(...mkAll(c));
       save(true); render(); toast(isNew ? W().cls + ' added' : 'Saved');
     }
   });
@@ -6521,7 +6912,7 @@ function taskModal(t, classId) {
     title: (isNew ? 'New ' : 'Edit ') + W().task.toLowerCase(), body:
       '<label class="f"><span>What is it?</span><input type="text" id="tTitle" value="' + esc(t.title) + '" placeholder="Lab report — enzyme activity"></label>' +
       '<div class="f2"><label class="f"><span>' + esc(W().cls) + '</span><select id="tClass"><option value="">Unfiled</option>' +
-      S.classes.map(c => '<option value="' + c.id + '"' + (t.classId === c.id ? ' selected' : '') + '>' + esc(c.name) + '</option>').join('') + '</select></label>' +
+      MY('classes').map(c => '<option value="' + c.id + '"' + (t.classId === c.id ? ' selected' : '') + '>' + esc(c.name) + '</option>').join('') + '</select></label>' +
       '<label class="f"><span>Priority</span><select id="tPri"><option value="0"' + (t.priority === 0 ? ' selected' : '') + '>Low</option><option value="1"' + (t.priority === 1 ? ' selected' : '') + '>Normal</option><option value="2"' + (t.priority === 2 ? ' selected' : '') + '>High</option></select></label></div>' +
       '<div class="f2"><label class="f"><span>Due</span><input type="date" id="tDue" value="' + (t.due || '') + '"></label>' +
       '<label class="f"><span>Time (optional)</span><input type="time" id="tTime" value="' + (t.dueTime || '') + '"></label></div>' +
@@ -6538,7 +6929,7 @@ function taskModal(t, classId) {
         title, classId: $('#tClass').value || null, due: $('#tDue').value || null, dueTime: $('#tTime').value || '',
         est: +$('#tEst').value || 0, priority: +$('#tPri').value, notes: $('#tNotes').value
       });
-      if (isNew) S.tasks.push(t);
+      if (isNew) S.tasks.push(...mkAll(t));
       save(true); render();
     }
   });
@@ -6554,7 +6945,7 @@ function eventModal(e) {
     title: isNew ? 'Block some time' : 'Edit block', body:
       '<label class="f"><span>What for?</span><input type="text" id="eTitle" value="' + esc(ev.title) + '" placeholder="Study for chem quiz"></label>' +
       '<label class="f"><span>' + esc(W().cls) + '</span><select id="eClass"><option value="">None</option>' +
-      S.classes.map(c => '<option value="' + c.id + '"' + (ev.classId === c.id ? ' selected' : '') + '>' + esc(c.name) + '</option>').join('') + '</select></label>' +
+      MY('classes').map(c => '<option value="' + c.id + '"' + (ev.classId === c.id ? ' selected' : '') + '>' + esc(c.name) + '</option>').join('') + '</select></label>' +
       '<label class="f"><span>Day</span><input type="date" id="eDate" value="' + ev.date + '"></label>' +
       '<div class="f2"><label class="f"><span>Start</span><input type="time" id="eStart" value="' + ev.start + '"></label>' +
       '<label class="f"><span>End</span><input type="time" id="eEnd" value="' + ev.end + '"></label></div>',
@@ -6566,7 +6957,7 @@ function eventModal(e) {
       ev.classId = $('#eClass').value || null; ev.date = $('#eDate').value; ev.start = $('#eStart').value; ev.end = $('#eEnd').value;
       if (toMin(ev.end) <= toMin(ev.start)) { toast('End time has to come after the start.', true); return false; }
       ev.auto = false;
-      if (isNew) S.events.push(ev);
+      if (isNew) S.events.push(...mkAll(ev));
       save(true); render();
     }
   });
@@ -6580,7 +6971,7 @@ function eventModal(e) {
 }
 function deckModal(d, classId) {
   const isNew = !d, day = today();
-  const ups = S.tasks.filter(t => !t.done && t.due && t.due >= day).sort((a, b) => a.due < b.due ? -1 : a.due > b.due ? 1 : 0);
+  const ups = MY('tasks').filter(t => !t.done && t.due && t.due >= day).sort((a, b) => a.due < b.due ? -1 : a.due > b.due ? 1 : 0);
   const opt = t => '<option value="task:' + t.id + '"' + (d && d.testId === t.id ? ' selected' : '') + '>' + esc(t.title) + ' · ' + esc(fmtDate(t.due)) + (t.classId ? ' · ' + esc(clsName(t.classId)) : '') + '</option>';
   const tests = ups.filter(t => isTestTitle(t.title)), others = ups.filter(t => !isTestTitle(t.title));
   const linked = d && d.testId && !ups.some(t => t.id === d.testId) ? S.tasks.find(t => t.id === d.testId) : null;   /* a test already past */
@@ -6589,7 +6980,7 @@ function deckModal(d, classId) {
     title: isNew ? 'New deck' : 'Deck settings', body:
       '<label class="f"><span>Deck name</span><input type="text" id="dName" placeholder="Unit 3 — cell biology" value="' + esc(d ? d.name : '') + '"></label>' +
       '<label class="f"><span>' + esc(W().cls) + '</span><select id="dClass"><option value="">General</option>' +
-      S.classes.map(c => '<option value="' + c.id + '"' + (((d && d.classId) || classId) === c.id ? ' selected' : '') + '>' + esc(c.name) + '</option>').join('') + '</select></label>' +
+      MY('classes').map(c => '<option value="' + c.id + '"' + (((d && d.classId) || classId) === c.id ? ' selected' : '') + '>' + esc(c.name) + '</option>').join('') + '</select></label>' +
       '<label class="f"><span>Studying for a test?</span><select id="dTest"><option value="">No test</option>' +
       (linked ? '<option value="task:' + linked.id + '" selected>' + esc(linked.title) + ' · ' + esc(fmtDate(linked.due)) + '</option>' : '') +
       (tests.length ? '<optgroup label="Tests and quizzes">' + tests.map(opt).join('') + '</optgroup>' : '') +
@@ -6609,7 +7000,7 @@ function deckModal(d, classId) {
       if (v.indexOf('task:') === 0) deck.testId = v.slice(5);
       else if (v === 'date') { deck.testDate = $('#dTestDate').value; deck.testName = $('#dTestName').value.trim() || 'Test'; }
       capForTest(deck);
-      if (isNew) { S.decks.push(deck); save(true); go('cards', deck.id); }
+      if (isNew) { S.decks.push(...mkAll(deck)); save(true); go('cards', deck.id); }
       else { save(true); render(); }
     }
   });
@@ -6734,7 +7125,7 @@ function logPartial() {
   if (!T.startedAt) return;
   const mins = Math.round((Date.now() - T.startedAt) / 60000);
   T.startedAt = null;
-  if (mins >= 1 && T.mode === 'focus') { S.sessions.push({ id: uid(), date: today(), minutes: mins, classId: T.classId, taskId: T.taskId || null }); save(); }
+  if (mins >= 1 && T.mode === 'focus') { S.sessions.push(...mkAll({ id: uid(), date: today(), minutes: mins, classId: T.classId, taskId: T.taskId || null })); save(); }
 }
 function finishSession() {
   clearInterval(T.tick); T.running = false; T.endAt = null;
@@ -6802,10 +7193,10 @@ function openPalette() {
   const items = [];
   const w = W();
   Object.keys(VIEWS).filter(k => !['class', 'review'].includes(k) && viewOn(k)).forEach(k => items.push({ t: 'Go to ' + viewTitle(k), k: 'view', act: () => go(k) }));
-  S.classes.forEach(c => items.push({ t: c.name, s: w.cls + (c.code ? ' · ' + c.code : ''), color: c.color, act: () => go('class', c.id) }));
-  if (on('notes')) S.notes.forEach(n => items.push({ t: n.title || 'Untitled page', s: 'Note · ' + clsName(n.classId), act: () => go('notes', n.classId, n.id) }));
-  if (on('tasks')) S.tasks.filter(t => !t.done).forEach(t => items.push({ t: t.title, s: w.task + ' · ' + (t.due ? fmtDate(t.due) : 'no date'), act: () => taskModal(t) }));
-  if (on('cards')) S.decks.forEach(d => items.push({ t: d.name, s: 'Deck · ' + d.cards.length + ' cards', act: () => go('cards', d.id) }));
+  MY('classes').forEach(c => items.push({ t: c.name, s: w.cls + (c.code ? ' · ' + c.code : ''), color: c.color, act: () => go('class', c.id) }));
+  if (on('notes')) MY('notes').forEach(n => items.push({ t: n.title || 'Untitled page', s: 'Note · ' + clsName(n.classId), act: () => go('notes', n.classId, n.id) }));
+  if (on('tasks')) MY('tasks').filter(t => !t.done).forEach(t => items.push({ t: t.title, s: w.task + ' · ' + (t.due ? fmtDate(t.due) : 'no date'), act: () => taskModal(t) }));
+  if (on('cards')) MY('decks').forEach(d => items.push({ t: d.name, s: 'Deck · ' + d.cards.length + ' cards', act: () => go('cards', d.id) }));
   items.push({ t: 'Add a ' + w.cls.toLowerCase(), s: 'Command', act: () => classModal() });
   if (on('tasks')) items.push({ t: 'New ' + w.task.toLowerCase(), s: 'Command', act: () => taskModal() });
   if (on('tasks')) items.push({ t: 'Auto-schedule study time', s: 'Command', act: () => ACT.planWeek() });
@@ -6825,7 +7216,7 @@ function openPalette() {
   THEMES.forEach(t => items.push({ t: t.name, s: 'Theme · ' + t.group, color: t.ultra, act: () => { setTheme(t.id); toast(t.name); } }));
 
   let sel = 0, shown = items.slice(0, 12);
-  $('#overlay').innerHTML = '<div class="scrim palette"><div class="pal"><input type="search" id="palIn" placeholder="Search classes, pages, assignments, commands…" autocomplete="off"><div class="palres" id="palRes"></div></div></div>';
+  $('#overlay').innerHTML = '<div class="scrim palette"><div class="pal"><input type="search" id="palIn" placeholder="Search ' + esc(W().clsP.toLowerCase()) + ', ' + wk('pages', 'notes') + ', ' + esc(W().taskP.toLowerCase()) + ', commands…" autocomplete="off"><div class="palres" id="palRes"></div></div></div>';
   const draw = () => {
     $('#palRes').innerHTML = shown.length ? shown.map((it, i) => '<button class="pr' + (i === sel ? ' on' : '') + '" data-i="' + i + '">' +
       (it.color ? '<span class="dot" style="--tc:' + it.color + '"></span>' : '<span class="dot" style="--tc:var(--rule2)"></span>') +
@@ -6873,6 +7264,7 @@ const LEVELS = {
   self: { name: 'Learning on my own', blurb: 'An online course, a language, a test to prep for.', icon: 'compass', cls: 'Subject', clsP: 'Subjects', task: 'Task', taskP: 'Tasks', taskA: 'task', taskAn: 'a task', short: 'Tasks', term: 'Right now' }
 };
 const MODULES = [
+  { id: 'schedule', icon: 'clock', name: 'Today\'s Schedule', blurb: 'Your day, class by class, with what to bring to each one.' },
   { id: 'calendar', icon: 'calendar', name: 'Calendar', blurb: 'Your timetable on a week grid, with time blocked for studying.' },
   { id: 'tasks', icon: 'tasks', name: 'Deadlines', blurb: 'Everything due in one list, most urgent first.' },
   { id: 'notes', icon: 'book', name: 'Notebooks', blurb: 'A notebook for every class that saves as you type.' },
@@ -6882,7 +7274,7 @@ const MODULES = [
   { id: 'focus', icon: 'timer', name: 'Focus timer', blurb: 'A timer, background sound and a streak to keep you going.' },
   { id: 'break', icon: 'play', name: 'Break room', blurb: 'Two quiet, turn-based games for a breather.' }
 ];
-const VIEW_MOD = { calendar: 'calendar', tasks: 'tasks', notes: 'notes', cards: 'cards', review: 'cards', tutor: 'tutor', grades: 'grades', break: 'break' };
+const VIEW_MOD = { schedule: 'schedule', calendar: 'calendar', tasks: 'tasks', notes: 'notes', cards: 'cards', review: 'cards', tutor: 'tutor', grades: 'grades', break: 'break' };
 const HOMES = {
   schedule: { need: 'calendar', icon: 'calendar', name: 'My day', blurb: 'Classes and study blocks on a timeline.' },
   due: { need: 'tasks', icon: 'tasks', name: 'What\'s due', blurb: 'The next deadlines, most urgent first.' },
@@ -6910,17 +7302,65 @@ const GRADINGS = {
 };
 const SV_THEMES = ['paper', 'midnight', 'sakura', 'blueprint', 'vellum', 'neon', 'forest', 'highlighter', 'lakefront', 'amber', 'terminal', 'citrus'];
 const SUGGEST = {
+  work: ['Website redesign', 'Q4 report', 'Hiring', 'Client onboarding', 'Product launch', 'Team meetings', 'Budget', 'Certification'],
   middle: ['Math', 'English', 'Science', 'History', 'Spanish', 'Art', 'Music', 'Computer Science'],
   high: ['Algebra II', 'English Literature', 'Biology', 'Chemistry', 'Physics', 'World History', 'Spanish', 'Computer Science', 'Economics'],
   uni: ['Calculus I', 'Linear Algebra', 'Intro to Psychology', 'Microeconomics', 'Organic Chemistry', 'Data Structures', 'Statistics', 'Writing Seminar'],
   self: ['Spanish', 'Python', 'Guitar', 'Drawing', 'Machine Learning', 'SAT prep', 'Japanese', 'Photography']
 };
 
-/* --- what the rest of the app asks --- */
-function on(id) { const m = S.settings.modules; return !m || m[id] !== false; }
+function switchMode(m) {
+  m = m === 'work' ? 'work' : 'school';
+  if (uses() !== 'both' || m === M()) return;
+  if (T.running && T.classId && !MY('classes').some(c => c.id === T.classId)) T.classId = null;
+  Local.mode = m; saveLocal();
+  closePop(); closeModal();
+  go('today');
+  if (!ms().setupDone) setTimeout(() => { if (M() === m && !SVY.open) openSurvey({ side: true }); }, 300);
+  else toast(m === 'work' ? 'Work side. Your school things are a tap away.' : 'School side. Your work things are a tap away.');
+}
+/* --- school and work ---
+   One desk, two sides. Records made on the work side carry mode: 'work'; the rest
+   are school. Each side keeps its own tabs, hours, schedule extras and setup in
+   settings (school in settings itself, work in settings.work). Which side this
+   device shows is its own choice (Local.mode), so a work laptop can stay on work. */
+function uses() { const u = S.settings.uses; return u === 'work' || u === 'both' ? u : 'school'; }
+function M() { const u = uses(); return u === 'both' ? (Local.mode === 'work' ? 'work' : 'school') : u; }
+function isWork() { return M() === 'work'; }
+function wk(school, work) { return isWork() ? work : school; }
+function isMine(r) { return !!r && (r.mode === 'work') === isWork(); }
+function MY(k) { return (S[k] || []).filter(isMine); }
+function mk(r) { if (r && typeof r === 'object') { if (isWork()) r.mode = 'work'; else if (r.mode) delete r.mode; } return r; }
+function mkAll(...rs) { return rs.map(mk); }
+const WORK_DEF = () => ({ modules: null, home: null, dayStart: '09:00', dayEnd: '18:00', chunk: 50, buffer: 1, periods: [], packed: null, setupDone: false, setupNudge: true, term: 'This quarter' });
+/* this side's own settings */
+function ms() { if (!isWork()) return S.settings; if (!S.settings.work || typeof S.settings.work !== 'object') S.settings.work = WORK_DEF(); return S.settings.work; }
+function termLabel() { return isWork() ? (ms().term || 'This quarter') : (S.profile.term || 'your school desk'); }
+const WORK_WORDS = { name: 'Work', blurb: 'Projects, tasks and meetings.', icon: 'briefcase', cls: 'Project', clsP: 'Projects', task: 'Task', taskP: 'Tasks', taskA: 'task', taskAn: 'a task', short: 'Tasks', term: 'This quarter' };
+const WORK_OFF = { grades: true };          /* off by default on the work side */
+const WORK_MODS = {
+  schedule: ['Today\'s Schedule', 'Your day, meeting by meeting, with what you need for each one.'],
+  calendar: ['Calendar', 'Your week on a grid, with time blocked for focused work.'],
+  tasks: ['Tasks', 'Every task and deadline in one list, most urgent first.'],
+  notes: ['Notes', 'Notes for every project that save as you type.'],
+  cards: ['Flashcards', 'For a language, a certification or anything else you\'re learning.'],
+  tutor: ['AI assistant', 'Helps you plan, write, summarize and think things through.'],
+  grades: ['Scores', 'Track scores for a course or certification you\'re taking.'],
+  focus: ['Focus timer', 'A timer, background sound and a streak to keep you going.'],
+  break: ['Break room', 'Two quiet, turn-based games for a breather.']
+};
+function modInfo(m, work) { const x = (work == null ? isWork() : work) && WORK_MODS[m.id]; return x ? { name: x[0], blurb: x[1] } : { name: m.name, blurb: m.blurb }; }
+const WORK_HOMES = { schedule: ['My day', 'Meetings and focus blocks on a timeline.'], due: ['What\'s due', 'The next deadlines, most urgent first.'], notes: ['My notes', 'The last notes you were working on.'] };
+function homeInfo(k, work) { const x = (work == null ? isWork() : work) && WORK_HOMES[k]; return x ? { name: x[0], blurb: x[1] } : { name: HOMES[k].name, blurb: HOMES[k].blurb }; }
+function on(id) { const m = ms().modules; if (!m) return !(isWork() && WORK_OFF[id]); return m[id] !== false; }
 function viewOn(n) { const m = VIEW_MOD[n]; return !m || on(m); }
-function W(level) { return LEVELS[level || S.settings.level] || LEVELS.high; }
-function viewTitle(n) { return n === 'tasks' ? W().taskP : (VIEWS[n] || VIEWS.today).title; }
+function W(level) { if (level === 'work' || (!level && isWork())) return WORK_WORDS; return LEVELS[level || S.settings.level] || LEVELS.high; }
+function viewTitle(n, work) {
+  const wkk = work == null ? isWork() : work;
+  if (n === 'tasks') return wkk ? WORK_WORDS.taskP : W().taskP;
+  if (wkk) { const t = { notes: 'Notes', tutor: 'Assistant', grades: 'Scores' }[n]; if (t) return t; }
+  return (VIEWS[n] || VIEWS.today).title;
+}
 function grading() { return GRADINGS[S.settings.grading] ? S.settings.grading : 'gpa4'; }
 function gradeLabel(p) {
   const k = grading();
@@ -6936,7 +7376,7 @@ function gradeBig(p, color) {
 }
 function termSummary() {
   const k = grading();
-  const g = S.classes.map(c => ({ p: classGrade(c), cr: +c.credits || 1 })).filter(x => x.p != null);
+  const g = MY('classes').map(c => ({ p: classGrade(c), cr: +c.credits || 1 })).filter(x => x.p != null);
   if (!g.length) return { has: false, label: k === 'gpa4' ? 'Term GPA' : 'Average', value: '—', sub: '' };
   if (k === 'gpa4') return { has: true, label: 'Term GPA', value: gpa().toFixed(2), sub: '' };
   const tot = g.reduce((a, x) => a + x.cr, 0), avg = g.reduce((a, x) => a + x.p * x.cr, 0) / tot;
@@ -6954,9 +7394,9 @@ function personaFor(a) {
 }
 /* Read from the live settings, so editing the timer later keeps the name honest. */
 function persona() {
-  if (!S.settings.setupDone) return null;
-  const s = S.settings;
-  return personaFor({ rhythm: rhythmFromPomodoro(s.pomodoro), clock: clockFromDay(s.dayStart, s.dayEnd), buffer: s.buffer });
+  const ps = ms();
+  if (!ps.setupDone) return null;
+  return personaFor({ rhythm: rhythmFromPomodoro(S.settings.pomodoro), clock: clockFromDay(ps.dayStart, ps.dayEnd), buffer: ps.buffer });
 }
 function svTZ() { try { return Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) { return ''; } }
 function defaultGrading(level, tz) {
@@ -6975,16 +7415,26 @@ function guessWeekStart(tz) {
 }
 
 /* --- answers in, settings out --- */
+const WORK_CLOCKS = {
+  early: { name: 'Early start', icon: 'sunrise', dayStart: '07:00', dayEnd: '16:00' },
+  day: { name: 'Nine to six', icon: 'today', dayStart: '09:00', dayEnd: '18:00' },
+  night: { name: 'Late start', icon: 'moon', dayStart: '11:00', dayEnd: '20:00' }
+};
+const WORK_MODULES = () => ({ schedule: true, calendar: true, tasks: true, notes: true, cards: true, tutor: true, grades: false, focus: true, break: true });
+function svWork(a) { return SVY.side ? isWork() : !!a && a.uses === 'work'; }
+function svLvl(a) { return svWork(a) ? 'work' : a.level; }
+function svClocks(a) { return svWork(a) ? WORK_CLOCKS : CLOCKS; }
 function svDefaults() {
-  const s = S.settings, tz = svTZ();
-  const b = s.buffer == null ? 1 : +s.buffer;
+  const s = S.settings, ps = ms(), tz = svTZ();
+  const b = ps.buffer == null ? 1 : +ps.buffer;
   return {
     name: S.profile.name || (Local.acct && Local.acct.name) || '',
+    uses: uses(),
     level: LEVELS[s.level] ? s.level : null,
-    modules: Object.assign({ calendar: true, tasks: true, notes: true, cards: true, tutor: true, grades: true, focus: true, break: true }, s.modules || {}),
-    home: s.home || 'schedule',
+    modules: Object.assign(isWork() ? WORK_MODULES() : { schedule: true, calendar: true, tasks: true, notes: true, cards: true, tutor: true, grades: true, focus: true, break: true }, ps.modules || {}),
+    home: ps.home || 'schedule',
     rhythm: rhythmFromPomodoro(s.pomodoro),
-    clock: clockFromDay(s.dayStart, s.dayEnd),
+    clock: clockFromDay(ps.dayStart, ps.dayEnd),
     buffer: b <= 0 ? 0 : b <= 1 ? 1 : 3,
     weekStart: s.setupDone ? (+s.weekStart || 0) : guessWeekStart(tz),
     grading: GRADINGS[s.grading] ? s.grading : null,
@@ -6998,67 +7448,118 @@ function svDefaults() {
   };
 }
 function applySurvey(a) {
-  const st = S.settings, level = LEVELS[a.level] ? a.level : 'high', L = LEVELS[level];
-  S.profile.name = String(a.name || '').trim().slice(0, 40);
+  const st = S.settings, ps = ms(), work = isWork(), level = LEVELS[a.level] ? a.level : 'high', L = LEVELS[level];
+  if (String(a.name || '').trim() || !SVY.side) S.profile.name = String(a.name || '').trim().slice(0, 40);
   const stock = ['', 'This term', 'Fall term'].concat(Object.keys(LEVELS).map(k => LEVELS[k].term));
-  if (stock.indexOf(S.profile.term || '') >= 0) S.profile.term = L.term;
-  st.level = level;
-  st.modules = Object.assign({}, a.modules);
-  st.home = HOMES[a.home] ? a.home : null;
+  if (work) { if (!ps.term || ps.term === WORK_WORDS.term) ps.term = WORK_WORDS.term; }
+  else {
+    if (stock.indexOf(S.profile.term || '') >= 0) S.profile.term = L.term;
+    if (a.level) st.level = level;
+  }
+  ps.modules = Object.assign({}, a.modules);
+  ps.home = HOMES[a.home] ? a.home : null;
   const r = RHYTHMS[a.rhythm] || RHYTHMS.classic;
   st.pomodoro = { focus: r.focus, short: r.short, long: r.long };
-  st.chunk = r.chunk;
-  const c = CLOCKS[a.clock] || CLOCKS.day;
-  st.dayStart = c.dayStart; st.dayEnd = c.dayEnd;
-  st.buffer = clamp(+a.buffer || 0, 0, 7);
+  ps.chunk = r.chunk;
+  const c = svClocks(a)[a.clock] || svClocks(a).day;
+  ps.dayStart = c.dayStart; ps.dayEnd = c.dayEnd;
+  ps.buffer = clamp(+a.buffer || 0, 0, 7);
   st.weekStart = [0, 1, 6].indexOf(+a.weekStart) >= 0 ? +a.weekStart : 0;
-  st.grading = GRADINGS[a.grading] ? a.grading : defaultGrading(level, a.tz);
-  const t = themeById(a.theme);
-  st.theme = t.id; st.accent = null; st.texture = null; st.font = t.font || null; st.corners = t.corners || null;
-  st.density = DENSITY[a.density] ? a.density : 'normal';
-  st.autoNight = !!a.autoNight;
-  if (st.autoNight) st.nightTheme = t.dark ? t.id : (themeById(st.nightTheme).dark ? st.nightTheme : 'midnight');
-  st.celebrate = a.celebrate !== false;
-  const have = new Set(S.classes.map(x => String(x.name).trim().toLowerCase()));
+  if (!work) st.grading = GRADINGS[a.grading] ? a.grading : defaultGrading(level, a.tz);
+  if (!SVY.side) {
+    const t = themeById(a.theme);
+    st.theme = t.id; st.accent = null; st.texture = null; st.font = t.font || null; st.corners = t.corners || null;
+    st.density = DENSITY[a.density] ? a.density : 'normal';
+    st.autoNight = !!a.autoNight;
+    if (st.autoNight) st.nightTheme = t.dark ? t.id : (themeById(st.nightTheme).dark ? st.nightTheme : 'midnight');
+    st.celebrate = a.celebrate !== false;
+  }
+  const have = new Set(MY('classes').map(x => String(x.name).trim().toLowerCase()));
   (a.classes || []).forEach(name => {
     const n = String(name).trim().slice(0, 60);
     if (!n || have.has(n.toLowerCase())) return;
     have.add(n.toLowerCase());
-    S.classes.push({ id: uid(), name: n, code: '', color: PALETTE[S.classes.length % PALETTE.length], teacher: '', room: '', credits: 1, meets: [], categories: [] });
+    S.classes.push(...mkAll({ id: uid(), name: n, code: '', color: PALETTE[MY('classes').length % PALETTE.length], teacher: '', room: '', credits: 1, meets: [], categories: [] }));
   });
-  st.setupDone = true; st.setupSeen = true; st.setupNudge = false;
+  svSchedApply(a, ps);
+  ps.setupDone = true; ps.setupSeen = true; ps.setupNudge = false;
+  st.setupSeen = true;
   if (!T.running) { T.mode = 'focus'; T.left = st.pomodoro.focus * 60; }
+}
+/* The setup's week goes in the same places the schedule editor writes to. */
+function svSchedApply(a, ps) {
+  if (!a.sched || !a.schedDirty) return;
+  const byName = n => MY('classes').find(c => String(c.name).trim().toLowerCase() === String(n).trim().toLowerCase());
+  Object.keys(a.schedDirty).forEach(k => {
+    const dw = +k, rows = a.sched[dw] || [];
+    MY('classes').forEach(c => { c.meets = (c.meets || []).filter(m => m.day !== dw); });
+    const periods = (ps.periods || []).filter(p => p.day !== dw);
+    rows.forEach(r => {
+      if (!r.what || !r.start || !r.end || toMin(r.end) <= toMin(r.start)) return;
+      if (r.what.indexOf('c:') === 0 || r.what.indexOf('n:') === 0) {
+        const c = r.what[0] === 'c' ? cls(r.what.slice(2)) : byName(r.what.slice(2)); if (!c) return;
+        const m = { day: dw, start: r.start, end: r.end }; if (r.room && r.room !== c.room) m.room = r.room;
+        (c.meets = c.meets || []).push(m);
+      } else {
+        const label = r.what === 'o:*' ? r.label : r.what.slice(2); if (!label) return;
+        const p = { id: uid(), day: dw, start: r.start, end: r.end, label }; if (r.room) p.room = r.room;
+        periods.push(p);
+      }
+    });
+    ps.periods = periods;
+  });
+}
+function svSchedInit(a) {
+  if (a.sched) return;
+  a.sched = {}; a.schedDirty = {}; a.schedCopy = [];
+  for (let d = 0; d < 7; d++) a.sched[d] = schRows(d).map(r => Object.assign({}, r, { ph: '' }));
+  const ws = +a.weekStart || 0, tw = dowOf(today());
+  a.schedDay = a.sched[tw].length || (tw !== 0 && tw !== 6 && tw !== 5) ? tw : (ws + 1) % 7;
+}
+function svSchedChoices(a) {
+  const others = svWork(a) ? ['Lunch', 'Break', 'Focus time', 'Commute', 'Admin time'] : ['Lunch', 'Break', 'Free period', 'Homeroom', 'Study hall'];
+  return { words: W(svLvl(a)), classes: MY('classes').map(c => ['c:' + c.id, c.name]).concat(a.classes.map(n => ['n:' + n, n])), others };
+}
+function svSchedRead() {
+  const a = SVY.a, box = $('#svRows'); if (!a || !box || !a.sched) return;
+  const dw = +box.dataset.dw;
+  a.sched[dw] = $$('[data-row]', box).map(r => ({ start: $('.rS', r).value, end: $('.rE', r).value, what: $('.rW', r).value, label: $('.rL', r).value.trim(), room: $('.rR', r).value.trim(), ph: '' }));
+  a.schedDirty[dw] = true;
 }
 
 /* --- the flow --- */
 const SVY = { open: false, step: 0, a: null, first: false, el: null, shown: null };
 function svHomes(a) { return Object.keys(HOMES).filter(k => a.modules[HOMES[k].need]); }
 function svSteps(a) {
-  const st = ['hello', 'you', 'modules'];
+  const st = SVY.side ? ['hello', 'modules'] : ['hello', 'you', 'modules'];
   if (svHomes(a).length > 1) st.push('home');
   if (a.modules.focus || a.modules.tasks) st.push('rhythm');
   st.push('clock');
-  if (a.modules.grades) st.push('grading');
-  st.push('classes', 'look', 'done');
+  if (a.modules.grades && !svWork(a)) st.push('grading');
+  st.push('classes');
+  if (a.modules.schedule) st.push('sched');
+  if (!SVY.side) st.push('look');
+  st.push('done');
   return st;
 }
+function svMin() { return SVY.first || SVY.side ? 0 : 1; }
 function svValid(step, a) {
-  if (step === 'you') return !!a.level;
+  if (step === 'you') return a.uses === 'work' || !!a.level;
   if (step === 'modules') return MODULES.some(m => a.modules[m.id]);
   return true;
 }
 function openSurvey(opts) {
   const o = opts || {};
   closeModal();
-  SVY.open = true; SVY.first = !!o.first; SVY.a = svDefaults(); SVY.shown = null;
-  SVY.step = SVY.first ? 0 : 1;
+  SVY.open = true; SVY.first = !!o.first; SVY.side = !!o.side && !o.first; SVY.a = svDefaults(); SVY.shown = null;
+  SVY.step = svMin();
   if (!S.settings.setupSeen) { S.settings.setupSeen = true; save(); }
   MODAL_EL = null;
   const ov = $('#overlay');
   ov.innerHTML = '<div class="sv" role="dialog" aria-modal="true" aria-label="Set up ATLAS">' +
-    '<div class="sv-top"><div class="mark" role="img" aria-label="ATLAS"></div><b class="sv-brand">Set up ATLAS</b>' +
+    '<div class="sv-top"><div class="mark" role="img" aria-label="ATLAS"></div><b class="sv-brand">' + (SVY.side ? 'Set up your ' + M() + ' side' : 'Set up ATLAS') + '</b>' +
     '<div class="sv-prog" role="progressbar" aria-label="Setup progress"><i id="svBar"></i></div><span class="mono dim" id="svCount" style="font-size:11px;min-width:34px"></span>' +
-    '<span class="spacer"></span><button class="btn g sm" data-sv-nav="close">' + (SVY.first ? 'Skip setup' : 'Close') + '</button></div>' +
+    '<span class="spacer"></span><button class="btn g sm" data-sv-nav="close">' + (SVY.first ? 'Skip setup' : SVY.side ? 'Not now' : 'Close') + '</button></div>' +
     '<div class="sv-body"><div class="sv-q" id="svQ"></div><div class="sv-prev" id="svP" aria-hidden="true"></div></div>' +
     '<div class="sv-foot" id="svF"></div></div>';
   SVY.el = $('.sv', ov);
@@ -7066,6 +7567,11 @@ function openSurvey(opts) {
   SVY.el.addEventListener('click', svClick);
   SVY.el.addEventListener('input', svInput);
   SVY.el.addEventListener('keydown', svKey);
+  SVY.el.addEventListener('change', e => {
+    const r = e.target.closest('#svRows [data-row]'); if (!r) return;
+    if (e.target.classList.contains('rW')) { const l = $('.rL', r); l.hidden = e.target.value !== 'o:*'; if (!l.hidden) l.focus(); }
+    svSchedRead();
+  });
   svLook();
   svPaint();
 }
@@ -7113,11 +7619,15 @@ function svThemeTile(t, picked) {
     '<span class="tsw-n">' + esc(t.name) + '<em>' + esc(t.mood || '') + '</em></span></button>';
 }
 function svStepHtml(step, a) {
-  const w = W(a.level);
-  const hasData = !!(S.classes.length || S.tasks.length || S.notes.length || S.decks.length);
+  const w = W(svLvl(a)), work = svWork(a);
+  const hasData = !!(MY('classes').length || MY('tasks').length || MY('notes').length || MY('decks').length);
   const head = (eye, h, lead) => '<div class="eyebrow">' + eye + '</div><h2>' + h + '</h2>' + (lead ? '<p class="lead">' + lead + '</p>' : '');
   switch (step) {
     case 'hello': {
+      if (SVY.side) return head('Your ' + M() + ' side', work ? 'Now let\'s set up work.' : 'Now let\'s set up school.',
+        'A few quick questions set up this side: its tools, your hours, your ' + w.clsP.toLowerCase() + ' and your week. The other side stays exactly as it is, one tap away next to your name.') +
+        '<div class="sv-points">' + [['clock', 'About a minute', 'Most of it is one tap.'], ['grid', 'Its own things', 'This side keeps its own ' + w.clsP.toLowerCase() + ', ' + w.taskP.toLowerCase() + ', notes and decks.'],
+          ['gear', 'Nothing is permanent', 'Change any of it later in Settings.']].map(p => '<div class="sv-point"><span class="ico">' + ic(p[0]) + '</span><div><b>' + p[1] + '</b><span>' + p[2] + '</span></div></div>').join('') + '</div>';
       const pts = [['clock', 'About a minute', 'A handful of questions, most of them one tap.'], ['gear', 'Nothing is permanent', 'Every answer can be changed later in Settings.']];
       pts.push(hasData ? ['check', 'Nothing gets deleted', 'Your classes, notes and cards stay exactly as they are.']
         : acctKnown() ? ['check', 'Synced to your account', 'Everything you set up here follows you to your other devices.'] : ['check', 'Yours, and free', 'Saved in this browser. Make a free account any time from your avatar to sync your devices.']);
@@ -7125,29 +7635,32 @@ function svStepHtml(step, a) {
         '<div class="sv-points">' + pts.map(p => '<div class="sv-point"><span class="ico">' + ic(p[0]) + '</span><div><b>' + p[1] + '</b><span>' + p[2] + '</span></div></div>').join('') + '</div>';
     }
     case 'you':
-      return head('About you', 'First, who\'s studying?', 'This decides the words ATLAS uses — classes or courses, homework or assignments — and how grades read.') +
+      return head('About you', 'First, what\'s ATLAS for?', 'School, work, or both. With both, a switch next to your name flips between them, and each side keeps its own things.') +
+        '<div class="sv-group"><div class="sv-opts three">' +
+        [['school', 'school', 'School', 'Classes, assignments and tests.'], ['work', 'briefcase', 'Work', 'Projects, tasks and meetings.'], ['both', 'grid', 'Both', 'Two sides and one switch.']]
+          .map(x => svOpt('uses', x[0], a.uses === x[0], ic(x[1]), x[2], x[3])).join('') + '</div></div>' +
         '<label class="f sv-name"><span>What should ATLAS call you?</span><input type="text" id="svName" maxlength="40" autocomplete="given-name" placeholder="Your first name" value="' + esc(a.name) + '"></label>' +
-        '<div class="sv-group"><span class="eyebrow">Where are you studying?</span><div class="sv-opts">' +
-        Object.keys(LEVELS).map(k => svOpt('level', k, a.level === k, ic(LEVELS[k].icon), LEVELS[k].name, LEVELS[k].blurb)).join('') + '</div></div>';
+        (a.uses === 'work' ? '' : '<div class="sv-group"><span class="eyebrow">Where are you studying?</span><div class="sv-opts">' +
+        Object.keys(LEVELS).map(k => svOpt('level', k, a.level === k, ic(LEVELS[k].icon), LEVELS[k].name, LEVELS[k].blurb)).join('') + '</div></div>');
     case 'modules': {
       const n = MODULES.filter(m => a.modules[m.id]).length;
       return head('Your tabs', 'What should ATLAS do for you?', 'Pick everything you want. Whatever you leave out disappears from the app, so all that is left is what you use. Tabs can be switched back on in Settings.') +
-        '<div class="sv-opts">' + MODULES.map(m => svOpt('modules', m.id, !!a.modules[m.id], ic(m.icon), m.name, m.blurb)).join('') + '</div>' +
+        '<div class="sv-opts">' + MODULES.map(m => { const mi = modInfo(m, work); return svOpt('modules', m.id, !!a.modules[m.id], ic(m.icon), m.id === 'tasks' && work ? w.taskP : mi.name, mi.blurb); }).join('') + '</div>' +
         '<p class="sv-count">' + (n ? n + ' of ' + MODULES.length + ' picked' : 'Pick at least one') + '</p>';
     }
     case 'home':
       return head('Today', 'When you open ATLAS, what comes first?', 'This sits at the top of Today, the screen you land on every time.') +
-        '<div class="sv-opts">' + svHomes(a).map(k => svOpt('home', k, a.home === k, ic(HOMES[k].icon), HOMES[k].name, HOMES[k].blurb)).join('') + '</div>';
+        '<div class="sv-opts">' + svHomes(a).map(k => { const hi = homeInfo(k, work); return svOpt('home', k, a.home === k, ic(HOMES[k].icon), hi.name, hi.blurb); }).join('') + '</div>';
     case 'rhythm':
-      return head('Focus', 'How do you like to work?', (a.modules.focus ? 'This sets the focus timer' : 'This sets how long a study block is') + (a.modules.focus && a.modules.tasks ? ' and the length of the study blocks ATLAS books for you' : '') + '.') +
+      return head('Focus', 'How do you like to work?', (a.modules.focus ? 'This sets the focus timer' : 'This sets how long a ' + (work ? 'focus' : 'study') + ' block is') + (a.modules.focus && a.modules.tasks ? ' and the length of the ' + (work ? 'focus' : 'study') + ' blocks ATLAS books for you' : '') + '.') +
         '<div class="sv-opts">' + Object.keys(RHYTHMS).map(k => {
           const r = RHYTHMS[k];
           return svOpt('rhythm', k, a.rhythm === k, ic('timer'), r.name, r.blurb, '<span class="sv-rh"><i style="flex:' + r.focus + '"></i><i class="off" style="flex:' + r.short + '"></i></span>');
         }).join('') + '</div>';
     case 'clock':
-      return head('Your clock', 'When do you get work done?', (a.modules.tasks || a.modules.calendar) ? 'Study blocks only ever land inside these hours, around your classes.' : 'ATLAS plans around these hours.') +
-        '<div class="sv-group"><span class="eyebrow">Your best hours</span><div class="sv-opts three">' +
-        Object.keys(CLOCKS).map(k => svOpt('clock', k, a.clock === k, ic(CLOCKS[k].icon), CLOCKS[k].name, fmt12(CLOCKS[k].dayStart) + ' – ' + fmt12(CLOCKS[k].dayEnd))).join('') + '</div></div>' +
+      return head('Your clock', work ? 'What are your working hours?' : 'When do you get work done?', (a.modules.tasks || a.modules.calendar) ? (work ? 'Focus blocks only ever land inside these hours, around your meetings.' : 'Study blocks only ever land inside these hours, around your classes.') : 'ATLAS plans around these hours.') +
+        '<div class="sv-group"><span class="eyebrow">' + (work ? 'Your working day' : 'Your best hours') + '</span><div class="sv-opts three">' +
+        Object.keys(svClocks(a)).map(k => { const c = svClocks(a)[k]; return svOpt('clock', k, a.clock === k, ic(c.icon), c.name, fmt12(c.dayStart) + ' – ' + fmt12(c.dayEnd)); }).join('') + '</div></div>' +
         (a.modules.tasks ? '<div class="sv-group"><span class="eyebrow">Finish things</span><div class="sv-opts three">' +
           BUFFERS.map(b => svOpt('buffer', b[0], +a.buffer === b[0], null, b[1], b[2])).join('') + '</div></div>' : '') +
         '<div class="sv-group"><span class="eyebrow">Your week starts on</span><div class="seg">' +
@@ -7158,18 +7671,31 @@ function svStepHtml(step, a) {
         '<div class="sv-opts">' + Object.keys(GRADINGS).map(k => svOpt('grading', k, cur === k, '<span class="sv-sample">' + GRADINGS[k].sample + '</span>', GRADINGS[k].name, GRADINGS[k].blurb)).join('') + '</div>';
     }
     case 'classes': {
-      const taken = new Set(S.classes.map(c => c.name.toLowerCase()).concat(a.classes.map(n => n.toLowerCase())));
-      const sug = (SUGGEST[a.level] || SUGGEST.high).filter(n => !taken.has(n.toLowerCase()));
-      return head(w.clsP, 'What are you taking?', 'Type a name and press Enter. Meeting times, teachers and rooms can come later' + ((a.modules.tasks || a.modules.calendar) ? ', or pull them in from your school calendar' : '') + '.') +
-        '<div class="row sv-addrow"><input type="text" id="svCls" maxlength="60" autocomplete="off" placeholder="e.g. ' + esc((SUGGEST[a.level] || SUGGEST.high)[2]) + '"><button class="btn p" data-sv-add>Add</button></div>' +
-        (a.classes.length ? '<div class="sv-chips">' + a.classes.map((n, i) => '<span class="sv-chip" style="--tc:' + PALETTE[(S.classes.length + i) % PALETTE.length] + '">' + esc(n) +
+      const taken = new Set(MY('classes').map(c => c.name.toLowerCase()).concat(a.classes.map(n => n.toLowerCase())));
+      const pool = work ? SUGGEST.work : (SUGGEST[a.level] || SUGGEST.high), sug = pool.filter(n => !taken.has(n.toLowerCase()));
+      return head(w.clsP, work ? 'What are you working on?' : 'What are you taking?', work ? 'Type a project and press Enter. Meetings and details can come later.' : 'Type a name and press Enter. Meeting times, teachers and rooms can come later' + ((a.modules.tasks || a.modules.calendar) ? ', or pull them in from your school calendar' : '') + '.') +
+        '<div class="row sv-addrow"><input type="text" id="svCls" maxlength="60" autocomplete="off" placeholder="e.g. ' + esc(pool[2]) + '"><button class="btn p" data-sv-add>Add</button></div>' +
+        (a.classes.length ? '<div class="sv-chips">' + a.classes.map((n, i) => '<span class="sv-chip" style="--tc:' + PALETTE[(MY('classes').length + i) % PALETTE.length] + '">' + esc(n) +
           '<button data-sv-rm="' + i + '" aria-label="Remove ' + esc(n) + '">✕</button></span>').join('') + '</div>' : '') +
-        (S.classes.length ? '<div class="sv-group" style="margin-top:16px"><span class="eyebrow">Already in ATLAS</span><div class="sv-chips">' +
-          S.classes.map(c => '<span class="sv-chip ghost" style="--tc:' + c.color + '">' + esc(c.name) + '</span>').join('') + '</div></div>' : '') +
+        (MY('classes').length ? '<div class="sv-group" style="margin-top:16px"><span class="eyebrow">Already in ATLAS</span><div class="sv-chips">' +
+          MY('classes').map(c => '<span class="sv-chip ghost" style="--tc:' + c.color + '">' + esc(c.name) + '</span>').join('') + '</div></div>' : '') +
         (sug.length ? '<div class="sv-group" style="margin-top:16px"><span class="eyebrow">Or tap to add</span><div class="sv-chips">' +
           sug.map(n => '<button class="sv-sug" data-sv-sug="' + esc(n) + '">+ ' + esc(n) + '</button>').join('') + '</div></div>' : '') +
-        (!hasData && !a.classes.length ? '<label class="check sv-tog" style="margin-top:18px;align-items:flex-start"><input type="checkbox" data-sv-tog="sample"' + (a.sample ? ' checked' : '') + ' style="margin-top:3px">' +
+        (!work && !hasData && !a.classes.length ? '<label class="check sv-tog" style="margin-top:18px;align-items:flex-start"><input type="checkbox" data-sv-tog="sample"' + (a.sample ? ' checked' : '') + ' style="margin-top:3px">' +
           '<span>Or skip this and explore with a sample term — four classes, a few assignments and a deck. Erase it any time.</span></label>' : '');
+    }
+    case 'sched': {
+      svSchedInit(a);
+      const dw = a.schedDay, ws = +a.weekStart || 0, order = [0, 1, 2, 3, 4, 5, 6].map(i => (ws + i) % 7), ch = svSchedChoices(a), rows = a.sched[dw] || [];
+      return head(work ? 'Your week' : 'Your schedule', work ? 'What does a normal week look like?' : 'When does each ' + w.cls.toLowerCase() + ' meet?',
+        'Put in a normal week once, and Today\'s Schedule shows the right day by itself. You can skip this and do it later from Today\'s Schedule.') +
+        '<div class="sv-sched"><div class="sv-pills">' + order.map(d => '<button class="schpill' + (d === dw ? ' on' : '') + '" data-sv-sday="' + d + '">' + DAYS[d] +
+          ((a.sched[d] || []).length ? '<i>' + a.sched[d].length + '</i>' : '') + '</button>').join('') + '</div>' +
+        '<div id="svRows" data-dw="' + dw + '">' + rows.map(r => schRowHTML(r, ch)).join('') + '</div>' +
+        (rows.length ? '' : '<p class="dim" style="font-size:13.5px;margin:6px 0">Nothing on ' + DAY_NAMES[dw] + 's yet. Add each block of the day' + (ch.classes.length ? '' : ' (add your ' + w.clsP.toLowerCase() + ' a step back to pick them here)') + '.</p>') +
+        '<div class="row" style="gap:8px;flex-wrap:wrap;margin-top:10px"><button class="btn sm" data-sv-sadd>' + ic('plus') + 'Add a block</button></div>' +
+        (rows.length ? '<div class="sv-copy"><span class="dim">Copy ' + DAY_NAMES[dw] + ' to</span>' + order.filter(d => d !== dw).map(d => '<button class="sv-dchip' + (a.schedCopy.indexOf(d) >= 0 ? ' on' : '') + '" data-sv-scopy="' + d + '">' + DAYS[d] + '</button>').join('') +
+          '<button class="btn sm" data-sv-scopygo' + (a.schedCopy.length ? '' : ' disabled') + '>Copy</button></div>' : '') + '</div>';
     }
     case 'look': {
       const list = SV_THEMES.concat(THEMES.map(t => t.id).filter(id => SV_THEMES.indexOf(id) < 0));
@@ -7181,17 +7707,19 @@ function svStepHtml(step, a) {
         '<label class="check sv-tog"><input type="checkbox" data-sv-tog="celebrate"' + (a.celebrate ? ' checked' : '') + '><span>Celebrate wins — badges, a streak and a little confetti</span></label>';
     }
     case 'done': {
-      const p = personaFor(a), r = RHYTHMS[a.rhythm], c = CLOCKS[a.clock];
-      const tabs = ['today'].concat(['calendar', 'tasks', 'notes', 'cards', 'tutor', 'grades', 'break'].filter(v => a.modules[VIEW_MOD[v]])).concat(['settings']);
-      const nCls = S.classes.length + a.classes.length;
-      const rows = [['Tabs', tabs.map(n => '<span class="chip">' + esc(n === 'tasks' ? w.taskP : VIEWS[n].title) + '</span>').join('')]];
-      if (svHomes(a).length) rows.push(['Opens on', esc(HOMES[svHomes(a).indexOf(a.home) >= 0 ? a.home : svHomes(a)[0]].name)]);
+      const p = personaFor(a), r = RHYTHMS[a.rhythm], c = svClocks(a)[a.clock] || svClocks(a).day;
+      const tabs = ['today'].concat(['schedule', 'calendar', 'tasks', 'notes', 'cards', 'tutor', 'grades', 'break'].filter(v => a.modules[VIEW_MOD[v]])).concat(['settings']);
+      const nCls = MY('classes').length + a.classes.length;
+      const rows = [['Tabs', tabs.map(n => '<span class="chip">' + esc(viewTitle(n, work)) + '</span>').join('')]];
+      if (svHomes(a).length) rows.push(['Opens on', esc(homeInfo(svHomes(a).indexOf(a.home) >= 0 ? a.home : svHomes(a)[0], work).name)]);
       if (a.modules.focus) rows.push(['Focus', r.focus + ' min on · ' + r.short + ' off']);
-      rows.push(['Study hours', fmt12(c.dayStart) + ' – ' + fmt12(c.dayEnd) + (a.modules.tasks ? ' · finish ' + BUFFERS.filter(b => b[0] === +a.buffer).map(b => b[1].toLowerCase())[0] : '')]);
-      if (a.modules.grades) rows.push(['Grades', esc(GRADINGS[a.grading || defaultGrading(a.level, a.tz)].name)]);
+      rows.push([work ? 'Work hours' : 'Study hours', fmt12(c.dayStart) + ' – ' + fmt12(c.dayEnd) + (a.modules.tasks ? ' · finish ' + BUFFERS.filter(b => b[0] === +a.buffer).map(b => b[1].toLowerCase())[0] : '')]);
+      if (a.modules.grades && !work) rows.push(['Grades', esc(GRADINGS[a.grading || defaultGrading(a.level, a.tz)].name)]);
       rows.push([esc(w.clsP), nCls ? nCls + ' ' + (nCls === 1 ? w.cls.toLowerCase() : w.clsP.toLowerCase()) : a.sample ? 'A sample term to explore' : 'None yet — add them any time']);
       rows.push(['Look', esc(themeById(a.theme).name) + (a.autoNight ? ', dark at night' : '')]);
-      return head('All set', 'You\'re a ' + esc(p.title) + '.', esc(p.line)) +
+      if (a.sched && a.schedDirty && Object.keys(a.schedDirty).length) { const n = Object.keys(a.sched).reduce((x, d) => x + (a.sched[d] || []).filter(r => r.what).length, 0); rows.push(['Week', n ? n + ' blocks across the week' : 'Nothing yet']); }
+      if (!SVY.side && a.uses === 'both') rows.push(['Work side', 'Set it up the first time you switch to it, with the button next to your name']);
+      return head('All set', SVY.side ? 'Your ' + M() + ' side is ready.' : 'You\'re a ' + esc(p.title) + '.', esc(p.line)) +
         '<div class="sv-sum">' + rows.map(x => '<div class="sv-row"><span class="eyebrow">' + x[0] + '</span><div>' + x[1] + '</div></div>').join('') + '</div>' +
         '<div class="sv-donepv">' + svPreview(a) + '</div>';
     }
@@ -7199,21 +7727,21 @@ function svStepHtml(step, a) {
   return '';
 }
 function svFoot(step, a) {
-  const back = SVY.step > (SVY.first ? 0 : 1) ? '<button class="btn" data-sv-nav="back">Back</button>' : '';
+  const back = SVY.step > svMin() ? '<button class="btn" data-sv-nav="back">Back</button>' : '';
   if (step === 'hello') return '<span class="spacer"></span>' + (SVY.first ? '<button class="btn g" data-sv-nav="close">Not now</button>' : '') + '<button class="btn p" data-sv-nav="next">Let\'s go</button>';
   if (step === 'done') return back + '<span class="spacer"></span><button class="btn p" data-sv-nav="next">Open my desk</button>';
   const ok = svValid(step, a);
-  const hint = ok ? '' : '<span class="hint">' + (step === 'you' ? 'Pick where you are studying to continue' : 'Pick at least one') + '</span>';
+  const hint = ok ? '' : '<span class="hint">' + (step === 'you' ? 'Pick where you\'re studying to continue' : 'Pick at least one') + '</span>';
   return back + hint + '<span class="spacer"></span><button class="btn p" data-sv-nav="next"' + (ok ? '' : ' disabled') + '>Next</button>';
 }
 /* A small, honest picture of the desk being built — real theme tokens, real labels. */
 function svPreview(a) {
-  const w = W(a.level), m = a.modules, steps = svSteps(a);
-  const main = ['today'].concat(['calendar', 'tasks', 'notes'].filter(v => m[VIEW_MOD[v]]));
+  const w = W(svLvl(a)), m = a.modules, steps = svSteps(a), work = svWork(a);
+  const main = ['today'].concat(['schedule', 'calendar', 'tasks', 'notes'].filter(v => m[VIEW_MOD[v]]));
   const tools = ['cards', 'tutor', 'grades', 'break'].filter(v => m[VIEW_MOD[v]]).concat(['settings']);
-  const nav = (n, i) => '<div class="pv-n' + (n === 'today' ? ' on' : '') + '" style="animation-delay:' + (i * 30) + 'ms">' + ic(VIEWS[n].icon) + '<span>' + esc(n === 'tasks' ? w.taskP : VIEWS[n].title) + '</span></div>';
-  let classes = S.classes.map(c => [c.name, c.color]).concat(a.classes.map((n, i) => [n, PALETTE[(S.classes.length + i) % PALETTE.length]]));
-  if (!classes.length && a.sample) classes = [['Biology', PALETTE[3]], ['US History', PALETTE[2]], ['Calculus', PALETTE[0]], ['Spanish III', PALETTE[1]]];
+  const nav = (n, i) => '<div class="pv-n' + (n === 'today' ? ' on' : '') + '" style="animation-delay:' + (i * 30) + 'ms">' + ic(VIEWS[n].icon) + '<span>' + esc(viewTitle(n, work)) + '</span></div>';
+  let classes = MY('classes').map(c => [c.name, c.color]).concat(a.classes.map((n, i) => [n, PALETTE[(MY('classes').length + i) % PALETTE.length]]));
+  if (!classes.length && a.sample && !work) classes = [['Biology', PALETTE[3]], ['US History', PALETTE[2]], ['Calculus', PALETTE[0]], ['Spanish III', PALETTE[1]]];
   const homes = svHomes(a), home = homes.indexOf(a.home) >= 0 ? a.home : homes[0];
   const cols = classes.length ? classes.map(c => c[1]) : ['var(--ultra)', 'var(--marigold)', 'var(--moss)'];
   const h = new Date().getHours();
@@ -7231,10 +7759,10 @@ function svPreview(a) {
   if (m.tasks) stats.push([dueWithin(7).length, 'due this week']);
   if (m.cards) stats.push([allStudyCount(), 'to study']);
   if (m.focus) stats.push([streak(), 'day streak']);
-  if (m.grades && stats.length < 3) stats.push(['—', (a.grading || defaultGrading(a.level, a.tz)) === 'gpa4' ? 'GPA' : 'average']);
+  if (m.grades && !work && stats.length < 3) stats.push(['—', (a.grading || defaultGrading(a.level, a.tz)) === 'gpa4' ? 'GPA' : 'average']);
   const p = showP ? personaFor(a) : null;
   return '<div class="pv"><div class="pv-win">' +
-    '<div class="pv-side"><div class="pv-brand"><i>A</i><b>ATLAS</b></div>' + main.map(nav).join('') +
+    '<div class="pv-side"><div class="pv-brand"><i class="mark"></i><b>ATLAS</b></div>' + main.map(nav).join('') +
     '<div class="pv-eye">' + esc(w.clsP) + '</div>' +
     (classes.length ? classes.slice(0, 5).map((c, i) => '<div class="pv-t" style="--tc:' + c[1] + ';animation-delay:' + (i * 40) + 'ms">' + esc(c[0]) + '</div>').join('') : '<div class="pv-t" style="--tc:var(--rule2);color:var(--ink3)">None yet</div>') +
     '<div class="pv-eye">Tools</div>' + tools.map((n, i) => nav(n, i + main.length)).join('') + '</div>' +
@@ -7249,21 +7777,44 @@ function svAddClass(name) {
   const a = SVY.a, n = String(name || '').trim().slice(0, 60);
   if (!n) return false;
   const lc = n.toLowerCase();
-  if (a.classes.some(x => x.toLowerCase() === lc) || S.classes.some(c => c.name.toLowerCase() === lc)) { toast(n + ' is already on the list.'); return false; }
+  if (a.classes.some(x => x.toLowerCase() === lc) || MY('classes').some(c => c.name.toLowerCase() === lc)) { toast(n + ' is already on the list.'); return false; }
   if (a.classes.length >= 20) { toast('That is plenty for now — add more later.'); return false; }
   a.classes.push(n); a.sample = false;
   return true;
 }
 function svClick(e) {
-  const t = e.target.closest('[data-sv-nav],[data-sv-pick],[data-sv-add],[data-sv-sug],[data-sv-rm],[data-sv-theme],[data-sv-tog],[data-sv-ws],[data-sv-den]');
+  if (e.target.closest('#svRows') && e.target.closest('[data-act="schRm"]')) { svSchedRead(); return svPaint(); }
+  const t = e.target.closest('[data-sv-nav],[data-sv-pick],[data-sv-add],[data-sv-sug],[data-sv-rm],[data-sv-theme],[data-sv-tog],[data-sv-ws],[data-sv-den],[data-sv-sday],[data-sv-sadd],[data-sv-scopy],[data-sv-scopygo]');
   if (!t || !SVY.el) return;
   const a = SVY.a, d = t.dataset;
+  if (d.svSday != null) { svSchedRead(); a.schedDay = +d.svSday; a.schedCopy = []; return svPaint(); }
+  if (t.hasAttribute('data-sv-sadd')) {
+    svSchedRead();
+    const rows = a.sched[a.schedDay] = a.sched[a.schedDay] || [], last = rows[rows.length - 1];
+    const len = svWork(a) ? 50 : 45, start = last && last.end ? toMin(last.end) + 5 : toMin(svWork(a) ? '09:00' : '08:00');
+    rows.push({ start: toHHMM(start), end: toHHMM(Math.min(start + len, 1439)), what: '', label: '', room: '', ph: '' });
+    a.schedDirty[a.schedDay] = true;
+    svPaint();
+    const sel = $$('#svRows .rW'); if (sel.length) sel[sel.length - 1].focus();
+    return;
+  }
+  if (d.svScopy != null) { svSchedRead(); const k = +d.svScopy, i = a.schedCopy.indexOf(k); if (i >= 0) a.schedCopy.splice(i, 1); else a.schedCopy.push(k); return svPaint(); }
+  if (t.hasAttribute('data-sv-scopygo')) {
+    svSchedRead();
+    const src = a.sched[a.schedDay] || [];
+    a.schedCopy.forEach(k => { a.sched[k] = src.map(r => Object.assign({}, r)); a.schedDirty[k] = true; });
+    toast('Copied ' + DAY_NAMES[a.schedDay] + ' to ' + a.schedCopy.map(k => DAY_NAMES[k]).join(', '));
+    a.schedCopy = [];
+    return svPaint();
+  }
   if (d.svNav) return svNav(d.svNav);
   if (d.svPick) {
     const k = d.svPick, v = d.v;
     if (k === 'modules') a.modules[v] = !a.modules[v];
     else if (k === 'buffer') a.buffer = +v;
     else a[k] = v;
+    if (k === 'uses' && !a.modulesSet) { a.modules = v === 'work' ? WORK_MODULES() : Object.assign(WORK_MODULES(), { grades: a.level !== 'self' }); }
+    if (k === 'uses') a.sched = null;
     /* sensible follow-ons, unless you already chose otherwise */
     if (k === 'level' && !a.gradingSet) a.grading = defaultGrading(v, a.tz);
     if (k === 'level' && !a.modulesSet) a.modules.grades = v !== 'self';
@@ -7297,7 +7848,8 @@ function svKey(e) {
 function svNav(dir) {
   const a = SVY.a, steps = svSteps(a), step = steps[SVY.step];
   if (dir === 'close') return closeModal();
-  if (dir === 'back') { SVY.step = Math.max(SVY.first ? 0 : 1, SVY.step - 1); return svPaint(); }
+  if (step === 'sched') svSchedRead();
+  if (dir === 'back') { SVY.step = Math.max(svMin(), SVY.step - 1); return svPaint(); }
   if (dir === 'next') {
     if (!svValid(step, a)) return;
     if (step === 'classes') { const inp = $('#svCls'); if (inp && inp.value.trim()) svAddClass(inp.value); }
@@ -7308,14 +7860,20 @@ function svNav(dir) {
 }
 function svFinish() {
   const a = SVY.a;
-  if (a.sample && !S.classes.length && !a.classes.length) seedTerm();
+  if (SVY.step >= 0 && svSteps(a)[SVY.step] === 'sched') svSchedRead();
+  if (!SVY.side) {
+    S.settings.uses = ['school', 'work', 'both'].indexOf(a.uses) >= 0 ? a.uses : 'school';
+    Local.mode = a.uses === 'work' ? 'work' : 'school'; saveLocal();
+  }
+  if (a.sample && !isWork() && !MY('classes').length && !a.classes.length) seedTerm();
   applySurvey(a);
   SVY.open = false; SVY.el = null; modalCloser = null;
   $('#overlay').innerHTML = '';
   applyTheme(); installManifest(); paintTimer(); checkBadges(true);
   save(true);
   go('today');
-  toast('Your desk is ready' + (S.profile.name ? ', ' + S.profile.name : ''));
+  toast(SVY.side ? 'Your ' + M() + ' side is ready' : a.uses === 'both' ? 'Your school side is ready. Switch to work with the button next to your name.' : 'Your desk is ready' + (S.profile.name ? ', ' + S.profile.name : ''));
+  SVY.side = false;
   celebrate();
 }
 
@@ -7326,20 +7884,22 @@ function seedTerm() {
   const c2 = mk('US History', 'HIS-110', PALETTE[2], 'Mr. Doyle', 'A-102', [{ day: 2, start: '10:30', end: '11:45' }, { day: 4, start: '10:30', end: '11:45' }]);
   const c3 = mk('Calculus', 'MTH-140', PALETTE[0], 'Dr. Reyes', 'S-9', [{ day: 1, start: '11:00', end: '11:50' }, { day: 2, start: '11:00', end: '11:50' }, { day: 4, start: '11:00', end: '11:50' }]);
   const c4 = mk('Spanish III', 'SPN-301', PALETTE[1], 'Sra. Marín', 'L-3', [{ day: 3, start: '14:00', end: '15:15' }]);
-  S.classes.push(c1, c2, c3, c4);
+  S.classes.push(...mkAll(c1, c2, c3, c4));
+  c1.resources = ['Lab notebook', 'Goggles', 'Laptop']; c2.resources = ['Textbook', 'Laptop']; c3.resources = ['Graphing calculator', 'Graph paper']; c4.resources = ['Spanish workbook'];
+  ms().periods = [1, 2, 3, 4, 5].map(d => ({ id: uid(), day: d, start: '12:00', end: '12:40', label: 'Lunch' }));
   c1.categories = [{ name: 'Labs', weight: 30, items: [{ name: 'Osmosis lab', earned: 27, total: 30 }] }, { name: 'Exams', weight: 50, items: [{ name: 'Unit 1', earned: 84, total: 100 }] }, { name: 'Homework', weight: 20, items: [{ name: 'Ch. 3', earned: 10, total: 10 }] }];
   c3.categories = [{ name: 'Quizzes', weight: 40, items: [{ name: 'Limits', earned: 17, total: 20 }] }, { name: 'Exams', weight: 60, items: [] }];
-  const T2 = (title, classId, dd, est, notes) => S.tasks.push({ id: uid(), classId, title, due: addDays(today(), dd), dueTime: '', est, done: false, priority: 1, notes: notes || '' });
+  const T2 = (title, classId, dd, est, notes) => S.tasks.push(...mkAll({ id: uid(), classId, title, due: addDays(today(), dd), dueTime: '', est, done: false, priority: 1, notes: notes || '' }));
   T2('Lab report — enzyme activity', c1.id, 3, 150, 'Include the graph and error analysis.');
   T2('Read ch. 12 + discussion post', c2.id, 1, 60);
   T2('Problem set 6 (related rates)', c3.id, 2, 90);
   T2('Presentación oral — mi barrio', c4.id, 6, 120, '3 minutes, past tense required.');
   T2('Unit 2 exam — cell division', c1.id, 9, 240);
   const examId = S.tasks[S.tasks.length - 1].id;
-  S.notes.push({
+  S.notes.push(...mkAll({
     id: uid(), classId: c1.id, title: 'Mitosis vs meiosis', pinned: true, created: Date.now(), updated: Date.now(),
     body: '# Mitosis\n- One division, two identical diploid cells\n- Body cells, growth and repair\n- Phases: prophase, metaphase, anaphase, telophase\n\n# Meiosis\n- Two divisions, four haploid gametes\n- Crossing over in prophase I creates variation\n- Independent assortment in metaphase I\n\n**Test hint:** know *when* variation happens, not just that it does.'
-  });
+  }));
   const deck = { id: uid(), classId: c1.id, name: 'Cell division terms', created: Date.now(), cards: [], testId: examId };
   [['Mitosis', 'One division producing two genetically identical diploid cells.'],
   ['Meiosis', 'Two divisions producing four genetically distinct haploid gametes.'],
@@ -7347,7 +7907,7 @@ function seedTerm() {
   ['Independent assortment', 'Random orientation of homologous pairs at metaphase I, shuffling alleles.'],
   ['Diploid vs haploid', 'Diploid (2n) has both chromosome sets; haploid (n) has one.']]
     .forEach(p => deck.cards.push(newCard(p[0], p[1])));
-  S.decks.push(deck);
+  S.decks.push(...mkAll(deck));
   S.profile.term = 'Fall term';
 }
 
