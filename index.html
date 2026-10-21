@@ -2665,6 +2665,7 @@ function render() {
   if (V.name === 'notes' && V.param) sub = clsName(V.param);
   if (V.name === 'schedule' && typeof matchMedia === 'function' && matchMedia('(max-width: 640px)').matches) title = 'Schedule';
   $('#vTitle').textContent = title;
+  appBadge();
   $('#vSub').textContent = sub;
   $('#view').innerHTML = body;
   renderNav();
@@ -3735,6 +3736,8 @@ function viewSettings() {
     row('Reminders', esc(noteLabel()) + '. What\'s due, ' + wk('tests', 'big deadlines') + ' coming up' + (on('cards') ? ', cards to study' : '') + ' and the end of a focus session.', '<button class="btn" data-act="noteSheet">' + (noteHere() ? 'Change' : 'Set up') + '</button>') +
     row('Install ATLAS', installed() ? 'Installed. You\'re using ATLAS as an app on this device.' : 'Put ATLAS on your ' + installWhere() + '. It opens like an app, full screen, and works offline.',
       installed() ? '' : '<button class="btn' + (INST.evt ? ' p' : '') + '" data-act="install">Install</button>', 'set-install') +
+    (typeof navigator !== 'undefined' && navigator.setAppBadge && on('tasks') ? row('Count on the app icon', 'The installed ATLAS icon shows how many things are due today or late.' + (isIOS() ? ' On iPhone and iPad it needs reminders turned on.' : ''),
+      '<input type="checkbox" data-act="setBadge"' + (badgeOn() ? ' checked' : '') + ' aria-label="Count on the app icon">', 'set-badge') : '') +
     (acctKnown() ? row('Device lock', esc(lockLabel()) + '. A passkey or a pattern keeps ATLAS closed on this device until you unlock it.', '<button class="btn" data-act="lockSheet">' + (lockSet() ? 'Change' : 'Set up') + '</button>') : '') +
     row('Privacy', 'What ATLAS stores, where, and how to delete it.', '<a class="btn" href="privacy.html" target="_blank" rel="noopener">Read</a>');
   body.data =
@@ -6321,6 +6324,7 @@ function installSheet() {
       '<p class="muted" style="margin:0 0 14px;font-size:13.5px">' + why + '</p>' +
       '<ol class="isteps">' + steps.map(x => '<li>' + x + '</li>').join('') + '</ol>' +
       (k === 'samsung' ? '<p class="dim" style="font-size:12.5px;margin:12px 0 0">If there\'s a <b>+</b> or download icon in the address bar, tapping it does the same thing.</p>' : '') +
+      (k !== 'ios' && k !== 'ios-other' && k !== 'firefox' ? '<p class="dim" style="font-size:12.5px;margin:12px 0 0">Once it\'s installed, press and hold the ATLAS icon for shortcuts: Today\'s Schedule, add something due, start focusing and study flashcards.</p>' : '') +
       (isIOS() ? '<p class="dim" style="font-size:12.5px;margin:12px 0 0">The Home Screen app keeps its own sign-in, so sign in once when you first open it. Your desk is waiting there.</p>' : ''),
     foot: '<button class="btn p" data-close>Got it</button>'
   });
@@ -6348,6 +6352,42 @@ function installTip() {
     '<div class="ib"><button class="btn p sm" data-act="instTip" data-k="go">' + (INST.evt ? 'Install' : 'Show me how') + '</button>' +
     '<button class="btn g sm" data-act="instTip" data-k="later">Not now</button>' +
     '<button class="linkbtn" data-act="instTip" data-k="never">Don\'t show again</button></div></div>';
+}
+
+
+/* ============================================================
+   The icon. Web apps can't put widgets on a home screen, so ATLAS
+   does the two things they can: a long-press menu of shortcuts on
+   its icon (Android, Samsung, Windows, Mac), and a count on the icon
+   of what's due today or late (iPhone, iPad, Mac, Windows).
+   ============================================================ */
+const APPB = { last: -1 };
+function badgeCount() {
+  const t = today(), list = uses() === 'both' ? (S.tasks || []) : MY('tasks');
+  return list.filter(x => x && !x.done && x.due && x.due <= t).length;
+}
+function badgeOn() { return Local.badge !== false; }
+function appBadge() {
+  try {
+    if (typeof navigator === 'undefined' || !navigator.setAppBadge) return;
+    const n = badgeOn() ? badgeCount() : 0;
+    if (n === APPB.last) return;
+    APPB.last = n;
+    (n ? navigator.setAppBadge(n) : navigator.clearAppBadge()).catch(() => { });
+  } catch (e) { }
+}
+/* A shortcut opens ATLAS as ./?go=<tab> or ./?do=<action>. */
+function launchShortcut() {
+  let q;
+  try { q = new URLSearchParams(location.search); } catch (e) { return; }
+  const g = q.get('go'), d = q.get('do');
+  if (!g && !d) return;
+  try { history.replaceState(null, '', location.pathname + location.hash); } catch (e) { }
+  if (SVY.open || GATE.open) return;
+  if (g && VIEWS[g] && viewOn(g)) go(g);
+  if (d === 'add' && on('tasks')) taskModal();
+  if (d === 'focus' && on('focus')) openZen();
+  if (d === 'study' && on('cards')) ACT.reviewAll();
 }
 
 /* --- turning it on, on this device --- */
@@ -7315,7 +7355,8 @@ const ACT = {
   setLevel: el => { S.settings.level = LEVELS[el.value] ? el.value : null; save(true); render(); },
   setHome: el => { ms().home = el.value; save(true); },
   setGrading: el => { S.settings.grading = el.value; save(true); render(); },
-  setCelebrate: el => { S.settings.celebrate = !!el.checked; save(true); }
+  setCelebrate: el => { S.settings.celebrate = !!el.checked; save(true); },
+  setBadge: el => { Local.badge = !!el.checked; saveLocal(); APPB.last = -1; appBadge(); toast(el.checked ? 'The app icon shows what\'s due' : 'No count on the app icon'); }
 };
 function monthStep(anchor, n) { const d = parseYMD(anchor); d.setDate(1); d.setMonth(d.getMonth() + n); return ymd(d); }
 function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
@@ -8544,6 +8585,7 @@ async function boot() {
   const link = actionLink();
   if (needGate() && !link) openGate(); else afterGate();
   if (link) handleAction(link);
+  else if (!GATE.open) launchShortcut();
   if (lockSet() && !link) lockShow();
 }
 if (typeof document !== 'undefined' && document.addEventListener) document.addEventListener('DOMContentLoaded', boot);
