@@ -1,10 +1,11 @@
 {
-  "version": "2026.10.22.4",
+  "version": "2026.10.22.5",
   "notes": [
-    "Sections: every class's work is sorted into sections like Homework, Tests & quizzes, Labs and Projects the moment it arrives, using your grade categories when a class has them. Agent mode sorts the ones the names don't give away.",
-    "Google Classroom assignments have an Open in Google Classroom button, and pressing Send to ATLAS on an assignment's page brings in its instructions, points and files.",
-    "Agent mode can read an assignment's details, sort your work, restyle ATLAS, rename tabs and change fonts and colors for you. Settings always keeps the usual look so you can undo it.",
-    "Agent mode has a fair daily allowance, so the free AI stays available for everyone.",
-    "Earlier today: Agent mode with the rainbow glow, Link Google Classroom, and moving your desk to another account."
+    "Flashcards, rebuilt: open a set and you're studying it. Each set has five ways to study: Flashcards, Learn, Write, Test and Match. Edit is its own button, with every term and definition editable right on the page.",
+    "Notebooks write like a real document: text sizes, bold, italic, underline, colors, highlights, checklists, quotes and links, with Markdown shortcuts as you type.",
+    "Every class has its own Notebook and Tutor tabs, so you can take notes and ask questions without leaving the class.",
+    "Today's Schedule shows your day on a timeline, like the schedule editor, with a week strip to jump between days.",
+    "The calendar has a Day view and a cleaner month. Drag a block to move it, or pull its bottom edge to change how long it is.",
+    "Liquid Glass for iPhone, iPad and Mac, in Settings › Look. It follows your device's light or dark mode, contrast and text size."
   ]
 }
